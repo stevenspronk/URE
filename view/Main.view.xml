@@ -1,3 +1,124 @@
-<core:View controllerName="URE.view.Main" displayBlock="true" height="100%" xmlns:core="sap.ui.core" xmlns="sap.m">
-	<App id="fioriContent"></App>
-</core:View>
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.layout="sap.ui.layout" height="100%">
+	<Page title="URE Racing Dashboard" class="sapUiContentPadding" showNavButton="false">
+		<headerContent>
+
+		</headerContent>
+		<subHeader>
+
+		</subHeader>
+		<content>
+		
+<sap.ui.layout:VerticalLayout class="sapUiContentPadding" width="100%">
+		
+		<sap.ui.layout.form:SimpleForm editable="false" layout="ResponsiveGridLayout" id="__form0">
+		
+		    <sap.ui.layout.form:content>
+		
+		        <sap.ui.core:Title text="Algemene gegevens" id="__title0"/>
+		
+		        <Label text="Test naam" id="__label0"/>
+		
+		        <Input width="100%" id="__input0"/>
+		
+		        <Label text="Circuit" id="__label1"/>
+		
+		        <Input width="100%" id="__input1"/>
+	
+		        <Label text="Test type" id="__label2"/>
+	
+		        <ComboBox selectedItem="Element sap.ui.core.ListItem#__item1" value="List Item 1" selectedKey="item1" selectedItemId="__item1" id="__box0">
+	
+		            <items>
+	
+		                <sap.ui.core:ListItem text="Endurance" key="item1" id="__item1"/>
+	
+		                <sap.ui.core:ListItem text="Test" key="item2" id="__item2"/>
+					</items>
+	
+		        </ComboBox>
+		        	
+			    <Label text="Datum" id="__label3"/>
+		        	
+			    <DatePicker width="50%" id="__picker0"/>
+	
+			    <Label text="Weersomstandigheden" id="__label4"/>
+	
+			    <ComboBox selectedItem="Element sap.ui.core.ListItem#__item0" value="List Item 1" selectedKey="item1" selectedItemId="__item0" id="__box1" width="50%">
+	
+			        <items>
+	
+			            <sap.ui.core:ListItem text="Zonnig" key="item1" id="__item0"/>
+	
+			            <sap.ui.core:ListItem text="Regenachtig" key="item2" id="__item3"/>
+
+						</items>
+	
+			    </ComboBox>
+	
+		        			        	
+		        	
+		        </sap.ui.layout.form:content>
+		
+		</sap.ui.layout.form:SimpleForm>
+		
+		
+		<sap.ui.layout.form:SimpleForm editable="false" layout="ResponsiveGridLayout" id="__form1" emptySpanL="0" emptySpanM="0" emptySpanS="01">
+		
+		            <sap.ui.layout.form:content>
+		
+		                <sap.ui.core:Title text="Technische gegevens auto" id="__title1"/>
+		
+		                <Label text="Lengte" id="__label5"/>
+		
+		                <Input width="100%" id="__input5"/>
+		
+		                <Label text="Breedte" id="__label6"/>
+		
+		                <Input width="100%" id="__input6"/>
+		
+		                <Label text="Hoogte" width="100%" id="__label7"/>
+		                	
+		                <Input width="100%" id="__input7"/>
+		                	 
+		               <Label text="Gewicht" width="100%" id="__label8"/>
+		                	
+		                	 <Input width="100%" id="__input8"/>
+		                </sap.ui.layout.form:content>
+		
+		        </sap.ui.layout.form:SimpleForm>
+		        
+				<sap.ui.layout.form:SimpleForm editable="false" layout="ResponsiveGridLayout" id="__form2">
+		
+		            <sap.ui.layout.form:content>
+		
+		                <sap.ui.core:Title text="Gegevens coureur" id="__title2"/>
+		
+		                <Label text="Naam" id="__label9"/>
+		
+		                <Input width="100%" id="__input9"/>
+		
+		                <Label text="Leeftijd" id="__label10"/>
+		
+		                <Input width="100%" id="__input10"/>
+		
+		                <Label text="Lengte" width="100%" id="__label11"/>
+		                	
+		                <Input width="100%" id="__input11"/>
+		                	 
+		               <Label text="Gewicht" width="100%" id="__label12"/>
+		                	
+		                	 <Input width="100%" id="__input12"/>
+		                </sap.ui.layout.form:content>
+		
+		        </sap.ui.layout.form:SimpleForm>
+		</sap.ui.layout:VerticalLayout>
+		</content>
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button text="Reset" type="cancel" activeIcon="sap-icon://sys-cancel" icon="sap-icon://sys-cancel"/>
+				<Button text="Start test" type="start" activeIcon="sap-icon://accept" icon="sap-icon://accept"/>
+			</Toolbar>
+		</footer>
+	</Page>
+</mvc:View>

@@ -5,9 +5,6 @@
     },
     "/view/Details.view.xml": {
       "entitySet": "ZURE_ALL"
-    },
-    "/view/Main.view.xml": {
-      "entitySet": "UNBINDKEY"
     }
   },
   "generation": [
