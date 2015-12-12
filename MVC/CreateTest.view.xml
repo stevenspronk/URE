@@ -1,11 +1,10 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.layout="sap.ui.layout" height="100%">
-	<Page title="URE Racing Dashboard" class="sapUiContentPadding" showNavButton="false">
-		<headerContent>
-
-		</headerContent>
-		<subHeader>
-
-		</subHeader>
+<mvc:View xmlns:mvc="MVC.CreateTest" 
+xmlns="sap.m" xmlns:sap.ui.core="sap.ui.core" 
+xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.layout="sap.ui.layout" height="100%"
+controllerName="MVC.CreateTest">
+	
+	
+	<Page title="URE Racing: Nieuwe test" class="sapUiContentPadding" showNavButton="false">
 		<content>
 		
 <sap.ui.layout:VerticalLayout class="sapUiContentPadding" width="100%">
@@ -116,8 +115,7 @@
 		<footer>
 			<Toolbar>
 				<ToolbarSpacer/>
-				<Button text="Reset" type="cancel" activeIcon="sap-icon://sys-cancel" icon="sap-icon://sys-cancel"/>
-				<Button text="Start test" type="start" activeIcon="sap-icon://accept" icon="sap-icon://accept"/>
+				<Button text="Start test" activeIcon="sap-icon://accept"  press="startTest" icon="sap-icon://accept"/>
 			</Toolbar>
 		</footer>
 	</Page>

@@ -1,0 +1,29 @@
+<mvc:View xmlns:mvc="MVC.Dashboard" xmlns="sap.m" xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.commons="sap.suite.ui.commons" xmlns:sap.ui.layout="sap.ui.layout" height="100%" controllerName="MVC.Dashboard">
+	
+	
+	<Page title="URE Racing: Dashboard" class="sapUiContentPadding" showNavButton="true" navButtonPress="onNavBack">
+
+	<IconTabBar id="idIconTabBarNoIcons" expanded="{device&gt;/isNoPhone}" class="sapUiResponsiveContentPadding" select="onSelect">
+		<items>
+			<IconTabFilter key="IconTabBar1" text="Dashboard">
+				<Text text="Dashboard content..."/>
+			</IconTabFilter>
+			<IconTabFilter key="IconTabBar2" text="Auto">
+				<Text text="Auto content..."/>
+			</IconTabFilter>
+			<IconTabFilter key="IconTabBar3" text="Coureur" press="onNavBack">
+				<Text text="Coureur content..."/>
+			</IconTabFilter>
+			<IconTabFilter key="IconTabBar3" text="Powertrain">
+				<Text text="Powertrain content..."/>
+			</IconTabFilter>
+		</items>
+	</IconTabBar>
+	<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button text="Nieuwe test" activeIcon="sap-icon://create" press="newTest" icon="sap-icon://create"/>
+			</Toolbar>
+		</footer>
+	</Page>
+</mvc:View>
