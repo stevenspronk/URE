@@ -6,7 +6,7 @@
 	<IconTabBar id="idIconTabBarNoIcons" expanded="{device&gt;/isNoPhone}" class="sapUiResponsiveContentPadding" select="onSelect">
 		<items>
 			<IconTabFilter key="IconTabBar1" text="Dashboard">
-				<Text text="Dashboard content..."/>
+				<Text text="Dashboard content2..."/>
 			</IconTabFilter>
 			<IconTabFilter key="IconTabBar2" text="Auto">
 				<Text text="Auto content..."/>
