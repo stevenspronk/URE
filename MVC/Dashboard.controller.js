@@ -55,10 +55,13 @@ sap.ui.controller("MVC.Dashboard", {
 		window.history.go(-1);
 	},
 	
+<<<<<<< HEAD
+=======
 	navButtonTap:function(){
               window.history.go(-1);
               },
 	
+>>>>>>> branch 'master' of https://github.com/stevenspronk/URE.git
 	newTest  :function(){
 		var router = sap.ui.core.UIComponent.getRouterFor(this);
 		router.navTo("CreateTest", {id:1}, false);

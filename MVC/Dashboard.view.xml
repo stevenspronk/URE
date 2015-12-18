@@ -7,6 +7,8 @@
 		<items>
 			<IconTabFilter key="IconTabBar1" text="Dashboard">
 				<Text text="Dashboard content..."/>
+<<<<<<< HEAD
+					
 			</IconTabFilter>
 			<IconTabFilter key="IconTabBar2" text="Auto">
 				<Text text="Auto content..."/>
@@ -20,6 +22,22 @@
 		</items>
 	</IconTabBar>
 	<footer>
+		
+=======
+			</IconTabFilter>
+			<IconTabFilter key="IconTabBar2" text="Auto">
+				<Text text="Auto content..."/>
+			</IconTabFilter>
+			<IconTabFilter key="IconTabBar3" text="Coureur" press="onNavBack">
+				<Text text="Coureur content..."/>
+			</IconTabFilter>
+			<IconTabFilter key="IconTabBar3" text="Powertrain">
+				<Text text="Powertrain content..."/>
+			</IconTabFilter>
+		</items>
+	</IconTabBar>
+	<footer>
+>>>>>>> branch 'master' of https://github.com/stevenspronk/URE.git
 			<Toolbar>
 				<ToolbarSpacer/>
 				<Button text="Nieuwe test" activeIcon="sap-icon://create" press="newTest" icon="sap-icon://create"/>
