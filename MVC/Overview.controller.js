@@ -8,9 +8,6 @@ sap.ui.controller("MVC.Overview", {
 	onInit: function() {
 		this.router = sap.ui.core.UIComponent.getRouterFor(this);
 		this.router.attachRoutePatternMatched(this._handleRouteMatched, this);
-		
-		
-		
 	},
 	
 	onSelect: function(oEvent) {

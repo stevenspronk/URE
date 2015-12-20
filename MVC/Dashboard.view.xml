@@ -1,19 +1,32 @@
-<mvc:View xmlns:mvc="MVC.Dashboard" xmlns="sap.m" xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.layout="sap.ui.layout" height="100%" controllerName="MVC.Dashboard">
-<Page title="" id="__page1" showFooter="false" showHeader="false" backgroundDesign="Standard">
-    <content>
+<mvc:View xmlns:mvc="MVC.Dashboard" xmlns:html="http://www.w3.org/1999/xhtml" xmlns="sap.m" xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.layout="sap.ui.layout" height="100%" controllerName="MVC.Dashboard">
+<Page showFooter="false" showHeader="false">
+    
     	
-    <TileContainer editable="false" allowAdd="true" id="__container0" busy="false">
+    <TileContainer editable="false" allowAdd="false" id="__container0" busy="false" height="100%">
         <tiles>
+        	<CustomTile  class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" xmlns="sap.m">
+			<content>   
+		      <html:div class="container">
+		               <html:div class="title_tile_home" id="titleDiv">
+		                        Customer style
+		               </html:div>
+		                   <html:div class="info_text_tile" id="descriptionDiv">
+		                    <html:div class="counter_home" id="counterDiv">6 </html:div>
+		                    xxx description xxxx
+		               </html:div>
+		       </html:div>   
+			  </content>
+			</CustomTile>
+
             <StandardTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" title="Title 1ssss" info="Info" icon="sap-icon://car-rental" activeIcon="sap-icon://car-rental" number="123" numberUnit="" infoState="None" id="__tile0" iconDensityAware="false" removable="false" type="None"/>
             <StandardTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" title="Title 2" info="Info" icon="sap-icon://energy-saving-lightbulb" activeIcon="sap-icon://customer" number="123" numberUnit="eur" infoState="None" id="__tile1" iconDensityAware="false" removable="false" type="None"/>
             <StandardTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" title="Title 1" info="Info" icon="sap-icon://connected" activeIcon="sap-icon://customer" number="123" numberUnit="eur" infoState="Success" id="__tile2" type="None" removable="false"/>
             <StandardTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" title="Title 1" info="Info" icon="sap-icon://connected" activeIcon="sap-icon://customer" number="123" numberUnit="eur" infoState="Success" id="__tile3" type="None" removable="false"/>
             <StandardTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" title="Title 1" info="Info" icon="sap-icon://connected" activeIcon="sap-icon://customer" number="123" numberUnit="eur" infoState="Success" id="__tile4" type="None" removable="false"/>
-            	 	 	 <StandardTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" title="Title 1" info="Info" icon="sap-icon://connected" activeIcon="sap-icon://customer" number="123" numberUnit="eur" infoState="Success" id="__tile5" type="None" removable="false"/>
-            	 	 	 	 <StandardTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" title="Title 1" info="Info" icon="sap-icon://connected" activeIcon="sap-icon://customer" number="123" numberUnit="eur" infoState="Success" id="__tile6" type="None" removable="false"/>
-            	 	 	 	 	 <StandardTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" title="Title 1" info="Info" icon="sap-icon://connected" activeIcon="sap-icon://customer" number="123" numberUnit="eur" infoState="Success" id="__tile7" type="None" removable="false"/>
+	 	 	<StandardTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" title="Title 1" info="Info" icon="sap-icon://connected" activeIcon="sap-icon://customer" number="123" numberUnit="eur" infoState="Success" id="__tile5" type="None" removable="false"/>
+	     	<StandardTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" title="Title 1" info="Info" icon="sap-icon://connected" activeIcon="sap-icon://customer" number="123" numberUnit="eur" infoState="Success" id="__tile6" type="None" removable="false"/>
+     	 	<StandardTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" title="Title 1" info="Info" icon="sap-icon://connected" activeIcon="sap-icon://customer" number="123" numberUnit="eur" infoState="Success" id="__tile7" type="None" removable="false"/>
         </tiles>
         </TileContainer>
-    </content>
 </Page>
 </mvc:View>
