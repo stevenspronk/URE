@@ -17,9 +17,9 @@ sap.ui.core.UIComponent.extend("com.URE.Component",{
 			        	  view:"CreateTest"
 			          },
 			          {
-			        	  pattern : "Dashboard/{id}",
-			        	  name : "Dashboard",
-			        	  view : "Dashboard"
+			        	  pattern : "Overview/{id}",
+			        	  name : "Overview",
+			        	  view : "Overview"
 			          }]
 		}
 	}

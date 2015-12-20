@@ -28,7 +28,7 @@ sap.ui.controller("MVC.CreateTest", {
 //	},
 
 /**
-* Called when the Controller is destroyed. Use this one to free resources and finalize activities.
+* Called when thse Controller is destroyed. Use this one to free resources and finalize activities.
 * @memberOf MVC.CreateTest
 */
 //	onExit: function() {
@@ -38,13 +38,13 @@ sap.ui.controller("MVC.CreateTest", {
 	startTest  :function(){
 		
 	/** form validatie hier */
-		this.goToDashboard();
+		this.goToOverview();
 	},
 	
-	goToDashboard  :function(){
+	goToOverview  :function(){
 		
 		var router = sap.ui.core.UIComponent.getRouterFor(this);
-		router.navTo("Dashboard", {id:1}, false);
+		router.navTo("Overview", {id:1}, false);
 	}
 	
 	

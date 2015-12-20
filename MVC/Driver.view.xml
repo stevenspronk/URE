@@ -1,0 +1,13 @@
+<mvc:View xmlns:mvc="MVC.Driver" xmlns="sap.m" xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.layout="sap.ui.layout" height="100%" controllerName="MVC.Driver">
+<Page title="" id="__page1" showFooter="false" showHeader="false">
+    <content>
+    <TileContainer editable="true" allowAdd="true" id="__container1">
+        <customData>
+            <sap.ui.core:CustomData key="sap-ui-fastnavgroup" value="true" writeToDom="true" id="__data3"/>
+        </customData>
+        <tiles>
+            <StandardTile title="Title 1" info="Info" icon="sap-icon://customer" activeIcon="sap-icon://customer" number="123" numberUnit="eur" infoState="Success" id="__tile1"/>
+            <StandardTile title="Title 2" info="Info" icon="sap-icon://customer" activeIcon="sap-icon://customer" number="123" numberUnit="eur" infoState="Success" id="__tile2"/></tiles></TileContainer>
+    </content>
+</Page>
+</mvc:View>

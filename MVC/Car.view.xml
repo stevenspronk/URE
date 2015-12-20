@@ -1,0 +1,13 @@
+<mvc:View xmlns:mvc="MVC.Car" xmlns="sap.m" xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.layout="sap.ui.layout" height="100%" controllerName="MVC.Car">
+<Page title="" id="__page1" showFooter="false" showHeader="false">
+    <content>
+
+    
+    
+    
+    <Button text="Car Button" width="100px" id="__button0"/>
+
+   
+    </content>
+</Page>
+</mvc:View>

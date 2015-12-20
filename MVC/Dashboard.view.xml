@@ -1,28 +1,19 @@
-<mvc:View xmlns:mvc="MVC.Dashboard" xmlns="sap.m" xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.commons="sap.suite.ui.commons" xmlns:sap.ui.layout="sap.ui.layout" height="100%" controllerName="MVC.Dashboard">
-
-	<Page title="URE Racing: Dashboard" class="sapUiContentPadding" showNavButton="true" navButtonPress="onNavBack">
-
-	<IconTabBar id="idIconTabBarNoIcons" expanded="{device&gt;/isNoPhone}" class="sapUiResponsiveContentPadding" select="onSelect">
-		<items>
-			<IconTabFilter key="IconTabBar1" text="Dashboard">
-				<mvc:View xmlns:mvc="MVC.Menu" xmlns="sap.m" controllerName="MVC.Menu"></mvc:View>
-			</IconTabFilter>
-			<IconTabFilter key="IconTabBar2" text="Auto">
-				<Text text="Auto content..."/>
-			</IconTabFilter>
-			<IconTabFilter key="IconTabBar3" text="Coureur" press="onNavBack">
-				<Text text="Coureur content..."/>
-			</IconTabFilter>
-			<IconTabFilter key="IconTabBar3" text="Powertrain">
-				<Text text="Powertrain content..."/>
-			</IconTabFilter>
-		</items>
-	</IconTabBar>
-	<footer>
-	<Toolbar>
-				<ToolbarSpacer/>
-				<Button text="Nieuwe test" activeIcon="sap-icon://create" press="newTest" icon="sap-icon://create"/>
-			</Toolbar>
-		</footer>
-	</Page>
+<mvc:View xmlns:mvc="MVC.Dashboard" xmlns="sap.m" xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.layout="sap.ui.layout" height="100%" controllerName="MVC.Dashboard">
+<Page title="" id="__page1" showFooter="false" showHeader="false" backgroundDesign="Standard">
+    <content>
+    	
+    <TileContainer editable="false" allowAdd="true" id="__container0" busy="false">
+        <tiles>
+            <StandardTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" title="Title 1ssss" info="Info" icon="sap-icon://car-rental" activeIcon="sap-icon://car-rental" number="123" numberUnit="" infoState="None" id="__tile0" iconDensityAware="false" removable="false" type="None"/>
+            <StandardTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" title="Title 2" info="Info" icon="sap-icon://energy-saving-lightbulb" activeIcon="sap-icon://customer" number="123" numberUnit="eur" infoState="None" id="__tile1" iconDensityAware="false" removable="false" type="None"/>
+            <StandardTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" title="Title 1" info="Info" icon="sap-icon://connected" activeIcon="sap-icon://customer" number="123" numberUnit="eur" infoState="Success" id="__tile2" type="None" removable="false"/>
+            <StandardTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" title="Title 1" info="Info" icon="sap-icon://connected" activeIcon="sap-icon://customer" number="123" numberUnit="eur" infoState="Success" id="__tile3" type="None" removable="false"/>
+            	 	 <StandardTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" title="Title 1" info="Info" icon="sap-icon://connected" activeIcon="sap-icon://customer" number="123" numberUnit="eur" infoState="Success" id="__tile4" type="None" removable="false"/>
+            	 	 	 <StandardTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" title="Title 1" info="Info" icon="sap-icon://connected" activeIcon="sap-icon://customer" number="123" numberUnit="eur" infoState="Success" id="__tile5" type="None" removable="false"/>
+            	 	 	 	 <StandardTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" title="Title 1" info="Info" icon="sap-icon://connected" activeIcon="sap-icon://customer" number="123" numberUnit="eur" infoState="Success" id="__tile6" type="None" removable="false"/>
+            	 	 	 	 	 <StandardTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" title="Title 1" info="Info" icon="sap-icon://connected" activeIcon="sap-icon://customer" number="123" numberUnit="eur" infoState="Success" id="__tile7" type="None" removable="false"/>
+        </tiles>
+        </TileContainer>
+    </content>
+</Page>
 </mvc:View>
