@@ -7,8 +7,9 @@ sap.ui.controller("MVC.Dashboard", {
 */
 	onInit: function() {
 
-		var oModel = new sap.ui.model.odata.ODataModel("/destinations/McCoy_URE");
-		this.setModel(oModel, "URE");
+
+		
+
 		
 	},
 
@@ -26,9 +27,9 @@ sap.ui.controller("MVC.Dashboard", {
 * This hook is the same one that SAPUI5 controls get after being rendered.
 * @memberOf MVC.Dashboard
 */
-//	onAfterRendering: function() {
-//
-//	},
+	onAfterRendering: function() {
+		
+	},
 
 /**
 * Called when the Controller is destroyed. Use this one to free resources and finalize activities.
