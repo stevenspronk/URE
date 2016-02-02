@@ -20,12 +20,12 @@
       "description": "SAPUI5 Test Resources"
     },
     {
-		"path": "/destinations/McCoy_URE",
-		"target": {
-			"type": "destination",
-			"name": "McCoy_URE"
-		},
-		"description": "McCoy_URE" 
-	}
+      "path": "/destinations/McCoy_URE",
+      "target": {
+        "type": "destination",
+        "name": "McCoy_URE"
+      },
+      "description": "McCoy_URE"
+    }
   ]
 }

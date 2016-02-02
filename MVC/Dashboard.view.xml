@@ -1,28 +1,23 @@
-<mvc:View controllerName="MVC.Dashboard" height="100%" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="MVC.Dashboard"
-	xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.layout="sap.ui.layout"
-	xmlns:ui.commons="sap.suite.ui.commons" xmlns="sap.m">
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="MVC.Dashboard" xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.layout="sap.ui.layout" xmlns:ui.commons="sap.suite.ui.commons" xmlns="sap.m" controllerName="MVC.Dashboard" height="100%">
 	<Page showFooter="false" showHeader="false">
 		<TileContainer allowAdd="false" busy="false" editable="false" height="100%" id="__container0">
 			<tiles>
-				<CustomTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" xmlns="sap.m">
+				<CustomTile xmlns="sap.m" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile">
 					<content>
 						<html:div>
-								<sap.ui.core:Icon src="sap-icon://customer"  size="30pt">
-								</sap.ui.core:Icon>
+							<sap.ui.core:Icon size="30pt" src="sap-icon://customer"/>
 							<html:div class="info_text_tile" id="descriptionDiv">
 								<html:div class="counter_home" id="counterDiv">
-									<ui.commons:NumericContent class="sapUiSmallMargin" indicator="Up" scale="" size="M" state="Loaded" value="3" valueColor="Neutral"
-										withMargin="false"/>
+									<ui.commons:NumericContent class="sapUiSmallMargin" indicator="Up" scale="" size="M" state="Loaded" value="3" valueColor="Neutral" withMargin="false"/>
 								</html:div>
 							</html:div>
 						</html:div>
 					</content>
 				</CustomTile>
-				<CustomTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" xmlns="sap.m">
+				<CustomTile xmlns="sap.m" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile">
 					<content>
 						<html:div>
-								<sap.ui.core:Icon src="sap-icon://connected"  size="30pt">
-								</sap.ui.core:Icon>
+							<sap.ui.core:Icon size="30pt" src="sap-icon://connected"/>
 							<html:div class="info_text_tile" id="descriptionDiv">
 								<html:div class="counter_home" id="counterDiv">
 									<ui.commons:ColumnMicroChart class="sapUiSmallMargin" press="press" size="S">
@@ -44,7 +39,7 @@
 						</html:div>
 					</content>
 				</CustomTile>
-				<CustomTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" xmlns="sap.m">
+				<CustomTile xmlns="sap.m" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile">
 					<content>
 						<html:div class="container">
 							<html:div class="title_tile_home" id="titleDiv"></html:div>
@@ -60,22 +55,19 @@
 						</html:div>
 					</content>
 				</CustomTile>
-				<StandardTile activeIcon="sap-icon://customer" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom"
-					icon="sap-icon://energy-saving-lightbulb" iconDensityAware="false" id="__tile1" info="Info" infoState="None" number="123" numberUnit="eur"
-					removable="false" title="Title 2" type="None"/>
-				<StandardTile activeIcon="sap-icon://customer" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" icon="sap-icon://connected"
-					id="__tile2" info="Info" infoState="Success" number="123" numberUnit="eur" removable="false" title="Title 1" type="None"/>
-				<StandardTile activeIcon="sap-icon://customer" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" icon="sap-icon://connected"
-					id="__tile3" info="Info" infoState="Success" number="123" numberUnit="eur" removable="false" title="Title 1" type="None"/>
-				<StandardTile activeIcon="sap-icon://customer" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" icon="sap-icon://connected"
-					id="__tile4" info="Info" infoState="Success" number="123" numberUnit="eur" removable="false" title="Title 1" type="None"/>
-				<StandardTile activeIcon="sap-icon://customer" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" icon="sap-icon://connected"
-					id="__tile5" info="Info" infoState="Success" number="123" numberUnit="eur" removable="false" title="Title 1" type="None"/>
-				<StandardTile activeIcon="sap-icon://customer" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" icon="sap-icon://connected"
-					id="__tile6" info="Info" infoState="Success" number="123" numberUnit="eur" removable="false" title="Title 1" type="None"/>
-				<StandardTile activeIcon="sap-icon://customer" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" icon="sap-icon://connected"
-					id="__tile7" info="Info" infoState="Success" number="123" numberUnit="eur" removable="false" title="Title 1" type="None"/>
+				<StandardTile activeIcon="sap-icon://customer" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" icon="sap-icon://energy-saving-lightbulb" iconDensityAware="false" id="__tile1" info="Info" infoState="None" number="123" numberUnit="eur" removable="false" title="Title 2" type="None"/>
+				<StandardTile activeIcon="sap-icon://customer" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" icon="sap-icon://connected" id="__tile2" info="Info" infoState="Success" number="123" numberUnit="eur" removable="false" title="Title 1" type="None"/>
+				<StandardTile activeIcon="sap-icon://customer" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" icon="sap-icon://connected" id="__tile3" info="Info" infoState="Success" number="123" numberUnit="eur" removable="false" title="Title 1" type="None"/>
+				<StandardTile activeIcon="sap-icon://customer" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" icon="sap-icon://connected" id="__tile4" info="Info" infoState="Success" number="123" numberUnit="eur" removable="false" title="Title 1" type="None"/>
+				<StandardTile activeIcon="sap-icon://customer" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" icon="sap-icon://connected" id="__tile5" info="Info" infoState="Success" number="123" numberUnit="eur" removable="false" title="Title 1" type="None"/>
+				<StandardTile activeIcon="sap-icon://customer" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" icon="sap-icon://connected" id="__tile6" info="Info" infoState="Success" number="123" numberUnit="eur" removable="false" title="Title 1" type="None"/>
+				<StandardTile activeIcon="sap-icon://customer" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" icon="sap-icon://connected" id="__tile7" info="Info" infoState="Success" number="123" numberUnit="eur" removable="false" title="Title 1" type="None"/>
 			</tiles>
 		</TileContainer>
+		<List class="sapUiResponsiveMargin" items="{/ZURE_ALL}" width="auto">
+			<items>
+				<ObjectListItem title="{VEHICLE_SPEED}"/>
+			</items>
+		</List>
 	</Page>
 </mvc:View>
