@@ -33,9 +33,6 @@ com.URE.Component.prototype.init = function() {
 	this.routeHandler = new sap.m.routing.RouteMatchedHandler(router);
 	router.initialize();
 
-	var oModel = new ODataModel("/destinations/McCoy_URE");
-	this.setModel(oModel, "URE");
-
 };
 com.URE.Component.prototype.destroy = function() {
 	if (this.routeHandler) {

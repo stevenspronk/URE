@@ -6,11 +6,9 @@
 			<tiles>
 				<CustomTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" xmlns="sap.m">
 					<content>
-						<html:div class="container">
-							<html:div class="title_tile_home" id="titleDiv">
-								<sap.ui.core:Icon src="sap-icon://customer"  size="30pt" class="sapMStdTileIconDiv">
+						<html:div>
+								<sap.ui.core:Icon src="sap-icon://customer"  size="30pt">
 								</sap.ui.core:Icon>
-							</html:div>
 							<html:div class="info_text_tile" id="descriptionDiv">
 								<html:div class="counter_home" id="counterDiv">
 									<ui.commons:NumericContent class="sapUiSmallMargin" indicator="Up" scale="" size="M" state="Loaded" value="3" valueColor="Neutral"
@@ -22,11 +20,9 @@
 				</CustomTile>
 				<CustomTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" xmlns="sap.m">
 					<content>
-						<html:div class="container">
-							<html:div class="title_tile_home" id="titleDiv">
-								<sap.ui.core:Icon src="sap-icon://connected"  size="30pt" class="sapMStdTileIconDiv">
+						<html:div>
+								<sap.ui.core:Icon src="sap-icon://connected"  size="30pt">
 								</sap.ui.core:Icon>
-							</html:div>
 							<html:div class="info_text_tile" id="descriptionDiv">
 								<html:div class="counter_home" id="counterDiv">
 									<ui.commons:ColumnMicroChart class="sapUiSmallMargin" press="press" size="S">
