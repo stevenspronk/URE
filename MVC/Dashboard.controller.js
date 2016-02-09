@@ -6,9 +6,9 @@ sap.ui.controller("MVC.Dashboard", {
 	 * @memberOf MVC.Dashboard
 	 */
 	onInit: function() {
-		var oModel = new sap.ui.model.odata.ODataModel("/destinations/McCoy_URE/UreSensor.xsodata/");
-		this.getView().setModel(oModel,"Dashboard");
-		
+		var dashboardModel = new sap.ui.model.odata.ODataModel("/destinations/McCoy_URE/DashboardView.xsodata/");
+		this.getView().setModel(dashboardModel,"Dashboard");
+		console.log(dashboardModel);
 		var oConfig = this.getOwnerComponent().getMetadata().getConfig();
 		var oModel = new sap.ui.model.odata.ODataModel(oConfig.serviceConfig.serviceUrl);
 		//	this.getOwnerComponent().setModel(oModel, "URE");

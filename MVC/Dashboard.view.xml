@@ -9,7 +9,7 @@
 							<html:div class="dashboardTitle">Vermogen</html:div>
 							<html:div class="info_text_tile" id="descriptionDiv">
 								<html:div class="counter_home" id="counterDiv">
-									<ui.commons:NumericContent class="sapUiSmallMargin" id="gearIndicator" indicator="Up" scale="" size="M" state="Loaded" value="3" valueColor="Neutral" withMargin="false"/>
+									<ui.commons:NumericContent class="sapUiSmallMargin" id="gearIndicator" indicator="Up" scale="" size="M" state="Loaded" value="{Dashboard>/DRIVE_MODE}" valueColor="Neutral" withMargin="false"/>
 								</html:div>
 							</html:div>
 							<html:content></html:content>
