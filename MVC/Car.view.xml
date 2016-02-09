@@ -14,7 +14,7 @@
                 <ScrollContainer
                     class="scrollStyle"
                     height="100%"
-                    width="100%"
+                    width="100%" 
                     horizontal="true"
                     vertical="false"
                     focusable="false">
