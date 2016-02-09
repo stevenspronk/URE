@@ -8,7 +8,7 @@ sap.ui.define([
     ],function(Controller,JSONModel,FeedItem,FlattenedDataset,ChartFormatter,ControllerOverall) {
     "use strict";
     
-var TimeAxisController = Controller.extend("MVC.Car", {
+var TimeAxisController = Controller.extend("MVC.Car", { 
         onInit: function(oEvent) {
             var timeAxisExampleSelect = this.getView().byId("timeAxisExampleSelect");
             var timeAxisChartTypeSelect = this.getView().byId("chartTypeSelect");
@@ -45,13 +45,14 @@ var TimeAxisController = Controller.extend("MVC.Car", {
             
             var oContainer = this.getView().byId("idContainer");
             var oBox1 = this.getView().byId("BX-1");
+//            var oBox2 = this.getView().byId("BX-2");
             var oBox2 = this.getView().byId("BX-2");
             var oHBox = this.getView().byId("HB-1");          
             
             ControllerOverall.adjustStyle(null,null,null,null,null,
                     null,null,null,null,null,oBox1,oBox2,null,null,null,oHBox);
             ControllerOverall.setExpanding(oPanel1);
-            var generateBubbleChart = function() {
+           /* var generateBubbleChart = function() {
                     oVizFrame.destroyDataset();
                     oVizFrame.destroyFeeds();
                     oVizFrame.setUiConfig({
@@ -230,11 +231,9 @@ var TimeAxisController = Controller.extend("MVC.Car", {
                     });
                     oVizFrame.addFeed(feedValueAxis);
                     oVizFrame.addFeed(feedTimeAxis);
-                  
-                  
-                   
-            };
-                    var generateLineChart = function() {
+
+            };*/
+                    var generateLineChart = function() { 
                     oVizFrame.destroyDataset();
                     oVizFrame.destroyFeeds();
                     oVizFrame.setUiConfig({
@@ -404,7 +403,7 @@ var TimeAxisController = Controller.extend("MVC.Car", {
                       var eKey = parseInt(timeAxisExampleSelect.getSelectedKey());
                       switch(key)
                       {
-                        case 1:
+/*                        case 1:
                             generateBubbleChart();
                             break;
                         case 2:
@@ -413,7 +412,7 @@ var TimeAxisController = Controller.extend("MVC.Car", {
                         case 3:
                             generateLineChart();                                                        
                             break;
-                        case 4:
+*/                        case 4:
                             generateLineChart();
                             oVizFrame.setVizProperties({
                                 timeAxis: {
@@ -433,12 +432,12 @@ var TimeAxisController = Controller.extend("MVC.Car", {
                                 }
                             });
                             break;
-                        case 5:
+/*                        case 5:
                             generateScatterChart();
                             break;
-                      }
+*/                      }
                    });
-                                   timeAxisExampleSelect.attachChange(function(){
+                timeAxisExampleSelect.attachChange(function(){
                     var chart = parseInt(timeAxisChartTypeSelect.getSelectedKey());
                     var key = parseInt(timeAxisExampleSelect.getSelectedKey());
                     switch(key)
