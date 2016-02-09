@@ -8,10 +8,21 @@ sap.ui.controller("MVC.Dashboard", {
 	onInit: function() {
 		var dashboardModel = new sap.ui.model.odata.ODataModel("/destinations/McCoy_URE/DashboardView.xsodata/");
 		this.getView().setModel(dashboardModel,"Dashboard");
-		console.log(dashboardModel);
+		var gearIndicator = this.getView().byId("gearIndicator");
+		
+		var myData = { 'GEAR' : 5 };
+		var Ojson = new sap.ui.model.json.JSONModel(myData);
+		
+		Ojson.setData(myData);
+		gearIndicator.setModel(Ojson);
+		
+   		/*gearIndicator.setModel(dashboardModel);
+		gearIndicator.bindElement("/DASHBOARD", {select: "DRIVE_MODE"});
+	//	gearIndicator.bindProperty("value", "/DRIVE_MODE"); 
+		gearIndicator.bindProperty("value", { path : "/DRIVE_MODE"});
+	*/
 		var oConfig = this.getOwnerComponent().getMetadata().getConfig();
 		var oModel = new sap.ui.model.odata.ODataModel(oConfig.serviceConfig.serviceUrl);
-		//	this.getOwnerComponent().setModel(oModel, "URE");
 		this.getView().setModel(oModel,"ComponentTest");
 	},
 
@@ -42,8 +53,9 @@ sap.ui.controller("MVC.Dashboard", {
 		console.log(aData);
 		oTest.bindProperty("title", "VEHICLE_SPEED");
 oTest.bindElement("ZURE_ALL");*/
+	//	var gearIndicator = this.getView().byId("gearIndicator");
+	//	gearIndicator.setValue("300");
 
-	
 		
 	},
 
