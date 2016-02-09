@@ -6,9 +6,7 @@ sap.ui.controller("MVC.Powertrain", {
 * @memberOf MVC.Powertrain
 */
 	onInit: function() {
-		//var oConfig = this.getOwnerComponent().getMetadata().getConfig();
 		var oModel = new sap.ui.model.odata.ODataModel("/destinations/McCoy_URE/UreSensor.xsodata/");
-		//	this.getOwnerComponent().setModel(oModel, "URE");
 		this.getView().setModel(oModel,"PowerTrain");
 	}
 
