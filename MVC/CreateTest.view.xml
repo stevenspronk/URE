@@ -10,13 +10,10 @@
 						<Label id="__label1" text="Circuit"/>
 						<Input id="__input1" width="100%"/>
 						<Label id="__label2" text="Test type"/>
-						<ComboBox id="__box0" selectedItem="Element sap.ui.core.ListItem#__item1" selectedItemId="test1" selectedKey="test1" value="Choose test..">
+						<ComboBox id="__box0" selectedItem="Element sap.ui.core.ListItem#__item1" selectedItemId="__item1" selectedKey="item1" value="List Item 1">
 							<items>
-								<sap.ui.core:ListItem id="test1" key="test1" text="Endurance"/>
-								<sap.ui.core:ListItem id="test2" key="test2" text="Skidpad"/>
-								<sap.ui.core:ListItem id="test3" key="test3" text="Autocross"/>
-								<sap.ui.core:ListItem id="test4" key="test4" text="Acceleratie"/>
-								<sap.ui.core:ListItem id="test5" key="test5" text="Overig"/>
+								<sap.ui.core:ListItem id="__item1" key="item1" text="Endurance"/>
+								<sap.ui.core:ListItem id="__item2" key="item2" text="Test"/>
 							</items>
 						</ComboBox>
 						<!-- <Label text="Datum" id="__label3"/>
