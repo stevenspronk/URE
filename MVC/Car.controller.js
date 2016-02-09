@@ -239,9 +239,10 @@ var TimeAxisController = Controller.extend("MVC.Car", {
                     oVizFrame.setUiConfig({
                         "applicationSet": "fiori"
                     });
-                    var dataPath = "test-resources/sap/viz/demokit/dataset/milk_production_testing_data/date_revenue_cost/column/large.json";
+                   var dataPath = "test-resources/sap/viz/demokit/dataset/milk_production_testing_data/date_revenue_cost/column/large.json";
                     oVizFrame.setVizType('timeseries_line');
-                    var oModel = new JSONModel(dataPath);
+                 var oModel = new JSONModel(dataPath);
+//   				  var oModel = new sap.ui.model.odata.ODataModel("/destinations/McCoy_URE/UreSensor.xsodata/");
                     var oDataset = new FlattenedDataset({
                         dimensions: [{
                             name: 'Date',
@@ -256,7 +257,21 @@ var TimeAxisController = Controller.extend("MVC.Car", {
                             path: "/milk"
                         }
                     });
-                    oVizFrame.setDataset(oDataset);
+  /*                   var oDataset = new FlattenedDataset({
+                        dimensions: [{
+                            name: 'TIMESTAMP',
+                            value: "{TIMESTAMP}"
+                 //           dataType:'date'
+                        }],
+                        measures: [{
+                            name: 'BATTERYTMAX1',
+                            value: '{BATTERYTMAX1}'
+                        }],
+                        data: {
+                            path: "/ZURE_SENSOR1"
+                        }
+                    });
+*/                   oVizFrame.setDataset(oDataset);
                     oVizFrame.setModel(oModel);
 
                     oVizFrame.setVizProperties({
@@ -278,17 +293,17 @@ var TimeAxisController = Controller.extend("MVC.Car", {
                             title: {
                                 visible: false
                             },
-                            levelConfig: {
+                           levelConfig: {
                                 "year": {
                                     row: 2
                                 }
-                            },
+                           },
                             interval : {
                                 unit : ''
                             }
                         },
                         plotArea: {
-                            window: {
+                           window: {
                                 start: 1343750400000,
                                 end: 1372521600000
                             },
@@ -409,10 +424,10 @@ var TimeAxisController = Controller.extend("MVC.Car", {
                         case 2:
                             generateColumnChart();
                             break;
-                        case 3:
+                         case 3:
                             generateLineChart();                                                        
                             break;
-*/                        case 4:
+*/                      case 4:
                             generateLineChart();
                             oVizFrame.setVizProperties({
                                 timeAxis: {
@@ -432,7 +447,7 @@ var TimeAxisController = Controller.extend("MVC.Car", {
                                 }
                             });
                             break;
-/*                        case 5:
+/*                         case 5:
                             generateScatterChart();
                             break;
 */                      }

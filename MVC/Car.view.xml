@@ -11,7 +11,7 @@
 	<l:FixFlex id="idFixFlex" class="fixFlexFixedSize" minFlexSize="250"> 
         <l:fixContent>    
             <Panel id="PN-1" class="panelStyle" expandable="true" expanded="true" headerText="Settings">
-                <ScrollContainer
+                <ScrollContainer 
                     class="scrollStyle"
                     height="100%"
                     width="100%" 
