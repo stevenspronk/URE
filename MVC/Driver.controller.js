@@ -15,7 +15,7 @@ var TimeAxisController = Controller.extend("MVC.Driver", {
             var oVizFrame = this.getView().byId("idVizFrameTimeAxis");
             var oPopOver = this.getView().byId("idPopOver");
             oPopOver.connect(oVizFrame.getVizUid());
-            var oPanel1 = this.getView().byId("PN-1");
+            var oPanel1 = this.getView().byId("PN-1"); 
             var oFixFlex = this.getView().byId("idFixFlex");            
             ControllerOverall.loadLibrary(oVizFrame, oFixFlex);
             ControllerOverall.customFormat(); 

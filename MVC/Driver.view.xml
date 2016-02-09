@@ -13,7 +13,7 @@
 </mvc:View>
 -->
 <mvc:View height="100%" width="100%"
-	controllerName="MVC.Driver"
+	controllerName="MVC.Driver" 
     xmlns:l="sap.ui.layout" 
     xmlns:viz="sap.viz.ui5.controls" 
     xmlns:mvc="sap.ui.core.mvc" 
