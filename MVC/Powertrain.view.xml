@@ -1,14 +1,41 @@
-<mvc:View xmlns:mvc="MVC.Powertrain" xmlns="sap.m" xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.layout="sap.ui.layout" height="100%" controllerName="MVC.Powertrain">
-<Page title="" id="__page1" showFooter="false" showHeader="false">
-    <content>
-    <TileContainer editable="true" allowAdd="true" id="__container0">
-        <customData>
-            <sap.ui.core:CustomData key="sap-ui-fastnavgroup" value="true" writeToDom="true" id="__data2"/>
-        </customData>
-        <tiles>
-            <StandardTile title="Powertrain" info="Info" icon="sap-icon://customer" activeIcon="sap-icon://customer" number="123" numberUnit="eur" infoState="Success" id="__tile0"/>
-        </tiles>
-        </TileContainer>
-    </content>
-</Page>
+<mvc:View xmlns:mvc="MVC.Powertrain" xmlns="sap.suite.ui.commons" xmlns:m="sap.m" xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.layout="sap.ui.layout" height="100%" controllerName="MVC.Powertrain">
+	<m:Panel>
+		<m:Toolbar 
+			width="100%">
+				<m:CheckBox id="idCheckBox" 
+				text="Show All in Filter"
+				width="120px" 
+				selected="true"
+				select="onSelect" />
+		</m:Toolbar>
+		<Timeline 
+			id="idTimeline"
+		 	enableBackendFilter="true" 
+		 	growing="true"
+			growingThreshold="3" 
+			enableScroll="true"
+			showHeaderBar="true" 
+		 	width="100%"
+		 	showIcons="false"
+			content="{/Invoices}"
+		 	filterList="{/Customers}">
+				<content>
+					<TimelineItem 
+						id="idTimelineItem" 
+						dateTime="{OrderDate}"
+						userName="{CustomerID}" 
+						title="{CustomerName}" 
+						icon="sap-icon://activity-items"
+						text="{ProductName}">
+					</TimelineItem>
+				</content>
+				<filterList>
+					<TimelineFilterListItem 
+					id="idTimelineFilterListItem"
+					key="{CustomerID}" 
+					text="{CompanyName}">
+					</TimelineFilterListItem>
+				</filterList>
+		</Timeline>		 
+	</m:Panel>
 </mvc:View>
