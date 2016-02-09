@@ -6,10 +6,10 @@ sap.ui.controller("MVC.Dashboard", {
 * @memberOf MVC.Dashboard
 */
 	onInit: function() {
-
-		var oModel = new sap.ui.model.odata.ODataModel("/destinations/McCoy_URE");
-		this.setModel(oModel, "URE");
-		
+	var oConfig = this.getOwnerComponent().getMetadata().getConfig();
+		var oModel = new sap.ui.model.odata.ODataModel( oConfig.serviceConfig.serviceUrl);
+	//	this.getOwnerComponent().setModel(oModel, "URE");
+		this.getView().setModel(oModel,  "URE");
 	},
 
 /**

@@ -1,121 +1,85 @@
-<mvc:View xmlns:mvc="MVC.CreateTest" 
-xmlns="sap.m" xmlns:sap.ui.core="sap.ui.core" 
-xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.layout="sap.ui.layout" height="100%"
-controllerName="MVC.CreateTest">
-	
-	
-	<Page title="URE Racing: Nieuwe test" class="sapUiContentPadding" showNavButton="false">
+<mvc:View xmlns:mvc="MVC.CreateTest" xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.layout="sap.ui.layout" xmlns="sap.m" controllerName="MVC.CreateTest" height="100%">
+	<Page class="sapUiContentPadding" showNavButton="false" title="URE Racing: Nieuwe test">
 		<content>
-		
-<sap.ui.layout:VerticalLayout class="sapUiContentPadding" width="100%">
-		
-		<sap.ui.layout.form:SimpleForm editable="false" layout="ResponsiveGridLayout" id="__form0">
-		
-		    <sap.ui.layout.form:content>
-		
-		        <sap.ui.core:Title text="Algemene gegevens" id="__title0"/>
-		
-		        <Label text="Test naam" id="__label0"/>
-		
-		        <Input width="100%" id="__input0"/>
-		
-		        <Label text="Circuit" id="__label1"/>
-		
-		        <Input width="100%" id="__input1"/>
-	
-		        <Label text="Test type" id="__label2"/>
-	
-		        <ComboBox selectedItem="Element sap.ui.core.ListItem#__item1" value="List Item 1" selectedKey="item1" selectedItemId="__item1" id="__box0">
-	
-		            <items>
-	
-		                <sap.ui.core:ListItem text="Endurance" key="item1" id="__item1"/>
-	
-		                <sap.ui.core:ListItem text="Test" key="item2" id="__item2"/>
-					</items>
-	
-		        </ComboBox>
-		        	
-			    <Label text="Datum" id="__label3"/>
+			<sap.ui.layout:VerticalLayout class="sapUiContentPadding" width="100%">
+				<sap.ui.layout.form:SimpleForm editable="false" id="__form0" layout="ResponsiveGridLayout">
+					<sap.ui.layout.form:content>
+						<sap.ui.core:Title id="__title0" text="Algemene gegevens"/>
+						<Label id="__label0" text="Test naam"/>
+						<Input id="__input0" width="100%"/>
+						<Label id="__label1" text="Circuit"/>
+						<Input id="__input1" width="100%"/>
+						<Label id="__label2" text="Test type"/>
+						<ComboBox id="__box0" selectedItem="Element sap.ui.core.ListItem#__item1" selectedItemId="__item1" selectedKey="item1" value="List Item 1">
+							<items>
+								<sap.ui.core:ListItem id="__item1" key="item1" text="Endurance"/>
+								<sap.ui.core:ListItem id="__item2" key="item2" text="Test"/>
+							</items>
+						</ComboBox>
+						<!-- <Label text="Datum" id="__label3"/>
 		        	
 			    <DatePicker width="50%" id="__picker0"/>
-	
-			    <Label text="Weersomstandigheden" id="__label4"/>
-	
-			    <ComboBox selectedItem="Element sap.ui.core.ListItem#__item0" value="List Item 1" selectedKey="item1" selectedItemId="__item0" id="__box1" width="50%">
-	
-			        <items>
-	
-			            <sap.ui.core:ListItem text="Zonnig" key="item1" id="__item0"/>
-	
-			            <sap.ui.core:ListItem text="Regenachtig" key="item2" id="__item3"/>
+	-->
+						<Label id="__label4" text="Weersomstandigheden"/>
+						<ComboBox id="__box1" selectedItem="Element sap.ui.core.ListItem#__item0" selectedItemId="__item0" selectedKey="item1" value="List Item 1" width="50%">
+							<items>
+								<sap.ui.core:ListItem id="__item0" key="item1" text="Zonnig"/>
+								<sap.ui.core:ListItem id="__item3" key="item2" text="Regenachtig"/>
+							</items>
+						</ComboBox>
+						<Label text="Temperatuur" id="TempBox"/>
+						<ComboBox id="__box2" selectedItem="Element sap.ui.core.ListItem#__item0" selectedItemId="temp1" selectedKey="item1" value="List Item 1" width="50%">
+							<items>
+								<sap.ui.core:ListItem id="temp1" key="item1" text="-5"/>
+								<sap.ui.core:ListItem id="temp2" key="item2" text="0"/>
+								<sap.ui.core:ListItem id="temp3" key="item3" text="5"/>
+								<sap.ui.core:ListItem id="temp4" key="item4" text="10"/>
+								<sap.ui.core:ListItem id="temp5" key="item5" text="15"/>
+								<sap.ui.core:ListItem id="temp6" key="item6" text="20"/>
+								<sap.ui.core:ListItem id="temp7" key="item7" text="25"/>
+								<sap.ui.core:ListItem id="temp8" key="item8" text="30"/>
+								<sap.ui.core:ListItem id="temp9" key="item9" text="35"/>
+								<sap.ui.core:ListItem id="temp10" key="item10" text="40"/>
+							</items>
+						</ComboBox>
+							<Label id="algemene_notities_label" text="Notities"/>
+						<TextArea wrapping="None" id="algemene_notities"/>
+					</sap.ui.layout.form:content>
+				</sap.ui.layout.form:SimpleForm>
+				<sap.ui.layout.form:SimpleForm editable="false" emptySpanL="0" emptySpanM="0" emptySpanS="01" id="__form1" layout="ResponsiveGridLayout">
+					<sap.ui.layout.form:content>
+						<sap.ui.core:Title id="__title1" text="Technische gegevens auto"/>
+						<Label id="__label5" text="Car ID"/>
+						<Input id="__input5" width="100%"/>
+						<Label id="auto_notities_label" text="Notities"/>
+						<TextArea wrapping="None" id="auto_notities"/>
 
-						</items>
-	
-			    </ComboBox>
-	
-		        			        	
-		        	
-		        </sap.ui.layout.form:content>
-		
-		</sap.ui.layout.form:SimpleForm>
-		
-		
-		<sap.ui.layout.form:SimpleForm editable="false" layout="ResponsiveGridLayout" id="__form1" emptySpanL="0" emptySpanM="0" emptySpanS="01">
-		
-		            <sap.ui.layout.form:content>
-		
-		                <sap.ui.core:Title text="Technische gegevens auto" id="__title1"/>
-		
-		                <Label text="Lengte" id="__label5"/>
-		
-		                <Input width="100%" id="__input5"/>
-		
-		                <Label text="Breedte" id="__label6"/>
-		
-		                <Input width="100%" id="__input6"/>
-		
-		                <Label text="Hoogte" width="100%" id="__label7"/>
-		                	
-		                <Input width="100%" id="__input7"/>
-		                	 
-		               <Label text="Gewicht" width="100%" id="__label8"/>
-		                	
-		                	 <Input width="100%" id="__input8"/>
-		                </sap.ui.layout.form:content>
-		
-		        </sap.ui.layout.form:SimpleForm>
-		        
-				<sap.ui.layout.form:SimpleForm editable="false" layout="ResponsiveGridLayout" id="__form2">
-		
-		            <sap.ui.layout.form:content>
-		
-		                <sap.ui.core:Title text="Gegevens coureur" id="__title2"/>
-		
-		                <Label text="Naam" id="__label9"/>
-		
-		                <Input width="100%" id="__input9"/>
-		
-		                <Label text="Leeftijd" id="__label10"/>
-		
-		                <Input width="100%" id="__input10"/>
-		
-		                <Label text="Lengte" width="100%" id="__label11"/>
-		                	
-		                <Input width="100%" id="__input11"/>
-		                	 
-		               <Label text="Gewicht" width="100%" id="__label12"/>
-		                	
-		                	 <Input width="100%" id="__input12"/>
-		                </sap.ui.layout.form:content>
-		
-		        </sap.ui.layout.form:SimpleForm>
-		</sap.ui.layout:VerticalLayout>
+					</sap.ui.layout.form:content>
+				</sap.ui.layout.form:SimpleForm>
+				<sap.ui.layout.form:SimpleForm editable="false" id="__form2" layout="ResponsiveGridLayout">
+					<sap.ui.layout.form:content>
+						<sap.ui.core:Title id="__title2" text="Gegevens coureur"/>
+						<Label id="__label9" text="Naam"/>
+						<Input id="__input9" width="100%"/>
+						<!--<Label id="__label10" text="Leeftijd"/>
+						<Input id="__input10" width="100%"/>
+						-->
+						<Label id="__label11" text="Lengte" width="100%"/>
+						<Input id="__input11" width="100%"/>
+						<Label id="__label12" text="Gewicht" width="100%"/>
+						<Input id="__input12" width="100%"/>
+								<Label id="coureur_notities_label" text="Notities"/>
+						<TextArea wrapping="None" id="coureur_notities"/>
+					</sap.ui.layout.form:content>
+				</sap.ui.layout.form:SimpleForm>
+			</sap.ui.layout:VerticalLayout>
 		</content>
 		<footer>
 			<Toolbar>
 				<ToolbarSpacer/>
-				<Button text="Start test" activeIcon="sap-icon://accept"  press="startTest" icon="sap-icon://accept"/>
+				<Button activeIcon="sap-icon://accept" icon="sap-icon://accept" press="startTest" text="Start test"/>
+				<Button activeIcon="sap-icon://begin" icon="sap-icon://begin" press="doorStart" text="Doorstart"/>
+					
 			</Toolbar>
 		</footer>
 	</Page>

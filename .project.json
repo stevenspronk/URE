@@ -5,5 +5,19 @@
     "defaultLanguage": "",
     "defaultI18NPropertyFile": "",
     "resourceModelName": ""
+  },
+  "generation": [
+    {
+      "templateId": "servicecatalog.connectivityComponent",
+      "templateVersion": "0.0.0",
+      "dateTimeStamp": "Tue, 02 Feb 2016 20:18:58 GMT"
+    }
+  ],
+  "mockpreview": {
+    "mockUri": "/destinations/McCoy_URE/UreOdataService.xsodata",
+    "metadataFilePath": "",
+    "loadJSONFiles": false,
+    "loadCustomRequests": false,
+    "mockRequestsFilePath": ""
   }
 }

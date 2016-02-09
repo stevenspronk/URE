@@ -1,5 +1,4 @@
 jQuery.sap.declare("com.URE.Component");
-
 sap.ui.core.UIComponent.extend("com.URE.Component", {
 	metadata: {
 		routing: {
@@ -19,20 +18,22 @@ sap.ui.core.UIComponent.extend("com.URE.Component", {
 				name: "Overview",
 				view: "Overview"
 			}]
+		},
+		config: {
+			"serviceConfig": {
+				"name": "UreRaceData.OData.UreOdataService",
+				"serviceUrl": "/destinations/McCoy_URE/UreOdataService.xsodata/"
+			}
 		}
 	}
 });
-
 com.URE.Component.prototype.init = function() {
 	jQuery.sap.require("sap.ui.core.routing.History");
 	jQuery.sap.require("sap.m.routing.RouteMatchedHandler");
-
 	sap.ui.core.UIComponent.prototype.init.apply(this);
-
 	var router = this.getRouter();
 	this.routeHandler = new sap.m.routing.RouteMatchedHandler(router);
 	router.initialize();
-
 };
 com.URE.Component.prototype.destroy = function() {
 	if (this.routeHandler) {
