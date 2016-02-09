@@ -6,18 +6,10 @@ sap.ui.controller("MVC.Dashboard", {
 * @memberOf MVC.Dashboard
 */
 	onInit: function() {
-<<<<<<< HEAD
-
-
-		
-
-		
-=======
 	var oConfig = this.getOwnerComponent().getMetadata().getConfig();
 		var oModel = new sap.ui.model.odata.ODataModel( oConfig.serviceConfig.serviceUrl);
 	//	this.getOwnerComponent().setModel(oModel, "URE");
 		this.getView().setModel(oModel,  "URE");
->>>>>>> 7028abf2223b698f49f932d19cf75c4fa768d6d0
 	},
 
 /**

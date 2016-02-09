@@ -1,121 +1,106 @@
-<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="MVC.Dashboard" xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.layout="sap.ui.layout" xmlns:ui.commons="sap.suite.ui.commons" xmlns="sap.m" controllerName="MVC.Dashboard" height="100%">
+<mvc:View controllerName="MVC.Dashboard" height="100%" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="MVC.Dashboard"
+	xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.layout="sap.ui.layout"
+	xmlns:ui.commons="sap.suite.ui.commons" xmlns="sap.m">
 	<Page showFooter="false" showHeader="false">
 		<TileContainer allowAdd="false" busy="false" editable="false" height="100%" id="__container0">
 			<tiles>
-				<CustomTile xmlns="sap.m" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile">
+				<CustomTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" xmlns="sap.m">
 					<content>
-						<html:div>
-<<<<<<< HEAD
-								<sap.ui.core:Icon src="sap-icon://customer" class="dashboardIcon" size="30pt">
-								</sap.ui.core:Icon>
-							<html:div class="dashboardTitle">Vermogen</html:div>
-=======
-							<sap.ui.core:Icon size="30pt" src="sap-icon://customer"/>
-							<html:div class="info_text_tile" id="descriptionDiv">
->>>>>>> 7028abf2223b698f49f932d19cf75c4fa768d6d0
-								<html:div class="counter_home" id="counterDiv">
-<<<<<<< HEAD
-									<ui.commons:NumericContent class="sapUiSmallMargin" indicator="Up" scale="" size="M" state="Loaded" id="gearIndicator" value="3" valueColor="Neutral" withMargin="false"/>
-=======
-									<ui.commons:NumericContent class="sapUiSmallMargin" indicator="Up" scale="" size="M" state="Loaded" value="3" valueColor="Neutral" withMargin="false"/>
->>>>>>> 7028abf2223b698f49f932d19cf75c4fa768d6d0
-								</html:div>
-						</html:div>
-					</content>
-				</CustomTile>
-				<CustomTile xmlns="sap.m" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile">
-					<content>
-<<<<<<< HEAD
 						<html:div xmlns:sap.ui.core="sap.ui.core">
-								<sap.ui.core:Icon src="sap-icon://connected" size="30pt">
-								</sap.ui.core:Icon>
-							<html:div class="info_text_tile" id="descriptionDiv">Temperatuur per cel</html:div>
-=======
-						<html:div>
-							<sap.ui.core:Icon size="30pt" src="sap-icon://connected"/>
+							<sap.ui.core:Icon class="dashboardIcon" size="30pt" src="sap-icon://customer"></sap.ui.core:Icon>
+							<html:div class="dashboardTitle">Vermogen</html:div>
 							<html:div class="info_text_tile" id="descriptionDiv">
->>>>>>> 7028abf2223b698f49f932d19cf75c4fa768d6d0
 								<html:div class="counter_home" id="counterDiv">
-									<ui.commons:ColumnMicroChart class="sapUiSmallMargin" press="press" size="S">
-										<ui.commons:columns>
-											<ui.commons:ColumnData color="Good" value="100"/>
-											<ui.commons:ColumnData color="Neutral" value="60"/>
-											<ui.commons:ColumnData color="Critical" value="10"/>
-										</ui.commons:columns>
-									</ui.commons:ColumnMicroChart>
-									<ui.commons:ColumnMicroChart class="sapUiSmallMargin" press="press" size="S">
-										<ui.commons:columns>
-											<ui.commons:ColumnData color="Good" value="100"/>
-											<ui.commons:ColumnData color="Neutral" value="60"/>
-											<ui.commons:ColumnData color="Critical" value="10"/>
-										</ui.commons:columns>
-									</ui.commons:ColumnMicroChart>
-								
+									<ui.commons:NumericContent class="sapUiSmallMargin" id="gearIndicator" indicator="Up" scale="" size="M" state="Loaded" value="3"
+										valueColor="Neutral" withMargin="false"/>
+									<ui.commons:NumericContent class="sapUiSmallMargin" indicator="Up" scale="" size="M" state="Loaded" value="3" valueColor="Neutral"
+										withMargin="false"/>
+								</html:div>
 							</html:div>
-								<sap.ui.core:Icon src="sap-icon://doctor" size="2em" id="__icon5"/>
-						<html:content/>
+							<sap.ui.core:Icon id="__icon7" size="2em" src="sap-icon://doctor"/>
+							<html:content/>
 						</html:div>
 					</content>
 				</CustomTile>
-				<CustomTile xmlns="sap.m" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile">
+				<CustomTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" xmlns="sap.m">
+					<content>
+						<html:div xmlns:sap.ui.core="sap.ui.core">
+							<sap.ui.core:Icon size="30pt" src="sap-icon://connected"></sap.ui.core:Icon>
+							<html:div class="info_text_tile" id="descriptionDiv">Temperatuur per cel</html:div>
+							<html:div>
+								<sap.ui.core:Icon size="30pt" src="sap-icon://connected"/>
+								<html:div class="info_text_tile" id="descriptionDiv">
+									<html:div class="counter_home" id="counterDiv">
+										<ui.commons:ColumnMicroChart class="sapUiSmallMargin" press="press" size="S">
+											<ui.commons:columns>
+												<ui.commons:ColumnData color="Good" value="100"/>
+												<ui.commons:ColumnData color="Neutral" value="60"/>
+												<ui.commons:ColumnData color="Critical" value="10"/>
+											</ui.commons:columns>
+										</ui.commons:ColumnMicroChart>
+										<ui.commons:ColumnMicroChart class="sapUiSmallMargin" press="press" size="S">
+											<ui.commons:columns>
+												<ui.commons:ColumnData color="Good" value="100"/>
+												<ui.commons:ColumnData color="Neutral" value="60"/>
+												<ui.commons:ColumnData color="Critical" value="10"/>
+											</ui.commons:columns>
+										</ui.commons:ColumnMicroChart>
+									</html:div>
+								</html:div>
+							</html:div>
+						</html:div>
+					</content>
+				</CustomTile>
+				<CustomTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" xmlns="sap.m">
 					<content>
 						<html:div class="container">
-							<sap.ui.core:Icon src="sap-icon://connected" size="30pt">
-								</sap.ui.core:Icon>
+							<sap.ui.core:Icon size="30pt" src="sap-icon://connected"></sap.ui.core:Icon>
 							<html:div class="info_text_tile" id="descriptionDiv">Status of charge</html:div>
-								<html:div class="counter_home" id="counterDiv">
-									<ui.commons:ColumnMicroChart class="sapUiSmallMargin" press="press" size="L" width="20%">
-										<ui.commons:columns>
-											<ui.commons:ColumnData color="Good" value="100"/>
-										</ui.commons:columns>
-									</ui.commons:ColumnMicroChart>
+							<html:div class="counter_home" id="counterDiv">
+								<ui.commons:ColumnMicroChart class="sapUiSmallMargin" press="press" size="L" width="20%">
+									<ui.commons:columns>
+										<ui.commons:ColumnData color="Good" value="100"/>
+									</ui.commons:columns>
+								</ui.commons:ColumnMicroChart>
 							</html:div>
 						</html:div>
 					</content>
 				</CustomTile>
-<<<<<<< HEAD
-				<CustomTile xmlns="sap.m" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile">
+				<CustomTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" xmlns="sap.m">
 					<content>
 						<html:div class="container">
-							<sap.ui.core:Icon src="sap-icon://connected" size="30pt">
-								</sap.ui.core:Icon>
+							<sap.ui.core:Icon size="30pt" src="sap-icon://connected"></sap.ui.core:Icon>
 							<html:div class="info_text_tile" id="descriptionDiv">Powerlimiet</html:div>
-								<html:div class="counter_home" id="counterDiv">
-									<ui.commons:ColumnMicroChart class="sapUiSmallMargin" press="press" size="L" width="20%">
-										<ui.commons:columns>
-											<ui.commons:ColumnData color="Good" value="100"/>
-										</ui.commons:columns>
-									</ui.commons:ColumnMicroChart>
+							<html:div class="counter_home" id="counterDiv">
+								<ui.commons:ColumnMicroChart class="sapUiSmallMargin" press="press" size="L" width="20%">
+									<ui.commons:columns>
+										<ui.commons:ColumnData color="Good" value="100"/>
+									</ui.commons:columns>
+								</ui.commons:ColumnMicroChart>
 							</html:div>
 						</html:div>
 					</content>
 				</CustomTile>
-				<StandardTile activeIcon="sap-icon://customer" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" icon="sap-icon://connected" id="__tile4" info="Info" infoState="Success" number="123" numberUnit="eur" removable="false" title="Title 1" type="None"/>
-								<CustomTile xmlns="sap.m" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile">
+				<StandardTile activeIcon="sap-icon://customer" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" icon="sap-icon://connected"
+					id="__tile4" info="Info" infoState="Success" number="123" numberUnit="eur" removable="false" title="Title 1" type="None"/>
+				<CustomTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" xmlns="sap.m">
 					<content>
 						<html:div class="container">
-							<sap.ui.core:Icon src="sap-icon://connected" size="30pt">
-								</sap.ui.core:Icon>
+							<sap.ui.core:Icon size="30pt" src="sap-icon://connected"></sap.ui.core:Icon>
 							<html:div class="info_text_tile" id="descriptionDiv">Powerlimiet</html:div>
-								<html:div class="counter_home" id="counterDiv">
-									<ui.commons:ColumnMicroChart class="sapUiSmallMargin" press="press" size="L" width="20%">
-										<ui.commons:columns>
-											<ui.commons:ColumnData color="Good" value="100"/>
-										</ui.commons:columns>
-									</ui.commons:ColumnMicroChart>
+							<html:div class="counter_home" id="counterDiv">
+								<ui.commons:ColumnMicroChart class="sapUiSmallMargin" press="press" size="L" width="20%">
+									<ui.commons:columns>
+										<ui.commons:ColumnData color="Good" value="100"/>
+									</ui.commons:columns>
+								</ui.commons:ColumnMicroChart>
 							</html:div>
 						</html:div>
 					</content>
 				</CustomTile>
-=======
-				<StandardTile activeIcon="sap-icon://customer" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" icon="sap-icon://energy-saving-lightbulb" iconDensityAware="false" id="__tile1" info="Info" infoState="None" number="123" numberUnit="eur" removable="false" title="Title 2" type="None"/>
-				<StandardTile activeIcon="sap-icon://customer" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" icon="sap-icon://connected" id="__tile2" info="Info" infoState="Success" number="123" numberUnit="eur" removable="false" title="Title 1" type="None"/>
-				<StandardTile activeIcon="sap-icon://customer" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" icon="sap-icon://connected" id="__tile3" info="Info" infoState="Success" number="123" numberUnit="eur" removable="false" title="Title 1" type="None"/>
-				<StandardTile activeIcon="sap-icon://customer" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" icon="sap-icon://connected" id="__tile4" info="Info" infoState="Success" number="123" numberUnit="eur" removable="false" title="Title 1" type="None"/>
-				<StandardTile activeIcon="sap-icon://customer" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" icon="sap-icon://connected" id="__tile5" info="Info" infoState="Success" number="123" numberUnit="eur" removable="false" title="Title 1" type="None"/>
->>>>>>> 7028abf2223b698f49f932d19cf75c4fa768d6d0
-				<StandardTile activeIcon="sap-icon://customer" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" icon="sap-icon://connected" id="__tile6" info="Info" infoState="Success" number="123" numberUnit="eur" removable="false" title="Title 1" type="None"/>
-				<StandardTile activeIcon="sap-icon://customer" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" icon="sap-icon://connected" id="__tile7" info="Info" infoState="Success" number="123" numberUnit="eur" removable="false" title="Title 1" type="None"/>
+				<StandardTile activeIcon="sap-icon://customer" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom"
+					icon="sap-icon://energy-saving-lightbulb" iconDensityAware="false" id="__tile1" info="Info" infoState="None" number="123" numberUnit="eur"
+					removable="false" title="Title 2" type="None"/>
 			</tiles>
 		</TileContainer>
 		<List class="sapUiResponsiveMargin" items="{/ZURE_ALL}" width="auto">
