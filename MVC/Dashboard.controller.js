@@ -6,10 +6,18 @@ sap.ui.controller("MVC.Dashboard", {
 * @memberOf MVC.Dashboard
 */
 	onInit: function() {
+<<<<<<< HEAD
+
+
+		
+
+		
+=======
 	var oConfig = this.getOwnerComponent().getMetadata().getConfig();
 		var oModel = new sap.ui.model.odata.ODataModel( oConfig.serviceConfig.serviceUrl);
 	//	this.getOwnerComponent().setModel(oModel, "URE");
 		this.getView().setModel(oModel,  "URE");
+>>>>>>> 7028abf2223b698f49f932d19cf75c4fa768d6d0
 	},
 
 /**
@@ -26,9 +34,9 @@ sap.ui.controller("MVC.Dashboard", {
 * This hook is the same one that SAPUI5 controls get after being rendered.
 * @memberOf MVC.Dashboard
 */
-//	onAfterRendering: function() {
-//
-//	},
+	onAfterRendering: function() {
+		
+	},
 
 /**
 * Called when the Controller is destroyed. Use this one to free resources and finalize activities.
