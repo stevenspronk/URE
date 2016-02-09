@@ -8,7 +8,7 @@ sap.ui.define([
     ],function(Controller,JSONModel,FeedItem,FlattenedDataset,ChartFormatter,ControllerOverall) {
     "use strict";
     
-var TimeAxisController = Controller.extend("MVC.Car", {
+var TimeAxisController = Controller.extend("MVC.Car", { 
         onInit: function(oEvent) {
             var timeAxisExampleSelect = this.getView().byId("timeAxisExampleSelect");
             var timeAxisChartTypeSelect = this.getView().byId("chartTypeSelect");
