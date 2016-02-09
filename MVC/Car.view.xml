@@ -13,7 +13,7 @@
             <Panel id="PN-1" class="panelStyle" expandable="true" expanded="false" headerText="Settings">
                 <ScrollContainer 
                     class="scrollStyle"
-                    height="0%"
+                    height="0%" 
                     width="0%" 
                     horizontal="true"
                     vertical="false"
