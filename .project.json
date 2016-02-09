@@ -31,6 +31,9 @@
   "dataBinding": {
     "/MVC/Dashboard.view.xml": {
       "entitySet": "ZURE_ALL"
+    },
+    "/MVC/Powertrain.view.xml": {
+      "entitySet": "ZURE_ALL"
     }
   }
 }

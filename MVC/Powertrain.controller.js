@@ -5,9 +5,12 @@ sap.ui.controller("MVC.Powertrain", {
 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
 * @memberOf MVC.Powertrain
 */
-//	onInit: function() {
-//
-//	},
+	onInit: function() {
+		//var oConfig = this.getOwnerComponent().getMetadata().getConfig();
+		var oModel = new sap.ui.model.odata.ODataModel("/destinations/McCoy_URE/UreSensor.xsodata/");
+		//	this.getOwnerComponent().setModel(oModel, "URE");
+		this.getView().setModel(oModel,"PowerTrain");
+	}
 
 /**
 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
