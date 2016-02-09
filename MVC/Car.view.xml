@@ -10,11 +10,11 @@
 
 	<l:FixFlex id="idFixFlex" class="fixFlexFixedSize" minFlexSize="250"> 
         <l:fixContent>    
-            <Panel id="PN-1" class="panelStyle" expandable="true" expanded="true" headerText="Settings">
+            <Panel id="PN-1" class="panelStyle" expandable="true" expanded="false" headerText="Settings">
                 <ScrollContainer 
                     class="scrollStyle"
-                    height="100%"
-                    width="100%" 
+                    height="0%"
+                    width="0%" 
                     horizontal="true"
                     vertical="false"
                     focusable="false">
@@ -23,7 +23,7 @@
                             <HBox width="600px">
                                 <VBox id="BX-1" class="boxPosition" width="350px">
                                     <Label text="Levels" class="sapUiSmallMarginTopBottom" design="Bold"/> 
-                                     <Select id="timeAxisExampleSelect" class="selectPosition" autoAdjustHeight="true" maxWidth="300px">
+                                     <Select id="timeAxisExampleSelect" class="selectPosition" autoAdjustHeight="false" maxWidth="300px">
                                        <items><core:Item key="1" text="Second / Minute"/></items>
                                        <items><core:Item key="2" text="Second / Minute / Lap"/></items>
                                        <items><core:Item key="3" text="Second / Minute / Lap / Race"/></items>
@@ -31,7 +31,7 @@
                                 </VBox>
                                  <VBox id="BX-2" class="boxPosition" width="250px">
                                     <Label text="Chart Type" class="sapUiSmallMarginTopBottom" design="Bold"/> 
-                                    <Select id="chartTypeSelect" selectedKey="3" class="selectPosition" autoAdjustHeight="true" maxWidth="200px">
+                                    <Select id="chartTypeSelect" selectedKey="3" class="selectPosition" autoAdjustHeight="false" maxWidth="200px">
 <!--                                       <items><core:Item key="1" text="Bubble Chart"/></items>
                                        <items><core:Item key="2" text="Column Chart"/></items>
                                        <items><core:Item key="3" text="Line Chart"/></items>
@@ -48,7 +48,7 @@
 
         <l:flexContent>
             <viz:Popover id="idPopOver"></viz:Popover>
-            <viz:VizFrame id="idVizFrameTimeAxis" uiConfig="{applicationSet:'fiori'}" height="100%" width="100%"></viz:VizFrame>
+            <viz:VizFrame id="idVizFrameTimeAxis" uiConfig="{applicationSet:'fiori'}" height="50%" width="100%"></viz:VizFrame>
         </l:flexContent>
 
 
