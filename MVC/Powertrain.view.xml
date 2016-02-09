@@ -36,6 +36,6 @@
 					text="{CompanyName}">
 					</TimelineFilterListItem>
 				</filterList>
-		</Timeline>		
+		</Timeline>		 
 	</m:Panel>
 </mvc:View>
