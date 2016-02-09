@@ -20,7 +20,7 @@
 		        	
 			    <DatePicker width="50%" id="__picker0"/>
 	-->
-	
+
 						<Label id="__label4" text="Weersomstandigheden"/>
 						<ComboBox id="__box1" selectedItem="Element sap.ui.core.ListItem#__item0" selectedItemId="__item0" selectedKey="item1" value="List Item 1" width="50%">
 							<items>
