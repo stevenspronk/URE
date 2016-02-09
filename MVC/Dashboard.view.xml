@@ -10,10 +10,8 @@
 							<html:div class="info_text_tile" id="descriptionDiv">
 								<html:div class="counter_home" id="counterDiv">
 									<ui.commons:NumericContent class="sapUiSmallMargin" id="gearIndicator" indicator="Up" scale="" size="M" state="Loaded" value="3" valueColor="Neutral" withMargin="false"/>
-									<ui.commons:NumericContent class="sapUiSmallMargin" indicator="Up" scale="" size="M" state="Loaded" value="3" valueColor="Neutral" withMargin="false"/>
 								</html:div>
 							</html:div>
-							<sap.ui.core:Icon id="__icon7" size="2em" src="sap-icon://doctor"/>
 							<html:content></html:content>
 						</html:div>
 					</content>
@@ -96,9 +94,9 @@
 				<StandardTile activeIcon="sap-icon://customer" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom" icon="sap-icon://energy-saving-lightbulb" iconDensityAware="false" id="__tile1" info="Info" infoState="None" number="123" numberUnit="eur" removable="false" title="Title 2" type="None"/>
 			</tiles>
 		</TileContainer>
-		<List class="sapUiResponsiveMargin" width="auto" items="{ComponentTest>/ZURE_ALL}">
+		<List class="sapUiResponsiveMargin" width="auto" items="{ComponentTest&gt;/ZURE_ALL}">
 			<items>
-				<ObjectListItem id="test5" title="{ComponentTest>RACE_ID}" number="{ComponentTest>SOC}"/>
+				<ObjectListItem id="test5" title="{ComponentTest&gt;RACE_ID}" number="{ComponentTest&gt;SOC}"/>
 			</items>
 		</List>
 	</Page>

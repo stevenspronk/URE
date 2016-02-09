@@ -6,6 +6,8 @@ sap.ui.controller("MVC.Dashboard", {
 	 * @memberOf MVC.Dashboard
 	 */
 	onInit: function() {
+		var oModel = new sap.ui.model.odata.ODataModel("/destinations/McCoy_URE/UreSensor.xsodata/");
+		this.getView().setModel(oModel,"Dashboard");
 		
 		var oConfig = this.getOwnerComponent().getMetadata().getConfig();
 		var oModel = new sap.ui.model.odata.ODataModel(oConfig.serviceConfig.serviceUrl);
