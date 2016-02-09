@@ -54,7 +54,7 @@ var TimeAxisController = Controller.extend("MVC.Car", {
             ControllerOverall.setExpanding(oPanel1);
            /* var generateBubbleChart = function() {
                     oVizFrame.destroyDataset();
-                    oVizFrame.destroyFeeds();
+                    oVizFrame.destroyFeeds(); 
                     oVizFrame.setUiConfig({
                         "applicationSet": "fiori"
                     });
