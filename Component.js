@@ -24,8 +24,9 @@ sap.ui.core.UIComponent.extend("com.URE.Component", {
 				"name": "UreRaceData.OData.UreOdataService",
 				"serviceUrl": "/destinations/McCoy_URE/UreOdataService.xsodata/"
 			},
+			
 			"messageService":{
-				"name": "UreRaceData.OData.UreOdataService",
+				"name": "UreRaceData.OData.Messages",
 				"serviceUrl": "/destinations/McCoy_URE/Messages.xsodata/"}
 		}
 	}
