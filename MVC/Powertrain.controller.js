@@ -8,10 +8,14 @@ sap.ui.controller("MVC.Powertrain", {
 	onInit: function() {
 
 		var oConfig = this.getOwnerComponent().getMetadata().getConfig();
-		var oMessages = new sap.ui.model.odata.ODataModel(oConfig.serviceConfig.serviceUrl);
+	//	var oMessages = new sap.ui.model.odata.ODataModel(oConfig.serviceConfig.serviceUrl);
 
-		oMessages.setSizeLimit(5);
-		this.getView().setModel(oMessages, "MsgModel");
+		var oMsg = new sap.ui.model.odata.ODataModel(oConfig.messageService.serviceUrl);
+
+	//	oMessages.setSizeLimit(5);
+		oMsg.setSizeLimit(10);
+	//	this.getView().setModel(oMessages, "MsgModel");
+		this.getView().setModel(oMsg, "Msg");
 
 	},
 	// 
@@ -39,7 +43,7 @@ sap.ui.controller("MVC.Powertrain", {
 		aFilter.push(new sap.ui.model.Filter("RACE_ID", sap.ui.model.FilterOperator.Contains, raceId));
 
 		// filter binding
-		var oList = this.getView().byId("MsgList");
+		var oList = this.getView().byId("Msg");
 		var oBinding = oList.getBinding("items");
 
 		oBinding.filter(aFilter);
@@ -47,9 +51,7 @@ sap.ui.controller("MVC.Powertrain", {
 		var aSorter = new sap.ui.model.Sorter("TIMESTAMP", true);
 		oBinding.sort(aSorter);
 
-
-
-		var oMessages = this.getView().getModel("MsgModel");
+		var oMessages = this.getView().getModel("Msg");
 
 		function refreshData() {
 			//oMessages.setSizeLimit(10);

@@ -4,9 +4,10 @@
 	<Panel>
 		<Label id="RaceIdLabel" text="{RaceMetaData>/RaceId}"></Label>
 
-		<List id="MsgList" items="{MsgModel>/ZURE_ALL}" width="100%">
+
+		<List id="Msg" items="{Msg>/MESSAGES}" width="100%">
 			<items>
-				<ObjectListItem id="MsgItem" number="{MsgModel>TIMESTAMP}" title="{MsgModel>THROTTLE}"></ObjectListItem>
+				<ObjectListItem id="MsgIt" number="{Msg>TIMESTAMP}" title="{Msg>MSG_TEXT}"></ObjectListItem>
 			</items>
 		</List>
 	</Panel>
