@@ -2,28 +2,12 @@
 	xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.layout="sap.ui.layout"
 	xmlns:ui.commons="sap.suite.ui.commons" xmlns="sap.m">
 	<Panel>
+		<Label id="RaceIdLabel" text="{RaceMetaData>/RaceId}"></Label>
+
 		<List id="MsgList" items="{MsgModel>/ZURE_ALL}" width="100%">
 			<items>
-				<ObjectListItem id="MsgItem" number="{MsgModel>MSG_CODE}" title="{msgText>001}"></ObjectListItem>
+				<ObjectListItem id="MsgItem" number="{MsgModel>TIMESTAMP}" title="{MsgModel>THROTTLE}"></ObjectListItem>
 			</items>
 		</List>
-		<!--	<Timeline 
-			id="idTimeline"
-		 	enableBackendFilter="true" 
-		 	growing="true"
-			growingThreshold="3" 
-			enableScroll="true"
-			showHeaderBar="true" 
-			sort="true"
-		 	width="100%"
-		 	showIcons="false"
-			content="{MsgModel>/ZURE_ALL}">
-				<content>
-					<TimelineItem 
-						dateTime="{MsgModel>/TIMESTAMP}"
-						text="{MsgModel>/MSG_CODE}">
-					</TimelineItem>
-				</content>
-		</Timeline>		 -->
 	</Panel>
 </mvc:View>

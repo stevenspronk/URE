@@ -30,34 +30,29 @@ sap.ui.controller("MVC.Powertrain", {
 	 * @memberOf MVC.Powertrain
 	 */
 	onAfterRendering: function() {
-		//var oRaceMetaData = sap.ui.getCore().getModel("RaceMetaData");
-		//var raceId = oRaceMetaData.getObject("/RaceId");
+
+		var raceId = this.getView().byId("RaceIdLabel").getText();
 
 		var aFilter = [];
 
 		//	aFilter.push(new sap.ui.model.Filter("RACE_ID", sap.ui.model.FilterOperator.Contains, raceId));
-		aFilter.push(new sap.ui.model.Filter("RACE_ID", sap.ui.model.FilterOperator.Contains, "UREtest"));
+		aFilter.push(new sap.ui.model.Filter("RACE_ID", sap.ui.model.FilterOperator.Contains, raceId));
 
 		// filter binding
 		var oList = this.getView().byId("MsgList");
 		var oBinding = oList.getBinding("items");
+
 		oBinding.filter(aFilter);
 
 		var aSorter = new sap.ui.model.Sorter("TIMESTAMP", true);
 		oBinding.sort(aSorter);
 
-	var msgItem = this.getView().byId("MsgItem");
-		var msgCode = msgItem.getNumber();
 
-		var msgText = new sap.ui.model.json.JSONModel({
-			"001" : "CAN bus error"
-		});
-		this.getView().setModel(msgText, "msgText");
 
 		var oMessages = this.getView().getModel("MsgModel");
 
 		function refreshData() {
-			oMessages.setSizeLimit(10);
+			//oMessages.setSizeLimit(10);
 			oMessages.refresh();
 		}
 
@@ -65,7 +60,7 @@ sap.ui.controller("MVC.Powertrain", {
 			setInterval(function() {
 				refreshData();
 			}, 1000);
-		}, 2000);
+		}, 1000);
 	}
 
 	/**
