@@ -10,5 +10,6 @@
 				<ObjectListItem id="MsgIt" number="{Msg>TIMESTAMP}" title="{Msg>MSG_TEXT}"></ObjectListItem>
 			</items>
 		</List>
+		
 	</Panel>
 </mvc:View>

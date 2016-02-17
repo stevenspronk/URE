@@ -24,8 +24,9 @@ sap.ui.core.UIComponent.extend("com.URE.Component", {
 				"name": "UreRaceData.OData.UreOdataService",
 				"serviceUrl": "/destinations/McCoy_URE/UreOdataService.xsodata/"
 			},
+			
 			"messageService":{
-				"name": "UreRaceData.OData.UreOdataService",
+				"name": "UreRaceData.OData.Messages",
 				"serviceUrl": "/destinations/McCoy_URE/Messages.xsodata/"}
 		}
 	}
@@ -46,11 +47,11 @@ com.URE.Component.prototype.init = function() {
 	
 	     // Create a resource bundle for language specific texts
       var oResourceModel = new sap.ui.model.resource.ResourceModel({
-        bundleName : "com.URE.model.Messages"
+        bundleName : "com.URE.model.i18n"
       });
 
       // Assign the model object to the SAPUI5 core using the name Messages"
-      sap.ui.getCore().setModel(oResourceModel, "Messages");
+      sap.ui.getCore().setModel(oResourceModel, "i18n");
 
 
 };
