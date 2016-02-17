@@ -53,7 +53,6 @@ com.URE.Component.prototype.init = function() {
       // Assign the model object to the SAPUI5 core using the name Messages"
       sap.ui.getCore().setModel(oResourceModel, "i18n");
 
-
 };
 com.URE.Component.prototype.destroy = function() {
 	if (this.routeHandler) {
