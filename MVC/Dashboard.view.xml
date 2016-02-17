@@ -7,7 +7,7 @@
 				<CustomTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" xmlns="sap.m">
 					<content>
 						<html:div xmlns:sap.ui.core="sap.ui.core">
-							<sap.ui.core:Icon class="dashboardIcon" size="30pt" src="sap-icon://customer"/>
+							<sap.ui.core:Icon class="dashboardIcon" size="30pt" src="sap-icon://car-rental"/>
 							<html:div class="dashboardTitle">Vermogen</html:div>
 							<html:div class="info_text_tile" id="descriptionDiv">
 								<html:div class="counter" id="counterDiv"   style="margin-left: 55px; margin-top: 30px">
@@ -21,7 +21,7 @@
 				<CustomTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" xmlns="sap.m">
 					<content>
 						<html:div xmlns:sap.ui.core="sap.ui.core">
-							<sap.ui.core:Icon class="dashboardIcon" size="30pt" src="sap-icon://connected"/>
+							<sap.ui.core:Icon class="dashboardIcon" size="30pt" src="sap-icon://temperature"/>
 							<html:div class="dashboardTitle">Temperatuur per cel</html:div>
 							<html:div>
 								<html:div class="counter_home" id="counterDiv">
@@ -64,7 +64,7 @@
 								<CustomTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" xmlns="sap.m">
 					<content>
 						<html:div class="container">
-							<sap.ui.core:Icon size="30pt"  class="dashboardIcon" src="sap-icon://connected"/>
+							<sap.ui.core:Icon size="30pt"  class="dashboardIcon" src="sap-icon://energy-saving-lightbulb"/>
 							<html:div class="dashboardTitle">Powerlimiet</html:div>
 							<html:div class="counter_home" id="counterDiv">
 									<ui.commons:ColumnMicroChart class="sapUiSmallMargin" height="100px" press="press" size="S" width="80%">
@@ -88,10 +88,10 @@
 					<content>
 						<html:div xmlns:sap.ui.core="sap.ui.core">
 							<sap.ui.core:Icon class="dashboardIcon" size="30pt" src="sap-icon://customer"/>
-							<html:div class="dashboardTitle">Vermogen</html:div>
+							<html:div class="dashboardTitle">Rijgedrag coureur</html:div>
 							<html:div class="info_text_tile" id="descriptionDiv">
-								<html:div class="counter" id="counterDiv"   style="margin-left: 55px; margin-top: 30px">
-									<ui.commons:NumericContent class="sapUiSmallMargin" id="userIndicator" indicator="Up" scale="" size="M" state="Loaded" value="{/GEAR}" valueColor="Neutral" withMargin="false"/>
+								<html:div class="counter" style="margin-top: 30px; margin-left: 30px" id="counterDiv"  >
+									<ui.commons:NumericContent class="sapUiSmallMargin" id="userIndicator" indicator="Down" scale="" size="S" state="Loaded" value="NOK" valueColor="Critical" withMargin="false"/>
 								</html:div>
 							</html:div>
 							<html:content></html:content>
@@ -101,18 +101,14 @@
 				<CustomTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" xmlns="sap.m">
 					<content>
 						<html:div xmlns:sap.ui.core="sap.ui.core">
-							<sap.ui.core:Icon class="dashboardIcon" size="30pt" src="sap-icon://connected"/>
-							<html:div class="dashboardTitle">Temperatuur per cel</html:div>
+							<sap.ui.core:Icon class="dashboardIcon" size="30pt" src="sap-icon://sort"/>
+							<html:div class="dashboardTitle">Stand van de pendalen</html:div>
 							<html:div>
-								<html:div class="counter_home" id="counterDiv">
-									<ui.commons:ColumnMicroChart class="sapUiSmallMargin" height="100px" press="press" size="S" width="80%">
+								<html:div class="counter_home" style="width: 100%; margin-left: 50px" id="counterDiv">
+									<ui.commons:ColumnMicroChart class="sapUiSmallMargin" height="100px" press="press" size="S" width="30%">
 										<ui.commons:columns>
-											<ui.commons:ColumnData color="Good" height="5px" value="1" width="7px"/>
-											<ui.commons:ColumnData color="Good" height="5px" value="20" width="7px"/>
+											<ui.commons:ColumnData color="Error" height="5px" value="-50" width="7px"/>
 											<ui.commons:ColumnData color="Good" height="5px" value="10" width="7px"/>
-											<ui.commons:ColumnData color="Neutral" height="5px" value="30" width="7px"/>
-											<ui.commons:ColumnData color="Good" height="7px" value="4" width="7px"/>
-											<ui.commons:ColumnData color="Good" height="5px" value="80" width="7px"/>
 										</ui.commons:columns>
 									</ui.commons:ColumnMicroChart>
 								</html:div>
@@ -123,8 +119,8 @@
 				<CustomTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" xmlns="sap.m">
 					<content>
 						<html:div class="container">
-							<sap.ui.core:Icon size="30pt"  class="dashboardIcon" src="sap-icon://connected"/>
-							<html:div class="dashboardTitle">Status of charge</html:div>
+							<sap.ui.core:Icon size="30pt"  class="dashboardIcon" src="sap-icon://chart-axis"/>
+							<html:div class="dashboardTitle">Stuuruitslag</html:div>
 							<html:div class="counter_home" id="counterDiv">
 									<ui.commons:ColumnMicroChart class="sapUiSmallMargin" height="100px" press="press" size="S" width="80%">
 										<ui.commons:columns>
@@ -144,8 +140,8 @@
 								<CustomTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" xmlns="sap.m">
 					<content>
 						<html:div class="container">
-							<sap.ui.core:Icon size="30pt"  class="dashboardIcon" src="sap-icon://connected"/>
-							<html:div class="dashboardTitle">Powerlimiet</html:div>
+							<sap.ui.core:Icon size="30pt"  class="dashboardIcon" src="sap-icon://sort"/>
+							<html:div class="dashboardTitle">Versnellingen</html:div>
 							<html:div class="counter_home" id="counterDiv">
 									<ui.commons:ColumnMicroChart class="sapUiSmallMargin" height="100px" press="press" size="S" width="80%">
 										<ui.commons:columns>
