@@ -92,9 +92,10 @@
 					removable="false" title="Title 2" type="None"/>
 			</tiles>
 		</TileContainer>
-		<List class="sapUiResponsiveMargin" items="{ComponentTest&gt;/ZURE_ALL}" width="auto">
+		
+		<List class="sapUiResponsiveMargin" id="UreList" items="{ComponentTest&gt;/ZURE_ALL}" width="auto">
 			<items>
-				<ObjectListItem id="test5" number="{ComponentTest&gt;SOC}" title="{ComponentTest&gt;RACE_ID}"/>
+				<ObjectListItem number="{ComponentTest&gt;THROTTLE}" title="{ComponentTest&gt;RACE_ID}"/>
 			</items>
 		</List>
 	</Page>

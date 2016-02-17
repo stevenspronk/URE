@@ -40,6 +40,15 @@ com.URE.Component.prototype.init = function() {
 	};
 	var oModel = new sap.ui.model.json.JSONModel(oData);
 	this.setModel(oModel, "RaceMetaData");
+	
+	     // Create a resource bundle for language specific texts
+      var oResourceModel = new sap.ui.model.resource.ResourceModel({
+        bundleName : "com.URE.model.Messages"
+      });
+
+      // Assign the model object to the SAPUI5 core using the name Messages"
+      sap.ui.getCore().setModel(oResourceModel, "Messages");
+
 
 };
 com.URE.Component.prototype.destroy = function() {

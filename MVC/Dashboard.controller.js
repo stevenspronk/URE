@@ -7,23 +7,26 @@ sap.ui.controller("MVC.Dashboard", {
 	 */
 	onInit: function() {
 		var dashboardModel = new sap.ui.model.odata.ODataModel("/destinations/McCoy_URE/DashboardView.xsodata/");
-		this.getView().setModel(dashboardModel,"Dashboard");
+		this.getView().setModel(dashboardModel, "Dashboard");
 		var gearIndicator = this.getView().byId("gearIndicator");
-		
-		var myData = { 'GEAR' : 5 };
+
+		var myData = {
+			'GEAR': 5
+		};
 		var Ojson = new sap.ui.model.json.JSONModel(myData);
-		
+
 		Ojson.setData(myData);
 		gearIndicator.setModel(Ojson);
-		
-   		/*gearIndicator.setModel(dashboardModel);
+
+		/*gearIndicator.setModel(dashboardModel);
 		gearIndicator.bindElement("/DASHBOARD", {select: "DRIVE_MODE"});
 	//	gearIndicator.bindProperty("value", "/DRIVE_MODE"); 
 		gearIndicator.bindProperty("value", { path : "/DRIVE_MODE"});
 	*/
 		var oConfig = this.getOwnerComponent().getMetadata().getConfig();
 		var oModel = new sap.ui.model.odata.ODataModel(oConfig.serviceConfig.serviceUrl);
-		this.getView().setModel(oModel,"ComponentTest");
+		this.getView().setModel(oModel, "ComponentTest");
+
 	},
 
 	/**
@@ -41,31 +44,44 @@ sap.ui.controller("MVC.Dashboard", {
 	 * @memberOf MVC.Dashboard
 	 */
 	onAfterRendering: function() {
-	/*var oConfig = this.getOwnerComponent().getMetadata().getConfig();
-		var oModel = new sap.ui.model.odata.ODataModel(oConfig.serviceConfig.serviceUrl);
-		//	this.getOwnerComponent().setModel(oModel, "URE");
-		this.getView().setModel(oModel, "URE");
-		
-	
-		oTest.setModel(oModel);
-		
-		var aData = oModel.getProperty("/d/results");
-		console.log(aData);
-		oTest.bindProperty("title", "VEHICLE_SPEED");
-oTest.bindElement("ZURE_ALL");*/
-	//	var gearIndicator = this.getView().byId("gearIndicator");
-	//	gearIndicator.setValue("300");
 
-		
+		var oModel = this.getView().getModel("RaceMetaData");
+		var raceId = oModel.getObject("/RaceId");
+
+		var aFilter = [];
+
+		aFilter.push(new sap.ui.model.Filter("RACE_ID", sap.ui.model.FilterOperator.Contains, raceId));
+
+		// filter binding
+		var oList = this.getView().byId("UreList");
+		var oBinding = oList.getBinding("items");
+		oBinding.filter(aFilter);
+
+		var aSorter = new sap.ui.model.Sorter("TIMESTAMP", true);
+		oBinding.sort(aSorter);
+
+		var ureModel = this.getView().getModel("ComponentTest");
+
+		function refreshData() {
+			ureModel.setSizeLimit(1);
+			ureModel.refresh();
+		}
+
+		setTimeout(function() {
+			setInterval(function() {
+				refreshData();
+			}, 500);
+		}, 2000);
 	},
 
 	/**
 	 * Called when the Controller is destroyed. Use this one to free resources and finalize activities.
 	 * @memberOf MVC.Dashboard
 	 */
-	//	onExit: function() {
-	//
-	//	}
+	onExit: function() {
+
+	},
+
 	goToCreateTest: function() {
 		var router = sap.ui.core.UIComponent.getRouterFor(this);
 		router.navTo("CreateTest", null, false);

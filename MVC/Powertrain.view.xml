@@ -1,41 +1,29 @@
-<mvc:View xmlns:mvc="MVC.Powertrain" xmlns="sap.suite.ui.commons" xmlns:m="sap.m" xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.layout="sap.ui.layout" height="100%" controllerName="MVC.Powertrain">
-	<m:Panel>
-		<m:Toolbar 
-			width="100%">
-				<m:CheckBox id="idCheckBox" 
-				text="Show All in Filter"
-				width="120px" 
-				selected="true"
-				select="onSelect" />
-		</m:Toolbar>
-		<Timeline 
+<mvc:View controllerName="MVC.Powertrain" height="100%" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="MVC.Powertrain"
+	xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.layout="sap.ui.layout"
+	xmlns:ui.commons="sap.suite.ui.commons" xmlns="sap.m">
+	<Panel>
+		<List id="MsgList" items="{MsgModel>/ZURE_ALL}" width="100%">
+			<items>
+				<ObjectListItem id="MsgItem" number="{MsgModel>MSG_CODE}" title="{msgText>001}"></ObjectListItem>
+			</items>
+		</List>
+		<!--	<Timeline 
 			id="idTimeline"
 		 	enableBackendFilter="true" 
 		 	growing="true"
 			growingThreshold="3" 
 			enableScroll="true"
 			showHeaderBar="true" 
+			sort="true"
 		 	width="100%"
 		 	showIcons="false"
-			content="{PowerTrain>/ZURE_SENSOR1}"
-		 	filterList="{PowerTrain>/ZURE_SENSOR1}">
+			content="{MsgModel>/ZURE_ALL}">
 				<content>
 					<TimelineItem 
-						id="idTimelineItem" 
-						dateTime="{PowerTrain>TIMESTAMP}"
-						userName="{PowerTrain>MANDT}" 
-						title="{PowerTrain>SENSORTYPE}" 
-						icon="sap-icon://activity-items"
-						text="{PowerTrain>SENSORVALUE}">
+						dateTime="{MsgModel>/TIMESTAMP}"
+						text="{MsgModel>/MSG_CODE}">
 					</TimelineItem>
 				</content>
-				<filterList>
-					<TimelineFilterListItem 
-					id="idTimelineFilterListItem"
-					key="{PowerTrain>SENSORTYPE}" 
-					text="{PowerTrain>SENSORVALUE}">
-					</TimelineFilterListItem>
-				</filterList>
-		</Timeline>		 
-	</m:Panel>
+		</Timeline>		 -->
+	</Panel>
 </mvc:View>
