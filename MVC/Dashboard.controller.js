@@ -23,9 +23,6 @@ sap.ui.controller("MVC.Dashboard", {
 	//	gearIndicator.bindProperty("value", "/DRIVE_MODE"); 
 		gearIndicator.bindProperty("value", { path : "/DRIVE_MODE"});
 	*/
-		var oConfig = this.getOwnerComponent().getMetadata().getConfig();
-		var oModel = new sap.ui.model.odata.ODataModel(oConfig.serviceConfig.serviceUrl);
-		this.getView().setModel(oModel, "ComponentTest");
 
 	},
 
@@ -45,7 +42,7 @@ sap.ui.controller("MVC.Dashboard", {
 	 */
 	onAfterRendering: function() {
 
-		var oModel = this.getView().getModel("RaceMetaData");
+	/*	var oModel = this.getView().getModel("RaceMetaData");
 		var raceId = oModel.getObject("/RaceId");
 
 		var aFilter = [];
@@ -72,6 +69,7 @@ sap.ui.controller("MVC.Dashboard", {
 				refreshData();
 			}, 500);
 		}, 2000);
+	*/
 	},
 
 	/**

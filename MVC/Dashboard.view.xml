@@ -161,22 +161,9 @@
 						</html:div>
 					</content>
 				</CustomTile>
-				
-				
-				
-				
-				
-								
-				
-				
-				
+
 			</tiles>
 		</TileContainer>
 		
-		<List class="sapUiResponsiveMargin" id="UreList" items="{ComponentTest&gt;/ZURE_ALL}" width="auto">
-			<items>
-				<ObjectListItem number="{ComponentTest&gt;THROTTLE}" title="{ComponentTest&gt;RACE_ID}"/>
-			</items>
-		</List>
 	</Page>
 </mvc:View>
