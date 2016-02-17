@@ -34,6 +34,13 @@ com.URE.Component.prototype.init = function() {
 	var router = this.getRouter();
 	this.routeHandler = new sap.m.routing.RouteMatchedHandler(router);
 	router.initialize();
+
+	var oData = {
+		RaceId: "UREtest"
+	};
+	var oModel = new sap.ui.model.json.JSONModel(oData);
+	this.setModel(oModel, "RaceMetaData");
+
 };
 com.URE.Component.prototype.destroy = function() {
 	if (this.routeHandler) {
