@@ -3,6 +3,7 @@
 	xmlns:ui.commons="sap.suite.ui.commons" xmlns="sap.m">
 	<Panel>
 		<Label id="RaceIdLabel" text="{RaceMetaData>/RaceId}"></Label>
+
 		<List id="MsgList" items="{MsgModel>/ZURE_ALL}" width="100%">
 			<items>
 				<ObjectListItem id="MsgItem" number="{MsgModel>TIMESTAMP}" title="{MsgModel>THROTTLE}"></ObjectListItem>
