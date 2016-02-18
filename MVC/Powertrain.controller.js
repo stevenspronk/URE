@@ -34,7 +34,7 @@ sap.ui.controller("MVC.Powertrain", {
 		var raceId = this.getView().byId("RaceIdLabel").getText();
 
 		var aFilter = [];
-	aFilter.push(new sap.ui.model.Filter("RACE_ID", sap.ui.model.FilterOperator.Contains, raceId));
+		aFilter.push(new sap.ui.model.Filter("RACE_ID", sap.ui.model.FilterOperator.Contains, raceId));
 
 		// filter binding
 		var oList = this.getView().byId("Msg");
