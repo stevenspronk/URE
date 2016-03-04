@@ -39,12 +39,7 @@ com.URE.Component.prototype.init = function() {
 	this.routeHandler = new sap.m.routing.RouteMatchedHandler(router);
 	router.initialize();
 
-	var oData = {
-		RaceId: "UREtest"
-	};
-	var oModel = new sap.ui.model.json.JSONModel(oData);
-	this.setModel(oModel, "RaceMetaData");
-	
+
 	     // Create a resource bundle for language specific texts
       var oResourceModel = new sap.ui.model.resource.ResourceModel({
         bundleName : "com.URE.model.i18n"
@@ -52,6 +47,17 @@ com.URE.Component.prototype.init = function() {
 
       // Assign the model object to the SAPUI5 core using the name Messages"
       sap.ui.getCore().setModel(oResourceModel, "i18n");
+
+
+
+	//RaceMetaData model
+		var oRaceMetaData = new sap.ui.model.json.JSONModel();
+    	oRaceMetaData.loadData("./model/RaceMetaData.json");
+    	sap.ui.getCore().setModel(oRaceMetaData, "RaceMetaData");
+      
+
+
+
 
 };
 com.URE.Component.prototype.destroy = function() {

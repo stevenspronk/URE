@@ -7,7 +7,7 @@
 					<sap.ui.layout.form:content>
 						<sap.ui.core:Title id="__title0" text="Algemene gegevens"/>
 						<Label id="__label0" text="Test naam"/>
-						<Input id="__input0" value="{RaceMetaData>/RaceId}" width="100%"/>
+						<Input id="__input0" value="{RaceMetaData>RaceId}" width="100%"/>
 						<Label id="__label1" text="Circuit"/>
 						<Input id="__input1" width="100%"/>
 						<Label id="__label2" text="Test type"/>
