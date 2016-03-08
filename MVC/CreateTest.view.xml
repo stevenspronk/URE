@@ -3,7 +3,7 @@
 	<Page class="sapUiContentPadding" showNavButton="false" title="URE Racing: Nieuwe test">
 		<content>
 			<sap.ui.layout:VerticalLayout class="sapUiContentPadding" width="100%">
-				<sap.ui.layout.form:SimpleForm editable="false" id="__form0" layout="ResponsiveGridLayout">
+				<sap.ui.layout.form:SimpleForm editable="false" id="metaform" layout="ResponsiveGridLayout">
 					<sap.ui.layout.form:content>
 						<sap.ui.core:Title id="__title0" text="Algemene gegevens"/>
 						<Label id="__label0" text="Test naam"/>
