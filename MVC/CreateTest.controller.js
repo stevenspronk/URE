@@ -13,32 +13,31 @@ sap.ui.controller("MVC.CreateTest", {
 			{defaultBindingMode:"TwoWay", refreshAfterChange:true});
 
 
-		// var testView = this.getView();
+		var testView = this.getView();
 		this.getView().setModel(oRaceMetaData, "RaceMetaData");
-		this.getView().bindElement("URE_METADATA(1)");
 
-		// /*oRaceMetaData.attachMetadataLoaded(null, function() {
+		oRaceMetaData.attachMetadataLoaded(null, function() {
 
-		// 	var raceContext = oRaceMetaData.createEntry("URE_METADATA", {
-		// 		CAR_ID: "URE10",
-		// 		CAR_NOTES: "nothing",
-		// 		CIRCUIT: "",
-		// 		DRIVER_NOTES: "",
-		// 		END_TIME: new Date().getTime(),
-		// 		LENGTH_DRIVER: "",
-		// 		NAME_DRIVER: "",
-		// 		NOTES: "",
-		// 		RACE_ID: "Test",
-		// 		RACE_TYPE: "",
-		// 		START_TIME: new Date().getTime(),
-		// 		TEMPERATURE: "",
-		// 		WEATHER: "",
-		// 		WEIGHT_DRIVER: ""
-		// 	});
+			var raceContext = oRaceMetaData.createEntry("URE_METADATA", {
+				CAR_ID: "URE10",
+				CAR_NOTES: "nothing",
+				CIRCUIT: "",
+				DRIVER_NOTES: "",
+				END_TIME: new Date().getTime(),
+				LENGTH_DRIVER: "",
+				NAME_DRIVER: "",
+				NOTES: "",
+				RACE_ID: "Test",
+				RACE_TYPE: "",
+				START_TIME: new Date().getTime(),
+				TEMPERATURE: "",
+				WEATHER: "",
+				WEIGHT_DRIVER: ""
+			});
 
-		// 	testView.byId("Input_Race_Id").setBindingContext(raceContext, [oRaceMetaData]);
+			testView.byId("Input_Race_Id").setBindingContext(raceContext, [oRaceMetaData]);
 
-		// }, null);*/
+		}, null);
 
 	},
 
