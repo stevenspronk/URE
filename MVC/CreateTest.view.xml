@@ -1,23 +1,24 @@
-<mvc:View controllerName="MVC.CreateTest" height="100%" xmlns:mvc="MVC.CreateTest" xmlns:sap.ui.core="sap.ui.core"
-	xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.layout="sap.ui.layout" xmlns="sap.m">
+<mvc:View xmlns:mvc="MVC.CreateTest" xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.layout="sap.ui.layout" xmlns="sap.m" controllerName="MVC.CreateTest" height="100%">
 	<Page class="sapUiContentPadding" showNavButton="false" title="URE Racing: Nieuwe test">
 		<content>
 			<sap.ui.layout:VerticalLayout class="sapUiContentPadding" width="100%">
 				<sap.ui.layout.form:SimpleForm editable="true" id="metaform" layout="ResponsiveGridLayout">
 					<sap.ui.layout.form:content>
 						<sap.ui.core:Title id="__title0" text="Algemene gegevens"/>
-						<Label id="__label0" text="Test naam"/>
-						<Input id="Input_Race_Id" value="{RaceMetaData>RACE_ID}" width="100%" />
+						<Label id="__label0" text="Race ID"/>
+						<Input id="Race_Id" width="100%" editable="false"/>
+						<Label id="__label13" text="Race omschrijving"/>
+						<Input id="Input_Race_Description" width="100%"/>
 						<Label id="__label1" text="Circuit"/>
-						<Input id="__input1" width="100%"/>
+						<Input id="Input_Circuit" width="100%"/>
 						<Label id="__label2" text="Test type"/>
-						<ComboBox id="__box0" selectedItem="Element sap.ui.core.ListItem#__item1" selectedItemId="" selectedKey="" value="Choose..">
+						<ComboBox id="__box0" selectedItem="Element sap.ui.core.ListItem#__item1" selectedItemId="test1" selectedKey="1" value="Endurance">
 							<items>
-								<sap.ui.core:ListItem id="test1" key="test1" text="Endurance"/>
-								<sap.ui.core:ListItem id="test2" key="test2" text="Skidpad"/>
-								<sap.ui.core:ListItem id="test3" key="test3" text="Acceleration"/>
-								<sap.ui.core:ListItem id="test4" key="test4" text="Autocross"/>
-								<sap.ui.core:ListItem id="test5" key="test5" text="Other"/>
+								<sap.ui.core:ListItem id="test1" key="1" text="Endurance"/>
+								<sap.ui.core:ListItem id="test2" key="2" text="Skidpad"/>
+								<sap.ui.core:ListItem id="test3" key="3" text="Acceleration"/>
+								<sap.ui.core:ListItem id="test4" key="4" text="Autocross"/>
+								<sap.ui.core:ListItem id="test5" key="5" text="Other"/>
 							</items>
 						</ComboBox>
 						<!-- <Label text="Datum" id="__label3"/>
@@ -25,27 +26,25 @@
 			    <DatePicker width="50%" id="__picker0"/>
 	-->
 						<Label id="__label4" text="Weersomstandigheden"/>
-						<ComboBox id="__box1" selectedItem="Element sap.ui.core.ListItem#__item0" selectedItemId="__item0" selectedKey="item1" value="List Item 1"
-							width="50%">
+						<ComboBox id="__box1" selectedItem="Element sap.ui.core.ListItem#__item0" selectedItemId="__item0" selectedKey="item1" value="List Item 1" width="50%">
 							<items>
 								<sap.ui.core:ListItem id="__item0" key="item1" text="Zonnig"/>
 								<sap.ui.core:ListItem id="__item3" key="item2" text="Regenachtig"/>
 							</items>
 						</ComboBox>
 						<Label id="TempBox" text="Temperatuur"/>
-						<ComboBox id="__box2" selectedItem="Element sap.ui.core.ListItem#__item0" selectedItemId="temp1" selectedKey="item1" value="List Item 1"
-							width="50%">
+						<ComboBox id="Input_Temperature" selectedItem="Element sap.ui.core.ListItem#__item0" selectedItemId="temp5" selectedKey="5" value="15" width="50%">
 							<items>
-								<sap.ui.core:ListItem id="temp1" key="item1" text="-5"/>
-								<sap.ui.core:ListItem id="temp2" key="item2" text="0"/>
-								<sap.ui.core:ListItem id="temp3" key="item3" text="5"/>
-								<sap.ui.core:ListItem id="temp4" key="item4" text="10"/>
-								<sap.ui.core:ListItem id="temp5" key="item5" text="15"/>
-								<sap.ui.core:ListItem id="temp6" key="item6" text="20"/>
-								<sap.ui.core:ListItem id="temp7" key="item7" text="25"/>
-								<sap.ui.core:ListItem id="temp8" key="item8" text="30"/>
-								<sap.ui.core:ListItem id="temp9" key="item9" text="35"/>
-								<sap.ui.core:ListItem id="temp10" key="item10" text="40"/>
+								<sap.ui.core:ListItem id="temp1" key="1" text="-5"/>
+								<sap.ui.core:ListItem id="temp2" key="2" text="0"/>
+								<sap.ui.core:ListItem id="temp3" key="3" text="5"/>
+								<sap.ui.core:ListItem id="temp4" key="4" text="10"/>
+								<sap.ui.core:ListItem id="temp5" key="5" text="15"/>
+								<sap.ui.core:ListItem id="temp6" key="6" text="20"/>
+								<sap.ui.core:ListItem id="temp7" key="7" text="25"/>
+								<sap.ui.core:ListItem id="temp8" key="8" text="30"/>
+								<sap.ui.core:ListItem id="temp9" key="9" text="35"/>
+								<sap.ui.core:ListItem id="temp10" key="10" text="40"/>
 							</items>
 						</ComboBox>
 						<Label id="algemene_notities_label" text="Notities"/>
