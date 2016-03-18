@@ -42,11 +42,15 @@
 		},
 		"routing": {
 			"config": {
+				"routerClass" : "sap.m.routing.Router",
 				"viewType": "XML",
 				"viewPath": "MVC",
 				"targetControl": "navContainer",
 				"targetAggregation": "pages",
-				"clearTarget": false
+				"clearTarget": false,
+				"controlId": "navContainer",
+				"viewLevel": 1,
+				"controlAggregation": "pages"
 			},
 			"routes": [{
 				"pattern": "",
@@ -60,12 +64,9 @@
 			}],
 			"targets": {
 				"Overview": {
-					"viewName": "Overview",
-					"controlAggregation": "pages",
-					"controlId": "navContainer",
-					"viewId": "Overview",
-					"viewLevel": 1,
-					"transition": "show"
+					"viewType": "XML",
+					"transition": "slide",
+					"viewName": "Overview"
 				}
 			}
 		},

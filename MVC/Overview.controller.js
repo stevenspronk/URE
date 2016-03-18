@@ -56,9 +56,12 @@ sap.ui.controller("MVC.Overview", {
 	navButtonTap:function(){
               window.history.go(-1);
               },
+              
 	newTest  :function(){
 		var router = sap.ui.core.UIComponent.getRouterFor(this);
+		
+		// Set variable crudTest to C = Create
+		crudTest = 'C';
 		router.navTo("CreateTest", {id:1}, false);
 	}
-	
 });

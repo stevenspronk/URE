@@ -82,8 +82,8 @@
 		<footer>
 			<Toolbar>
 				<ToolbarSpacer/>
-				<Button activeIcon="sap-icon://accept" icon="sap-icon://accept" press="startTest" text="Start test"/>
-				<Button activeIcon="sap-icon://begin" icon="sap-icon://begin" press="doorStart" text="Doorstart"/>
+				<Button activeIcon="sap-icon://accept" icon="sap-icon://accept" press="saveTest" text="Start test"/>
+				<!--<Button activeIcon="sap-icon://begin" icon="sap-icon://begin" press="doorStart" text="Doorstart"/>-->
 			</Toolbar>
 		</footer>
 	</Page>

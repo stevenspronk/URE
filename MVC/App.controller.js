@@ -1,3 +1,6 @@
+var crudTest = 'C'; // Create, Read, Update, Delete a test. Default C = Create
+var raceID;
+
 sap.ui.controller("MVC.App", {
 
 /**
