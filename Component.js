@@ -10,8 +10,6 @@ com.URE.Component.prototype.init = function() {
 	sap.ui.core.UIComponent.prototype.init.apply(this);
 
 	this.getRouter().initialize();
-
-
 };
 
 com.URE.Component.prototype.destroy = function() {

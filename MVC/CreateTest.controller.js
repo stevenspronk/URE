@@ -7,38 +7,22 @@ sap.ui.controller("MVC.CreateTest", {
 	 */
 	onInit: function() {
 
-		//RaceMetaData model
-		var oRaceMetaData = new sap.ui.model.odata.v2.ODataModel(
-			"/destinations/McCoy_URE/UreMetadata.xsodata/",
-			{defaultBindingMode:"TwoWay", refreshAfterChange:true});
+		var oRaceMetaData = new sap.ui.model.odata.ODataModel("/destinations/McCoy_URE/UreMetadata.xsodata/");
+		
+		oRaceMetaData.oHeaders = {
+				"DataServiceVersion": "3.0",
+				"MaxDataServiceVersion": "3.0"
+		};
+		
+		this.getView().setModel(oRaceMetaData,"RaceMetaData");
 
-
-		var testView = this.getView();
-		this.getView().setModel(oRaceMetaData, "RaceMetaData");
-
-		oRaceMetaData.attachMetadataLoaded(null, function() {
-
-			var raceContext = oRaceMetaData.createEntry("URE_METADATA", {
-				CAR_ID: "URE10",
-				CAR_NOTES: "nothing",
-				CIRCUIT: "",
-				DRIVER_NOTES: "",
-				END_TIME: new Date().getTime(),
-				LENGTH_DRIVER: "",
-				NAME_DRIVER: "",
-				NOTES: "",
-				RACE_ID: "Test",
-				RACE_TYPE: "",
-				START_TIME: new Date().getTime(),
-				TEMPERATURE: "",
-				WEATHER: "",
-				WEIGHT_DRIVER: ""
-			});
-
-			testView.byId("Input_Race_Id").setBindingContext(raceContext, [oRaceMetaData]);
-
-		}, null);
-
+ 		var oBindings = this.getView().getModel("RaceMetaData").bindList("/URE_METADATA");  
+ 		
+//		Generate a RACE ID and bind it to the input
+ 		var raceId = oBindings.getLength() + 1;
+ 		this.getView().byId("Race_Id").setValue(raceId);
+	
+		
 	},
 
 	/**
@@ -55,9 +39,9 @@ sap.ui.controller("MVC.CreateTest", {
 	 * This hook is the same one that SAPUI5 controls get after being rendered.
 	 * @memberOf MVC.CreateTest
 	 */
-	//	onAfterRendering: function() {
-	//
-	//	},
+		onAfterRendering: function() {
+
+		},
 
 	/**
 	 * Called when thse Controller is destroyed. Use this one to free resources and finalize activities.
@@ -69,20 +53,97 @@ sap.ui.controller("MVC.CreateTest", {
 
 	startTest: function() {
 		//First store entry in metadata table
-		var timestamp = new Date().getTime();
-		var oRaceMetaData = this.getView().getModel("RaceMetaData");
+		var requestObj = {
+			
+			requestUri: '',
+			method: '',
+			headers: {
+				"X-Requested-With": "XMLHttpRequest",
+				"Content-Type": "application/json;odata=minimalmetadata",
+				"DataServiceVersion": "3.0",
+				"MaxDataServiceVersion": "3.0",
+				"Accept": "application/json;odata=minimalmetadata"
+			}
+			
+		};
+		
+		var todayDate = new Date();
+		
 
-		oRaceMetaData.submitChanges();
-		//Then, navigate to overview
+		
+		
+		
+		
+		
+		
+		
+		var newData = {
+				"RACE_ID": this.getView().byId("Race_Id").getValue(),
+				"CIRCUIT":this.getView().byId("Input_Circuit").getValue(),
+				"TEMPERATURE": this.getView().byId("Input_Temperature").getSelectedKey(),
+				"RACE_DESCRIPTION": this.getView().byId("Input_Race_Description").getValue(),
+				// Vanaf hier default waardes.
+				"START_TIME": new Date(), 
+				"END_TIME": new Date(),   
+				"RACE_TYPE": this.getView().byId("Input_RaceType").getSelectedKey(),
+				"WEATHER": this.getView().byId("Input_Weather").getSelectedKey(),
+				"NOTES": this.getView().byId("Input_Notes").getValue(),
+				"CAR_ID": this.getView().byId("Input_CarID").getValue(),
+				"CAR_NOTES": this.getView().byId("Input_CarNotes").getValue(),
+				"NAME_DRIVER": this.getView().byId("Input_DriverName").getValue(),
+				"LENGTH_DRIVER": this.getView().byId("Input_DriverLength").getValue(),
+				"WEIGHT_DRIVER": this.getView().byId("Input_DriverWeight").getValue(),
+				"DRIVER_NOTES": this.getView().byId("Input_DriverNotes").getValue()
+		};
+		
+		/*		var newData = {
+				"RACE_ID": "333",
+				"CIRCUIT": null,
+				"TEMPERATURE": null,
+				"RACE_DESCRIPTION": null,
+				// Vanaf hier default waardes.
+				"START_TIME": new Date(), 
+				"END_TIME": new Date(),   
+				"RACE_TYPE": null,
+				"WEATHER": null,
+				"NOTES": null,
+				"CAR_ID": null,
+				"CAR_NOTES": null,
+				"NAME_DRIVER": null,
+				"LENGTH_DRIVER": null,
+				"WEIGHT_DRIVER": null,
+				"DRIVER_NOTES": null
+		};*/
+		
+		
+		
+		//var url = "proxy/http/services.odata.org/V3/(S(k42qhed3hw4zgjxfnhivnmes))/OData/OData.svc/Products";
+		var url = "/destinations/McCoy_URE/UreMetadata.xsodata/URE_METADATA";
+		var method = "POST";
+		
+		requestObj.requestUri = url;
+		requestObj.method = method;
+		requestObj.data = newData;
+		requestObj.success = this.goToOverview(); // Aanroepen overview scherm
+		
+		OData.request(requestObj, function() {
+			
+			//alert(true);
+		//		Additionele meuk
+		});
 		this.goToOverview();
+
 	},
 
 	goToOverview: function() {
-
-		var router = sap.ui.core.UIComponent.getRouterFor(this);
+		
+		var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			oRouter.navTo("Overview");
+			
+		/*var router = sap.ui.core.UIComponent.getRouterFor(this);
 		router.navTo("Overview", {
 			id: 1
-		}, false);
+		}, false);*/
 	}
 
 });

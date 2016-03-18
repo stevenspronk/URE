@@ -1,49 +1,45 @@
 {
-  "_version": "1.1.0",
-  "sap.app": {
 	"_version": "1.1.0",
-	"id": "com.URE",
-	"type": "application",
-	"i18n": "i18n/i18n.properties",
-	"title": "{{appTitle}}",
-	"description": "{{appDescription}}",
-	"applicationVersion": {
-	  "version": "1.0.0"
-	}
-  },
-  "sap.ui": {
-	"_version": "1.1.0",
-	"technology": "UI5",
-	"deviceTypes": {
-	  "desktop": true,
-	  "tablet": true,
-	  "phone": true
+	"sap.app": {
+		"_version": "1.1.0",
+		"id": "com.URE",
+		"type": "application",
+		"i18n": "",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": {
+			"version": "1.0.0"
+		}
 	},
-	"supportedThemes": [
-	  "sap_bluecrystal"
-	]
-  },
-  "sap.ui5": {
-	"_version": "1.1.0",
-	"rootView": "com.URE.MVC.App",
-	"dependencies": {
-	  "minUI5Version": "1.30",
-	  "libs": {
-		"sap.m": {}
-	  }
+	"sap.ui": {
+		"_version": "1.1.0",
+		"technology": "UI5",
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": ["sap_bluecrystal"]
 	},
-	"config": {
+	"sap.ui5": {
+		"_version": "1.1.0",
+		"rootView": "com.URE.MVC.App",
+		"dependencies": {
+			"minUI5Version": "1.30",
+			"libs": {
+				"sap.m": {}
+			}
+		},
+		"config": {
 			"serviceConfig": {
 				"name": "UreRaceData.OData.UreOdataService",
 				"serviceUrl": "/destinations/McCoy_URE/UreOdataService.xsodata/"
 			},
-
 			"messageService": {
 				"name": "UreRaceData.OData.Messages",
 				"serviceUrl": "/destinations/McCoy_URE/Messages.xsodata/"
 			}
 		},
-		
 		"routing": {
 			"config": {
 				"viewType": "XML",
@@ -55,19 +51,35 @@
 			"routes": [{
 				"pattern": "",
 				"name": "CreateTest",
-				"view": "CreateTest"
+				"view": "CreateTest",
+				"greedy": false
 			}, {
-				"pattern": "Overview/{id}",
+				"pattern": "Overview",
 				"name": "Overview",
-				"view": "Overview"
-			}]
+				"target": "Overview"
+			}],
+			"targets": {
+				"Overview": {
+					"viewName": "Overview",
+					"controlAggregation": "pages",
+					"controlId": "navContainer",
+					"viewId": "Overview",
+					"viewLevel": 1,
+					"transition": "show"
+				}
+			}
 		},
-		
-	"models": {
-	  "i18n": {
-		"type": "sap.ui.model.resource.ResourceModel",
-		"settings": { "bundleName": "com.URE.i18n.i18n" }
-	  }
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "com.URE.i18n.i18n"
+				}
+			}
+		},
+		"contentDensities": {
+			"compact": false,
+			"cozy": false
+		}
 	}
-  }
 }
