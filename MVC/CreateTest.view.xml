@@ -12,6 +12,7 @@
 						<Label id="__label1" text="Circuit"/>
 						<Input id="Input_Circuit" width="100%"/>
 						<Label id="__label2" text="Test type"/>
+
 						<ComboBox id="Input_RaceType" selectedItem="Element sap.ui.core.ListItem#__item1" selectedItemId="test1" selectedKey="1" value="Endurance">
 							<items>
 								<sap.ui.core:ListItem id="test1" key="1" text="Endurance"/>

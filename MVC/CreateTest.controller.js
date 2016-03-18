@@ -68,15 +68,7 @@ sap.ui.controller("MVC.CreateTest", {
 		};
 		
 		var todayDate = new Date();
-		
 
-		
-		
-		
-		
-		
-		
-		
 		var newData = {
 				"RACE_ID": this.getView().byId("Race_Id").getValue(),
 				"CIRCUIT":this.getView().byId("Input_Circuit").getValue(),
@@ -84,7 +76,7 @@ sap.ui.controller("MVC.CreateTest", {
 				"RACE_DESCRIPTION": this.getView().byId("Input_Race_Description").getValue(),
 				// Vanaf hier default waardes.
 				"START_TIME": new Date(), 
-				"END_TIME": new Date(),   
+				"END_TIME": null,   
 				"RACE_TYPE": this.getView().byId("Input_RaceType").getSelectedKey(),
 				"WEATHER": this.getView().byId("Input_Weather").getSelectedKey(),
 				"NOTES": this.getView().byId("Input_Notes").getValue(),
