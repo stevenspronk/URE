@@ -1,6 +1,12 @@
-sap.ui.controller("MVC.CreateTest", {
+/*global sap */
 
-	
+sap.ui.define([
+    "JS/validator"
+], function (Validator) {
+    "use strict";
+
+    return sap.ui.controller("MVC.CreateTest", {
+
 	/**
 	 * Called when a controller is instantiated and its View controls (if available) are already created.
 	 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
@@ -8,6 +14,28 @@ sap.ui.controller("MVC.CreateTest", {
 	 */
 	onInit: function() {
 		
+            // Attaches validation handlers
+            sap.ui.getCore().attachValidationError(function (oEvent) {
+                oEvent.getParameter("element").setValueState(ValueState.Error);
+            });
+            sap.ui.getCore().attachValidationSuccess(function (oEvent) {
+                oEvent.getParameter("element").setValueState(ValueState.None);
+            });
+
+            // JSON dummy data
+            var oData = {
+                text   : null,
+                number : 0,
+                date   : null
+            };
+      
+            var oModel = new sap.ui.model.json.JSONModel();
+            oModel.setData(oData);
+      
+            this.getView().setModel(oModel);
+
+
+
 		// If it's a new test then clear the model, so that input fields become empty.
 		if( crudTest === 'C')
 		{
@@ -62,6 +90,8 @@ sap.ui.controller("MVC.CreateTest", {
 
 	saveTest: function() {
 		
+		if(this.onValidate())
+		{
 		var requestObj = {
 			requestUri: '',
 			method: '',
@@ -117,6 +147,7 @@ sap.ui.controller("MVC.CreateTest", {
 		OData.request(requestObj, function() {
 			
 		});
+		};
 	},
 	
 	// This function checks if a string is empty or not
@@ -142,4 +173,21 @@ sap.ui.controller("MVC.CreateTest", {
 		oRouter.navTo("Overview", {id:1}, false);
 	}
 
-});
+		// Set variable crudTest to U.
+		// This means that whenever an user goes back to the create view it will update
+		// the already known race.
+		crudTest = 'U';
+		var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+		oRouter.navTo("Overview", {id:1}, false);
+	},
+	
+		
+	 onValidate: function() {
+            // Create new validator instance
+          	var validator = new Validator();
+  
+            // Validate input fields against root page with id 'somePage'
+          	return validator.validate(this.byId("createTestView"));
+        }
+
+})});
