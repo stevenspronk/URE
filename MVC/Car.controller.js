@@ -53,14 +53,55 @@ sap.ui.define([
 			oPopOver.setFormatString(FIORI_LABEL_FORMAT_2);
 
 			//            var dataPath = "https://webidetesting1843786-p1940830713trial.dispatcher.hanatrial.ondemand.com/destinations/McCoy_URE/UreSensor.xsodata";
-			var oDataModel = new sap.ui.model.odata.ODataModel("/destinations/McCoy_URE/Racedata.xsodata/");
-
+		//	var oDataModel = new sap.ui.model.odata.ODataModel("/destinations/McCoy_URE/Racedata.xsodata/");
+		var url = "/destinations/McCoy_URE/Racedata.xsodata/RACEDATA?$format=json&$filter=RACE_ID eq " + raceID;
+		var oDataModel = new sap.ui.model.json.JSONModel(url);	
+		//	var data = oDataModel.getData("/RACEDATA('RACE_ID=2')");
+			
+			
+/*			oDataModel.read("/RACEDATA",null, null, false, function (oEvent){
+				
+			}
+			, function (oError) {
+				
+			}
+			);
+			//oDataModel.*/
+			
+/*			oDataModel.read("/RACEDATA", {
+				async: false,
+				success: function (oEvent) {
+				var map = [];
+				var list = [];
+ 
+			$.each(oEvent.results, function (i, item) {
+			list.push({
+				"SENSOR_TIMESTAMP": item.SENSOR_TIMESTAMP,
+				"MAX_TEMP_BUCKET1": item.MAX_TEMP_BUCKET1
+			});
+//			map[item.StatusNum] = item.Description;
+			});
+ 
+			var oModelL = new sap.ui.model.json.JSONModel({
+//				"map": map,
+//				"list": list
+				});
+			sap.ui.getCore().setModel(oModelL, "RaceData");
+			},
+			error: function (oError) {
+//			error = true;
+			jQuery.sap.log.error("An error occurred while processing RaceData");
+			}
+			});*/
+			
+			
+			
 			this.getView().setModel(oDataModel, "RaceData");
 
 			//			var dataPath = "test-resources/sap/viz/demokit/dataset/milk_production_testing_data/revenue_cost_consume";
 			//			var oModel = new JSONModel(oDataModel.getData());
 			//			var oModelS = new JSONModel(oDataModel.getData());
-			var oModelL = new JSONModel(oDataModel.getData());
+//			var oModelL = new JSONModel(oDataModel.getData());
 
 			//            var oModel = new JSONModel(dataPath);
 			//			var oModelS = new JSONModel(dataPath);
@@ -103,7 +144,7 @@ sap.ui.define([
 */
 
 			oVizFrame.setDataset(oDataset);
-			oVizFrame.setModel(oModelL);
+			oVizFrame.setModel(oDataModel);
 
 			oVizFrame.setVizProperties({
 				general: {
