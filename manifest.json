@@ -32,7 +32,7 @@
 		},
 		"routing": {
 			"config": {
-				"routerClass" : "sap.m.routing.Router",
+				"routerClass": "sap.m.routing.Router",
 				"viewType": "XML",
 				"viewPath": "MVC",
 				"targetControl": "navContainer",
@@ -51,12 +51,23 @@
 				"pattern": "Overview",
 				"name": "Overview",
 				"target": "Overview"
+			}, {
+				"name": "Dashboard",
+				"pattern": "Dashboard",
+				"greedy": false
 			}],
 			"targets": {
 				"Overview": {
 					"viewType": "XML",
 					"transition": "slide",
 					"viewName": "Overview"
+				},
+				"Dashboard": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearAggregation": "true",
+					"viewName": "Dashboard",
+					"viewId": "dashboard"
 				}
 			}
 		},

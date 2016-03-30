@@ -1,3 +1,5 @@
+var activeView;
+
 sap.ui.controller("MVC.Overview", {
 
 /**

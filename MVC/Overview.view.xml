@@ -13,16 +13,16 @@
 				backgroundDesign="Transparent"
 				>
 		<items>
-			<IconTabFilter key="IconTabBar1" text="Overview">
+			<IconTabFilter key="Dashboard" text="Overview">
 				<core.mvc:XMLView viewName="MVC.Dashboard"></core.mvc:XMLView>
 			</IconTabFilter>
-			<IconTabFilter key="IconTabBar2" text="Auto">
+			<IconTabFilter key="Car" text="Auto">
 				<core.mvc:XMLView viewName="MVC.Car"></core.mvc:XMLView>
 			</IconTabFilter>
-			<IconTabFilter key="IconTabBar3" text="Coureur" press="onNavBack">
+			<IconTabFilter key="Driver" text="Coureur" press="onNavBack">
 				<core.mvc:XMLView viewName="MVC.Driver"></core.mvc:XMLView>
 			</IconTabFilter>
-			<IconTabFilter key="IconTabBar3" text="Powertrain">
+			<IconTabFilter key="Powertrain" text="Powertrain">
 				<core.mvc:XMLView viewName="MVC.Powertrain"></core.mvc:XMLView>
 			</IconTabFilter>
 		</items>

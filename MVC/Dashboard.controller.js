@@ -1,3 +1,5 @@
+var iconTabBar;
+
 sap.ui.controller("MVC.Dashboard", {
 
 	/**
@@ -6,18 +8,23 @@ sap.ui.controller("MVC.Dashboard", {
 	 * @memberOf MVC.Dashboard
 	 */
 	onInit: function() {
+	
 		// MAKE FIXED 21
 		raceID = 21;
 		var url = "/destinations/McCoy_URE/Overview.xsodata/OVERVIEW(" + raceID + ")?$format=json";
 		var dashboardModel = new sap.ui.model.json.JSONModel(url);
 		dashboardModel.setDefaultBindingMode(sap.ui.model.BindingMode.TwoWay);
 		this.getView().setModel(dashboardModel, "Overview");
-		 
+		
 		setTimeout(function() {
 			setInterval(function() {
-				dashboardModel.loadData(url);
-			}, 2000);
+				var selectedKey = iconTabBar.getSelectedKey();
+				if( selectedKey === "Dashboard") {
+					dashboardModel.loadData(url);
+				}
+			}, 1000);
 		}, 1000);
+
 	
 	},
 
@@ -35,11 +42,9 @@ sap.ui.controller("MVC.Dashboard", {
 	 * This hook is the same one that SAPUI5 controls get after being rendered.
 	 * @memberOf MVC.Dashboard
 	 */
-	//onAfterRendering: function() {
-	
-
-
-	//},
+	onAfterRendering: function() {
+		iconTabBar = this.getView().byId("Dashboard").getParent().getParent().getParent();
+	},
 
 	/**
 	 * Called when the Controller is destroyed. Use this one to free resources and finalize activities.
