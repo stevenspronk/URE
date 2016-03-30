@@ -68,7 +68,7 @@ sap.ui.define([
 
                 // check control for any properties worth validating 
                 for (i = 0; i < aValidateProperties.length; i += 1) {
-                	console.log(oControl.getBinding("value"));
+                	//console.log(oControl.getBinding("value"));
                     if (oControl.getBinding(aValidateProperties[i])) {
                     	
                         // check if a data type exists (which may have validation constraints)
