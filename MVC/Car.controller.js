@@ -108,27 +108,32 @@ sap.ui.define([
                         formatString:FIORI_LABEL_SHORTFORMAT_10
                     },
                     title: {
-                        visible: true
+                        visible: true,
+                        text: "text1"
                     }
                 },
                 categoryAxis: {
                     title: {
-                        visible: true
+                        visible: true,
+                        text: "text2"
                     }
                 },
                 plotArea: {
                     dataLabel: {
                         visible: true,
+                        text: "text3",
                         formatString:FIORI_LABEL_SHORTFORMAT_2
                     },
                 },
                 legend: {
                     title: {
-                        visible: true
+                        visible: true,
+                        text: "text4"
                     }
                 },
                 title: {
                     visible: true,
+                    text: "text5"
                 }
             });        
 /*            var feedValueAxis = new FeedItem({
