@@ -13,5 +13,5 @@
             <viz:VizFrame id="idVizFrameLine" uiConfig="{applicationSet:'fiori'}" height="100%" width="100%"></viz:VizFrame>
         </l:flexContent>
         <!--Above is the chart area-->
-    </l:FixFlex>
+    </l:FixFlex> 
 </mvc:View>

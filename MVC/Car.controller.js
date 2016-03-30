@@ -14,7 +14,7 @@ sap.ui.define([
 			var oFixFlex = this.getView().byId("idFixFlex");
 			ControllerOverall.customFormat(); // set customized format
 			ControllerOverall.loadLibrary(oVizFrame, oFixFlex); // load "sap.suite.ui.commons"
-
+ 
 			var oVizFrame = this.getView().byId("idVizFrameLine");
 			oVizFrame.setVizType('line');
 			oVizFrame.setUiConfig({
