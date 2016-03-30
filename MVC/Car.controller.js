@@ -60,6 +60,11 @@ sap.ui.define([
 	//	oDataModel.loadData(url);
 				
 =======
+<<<<<<< HEAD
+	//	oDataModel.loadData(url);
+				
+=======
+>>>>>>> branch 'master' of https://github.com/stevenspronk/URE
 >>>>>>> branch 'master' of https://github.com/stevenspronk/URE
 		//	var data = oDataModel.getData("/RACEDATA('RACE_ID=2')");
 			
