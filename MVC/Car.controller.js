@@ -47,11 +47,11 @@ sap.ui.define([
             oPopOver.setFormatString(FIORI_LABEL_FORMAT_2);
            
 //            var dataPath = "https://webidetesting1843786-p1940830713trial.dispatcher.hanatrial.ondemand.com/destinations/McCoy_URE/UreSensor.xsodata";
-//			var oDataModel = new sap.ui.model.odata.ODataModel("/destinations/McCoy_URE/UreSensor.xsodata/");
-			var dataPath = "test-resources/sap/viz/demokit/dataset/milk_production_testing_data/revenue_cost_consume";
+			var oDataModel = new sap.ui.model.odata.ODataModel("/destinations/McCoy_URE/Racedata.xsodata/");
+//			var dataPath = "test-resources/sap/viz/demokit/dataset/milk_production_testing_data/revenue_cost_consume";
 //			var oModel = new JSONModel(oDataModel.getData());
 //			var oModelS = new JSONModel(oDataModel.getData());
-//			var oModelL = new JSONModel(oDataModel.getData());
+			var oModelL = new JSONModel(oDataModel.getData());
 			
 //            var oModel = new JSONModel(dataPath);
 //			var oModelS = new JSONModel(dataPath);
@@ -60,23 +60,23 @@ sap.ui.define([
            
 //            var oModel = new JSONModel(dataPath + "/medium.json");
 //            var oModelS = new JSONModel(dataPath + "/small.json");
-            var oModelL = new JSONModel(dataPath + "/large.json");
+//            var oModelL = new JSONModel(dataPath + "/large.json");
             
-/*            var oDataset = new FlattenedDataset({
+           var oDataset = new FlattenedDataset({
                 dimensions: [{
-                    name: 'TIMESTAMP',
-                    value: "{TIMESTAMP}"
+                    name: 'SENSOR_TIMESTAMP',
+                    value: "{SENSOR_TIMESTAMP}"
                 }],
                 measures: {
-                    name: 'SENSORVALUE',
-                    value: '{SENSORVALUE}'
+                    name: 'MAX_TEMP_BUCKET1',
+                    value: '{MAX_TEMP_BUCKET1}'
                 }, 
                 data: {
-                    path: "/ZURE_SENSOR1"
+                    path: "/RACEDATA"
                 }
             });
-*/
-            var oDataset = new FlattenedDataset({
+
+  /*          var oDataset = new FlattenedDataset({
                 dimensions: [{
                     name: 'Store Name',
                     value: "{Store Name}"
@@ -92,7 +92,7 @@ sap.ui.define([
                     path: "/milk"
                 }
             });
-
+*/
 
             oVizFrame.setDataset(oDataset);
             oVizFrame.setModel(oModelL);
@@ -136,17 +136,18 @@ sap.ui.define([
                     text: "text5"
                 }
             });        
-/*            var feedValueAxis = new FeedItem({
+            var feedValueAxis = new FeedItem({
                     'uid': "valueAxis",
-                    'type': "TIMESTAMP",
-                    'values': ["TIMESTAMP"]
+                    'type': "Measure",
+                    'values': ["MAX_TEMP_BUCKET1"]
                 }),
                 feedCategoryAxis = new FeedItem({
                     'uid': "categoryAxis",
                     'type': "Dimension",
-                    'values': ["SENSORVALUE"]
+                    'values': ["SENSOR_TIMESTAMP"]
                 });
-*/                
+
+/*
             var feedValueAxis = new FeedItem({
                     'uid': "valueAxis",
                     'type': "Measure",
@@ -157,6 +158,7 @@ sap.ui.define([
                     'type': "Dimension",
                     'values': ["Store Name"]
                 });
+                */ 
             oVizFrame.addFeed(feedValueAxis);
             oVizFrame.addFeed(feedCategoryAxis);
      }
