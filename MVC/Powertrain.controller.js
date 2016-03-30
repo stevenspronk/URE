@@ -38,7 +38,7 @@ sap.ui.controller("MVC.Powertrain", {
 		// filter binding
 		var oList = this.getView().byId("Msg");
 		var oBinding = oList.getBinding("items");
-		var aSorter = new sap.ui.model.Sorter("TIMESTAMP", true);
+		var aSorter = new sap.ui.model.Sorter("MSG_TIMESTAMP", true);
 		//oBinding.filter(aFilter);
 		oBinding.sort(aSorter);
 

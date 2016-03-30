@@ -1,70 +1,54 @@
-<!--<mvc:View xmlns:mvc="MVC.Driver" xmlns="sap.m" xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.layout="sap.ui.layout" height="100%" controllerName="MVC.Driver">
-<Page title="" id="__page1" showFooter="false" showHeader="false">
-    <content>
-    <TileContainer editable="true" allowAdd="true" id="__container1">
-        <customData>
-            <sap.ui.core:CustomData key="sap-ui-fastnavgroup" value="true" writeToDom="true" id="__data3"/>
-        </customData>
-        <tiles>
-            <StandardTile title="Title 1" info="Info" icon="sap-icon://customer" activeIcon="sap-icon://customer" number="123" numberUnit="eur" infoState="Success" id="__tile1"/>
-            <StandardTile title="Title 2" info="Info" icon="sap-icon://customer" activeIcon="sap-icon://customer" number="123" numberUnit="eur" infoState="Success" id="__tile2"/></tiles></TileContainer>
-    </content>
-</Page>
-</mvc:View>
--->
 <mvc:View height="100%" width="100%"
-	controllerName="MVC.Driver" 
+    controllerName="MVC.Driver" 
     xmlns:l="sap.ui.layout" 
     xmlns:viz="sap.viz.ui5.controls" 
     xmlns:mvc="sap.ui.core.mvc" 
     xmlns:suite="sap.suite.ui.commons"
     xmlns="sap.m"
-    xmlns:core="sap.ui.core"
-	>
-
-	<l:FixFlex id="idFixFlex" class="fixFlexFixedSize" minFlexSize="250"> 
+>
+    <l:FixFlex id="idFixFlex" class="fixFlexFixedSize" minFlexSize="250">
+        <!--Below is the setting panel-->
         <l:fixContent>    
             <Panel id="PN-1" class="panelStyle" expandable="true" expanded="false" headerText="Settings">
-                <ScrollContainer 
+                <ScrollContainer
                     class="scrollStyle"
-                    height="0%" 
-                    width="0%" 
+                    height="100%"
+                    width="100%"
                     horizontal="true"
                     vertical="false"
                     focusable="false">
                     <HBox class="settingBottomStyle" width="auto">
-                        <HBox id="HB-1">
-                            <HBox width="600px">
-                                <VBox id="BX-1" class="boxPosition" width="350px">
-                                    <Label text="Levels" class="sapUiSmallMarginTopBottom" design="Bold"/> 
-                                     <Select id="timeAxisExampleSelect" class="selectPosition" autoAdjustHeight="false" maxWidth="300px">
-                                       <items><core:Item key="1" text="Second / Minute"/></items>
-                                       <items><core:Item key="2" text="Second / Minute / Lap"/></items>
-                                       <items><core:Item key="3" text="Second / Minute / Lap / Race"/></items>
-                                     </Select>
-                                </VBox>
-                                 <VBox id="BX-2" class="boxPosition" width="250px">
-                                    <Label text="Chart Type" class="sapUiSmallMarginTopBottom" design="Bold"/> 
-                                    <Select id="chartTypeSelect" selectedKey="3" class="selectPosition" autoAdjustHeight="false" maxWidth="200px">
-<!--                                       <items><core:Item key="1" text="Bubble Chart"/></items>
-                                       <items><core:Item key="2" text="Column Chart"/></items>
-                                       <items><core:Item key="3" text="Line Chart"/></items>
--->                                       <items><core:Item key="4" text="Line Chart with Dynamic Value Axis"/></items>
-<!--                                        <items><core:Item key="5" text="Scatter Chart"/></items> --> 
-                                     </Select>
-                                </VBox>
-                            </HBox>
+                        <HBox id="HB-1" class="HBoxStyle">
+                            <VBox id="BX-1" class="boxPosition" width="90px">
+                                <Label text="Dataset" class="sapUiSmallMarginTop labelStyle" design="Bold"/>
+                                <RadioButton class="buttonPosition" id="RB1-1" groupName="line-group1" text="Small"/>
+                                <RadioButton class="buttonPosition" id="RB1-2" groupName="line-group1" text="Medium"  />
+                                <RadioButton class="buttonPosition bottomButtonStyle" id="RB1-3" groupName="line-group1" text="Large" selected="true"/>
+                            </VBox>
+                            <VBox id="BX-2" class="boxPosition" width="90px">
+                                <Label text="Series" class="sapUiSmallMarginTop labelStyle" design="Bold"/>
+                                <RadioButton class="buttonPosition" id="RB2-1" groupName="line-group2" text="1 Series" selected="true" />
+                                <RadioButton class="buttonPosition bottomButtonStyle" id="RB2-2" groupName="line-group2" text="2 Series" />
+                            </VBox>
+                            <VBox id="BX-3" class="boxPosition" width="90px">
+                                <Label text="Value Label" class="sapUiSmallMarginTop labelStyle" design="Bold"/>
+                                <Switch id="SW-1" class="switchPosition" state="true" customTextOn="ON" customTextOff="OFF"></Switch>
+                            </VBox>
+                            <VBox width="90px">
+                                <Label text="Axis Title" class="sapUiSmallMarginTop labelStyle" design="Bold"/>
+                                <Switch id="SW-2" class="switchPosition" state="false" customTextOn="ON" customTextOff="OFF"></Switch>
+                            </VBox>
                         </HBox>
                     </HBox>
                 </ScrollContainer>
             </Panel>
         </l:fixContent>
-
+        <!--Above is the setting panel-->
+        <!--Below is the chart area-->
         <l:flexContent>
             <viz:Popover id="idPopOver"></viz:Popover>
-            <viz:VizFrame id="idVizFrameTimeAxis" uiConfig="{applicationSet:'fiori'}" height="50%" width="100%"></viz:VizFrame>
+            <viz:VizFrame id="idVizFrameLine" uiConfig="{applicationSet:'fiori'}" height="100%" width="100%"></viz:VizFrame>
         </l:flexContent>
-
-
-	</l:FixFlex>
+        <!--Above is the chart area-->
+    </l:FixFlex>
 </mvc:View>
