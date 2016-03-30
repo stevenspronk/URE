@@ -6,8 +6,9 @@
 		<List id="Msg" items="{Msg>/POWERTRAIN}" width="100%">
 			<items>
 				<ObjectListItem icon="{= ${Msg>MSG_TYPE} === 'E' ? 'sap-icon://message-error' : 'sap-icon://message-warning' }" id="MsgIt"
-					number="{Msg>MSG_TIMESTAMP}" numberState="{= ${Msg>MSG_TYPE} === 'E' ? 'Error' : 'None' }" title="{Msg>MSG_TEXT}"/>
+					number="{Msg>MSG_TIMESTAMP}" numberState="{= ${Msg>STATUS} === '1' ? 'Error' : 'Success' }" title="{Msg>MSG_TEXT}">
+				</ObjectListItem>
 			</items>
 		</List>
 	</Panel>
-</mvc:View> 
+</mvc:View>
