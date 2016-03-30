@@ -12,7 +12,7 @@ sap.ui.controller("MVC.Dashboard", {
 		var dashboardModel = new sap.ui.model.json.JSONModel(url);
 		dashboardModel.setDefaultBindingMode(sap.ui.model.BindingMode.TwoWay);
 		this.getView().setModel(dashboardModel, "Overview");
-		
+		 
 		setTimeout(function() {
 			setInterval(function() {
 				dashboardModel.loadData(url);

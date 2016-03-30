@@ -24,7 +24,7 @@
 							<sap.ui.core:Icon class="dashboardIcon" size="30pt" src="sap-icon://temperature"/>
 							<html:div class="dashboardTitle">Temperatuur per cel</html:div>
 							<html:div>
-								<html:div class="counter_home" id="counterDiv">
+								<html:div class="counter_home" id="counterDiv"> 
 									<ui.commons:ColumnMicroChart class="sapUiSmallMargin" height="100px" press="press" size="S" width="80%">
 										<ui.commons:columns>
 											<ui.commons:ColumnData color="Good" height="5px" value="{Overview>/d/MAX_TEMP_BUCKET6}" width="7px"/>
