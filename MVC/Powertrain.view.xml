@@ -3,11 +3,11 @@
 	xmlns:ui.commons="sap.suite.ui.commons" xmlns="sap.m">
 	<Panel>
 		<Label id="RaceIdLabel" text="{RaceMetaData>/RaceId}"></Label>
-		<List id="Msg" items="{Msg>/MESSAGES}" width="100%">
+		<List id="Msg" items="{Msg>/POWERTRAIN}" width="100%">
 			<items>
 				<ObjectListItem icon="{= ${Msg>MSG_TYPE} === 'E' ? 'sap-icon://message-error' : 'sap-icon://message-warning' }" id="MsgIt"
-					number="{Msg>TIMESTAMP}" numberState="{= ${Msg>MSG_TYPE} === 'E' ? 'Error' : 'None' }" title="{Msg>MSG_TEXT}"/>
+					number="{Msg>MSG_TIMESTAMP}" numberState="{= ${Msg>MSG_TYPE} === 'E' ? 'Error' : 'None' }" title="{Msg>MSG_TEXT}"/>
 			</items>
 		</List>
 	</Panel>
-</mvc:View>
+</mvc:View> 

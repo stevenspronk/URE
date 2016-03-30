@@ -16,7 +16,7 @@
 			<IconTabFilter key="IconTabBar1" text="Overview">
 				<core.mvc:XMLView viewName="MVC.Dashboard"></core.mvc:XMLView>
 			</IconTabFilter>
-			<!--<IconTabFilter key="IconTabBar2" text="Auto">
+			<IconTabFilter key="IconTabBar2" text="Auto">
 				<core.mvc:XMLView viewName="MVC.Car"></core.mvc:XMLView>
 			</IconTabFilter>
 			<IconTabFilter key="IconTabBar3" text="Coureur" press="onNavBack">
@@ -24,7 +24,7 @@
 			</IconTabFilter>
 			<IconTabFilter key="IconTabBar3" text="Powertrain">
 				<core.mvc:XMLView viewName="MVC.Powertrain"></core.mvc:XMLView>
-			</IconTabFilter>-->
+			</IconTabFilter>
 		</items>
 	</IconTabBar>
 	<footer>

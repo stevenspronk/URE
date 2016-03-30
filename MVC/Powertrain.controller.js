@@ -7,13 +7,12 @@ sap.ui.controller("MVC.Powertrain", {
 	 */
 	onInit: function() {
 
-		var oConfig = this.getOwnerComponent().getMetadata().getConfig();
-		var oMsg = new sap.ui.model.odata.ODataModel(oConfig.messageService.serviceUrl);
+		var oMsg = new sap.ui.model.odata.ODataModel('/destinations/McCoy_URE/Powertrain.xsodata/');
 
 		oMsg.setSizeLimit(10);
 		this.getView().setModel(oMsg, "Msg");
 
-	},
+	}, 
 	// 
 	/**
 	 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
