@@ -56,14 +56,16 @@ sap.ui.define([
 		//	var oDataModel = new sap.ui.model.odata.ODataModel("/destinations/McCoy_URE/Racedata.xsodata/");
 		var url = "/destinations/McCoy_URE/Racedata.xsodata/RACEDATA?$format=json&$filter=RACE_ID eq " + raceID;
 		var oDataModel = new sap.ui.model.json.JSONModel(url);	
-<<<<<<< HEAD
 	//	oDataModel.loadData(url);
 				
+<<<<<<< HEAD
+=======
 =======
 <<<<<<< HEAD
 	//	oDataModel.loadData(url);
 				
 =======
+>>>>>>> branch 'master' of https://github.com/stevenspronk/URE
 >>>>>>> branch 'master' of https://github.com/stevenspronk/URE
 >>>>>>> branch 'master' of https://github.com/stevenspronk/URE
 		//	var data = oDataModel.getData("/RACEDATA('RACE_ID=2')");
