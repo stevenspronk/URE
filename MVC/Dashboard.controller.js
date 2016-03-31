@@ -9,8 +9,6 @@ sap.ui.controller("MVC.Dashboard", {
 	 */
 	onInit: function() {
 	
-		// MAKE FIXED 21
-		raceID = 21;
 		var url = "/destinations/McCoy_URE/Overview.xsodata/OVERVIEW(" + raceID + ")?$format=json";
 		var dashboardModel = new sap.ui.model.json.JSONModel(url);
 		dashboardModel.setDefaultBindingMode(sap.ui.model.BindingMode.TwoWay);
