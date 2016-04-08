@@ -90,6 +90,7 @@ sap.ui.define([
 
 						var data = {
 							"RACE_ID": this.isEmpty(this.getView().byId("Race_Id").getValue()),
+							"RUN_ID": this.isEmpty(this.getView().byId("Run_Id").getValue()),
 							"CIRCUIT": this.isEmpty(this.getView().byId("Input_Circuit").getValue()),
 							"TEMPERATURE": this.isEmpty(this.getView().byId("Input_Temperature").getSelectedKey()),
 							"RACE_DESCRIPTION": this.isEmpty(this.getView().byId("Input_Race_Description").getValue()),

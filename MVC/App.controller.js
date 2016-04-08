@@ -8,9 +8,14 @@ sap.ui.controller("MVC.App", {
 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
 * @memberOf MVC.App
 */
-//	onInit: function() {
-//
-//	},
+	onInit: function() {
+		
+		// Create an oData model for the messages from the powertrain
+		var oMsg = new sap.ui.model.odata.ODataModel('/destinations/McCoy_URE/Powertrain.xsodata/');
+		//oMsg.setSizeLimit(20);
+		sap.ui.getCore().setModel(oMsg, "Msg");
+
+	},
 
 /**
 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
@@ -37,5 +42,19 @@ sap.ui.controller("MVC.App", {
 //	onExit: function() {
 //
 //	}
+
+ refreshMessages: function(){
+	var oMsg = sap.ui.getCore().getModel("Msg");
+
+		function refreshData() {
+			oMsg.refresh();
+		}
+
+		setTimeout(function() {
+			setInterval(function() {
+				refreshData();
+			}, 1000);
+		}, 1000);
+}
 
 });

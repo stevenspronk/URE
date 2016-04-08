@@ -2,7 +2,7 @@
 	xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.layout="sap.ui.layout"
 	xmlns:ui.commons="sap.suite.ui.commons" xmlns="sap.m">
 	<Panel>
-		<Label id="RaceIdLabel" text="{RaceMetaData>/RaceId}"></Label>
+		<Label id="RaceIdLabel" text="{raceID}"></Label>
 		<List id="Msg" items="{Msg>/POWERTRAIN}" width="100%">
 			<items>
 				<ObjectListItem icon="{= ${Msg>MSG_TYPE} === 'E' ? 'sap-icon://message-error' : 'sap-icon://message-warning' }" id="MsgIt"
