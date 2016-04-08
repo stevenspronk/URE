@@ -10,7 +10,7 @@ sap.ui.controller("MVC.Dashboard", {
 	onInit: function() {
 	
 
-		var url = "/destinations/McCoy_URE/Overview.xsodata/OVERVIEW(" + raceID + ")?$format=json";
+		var url = "/destinations/McCoy_URE/Overview.xsodata/OVERVIEW(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")?$format=json";
 		var dashboardModel = new sap.ui.model.json.JSONModel(url);
 		dashboardModel.setDefaultBindingMode(sap.ui.model.BindingMode.TwoWay);
 		this.getView().setModel(dashboardModel, "Overview");
