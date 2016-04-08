@@ -14,11 +14,8 @@ sap.ui.controller("MVC.Overview", {
 	
 	onSelect: function(oEvent) {
             var key = oEvent.getParameters().key;
-            var oModel = new sap.ui.model.json.JSONModel({
-				selectedView: key
-			});
-			sap.ui.getCore().setModel(oModel, "Selection");
-            
+			var oSelection = sap.ui.getCore().getModel("Selection");
+			oSelection.oData.selectedView = key;
     },
     
 	_handleRouteMatched:function(evt){

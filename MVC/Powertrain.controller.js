@@ -40,17 +40,6 @@ sap.ui.controller("MVC.Powertrain", {
 		oBinding.filter(aFilter);
 		oBinding.sort(aSorter);
 
-		var oMessages = this.getView().getModel("Msg");
-
-		function refreshData() {
-			oMessages.refresh();
-		}
-
-		setTimeout(function() {
-			setInterval(function() {
-				refreshData();
-			}, 1000);
-		}, 1000);
 	}
 
 	/**

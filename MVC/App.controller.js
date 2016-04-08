@@ -16,6 +16,11 @@ sap.ui.controller("MVC.App", {
 		//oMsg.setSizeLimit(20);
 		sap.ui.getCore().setModel(oMsg, "Msg");
 
+
+            var oSelection = new sap.ui.model.json.JSONModel({
+				selectedView: "Dashboard"
+			});
+			sap.ui.getCore().setModel(oSelection, "Selection");
 	},
 
 	/**
@@ -32,9 +37,20 @@ sap.ui.controller("MVC.App", {
 	 * This hook is the same one that SAPUI5 controls get after being rendered.
 	 * @memberOf MVC.App
 	 */
-	//	onAfterRendering: function() {
-	//
-	//	},
+	onAfterRendering: function() {
+
+		var me = this;
+
+		setTimeout(function() {
+			setInterval(function() {
+				var oSelection = sap.ui.getCore().getModel("Selection");
+				var key = oSelection.oData.selectedView;
+
+				me.refreshData(key);
+			}, 1000);
+		}, 1000);
+
+	},
 
 	/**
 	 * Called when the Controller is destroyed. Use this one to free resources and finalize activities.
@@ -44,18 +60,11 @@ sap.ui.controller("MVC.App", {
 	//
 	//	}
 
-	refreshMessages: function() {
-		var oMsg = sap.ui.getCore().getModel("Msg");
-
-		function refreshData() {
+	refreshData: function(key) {
+		if (key == "Powertrain") {
+			var oMsg = sap.ui.getCore().getModel("Msg");
 			oMsg.refresh();
 		}
-
-		setTimeout(function() {
-			setInterval(function() {
-				refreshData();
-			}, 1000);
-		}, 1000);
 	}
 
 });
