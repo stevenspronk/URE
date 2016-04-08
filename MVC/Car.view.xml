@@ -7,7 +7,6 @@
     xmlns="sap.m"
 	>
    <l:FixFlex id="idFixFlex" class="fixFlexFixedSize" minFlexSize="250"> 
-   
         <!--Below is the chart area-->
         <l:flexContent>
             <viz:Popover id="idPopOver"></viz:Popover>
