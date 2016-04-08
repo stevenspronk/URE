@@ -103,6 +103,7 @@ sap.ui.define([
 
 				var data = {
 					"RACE_ID": this.isEmpty(this.getView().byId("Race_Id").getValue()),
+					"RUN_ID": this.isEmpty(this.getView().byId("Run_Id").getValue()),
 					"CIRCUIT": this.isEmpty(this.getView().byId("Input_Circuit").getValue()),
 					"TEMPERATURE": this.isEmpty(this.getView().byId("Input_Temperature").getSelectedKey()),
 					"RACE_DESCRIPTION": this.isEmpty(this.getView().byId("Input_Race_Description").getValue()),
@@ -116,8 +117,7 @@ sap.ui.define([
 					"NAME_DRIVER": this.isEmpty(this.getView().byId("Input_DriverName").getValue()),
 					"LENGTH_DRIVER": this.isEmpty(this.getView().byId("Input_DriverLength").getValue()),
 					"WEIGHT_DRIVER": this.isEmpty(this.getView().byId("Input_DriverWeight").getValue()),
-					"DRIVER_NOTES": this.isEmpty(this.getView().byId("Input_DriverNotes").getValue()),
-					"RUN_ID": this.isEmpty(this.getView().byId("Run_Id").getValue())
+					"DRIVER_NOTES": this.isEmpty(this.getView().byId("Input_DriverNotes").getValue())
 				};
 
 				var method;
@@ -138,10 +138,12 @@ sap.ui.define([
 
 				requestObj.method = method;
 				requestObj.data = data;
-				requestObj.success = this.goToOverview(); // Aanroepen overview scherm
-
+				//requestObj.success = this.goToOverview(); // Aanroepen overview scherm
+				
+				var me = this;
+	
 				OData.request(requestObj, function() {
-
+					me.goToOverview();
 				});
 			};
 		},
