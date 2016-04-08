@@ -9,7 +9,7 @@ sap.ui.define([
 	"use strict";
 
 	var LineController = Controller.extend("MVC.Driver", {
-		onInit: function(oEvent) {
+		onInit: function(oEvent) { 
 			var oVizFrame = this.getView().byId("idVizFrameLine");
 			var oFixFlex = this.getView().byId("idFixFlex");
 			ControllerOverall.customFormat(); // set customized format

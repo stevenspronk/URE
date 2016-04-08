@@ -8,7 +8,7 @@
 >
     <l:FixFlex id="idFixFlex" class="fixFlexFixedSize" minFlexSize="250">
              <!--Below is the chart area-->
-        <l:flexContent>
+        <l:flexContent> 
             <viz:Popover id="idPopOver"></viz:Popover>
             <viz:VizFrame id="idVizFrameLine" uiConfig="{applicationSet:'fiori'}" height="100%" width="100%"></viz:VizFrame>
         </l:flexContent>
