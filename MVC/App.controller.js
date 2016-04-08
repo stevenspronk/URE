@@ -16,11 +16,10 @@ sap.ui.controller("MVC.App", {
 		//oMsg.setSizeLimit(20);
 		sap.ui.getCore().setModel(oMsg, "Msg");
 
-
-            var oSelection = new sap.ui.model.json.JSONModel({
-				selectedView: "Dashboard"
-			});
-			sap.ui.getCore().setModel(oSelection, "Selection");
+		var oSelection = new sap.ui.model.json.JSONModel({
+			selectedView: "Dashboard"
+		});
+		sap.ui.getCore().setModel(oSelection, "Selection");
 	},
 
 	/**
@@ -61,9 +60,20 @@ sap.ui.controller("MVC.App", {
 	//	}
 
 	refreshData: function(key) {
-		if (key == "Powertrain") {
-			var oMsg = sap.ui.getCore().getModel("Msg");
-			oMsg.refresh();
+		switch (key) {
+			case "Powertrain":
+				var oMsg = sap.ui.getCore().getModel("Msg");
+				oMsg.refresh();
+				break;
+			case "Dashboard":
+
+				break;
+			case "Car":
+
+				break;
+			case "Driver":
+
+				break;
 		}
 	}
 
