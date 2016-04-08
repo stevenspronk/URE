@@ -39,8 +39,18 @@ sap.ui.define([
 					var oBindings = this.getView().getModel("RaceMetaData").bindList("/URE_METADATA");
 
 					// Generate a RACE ID and bind it to the input
+				//	var aSorter = new sap.ui.model.Sorter("RACE_ID", true);
+					//oBindings.sort(aSorter);
+					
+					//oRaceMetaData.setSizeLimit(1);
+					//var line1 = oRaceMetaData.getData("/URE_METADATA/RACE_ID");
+					
+					//raceID = oRaceMetaData.getProperty("/URE_METADATA(1)/RACE_ID");
+		
+		
 					raceID = oBindings.getLength() + 1;
 					this.getView().byId("Race_Id").setValue(oBindings.getLength() + 1);
+					this.getView().byId("Run_Id").setValue(1);
 				},
 
 				clearModel: function() {
@@ -90,7 +100,6 @@ sap.ui.define([
 
 						var data = {
 							"RACE_ID": this.isEmpty(this.getView().byId("Race_Id").getValue()),
-							"RUN_ID": this.isEmpty(this.getView().byId("Run_Id").getValue()),
 							"CIRCUIT": this.isEmpty(this.getView().byId("Input_Circuit").getValue()),
 							"TEMPERATURE": this.isEmpty(this.getView().byId("Input_Temperature").getSelectedKey()),
 							"RACE_DESCRIPTION": this.isEmpty(this.getView().byId("Input_Race_Description").getValue()),
@@ -104,7 +113,8 @@ sap.ui.define([
 							"NAME_DRIVER": this.isEmpty(this.getView().byId("Input_DriverName").getValue()),
 							"LENGTH_DRIVER": this.isEmpty(this.getView().byId("Input_DriverLength").getValue()),
 							"WEIGHT_DRIVER": this.isEmpty(this.getView().byId("Input_DriverWeight").getValue()),
-							"DRIVER_NOTES": this.isEmpty(this.getView().byId("Input_DriverNotes").getValue())
+							"DRIVER_NOTES": this.isEmpty(this.getView().byId("Input_DriverNotes").getValue()),
+							"RUN_ID": this.isEmpty(this.getView().byId("Run_Id").getValue())
 						};
 
 						var method;
