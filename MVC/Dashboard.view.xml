@@ -132,7 +132,7 @@
 					</content>
 				</CustomTile>
 				
-								<CustomTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" xmlns="sap.m">
+					<CustomTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" xmlns="sap.m">
 					<content>
 						<html:div class="container">
 							<sap.ui.core:Icon size="30pt"  class="dashboardIcon" src="sap-icon://sort"/>
