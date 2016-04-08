@@ -27,12 +27,12 @@
 								<html:div class="counter_home" id="counterDiv"> 
 									<ui.commons:ColumnMicroChart class="sapUiSmallMargin" height="100px" press="press" size="S" width="80%">
 										<ui.commons:columns>
-											<ui.commons:ColumnData color="Good" height="5px" value="{Overview>/d/MAX_TEMP_BUCKET6}" width="7px"/>
-											<ui.commons:ColumnData color="Good" height="5px" value="{Overview>/d/MAX_TEMP_BUCKET5}" width="7px"/>
-											<ui.commons:ColumnData color="Good" height="5px" value="{Overview>/d/MAX_TEMP_BUCKET4}" width="7px"/>
-											<ui.commons:ColumnData color="Neutral" height="5px" value="{Overview>/d/MAX_TEMP_BUCKET3}" width="7px"/>
-											<ui.commons:ColumnData color="Good" height="7px" value="{Overview>/d/MAX_TEMP_BUCKET2}" width="7px"/>
-											<ui.commons:ColumnData color="Good" height="5px" value="{Overview>/d/MAX_TEMP_BUCKET1}" width="7px"/>
+											<ui.commons:ColumnData color="{= ${Overview>/d/MAX_TEMP_BUCKET1} &lt; 3 ? 'Critical' : ${Overview>/d/MAX_TEMP_BUCKET6} &gt; 6 ? 'Good' : 'Neutral' }" height="5px" value="{Overview>/d/MAX_TEMP_BUCKET6}" width="7px"/>
+											<ui.commons:ColumnData color="{= ${Overview>/d/MAX_TEMP_BUCKET2} &lt; 3 ? 'Critical' : ${Overview>/d/MAX_TEMP_BUCKET6} &gt; 6 ? 'Good' : 'Neutral' }" height="5px" value="{Overview>/d/MAX_TEMP_BUCKET5}" width="7px"/>
+											<ui.commons:ColumnData color="{= ${Overview>/d/MAX_TEMP_BUCKET3} &lt; 3 ? 'Critical' : ${Overview>/d/MAX_TEMP_BUCKET6} &gt; 6 ? 'Good' : 'Neutral' }" height="5px" value="{Overview>/d/MAX_TEMP_BUCKET4}" width="7px"/>
+											<ui.commons:ColumnData color="{= ${Overview>/d/MAX_TEMP_BUCKET4} &lt; 3 ? 'Critical' : ${Overview>/d/MAX_TEMP_BUCKET6} &gt; 6 ? 'Good' : 'Neutral' }" height="5px" value="{Overview>/d/MAX_TEMP_BUCKET3}" width="7px"/>
+											<ui.commons:ColumnData color="{= ${Overview>/d/MAX_TEMP_BUCKET5} &lt; 3 ? 'Critical' : ${Overview>/d/MAX_TEMP_BUCKET6} &gt; 6 ? 'Good' : 'Neutral' }" height="7px" value="{Overview>/d/MAX_TEMP_BUCKET2}" width="7px"/>
+											<ui.commons:ColumnData color="{= ${Overview>/d/MAX_TEMP_BUCKET6} &lt; 3 ? 'Critical' : ${Overview>/d/MAX_TEMP_BUCKET6} &gt; 6 ? 'Good' : 'Neutral' }" height="5px" value="{Overview>/d/MAX_TEMP_BUCKET1}" width="7px"/>
 										</ui.commons:columns>
 									</ui.commons:ColumnMicroChart>
 								</html:div>
@@ -48,7 +48,7 @@
 							<html:div class="counter_home" id="counterDiv">
 									<ui.commons:ColumnMicroChart class="sapUiSmallMargin" height="100px" press="press" size="S" width="80%">
 										<ui.commons:columns>
-											<ui.commons:ColumnData color="Neutral" height="5px" value="30" width="10px"/>
+											<ui.commons:ColumnData color="{= ${Overview>/d/STATE_OF_CHARGE} &lt; 3 ? 'Critical' : ${Overview>/d/STATE_OF_CHARGE} &gt; 6 ? 'Good' : 'Neutral' }" height="5px" value="Overview>/d/STATE_OF_CHARGE}" width="10px"/>
 										</ui.commons:columns>
 									</ui.commons:ColumnMicroChart>
 								</html:div>

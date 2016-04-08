@@ -9,7 +9,6 @@ sap.ui.controller("MVC.Dashboard", {
 	 */
 	onInit: function() {
 	
-		// MAKE FIXED 21
 		raceID = 21;
 		var url = "/destinations/McCoy_URE/Overview.xsodata/OVERVIEW(" + raceID + ")?$format=json";
 		var dashboardModel = new sap.ui.model.json.JSONModel(url);
@@ -24,6 +23,7 @@ sap.ui.controller("MVC.Dashboard", {
 				}
 			}, 1000);
 		}, 1000);
+
 
 	
 	},

@@ -115,13 +115,16 @@ sap.ui.define([
 
 			var oDataset = new FlattenedDataset({
 				dimensions: [{
-					name: 'SENSOR_TIMESTAMP',
-					value: "{SENSOR_TIMESTAMP}"
+					name: 'FORMATTED_TIMESTAMP',
+					value: "{FORMATTED_TIMESTAMP}"
 				}],
-				measures: {
+				measures: [{
 					name: 'MAX_TEMP_BUCKET1',
 					value: '{MAX_TEMP_BUCKET1}'
-				},
+				}, {
+                    name: 'MAX_TEMP_BUCKET2',
+                    value: '{MAX_TEMP_BUCKET2}'
+                }],
 				data: {
 					path: "/d/results"
 				}
@@ -192,12 +195,12 @@ sap.ui.define([
 			var feedValueAxis = new FeedItem({
 					'uid': "valueAxis",
 					'type': "Measure",
-					'values': ["MAX_TEMP_BUCKET1"]
+					'values': ["MAX_TEMP_BUCKET1", "MAX_TEMP_BUCKET2"]
 				}),
 				feedCategoryAxis = new FeedItem({
 					'uid': "categoryAxis",
 					'type': "Dimension",
-					'values': ["SENSOR_TIMESTAMP"]
+					'values': ["FORMATTED_TIMESTAMP"]
 				});
 
 			/*
