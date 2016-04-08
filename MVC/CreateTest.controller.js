@@ -42,7 +42,7 @@ sap.ui.define([
 				null,
 				false,
 				function(oData, oResponse) {
-					raceID = parseInt(oData.results[0].RACE_ID) + 1;
+					raceID = oData.results[0].RACE_ID + 1;
 					runID = 1;
 				}); //successful output  
 			

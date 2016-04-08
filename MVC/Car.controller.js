@@ -54,7 +54,7 @@ sap.ui.define([
 
 			//            var dataPath = "https://webidetesting1843786-p1940830713trial.dispatcher.hanatrial.ondemand.com/destinations/McCoy_URE/UreSensor.xsodata";
 		//	var oDataModel = new sap.ui.model.odata.ODataModel("/destinations/McCoy_URE/Racedata.xsodata/");
-		var url = "/destinations/McCoy_URE/Racedata.xsodata/RACEDATA?$format=json&$filter=RACE_ID eq " + raceID;
+		var url = "/destinations/McCoy_URE/Racedata.xsodata/RACEDATA?$format=json&$filter=RACE_ID eq " + raceID + " and RUN_ID eq " + runID ;
 		var oDataModel = new sap.ui.model.json.JSONModel(url);	
 	//	oDataModel.loadData(url);
 				
