@@ -7,45 +7,8 @@
     xmlns="sap.m"
 >
     <l:FixFlex id="idFixFlex" class="fixFlexFixedSize" minFlexSize="250">
-        <!--Below is the setting panel-->
-        <l:fixContent>    
-            <Panel id="PN-1" class="panelStyle" expandable="true" expanded="false" headerText="Settings">
-                <ScrollContainer
-                    class="scrollStyle"
-                    height="100%"
-                    width="100%"
-                    horizontal="true"
-                    vertical="false"
-                    focusable="false">
-                    <HBox class="settingBottomStyle" width="auto">
-                        <HBox id="HB-1" class="HBoxStyle">
-                            <VBox id="BX-1" class="boxPosition" width="90px">
-                                <Label text="Dataset" class="sapUiSmallMarginTop labelStyle" design="Bold"/>
-                                <RadioButton class="buttonPosition" id="RB1-1" groupName="line-group1" text="Small"/>
-                                <RadioButton class="buttonPosition" id="RB1-2" groupName="line-group1" text="Medium"  />
-                                <RadioButton class="buttonPosition bottomButtonStyle" id="RB1-3" groupName="line-group1" text="Large" selected="true"/>
-                            </VBox>
-                            <VBox id="BX-2" class="boxPosition" width="90px">
-                                <Label text="Series" class="sapUiSmallMarginTop labelStyle" design="Bold"/>
-                                <RadioButton class="buttonPosition" id="RB2-1" groupName="line-group2" text="1 Series" selected="true" />
-                                <RadioButton class="buttonPosition bottomButtonStyle" id="RB2-2" groupName="line-group2" text="2 Series" />
-                            </VBox>
-                            <VBox id="BX-3" class="boxPosition" width="90px">
-                                <Label text="Value Label" class="sapUiSmallMarginTop labelStyle" design="Bold"/>
-                                <Switch id="SW-1" class="switchPosition" state="true" customTextOn="ON" customTextOff="OFF"></Switch>
-                            </VBox>
-                            <VBox width="90px">
-                                <Label text="Axis Title" class="sapUiSmallMarginTop labelStyle" design="Bold"/>
-                                <Switch id="SW-2" class="switchPosition" state="false" customTextOn="ON" customTextOff="OFF"></Switch>
-                            </VBox>
-                        </HBox>
-                    </HBox>
-                </ScrollContainer>
-            </Panel>
-        </l:fixContent>
-        <!--Above is the setting panel-->
-        <!--Below is the chart area-->
-        <l:flexContent>
+             <!--Below is the chart area-->
+        <l:flexContent> 
             <viz:Popover id="idPopOver"></viz:Popover>
             <viz:VizFrame id="idVizFrameLine" uiConfig="{applicationSet:'fiori'}" height="100%" width="100%"></viz:VizFrame>
         </l:flexContent>
