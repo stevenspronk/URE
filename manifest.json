@@ -52,6 +52,10 @@
 				"name": "Overview",
 				"target": "Overview"
 			}, {
+				"pattern": "History",
+				"name": "History",
+				"target": "History"
+			}, {
 				"name": "Dashboard",
 				"pattern": "Dashboard",
 				"greedy": false
@@ -68,6 +72,13 @@
 					"clearAggregation": "true",
 					"viewName": "Dashboard",
 					"viewId": "dashboard"
+				},
+				"History": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearAggregation": "true",
+					"viewName": "History",
+					"viewId": "history"
 				}
 			}
 		},
