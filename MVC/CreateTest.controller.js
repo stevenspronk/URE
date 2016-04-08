@@ -36,7 +36,6 @@ sap.ui.define([
 
 			this.getView().setModel(oRaceMetaData, "RaceMetaData");
 
-
 			oRaceMetaData.read("/URE_METADATA?$orderby=RACE_ID%20desc&$top=1",
 				null,
 				null,
@@ -45,9 +44,16 @@ sap.ui.define([
 					raceID = oData.results[0].RACE_ID + 1;
 					runID = 1;
 				}); //successful output  
-			
+
 			this.getView().byId("Race_Id").setValue(raceID);
 			this.getView().byId("Run_Id").setValue(runID);
+
+			var oModel = new sap.ui.model.json.JSONModel({
+				raceID: raceID,
+				runID: runID
+			});
+			sap.ui.getCore().setModel(oModel, "ID");
+
 		},
 
 		clearModel: function() {

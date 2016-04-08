@@ -14,7 +14,7 @@ sap.ui.define([
 			var oFixFlex = this.getView().byId("idFixFlex");
 			ControllerOverall.customFormat(); // set customized format
 			ControllerOverall.loadLibrary(oVizFrame, oFixFlex); // load "sap.suite.ui.commons"
- 
+
 			var oVizFrame = this.getView().byId("idVizFrameLine");
 			oVizFrame.setVizType('line');
 			oVizFrame.setUiConfig({
@@ -52,16 +52,19 @@ sap.ui.define([
 			oPopOver.connect(oVizFrame.getVizUid());
 			oPopOver.setFormatString(FIORI_LABEL_FORMAT_2);
 
+			var oModel = sap.ui.getCore().getModel("ID");
+			var raceID = oModel.oData.raceID;
+			var runID = oModel.oData.runID;
+
 			//            var dataPath = "https://webidetesting1843786-p1940830713trial.dispatcher.hanatrial.ondemand.com/destinations/McCoy_URE/UreSensor.xsodata";
-		//	var oDataModel = new sap.ui.model.odata.ODataModel("/destinations/McCoy_URE/Racedata.xsodata/");
-		var url = "/destinations/McCoy_URE/Racedata.xsodata/RACEDATA?$format=json&$filter=RACE_ID eq " + raceID + " and RUN_ID eq " + runID ;
-		var oDataModel = new sap.ui.model.json.JSONModel(url);	
-	//	oDataModel.loadData(url);
-				
-		//	var data = oDataModel.getData("/RACEDATA('RACE_ID=2')");
-			
-			
-/*			oDataModel.read("/RACEDATA",null, null, false, function (oEvent){
+			//	var oDataModel = new sap.ui.model.odata.ODataModel("/destinations/McCoy_URE/Racedata.xsodata/");
+			var url = "/destinations/McCoy_URE/Racedata.xsodata/RACEDATA?$format=json&$filter=RACE_ID eq " + raceID + " and RUN_ID eq " + runID;
+			var oDataModel = new sap.ui.model.json.JSONModel(url);
+			//	oDataModel.loadData(url);
+
+			//	var data = oDataModel.getData("/RACEDATA('RACE_ID=2')");
+
+			/*			oDataModel.read("/RACEDATA",null, null, false, function (oEvent){
 				
 			}
 			, function (oError) {
@@ -69,8 +72,8 @@ sap.ui.define([
 			}
 			);
 			//oDataModel.*/
-			
-/*			oDataModel.read("/RACEDATA", {
+
+			/*			oDataModel.read("/RACEDATA", {
 				async: false,
 				success: function (oEvent) {
 				var map = [];
@@ -95,15 +98,13 @@ sap.ui.define([
 			jQuery.sap.log.error("An error occurred while processing RaceData");
 			}
 			});*/
-			
-			
-			
+
 			this.getView().setModel(oDataModel, "RaceData");
 
 			//			var dataPath = "test-resources/sap/viz/demokit/dataset/milk_production_testing_data/revenue_cost_consume";
 			//			var oModel = new JSONModel(oDataModel.getData());
 			//			var oModelS = new JSONModel(oDataModel.getData());
-//			var oModelL = new JSONModel(oDataModel.getData());
+			//			var oModelL = new JSONModel(oDataModel.getData());
 
 			//            var oModel = new JSONModel(dataPath);
 			//			var oModelS = new JSONModel(dataPath);
@@ -122,15 +123,13 @@ sap.ui.define([
 					name: 'MAX_TEMP_BUCKET1',
 					value: '{MAX_TEMP_BUCKET1}'
 				}, {
-                    name: 'MAX_TEMP_BUCKET2',
-                    value: '{MAX_TEMP_BUCKET2}'
-                }],
+					name: 'MAX_TEMP_BUCKET2',
+					value: '{MAX_TEMP_BUCKET2}'
+				}],
 				data: {
 					path: "/d/results"
 				}
 			});
-			
-			
 
 			/*          var oDataset = new FlattenedDataset({
                 dimensions: [{
