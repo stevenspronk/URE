@@ -10,12 +10,16 @@ sap.ui.controller("MVC.App", {
 	 * @memberOf MVC.App
 	 */
 	onInit: function() {
-
+		// Create all data models and bind them to the core
+		// These can be retreived in each view
+		
 		// Create an oData model for the messages from the powertrain
 		var oMsg = new sap.ui.model.odata.ODataModel('/destinations/McCoy_URE/Powertrain.xsodata/');
 		//oMsg.setSizeLimit(20);
 		sap.ui.getCore().setModel(oMsg, "Msg");
 
+		//Create a model to store in which tab we are (filled from the Overview.controller.js)
+		//We fill it initially with the Dashboard view
 		var oSelection = new sap.ui.model.json.JSONModel({
 			selectedView: "Dashboard"
 		});
@@ -37,7 +41,7 @@ sap.ui.controller("MVC.App", {
 	 * @memberOf MVC.App
 	 */
 	onAfterRendering: function() {
-
+		// The app should refresh the data continuesly, but not all models, only the models of the active tab
 		var me = this;
 
 		setTimeout(function() {

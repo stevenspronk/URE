@@ -8,11 +8,8 @@ sap.ui.controller("MVC.Powertrain", {
 	onInit: function() {
 
 		var oMsg = sap.ui.getCore().getModel("Msg");
-
-		//oMsg.setSizeLimit(20);
 		this.getView().setModel(oMsg, "Msg");
-
-	}, 
+	},
 	// 
 	/**
 	 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
@@ -29,9 +26,13 @@ sap.ui.controller("MVC.Powertrain", {
 	 * @memberOf MVC.Powertrain
 	 */
 	onAfterRendering: function() {
+		var oId = sap.ui.getCore().getModel("ID");
+		var raceID = oId.oData.raceID;
+		var runID = oId.oData.runID;
 
 		var aFilter = [];
 		aFilter.push(new sap.ui.model.Filter("RACE_ID", sap.ui.model.FilterOperator.EQ, raceID));
+		aFilter.push(new sap.ui.model.Filter("RUN_ID", sap.ui.model.FilterOperator.EQ, runID));
 
 		// filter binding
 		var oList = this.getView().byId("Msg");
