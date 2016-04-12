@@ -10,6 +10,14 @@ sap.ui.controller("MVC.Overview", {
 	onInit: function() {
 		this.router = sap.ui.core.UIComponent.getRouterFor(this);
 		this.router.attachRoutePatternMatched(this._handleRouteMatched, this);
+		
+		//Create a model to store in which tab we are (filled from the Overview.controller.js)
+		//We fill it initially with the Dashboard view
+		var oSelection = new sap.ui.model.json.JSONModel({
+			selectedView: "Dashboard"
+		});
+		sap.ui.getCore().setModel(oSelection, "Selection");
+
 	},
 	
 	onSelect: function(oEvent) {
@@ -41,9 +49,46 @@ sap.ui.controller("MVC.Overview", {
 * This hook is the same one that SAPUI5 controls get after being rendered.
 * @memberOf MVC.Overview
 */
-//	onAfterRendering: function() {
-//
-//	},
+	onAfterRendering: function() {
+		// The app should refresh the data continuesly, but not all models, only the models of the active tab
+		var me = this;
+
+		setTimeout(function() {
+			setInterval(function() {
+				var oSelection = sap.ui.getCore().getModel("Selection");
+				var key = oSelection.oData.selectedView;
+
+				me.refreshData(key);
+			}, 1000);
+		}, 1000);
+
+	},
+
+	/**
+	 * Called when the Controller is destroyed. Use this one to free resources and finalize activities.
+	 * @memberOf MVC.App
+	 */
+	//	onExit: function() {
+	//
+	//	}
+
+	refreshData: function(key) {
+		switch (key) {
+			case "Powertrain":
+				var oMsg = sap.ui.getCore().getModel("Msg");
+				oMsg.refresh();
+				break;
+			case "Dashboard":
+
+				break;
+			case "Car":
+
+				break;
+			case "Driver":
+
+				break;
+		}
+	},
 
 /**
 * Called when the Controller is destroyed. Use this one to free resources and finalize activities.

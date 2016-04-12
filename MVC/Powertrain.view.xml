@@ -1,13 +1,12 @@
-<mvc:View controllerName="MVC.Powertrain" height="100%" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="MVC.Powertrain"
-	xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.layout="sap.ui.layout"
-	xmlns:ui.commons="sap.suite.ui.commons" xmlns="sap.m">
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="MVC.Powertrain" xmlns:sap.ui.core="sap.ui.core"
+	xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.layout="sap.ui.layout" xmlns:ui.commons="sap.suite.ui.commons" xmlns="sap.m"
+	controllerName="MVC.Powertrain" height="100%">
 	<Panel>
-		<Label id="RaceIdLabel" text="{raceID}"></Label>
+		<Label id="RaceIdLabel" text="{raceID}"/>
 		<List id="Msg" items="{Msg>/POWERTRAIN}" width="100%">
 			<items>
 				<ObjectListItem icon="{= ${Msg>MSG_TYPE} === 'E' ? 'sap-icon://message-error' : 'sap-icon://message-warning' }" id="MsgIt"
-					number="{Msg>MSG_TIMESTAMP}" numberState="{= ${Msg>STATUS} === '1' ? 'Error' : 'Success' }" title="{Msg>MSG_TEXT}">
-				</ObjectListItem>
+					number="{Msg>MSG_TIMESTAMP}" numberState="{= ${Msg>STATUS} === '1' ? 'Error' : 'Success' }" title="{Msg>MSG_TEXT}"></ObjectListItem>
 			</items>
 		</List>
 	</Panel>
