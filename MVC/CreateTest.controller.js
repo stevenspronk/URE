@@ -108,6 +108,7 @@ sap.ui.define(["JS/validator"], function(Validator) {
 				//requestObj.success = this.goToOverview(); // Aanroepen overview scherm
 				var me = this;
 				OData.request(requestObj, function() {
+					
 					me.goToOverview();
 				});
 			};

@@ -12,8 +12,9 @@
 			                	<Text text="{RACE_ID}" maxLines="0" id="__text1"/>
 			                    <Text text="{RUN_ID}" maxLines="0" id="__text2"/>
 			                	<Text text="{CIRCUIT}" maxLines="0" id="__text5"/>
-			            	    <Text text="{path: 'START_TIME', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd/MM/yyyy' } }" maxLines="0" id="__text3"/>	
-			                    <Text text="{path: 'END_TIME', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd/MM/yyyy' } }" maxLines="0" id="__text4"/>
+			                		
+			                	<Text text="{path: 'START_TIME', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd.MM.yyyy HH:mm:ss' } }" id="__text3"/>
+			            	    <Text text="{path: 'END_TIME', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy HH:mm:ss' } }" maxLines="0" id="__text4"/>
 							</cells>
 			            </ColumnListItem>
 			        </items>
