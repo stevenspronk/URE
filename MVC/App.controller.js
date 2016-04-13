@@ -13,18 +13,9 @@ sap.ui.controller("MVC.App", {
 		// Create all data models and bind them to the core
 		// These can be retreived in each view
 		
-		// Create an oData model for the messages from the powertrain
-		var oMsg = new sap.ui.model.odata.ODataModel('/destinations/McCoy_URE/Powertrain.xsodata/');
-		//oMsg.setSizeLimit(20);
-		sap.ui.getCore().setModel(oMsg, "Msg");
 
-		//Create a model to store in which tab we are (filled from the Overview.controller.js)
-		//We fill it initially with the Dashboard view
-		var oSelection = new sap.ui.model.json.JSONModel({
-			selectedView: "Dashboard"
-		});
-		sap.ui.getCore().setModel(oSelection, "Selection");
-	},
+
+	}
 
 	/**
 	 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
@@ -40,7 +31,7 @@ sap.ui.controller("MVC.App", {
 	 * This hook is the same one that SAPUI5 controls get after being rendered.
 	 * @memberOf MVC.App
 	 */
-	onAfterRendering: function() {
+/*	onAfterRendering: function() {
 		// The app should refresh the data continuesly, but not all models, only the models of the active tab
 		var me = this;
 
@@ -63,7 +54,7 @@ sap.ui.controller("MVC.App", {
 	//
 	//	}
 
-	refreshData: function(key) {
+/*	refreshData: function(key) {
 		switch (key) {
 			case "Powertrain":
 				var oMsg = sap.ui.getCore().getModel("Msg");
@@ -79,6 +70,6 @@ sap.ui.controller("MVC.App", {
 
 				break;
 		}
-	}
+	}*/
 
 });

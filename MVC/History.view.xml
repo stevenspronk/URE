@@ -2,7 +2,7 @@
 		<pages>
 			<Page title="{i18n>title}" showNavButton="true" navButtonPress="onNavBack">
 			<content>
-			    <Table noDataText="Drop column list items here and columns in the area above" id="__table0" mode="SingleSelectLeft" items="{/URE_METADATA}" selectionChange="goToDetails">
+			    <Table noDataText="Drop column list items here and columns in the area above" id="__table0" mode="SingleSelectLeft" items="{/URE_METADATA}" selectionChange="selectHistory">
 			        <customData>
 			            <sap.ui.core:CustomData key="sap-ui-fastnavgroup" value="true" writeToDom="true" id="__data2"/>
 			        </customData>
@@ -47,6 +47,9 @@
 			</content>
 			<footer>  
                 <Bar>  
+                <contentRight>  
+                    <Button text="Analyze" width="100px" id="__button0" press="goToHistoryDashboard"/>  
+                </contentRight>  
                 </Bar>  
             </footer>
 

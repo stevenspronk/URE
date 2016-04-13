@@ -33,9 +33,5 @@
   "build": {
     "buildRequired": true
   },
-  "dataBinding": {
-    "/MVC/Powertrain.view.xml": {
-      "entitySet": "ZURE_ALL"
-    }
-  }
+  "dataBinding": {}
 }

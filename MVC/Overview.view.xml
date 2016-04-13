@@ -1,37 +1,27 @@
-<mvc:View xmlns:mvc="MVC.Overview" 
-		  xmlns="sap.m" 
-		  xmlns:core.mvc="sap.ui.core.mvc"
-	      controllerName="MVC.Overview">
-
+<mvc:View xmlns:mvc="MVC.Overview" xmlns="sap.m" xmlns:core.mvc="sap.ui.core.mvc" controllerName="MVC.Overview">
 	<Page title="URE Racing: Overview" class="sapUiContentPadding" showNavButton="true" navButtonPress="onNavBack">
-
-	<IconTabBar id="idIconTabBarNoIcons" 
-				stretchContentHeight="true" 
-				expanded="true" expandable="false" 
-				class="sapUiResponsiveContentPadding" 
-				select="onSelect"
-				backgroundDesign="Transparent"
-				>
-		<items>
-			<IconTabFilter key="Dashboard" text="Overview">
-				<core.mvc:XMLView viewName="MVC.Dashboard"></core.mvc:XMLView>
-			</IconTabFilter>
-			<IconTabFilter key="Car" text="Auto">
-				<core.mvc:XMLView viewName="MVC.Car"></core.mvc:XMLView>
-			</IconTabFilter>
-			<IconTabFilter key="Driver" text="Coureur" press="onNavBack">
-				<core.mvc:XMLView viewName="MVC.Driver"></core.mvc:XMLView>
-			</IconTabFilter>
-			<IconTabFilter key="Powertrain" text="Powertrain">
-				<core.mvc:XMLView viewName="MVC.Powertrain"></core.mvc:XMLView>
-			</IconTabFilter>
-		</items>
-	</IconTabBar>
-	<footer>
-		<Toolbar>
-			<ToolbarSpacer/>
-			<Button text="Nieuwe test" activeIcon="sap-icon://create" press="newTest" icon="sap-icon://create"/>
-		</Toolbar>
-	</footer>
+		<IconTabBar id="idIconTabBarNoIcons" stretchContentHeight="true" expanded="true" expandable="false" class="sapUiResponsiveContentPadding"
+			select="onSelect" backgroundDesign="Transparent">
+			<items>
+				<IconTabFilter key="Dashboard" text="Overview">
+					<core.mvc:XMLView viewName="MVC.Dashboard"/>
+				</IconTabFilter>
+				<IconTabFilter key="Car" text="Auto">
+					<core.mvc:XMLView viewName="MVC.Car"/>
+				</IconTabFilter>
+				<IconTabFilter key="Driver" text="Coureur" press="onNavBack">
+					<core.mvc:XMLView viewName="MVC.Driver"/>
+				</IconTabFilter>
+				<IconTabFilter key="Powertrain" text="Powertrain">
+					<core.mvc:XMLView viewName="MVC.Powertrain"/>
+				</IconTabFilter>
+			</items>
+		</IconTabBar>
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button text="Nieuwe test" activeIcon="sap-icon://create" press="newTest" icon="sap-icon://create"/>
+			</Toolbar>
+		</footer>
 	</Page>
 </mvc:View>
