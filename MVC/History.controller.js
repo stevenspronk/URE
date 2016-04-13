@@ -16,7 +16,6 @@ selectHistory: function () {
 				raceID: raceID,
 				runID: runID
 			});
-			debugger;
 			 // var end_date = new Date(oDetail.DateEnd);
              // var start_time = new Date(oDetail.TimeStart.ms).getUTCHours() + ":" + new Date(oDetail.TimeStart.ms).getUTCMinutes() + ":" + new Date(oDetail.TimeStart.ms).getUTCSeconds();
              // var end_time = new Date(oDetail.TimeEnd.ms).getUTCHours() + ":" + new Date(oDetail.TimeEnd.ms).getUTCMinutes() + ":" + new Date(oDetail.TimeStart.ms).getUTCSeconds();
