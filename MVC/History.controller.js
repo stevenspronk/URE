@@ -11,7 +11,13 @@ selectHistory: function () {
 			var oDetail = this.getView().getModel().getProperty(sPath);
 			raceID = oDetail.RACE_ID;
 			runID = oDetail.RUN_ID;
-			debugger;	// var end_date = new Date(oDetail.DateEnd);
+			
+			var oModel = new sap.ui.model.json.JSONModel({
+				raceID: raceID,
+				runID: runID
+			});
+			debugger;
+			 // var end_date = new Date(oDetail.DateEnd);
              // var start_time = new Date(oDetail.TimeStart.ms).getUTCHours() + ":" + new Date(oDetail.TimeStart.ms).getUTCMinutes() + ":" + new Date(oDetail.TimeStart.ms).getUTCSeconds();
              // var end_time = new Date(oDetail.TimeEnd.ms).getUTCHours() + ":" + new Date(oDetail.TimeEnd.ms).getUTCMinutes() + ":" + new Date(oDetail.TimeStart.ms).getUTCSeconds();
              // this.getView().byId("txtStartDate").setDateValue(start_date);
