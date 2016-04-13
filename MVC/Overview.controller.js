@@ -109,51 +109,38 @@ sap.ui.controller("MVC.Overview", {
 	},
 
 	newTest: function() {
-		var oRaceMetaData = new sap.ui.model.odata.ODataModel("/destinations/McCoy_URE/UreMetadata.xsodata/");
-		//var oRaceModel = sap.ui.getCore().byId;
 
-		var sPath = "/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")";
-
-		//oRaceMetaData.getData(sPath);
-
-		oRaceMetaData.read(sPath, function() {
-			console.log("update succeeded");
-		}, function() {
-			console.log("update failed");
-		});
-
-		debugger;
+		var data = sap.ui.getCore().getModel("RaceMetaData").getData();
+		data.END_TIME = new Date();
 		
-		// Set END_TIME
-		var data = {
-			"RACE_ID": raceID,
-			"RUN_ID": runID,
-			"CIRCUIT": oRaceMetaData.CIRCUIT,
-			"TEMPERATURE": oRaceMetaData.TEMPERATURE,
-			"RACE_DESCRIPTION": oRaceMetaData.RACE_DESCRIPTION,
-			"START_TIME": oRaceMetaData.START_TIME,
-			"END_TIME": new Date(),
-			"RACE_TYPE": oRaceMetaData.RACE_TYPE,
-			"WEATHER": oRaceMetaData.WEATHER,
-			"NOTES": oRaceMetaData.NOTES,
-			"CAR_ID": oRaceMetaData.CAR_ID,
-			"CAR_NOTES": oRaceMetaData.CAR_NOTES,
-			"NAME_DRIVER": oRaceMetaData.NAME_DRIVER,
-			"LENGTH_DRIVER": oRaceMetaData.LENGTH_DRIVER,
-			"WEIGHT_DRIVER": oRaceMetaData.WEIGHT_DRIVER,
-			"DRIVER_NOTES": oRaceMetaData.DRIVER_NOTES
+		var oId = sap.ui.getCore().getModel("ID");
+		var raceID = oId.oData.raceID;
+		var runID = oId.oData.runID;
+		
+		var method = "PUT";
+		var url = "/destinations/McCoy_URE/UreMetadata.xsodata/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")";
+
+		var requestObj = {
+			requestUri: url,
+			method: method,
+			data: data,
+			headers: {
+				"X-Requested-With": "XMLHttpRequest",
+				"Content-Type": "application/json;odata=minimalmetadata",
+				"DataServiceVersion": "3.0",
+				"MaxDataServiceVersion": "3.0",
+				"Accept": "application/json;odata=minimalmetadata"
+			}
 		};
 
-		oRaceMetaData.update(sPath, data, function() {
-			console.log("update succeeded");
-		}, function() {
-			console.log("update failed");
-		});
+		OData.request(requestObj, function() {
 
-		var router = sap.ui.core.UIComponent.getRouterFor(this);
-		router.navTo("CreateTest", {
-			id: 1
-		}, false);
+			var router = sap.ui.core.UIComponent.getRouterFor(this);
+			router.navTo("CreateTest", {
+				id: 1
+			}, false);
+
+		});
 
 		// Set variable crudTest to C = Create		
 		crudTest = 'C';

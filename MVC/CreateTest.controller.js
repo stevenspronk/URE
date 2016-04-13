@@ -19,24 +19,49 @@ sap.ui.define(["JS/validator"], function(Validator) {
 			if (crudTest === "C") {
 				//this.clearModel();
 			}
+			
+			//First read the latest Race and Run ID from the backend.
 			var oRaceMetaData = new sap.ui.model.odata.ODataModel("/destinations/McCoy_URE/UreMetadata.xsodata/");
 			oRaceMetaData.oHeaders = {
 				"DataServiceVersion": "3.0",
 				"MaxDataServiceVersion": "3.0"
 			};
-			this.getView().setModel(oRaceMetaData, "RaceMetaData");
+			
 			oRaceMetaData.read("/URE_METADATA?$orderby=RACE_ID%20desc&$top=1", null, null, false, function(oData, oResponse) {
 				raceID = oData.results[0].RACE_ID + 1;
 				runID = 1;
 			});
-			//successful output  
-			this.getView().byId("Race_Id").setValue(raceID);
-			this.getView().byId("Run_Id").setValue(runID);
+
+			//Then, we create a new JSON model with the Race ID and Run ID filled in
+			var metaJson = new sap.ui.model.json.JSONModel({
+				"RACE_ID": raceID,
+				"RUN_ID": runID,
+				"CIRCUIT": null,
+				"TEMPERATURE": null,
+				"RACE_DESCRIPTION": null,
+				"START_TIME": null,
+				"END_TIME": null,
+				"RACE_TYPE": null,
+				"WEATHER": null,
+				"NOTES": null,
+				"CAR_ID": null,
+				"CAR_NOTES": null,
+				"NAME_DRIVER": null,
+				"LENGTH_DRIVER": null,
+				"WEIGHT_DRIVER": null,
+				"DRIVER_NOTES": null
+			});
+
+		
+			this.getView().setModel(metaJson, "RaceMetaData");
+			
 			var oModel = new sap.ui.model.json.JSONModel({
 				raceID: raceID,
 				runID: runID
 			});
 			sap.ui.getCore().setModel(oModel, "ID");
+			sap.ui.getCore().setModel(metaJson, "RaceMetaData");
+
 		},
 		clearModel: function() {},
 		/**
@@ -73,7 +98,10 @@ sap.ui.define(["JS/validator"], function(Validator) {
 						"Accept": "application/json;odata=minimalmetadata"
 					}
 				};
-				var data = {
+				var data = sap.ui.getCore().getModel("RaceMetaData").getData();
+				data.START_TIME = new Date();
+				
+				/*var data = {
 					"RACE_ID": this.isEmpty(this.getView().byId("Race_Id").getValue()),
 					"RUN_ID": this.isEmpty(this.getView().byId("Run_Id").getValue()),
 					"CIRCUIT": this.isEmpty(this.getView().byId("Input_Circuit").getValue()),
@@ -90,7 +118,7 @@ sap.ui.define(["JS/validator"], function(Validator) {
 					"LENGTH_DRIVER": this.isEmpty(this.getView().byId("Input_DriverLength").getValue()),
 					"WEIGHT_DRIVER": this.isEmpty(this.getView().byId("Input_DriverWeight").getValue()),
 					"DRIVER_NOTES": this.isEmpty(this.getView().byId("Input_DriverNotes").getValue())
-				};
+				};*/
 				var method;
 				var url;
 				// Create
@@ -108,7 +136,7 @@ sap.ui.define(["JS/validator"], function(Validator) {
 				//requestObj.success = this.goToOverview(); // Aanroepen overview scherm
 				var me = this;
 				OData.request(requestObj, function() {
-					
+
 					me.goToOverview();
 				});
 			};
@@ -144,7 +172,7 @@ sap.ui.define(["JS/validator"], function(Validator) {
 		 */
 		goToHistory: function() {
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-			oRouter.navTo("History", {        //Router navigation is done in manifest.json Code Editor
+			oRouter.navTo("History", { //Router navigation is done in manifest.json Code Editor
 				id: 2
 			}, false);
 		}
