@@ -1,5 +1,5 @@
 <mvc:View xmlns:mvc="MVC.Overview" xmlns="sap.m" xmlns:core.mvc="sap.ui.core.mvc" controllerName="MVC.Overview">
-	<Page title="URE Racing: Overview" class="sapUiContentPadding" showNavButton="true" navButtonPress="onNavBack">
+	<Page title="URE Racing: Overview" class="sapUiContentPadding">
 		<IconTabBar id="idIconTabBarNoIcons" stretchContentHeight="true" expanded="true" expandable="false" class="sapUiResponsiveContentPadding"
 			select="onSelect" backgroundDesign="Transparent">
 			<items>

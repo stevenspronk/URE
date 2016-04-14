@@ -112,11 +112,11 @@ sap.ui.controller("MVC.Overview", {
 
 		var data = sap.ui.getCore().getModel("RaceMetaData").getData();
 		data.END_TIME = new Date();
-		
+
 		var oId = sap.ui.getCore().getModel("ID");
 		var raceID = oId.oData.raceID;
 		var runID = oId.oData.runID;
-		
+
 		var method = "PUT";
 		var url = "/destinations/McCoy_URE/UreMetadata.xsodata/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")";
 
@@ -135,12 +135,12 @@ sap.ui.controller("MVC.Overview", {
 
 		OData.request(requestObj, function() {
 
-			var router = sap.ui.core.UIComponent.getRouterFor(this);
-			router.navTo("CreateTest", {
-				id: 1
-			}, false);
-
 		});
+
+		var router = sap.ui.core.UIComponent.getRouterFor(this);
+		router.navTo("CreateTest", {
+			id: 1
+		}, false);
 
 		// Set variable crudTest to C = Create		
 		crudTest = 'C';
