@@ -1,58 +1,67 @@
-<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.layout="sap.ui.layout" controllerName="MVC.History" beforeRendering="onInit"><App id="history">
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.layout="sap.ui.layout" controllerName="MVC.History" beforeRendering="onInit">
+	<App id="history">
 		<pages>
 			<Page title="{i18n>title}" showNavButton="true" navButtonPress="onNavBack">
-			<content>
-			    <Table noDataText="Drop column list items here and columns in the area above" id="__table0" mode="SingleSelectLeft" items="{/URE_METADATA}" selectionChange="selectHistory">
-			        <customData>
-			            <sap.ui.core:CustomData key="sap-ui-fastnavgroup" value="true" writeToDom="true" id="__data2"/>
-			        </customData>
-			        <items>
-			            <ColumnListItem counter="0" id="__item0" type="Active" press="goToDetails">
-			                <cells>
-			                	<Text text="{RACE_ID}" maxLines="0" id="__text1"/>
-			                    <Text text="{RUN_ID}" maxLines="0" id="__text2"/>
-			                	<Text text="{CIRCUIT}" maxLines="0" id="__text5"/>
-			                		
-			                	<Text text="{path: 'START_TIME', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd.MM.yyyy HH:mm:ss' } }" id="__text3"/>
-			            	    <Text text="{path: 'END_TIME', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy HH:mm:ss' } }" maxLines="0" id="__text4"/>
-							</cells>
-			            </ColumnListItem>
-			        </items>
-			        <columns>
-			        	<Column id="__column0">
-			                <header>
-			                    <Label text="Race ID" id="__label3"/>
-			                </header>
-			            </Column>
-			            <Column id="__column1">
-			                <header>
-			                    <Label text="Run ID" id="__label0"/>
-			                </header>
-			            </Column>
-			            <Column id="__column4">
-			                <header>
-			                    <Label text="Circuit" id="__label4"/>
-			                </header>
-			            </Column>
-			            <Column id="__column2">
-			                <header>
-			                    <Label text="Start Time" id="__label1"/>
-			                </header>
-			            </Column>
-			            <Column id="__column3">
-			                <header>
-			                    <Label text="End Time" id="__label2"/>
-			                </header>
-			            </Column></columns></Table>
-			</content>
-			<footer>  
-                <Bar>  
-                <contentRight>  
-                    <Button text="Analyze" width="100px" id="__button0" press="goToHistoryDashboard"/>  
-                </contentRight>  
-                </Bar>  
-            </footer>
-
+				<content>
+					<Table noDataText="Drop column list items here and columns in the area above" id="__table1" growing="true" items="{/URE_METADATA}" itemPress="goToHistoryDashboard" growingScrollToLoad="true">
+						<items>
+							<ColumnListItem counter="0" type="Active" id="__item1">
+								<cells>
+									<Text text="{RACE_ID}" maxLines="0" id="__text0"/>
+									<Text text="{RUN_ID}" maxLines="0" id="__text1"/>
+									<Text text="{RACE_DESCRIPTION}" maxLines="0" id="__text2"/>
+									<Text text="{RACE_TYPE}" maxLines="0" id="__text3"/>
+									<Text text="{CIRCUIT}" maxLines="0" id="__text4"/>
+									<Text text="{WEATHER}" maxLines="0" id="__text5"/>
+									<Text text="{path: 'START_TIME', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd.MM.yyyy HH:mm:ss' } }" id="__text6"/>
+									<Text text="{path: 'END_TIME', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy HH:mm:ss' } }" maxLines="0" id="__text7"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+						<columns>
+							<Column id="__column1">
+								<header>
+									<Label text="Race ID" id="__label5"/>
+								</header>
+							</Column>
+							<Column id="__column2">
+								<header>
+									<Label text="Run ID" id="__label6"/>
+								</header>
+							</Column>
+							<Column id="__column3">
+								<header>
+									<Label text="Race omschrijving" id="__label7"/>
+								</header>
+							</Column>
+							<Column id="__column4">
+								<header>
+									<Label text="Test Type" id="__label8"/>
+								</header>
+							</Column>
+							<Column id="__column5">
+								<header>
+									<Label text="Circuit" id="__label9"/>
+								</header>
+							</Column>
+							<Column id="__column6">
+								<header>
+									<Label text="Weersomstandigheden" id="__label10"/>
+								</header>
+							</Column>
+							<Column id="__column7">
+								<header>
+									<Label text="Start Tijd" id="__label11"/>
+								</header>
+							</Column>
+							<Column id="__column8">
+								<header>
+									<Label text="Eind Tijd" id="__label12"/>
+								</header>
+							</Column>
+						</columns>
+					</Table>
+				</content>
 			</Page>
 		</pages>
 	</App>

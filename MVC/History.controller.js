@@ -5,7 +5,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function(Controller) {
 		 *@memberOf ProfileServices.controller.Overview
 		 */
 		selectHistory: function() {
-			var oTable = this.byId("__table0");
+			var oTable = this.byId("__table1");
 			var oSelectedItem = oTable.getSelectedItem();
 			var sPath = oSelectedItem.getBindingContext().getPath();
 			var oDetail = this.getView().getModel().getProperty(sPath);
