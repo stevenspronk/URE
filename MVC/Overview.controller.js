@@ -8,6 +8,14 @@ sap.ui.controller("MVC.Overview", {
 	 * @memberOf MVC.Overview
 	 */
 	onInit: function() {
+		var self = this;
+
+		if (crudTest === "R") {
+			this.oView.byId("_newTestBtn").setVisible(false);
+			this.oView.byId("_newRunBtn").setVisible(false);
+			this.getView().byId("_appView").setShowNavButton(true);
+		}
+
 		this.router = sap.ui.core.UIComponent.getRouterFor(this);
 		this.router.attachRoutePatternMatched(this._handleRouteMatched, this);
 
@@ -17,12 +25,10 @@ sap.ui.controller("MVC.Overview", {
 			selectedView: "Dashboard"
 		});
 		sap.ui.getCore().setModel(oSelection, "Selection");
-	
-		var self = this;
-		
+
 		$(window).bind('beforeunload', function(e) {
 			self.newTest();
-    	});
+		});
 	},
 
 	onSelect: function(oEvent) {
@@ -105,7 +111,6 @@ sap.ui.controller("MVC.Overview", {
 	//
 	//	}
 	onNavBack: function() {
-
 		window.history.go(-1);
 	},
 
@@ -114,42 +119,44 @@ sap.ui.controller("MVC.Overview", {
 	},
 
 	newTest: function() {
+		if (crudTest === "U") {
 
-		var data = sap.ui.getCore().getModel("RaceMetaData").getData();
-		data.END_TIME = new Date();
+			var data = sap.ui.getCore().getModel("RaceMetaData").getData();
+			data.END_TIME = new Date();
 
-		var oId = sap.ui.getCore().getModel("ID");
-		var raceID = oId.oData.raceID;
-		var runID = oId.oData.runID;
+			var oId = sap.ui.getCore().getModel("ID");
+			var raceID = oId.oData.raceID;
+			var runID = oId.oData.runID;
+debugger;
+			var method = "PUT";
+			var url = "/destinations/McCoy_URE/UreMetadata.xsodata/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")";
 
-		var method = "PUT";
-		var url = "/destinations/McCoy_URE/UreMetadata.xsodata/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")";
-		
-		var requestObj = {
-			requestUri: url,
-			method: method,
-			data: data,
-			headers: {
-				"X-Requested-With": "XMLHttpRequest",
-				"Content-Type": "application/json;odata=minimalmetadata",
-				"DataServiceVersion": "3.0",
-				"MaxDataServiceVersion": "3.0",
-				"Accept": "application/json;odata=minimalmetadata"
-			}
-		};
+			var requestObj = {
+				requestUri: url,
+				method: method,
+				data: data,
+				headers: {
+					"X-Requested-With": "XMLHttpRequest",
+					"Content-Type": "application/json;odata=minimalmetadata",
+					"DataServiceVersion": "3.0",
+					"MaxDataServiceVersion": "3.0",
+					"Accept": "application/json;odata=minimalmetadata"
+				}
+			};
 
-		OData.request(requestObj, function() {
+			OData.request(requestObj, function() {
 
-		});
+			});
 
-		var router = sap.ui.core.UIComponent.getRouterFor(this);
-		router.navTo("CreateTest", {
-			id: 1
-		}, false);
+			var router = sap.ui.core.UIComponent.getRouterFor(this);
+			router.navTo("CreateTest", {
+				id: 1
+			}, false);
 
-		// Set variable crudTest to C = Create		
-		crudTest = 'C';
+			// Set variable crudTest to C = Create		
+			crudTest = 'C';
 
-		sap.m.MessageToast.show("Test gestopt en opgeslagen");
+			sap.m.MessageToast.show("Test gestopt en opgeslagen");
+		}
 	}
 });
