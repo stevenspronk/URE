@@ -1,7 +1,6 @@
 <mvc:View xmlns:mvc="MVC.Overview" xmlns="sap.m" xmlns:core.mvc="sap.ui.core.mvc" controllerName="MVC.Overview">
-	<Page title="URE Racing: Overview" class="sapUiContentPadding">
-		<IconTabBar id="idIconTabBarNoIcons" stretchContentHeight="true" expanded="true" expandable="false" class="sapUiResponsiveContentPadding"
-			select="onSelect" backgroundDesign="Transparent">
+	<Page title="URE Racing: Overview" class="sapUiContentPadding" showNavButton="false">
+		<IconTabBar id="idIconTabBarNoIcons" stretchContentHeight="true" expanded="true" expandable="false" class="sapUiResponsiveContentPadding" select="onSelect" backgroundDesign="Transparent">
 			<items>
 				<IconTabFilter key="Dashboard" text="Overview">
 					<core.mvc:XMLView viewName="MVC.Dashboard"/>
@@ -20,7 +19,9 @@
 		<footer>
 			<Toolbar>
 				<ToolbarSpacer/>
-				<Button text="Nieuwe test" activeIcon="sap-icon://create" press="newTest" icon="sap-icon://create"/>
+				<Button text="Run" width="100px" id="__button0" activeIcon="sap-icon://add" icon="sap-icon://add"/>
+				<Button text="Stop Test" activeIcon="sap-icon://stop" press="newTest" icon="sap-icon://stop" id="_newTestBtn"/>
+			<content/>
 			</Toolbar>
 		</footer>
 	</Page>

@@ -17,7 +17,10 @@ sap.ui.controller("MVC.Overview", {
 			selectedView: "Dashboard"
 		});
 		sap.ui.getCore().setModel(oSelection, "Selection");
-
+	
+		$(window).bind('beforeunload', function(e) {
+			this.newTest();
+    	});
 	},
 
 	onSelect: function(oEvent) {
@@ -117,9 +120,10 @@ sap.ui.controller("MVC.Overview", {
 		var raceID = oId.oData.raceID;
 		var runID = oId.oData.runID;
 
+
 		var method = "PUT";
 		var url = "/destinations/McCoy_URE/UreMetadata.xsodata/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")";
-
+		
 		var requestObj = {
 			requestUri: url,
 			method: method,
