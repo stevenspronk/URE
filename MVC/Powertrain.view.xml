@@ -6,7 +6,8 @@
 		<List id="Msg" items="{Msg>/POWERTRAIN}" width="100%">
 			<items>
 				<ObjectListItem icon="{= ${Msg>MSG_TYPE} === 'E' ? 'sap-icon://message-error' : 'sap-icon://message-warning' }" id="MsgIt"
-					number="{Msg>MSG_TIMESTAMP}" numberState="{= ${Msg>STATUS} === '1' ? 'Error' : 'Success' }" title="{Msg>MSG_TEXT}"></ObjectListItem>
+					number="{path: 'Msg>MSG_TIMESTAMP', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'HH:mm:ss' } }" 
+					numberState="{= ${Msg>STATUS} === '1' ? 'Error' : 'Success' }" title="{Msg>MSG_TEXT}"></ObjectListItem>
 			</items>
 		</List>
 	</Panel>
