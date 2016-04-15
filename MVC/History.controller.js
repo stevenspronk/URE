@@ -33,7 +33,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function(Controller) {
 				"DataServiceVersion": "3.0",
 				"MaxDataServiceVersion": "3.0"
 			};
-			
+
 			this.getView().setModel(oRaceHistory);
 			var tab = this.getView().byId("__table1");
 
