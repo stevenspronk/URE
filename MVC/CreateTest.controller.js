@@ -101,24 +101,6 @@ sap.ui.define(["JS/validator"], function(Validator) {
 				var data = sap.ui.getCore().getModel("RaceMetaData").getData();
 				data.START_TIME = new Date();
 				
-				/*var data = {
-					"RACE_ID": this.isEmpty(this.getView().byId("Race_Id").getValue()),
-					"RUN_ID": this.isEmpty(this.getView().byId("Run_Id").getValue()),
-					"CIRCUIT": this.isEmpty(this.getView().byId("Input_Circuit").getValue()),
-					"TEMPERATURE": this.isEmpty(this.getView().byId("Input_Temperature").getSelectedKey()),
-					"RACE_DESCRIPTION": this.isEmpty(this.getView().byId("Input_Race_Description").getValue()),
-					"START_TIME": new Date(),
-					"END_TIME": null,
-					"RACE_TYPE": this.isEmpty(this.getView().byId("Input_RaceType").getSelectedKey()),
-					"WEATHER": this.isEmpty(this.getView().byId("Input_Weather").getSelectedKey()),
-					"NOTES": this.isEmpty(this.getView().byId("Input_Notes").getValue()),
-					"CAR_ID": this.isEmpty(this.getView().byId("Input_CarID").getValue()),
-					"CAR_NOTES": this.isEmpty(this.getView().byId("Input_CarNotes").getValue()),
-					"NAME_DRIVER": this.isEmpty(this.getView().byId("Input_DriverName").getValue()),
-					"LENGTH_DRIVER": this.isEmpty(this.getView().byId("Input_DriverLength").getValue()),
-					"WEIGHT_DRIVER": this.isEmpty(this.getView().byId("Input_DriverWeight").getValue()),
-					"DRIVER_NOTES": this.isEmpty(this.getView().byId("Input_DriverNotes").getValue())
-				};*/
 				var method;
 				var url;
 				// Create

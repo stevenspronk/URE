@@ -92,7 +92,8 @@ sap.ui.controller("MVC.Overview", {
 				oMsg.refresh();
 				break;
 			case "Dashboard":
-				var url = "/destinations/McCoy_URE/Overview.xsodata/OVERVIEW?$filter=RACE_ID%20eq%20" + raceID + "%20and%20RUN_ID%20eq%20" + runID + "&$orderby=SENSOR_TIMESTAMP%20desc&$top=1&$format=json";
+				var url = "/destinations/McCoy_URE/Overview.xsodata/OVERVIEW?$filter=RACE_ID%20eq%20" + raceID + "%20and%20RUN_ID%20eq%20" + runID +
+					"&$orderby=SENSOR_TIMESTAMP%20desc&$top=1&$format=json";
 				var dashboardModel = sap.ui.getCore().getModel("Overview");
 				dashboardModel.loadData(url);
 				break;
@@ -129,7 +130,7 @@ sap.ui.controller("MVC.Overview", {
 			var oId = sap.ui.getCore().getModel("ID");
 			var raceID = oId.oData.raceID;
 			var runID = oId.oData.runID;
-debugger;
+
 			var method = "PUT";
 			var url = "/destinations/McCoy_URE/UreMetadata.xsodata/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")";
 
@@ -159,6 +160,78 @@ debugger;
 			crudTest = 'C';
 
 			sap.m.MessageToast.show("Test gestopt en opgeslagen");
+		}
+	},
+
+	newRun: function() {
+		if (crudTest === "U") {
+			var data = sap.ui.getCore().getModel("RaceMetaData").getData();
+			data.END_TIME = new Date();
+
+			var oId = sap.ui.getCore().getModel("ID");
+			var raceID = oId.oData.raceID;
+			var runID = oId.oData.runID;
+
+			var method = "PUT";
+			var url = "/destinations/McCoy_URE/UreMetadata.xsodata/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")";
+			var requestObj = {
+				requestUri: url,
+				method: method,
+				data: data,
+				headers: {
+					"X-Requested-With": "XMLHttpRequest",
+					"Content-Type": "application/json;odata=minimalmetadata",
+					"DataServiceVersion": "3.0",
+					"MaxDataServiceVersion": "3.0",
+					"Accept": "application/json;odata=minimalmetadata"
+				}
+			};
+			OData.request(requestObj, function() {});
+
+			crudTest = 'C';
+		}
+		if (crudTest === 'C') {
+			var dataRun = sap.ui.getCore().getModel("RaceMetaData").getData();
+
+			var oIdRun = sap.ui.getCore().getModel("ID");
+			var raceIDRun = oIdRun.oData.raceID;
+			var runID1 = oIdRun.oData.runID + 1;
+
+			dataRun = ({
+				"RACE_ID": raceIDRun,
+				"RUN_ID": runID1,
+				"CIRCUIT": null,
+				"TEMPERATURE": null,
+				"RACE_DESCRIPTION": null,
+				"START_TIME": null,
+				"END_TIME": null,
+				"RACE_TYPE": null,
+				"WEATHER": null,
+				"NOTES": null,
+				"CAR_ID": null,
+				"CAR_NOTES": null,
+				"NAME_DRIVER": null,
+				"LENGTH_DRIVER": null,
+				"WEIGHT_DRIVER": null,
+				"DRIVER_NOTES": null
+			});
+			sap.ui.getCore().getModel("RaceMetaData").setData(dataRun);
+			sap.ui.getCore().getModel("ID").setData(oIdRun);
+debugger;
+			var method = "POST";
+			var url = "/destinations/McCoy_URE/UreMetadata.xsodata/URE_METADATA(RACE_ID=" + raceIDRun + ",RUN_ID=" + runID1 + ")";
+			var requestObj = {
+				requestUri: url,
+				method: method,
+				data: dataRun,
+				headers: {
+					"X-Requested-With": "XMLHttpRequest",
+					"Content-Type": "application/json;odata=minimalmetadata",
+					"DataServiceVersion": "3.0",
+					"MaxDataServiceVersion": "3.0",
+					"Accept": "application/json;odata=minimalmetadata"
+				}
+			};
 		}
 	}
 });
