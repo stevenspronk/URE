@@ -19,7 +19,7 @@
 							value="{ path : 'RaceMetaData>/CIRCUIT', type : 'sap.ui.model.type.String', constraints : { minLength : 2, maxLength : 50 } }"/>
 						<Label id="__label2" text="Test type"/>
 						<!--<ComboBox id="Input_RaceType" selectedItem="Element sap.ui.core.ListItem#__item1" selectedItemId="test1" selectedKey="1" value="Endurance">-->
-						<ComboBox id="Input_RaceType" value="{RaceMetaData>/RACE_TYPE}">
+						<ComboBox id="Input_RaceType" value="{ path : 'RaceMetaData>/RACE_TYPE', type : 'sap.ui.model.type.String', constraints : { minLength : 1} }" width="50%">
 							<items>
 								<sap.ui.core:ListItem id="test1" key="1" text="Endurance"/>
 								<sap.ui.core:ListItem id="test2" key="2" text="Skidpad"/>
@@ -33,14 +33,14 @@
 			    <DatePicker width="50%" id="__picker0"/>
 	-->
 						<Label id="__label4" text="Weersomstandigheden"/>
-						<ComboBox id="Input_Weather" value="{RaceMetaData>/WEATHER}" width="50%">
+						<ComboBox id="Input_Weather" value="{ path : 'RaceMetaData>/WEATHER', type : 'sap.ui.model.type.String', constraints : { minLength : 1} }" width="50%">
 							<items>
 								<sap.ui.core:ListItem id="weather1" key="1" text="Zonnig"/>
 								<sap.ui.core:ListItem id="weather2" key="2" text="Regenachtig"/>
 							</items>
 						</ComboBox>
 						<Label id="TempBox" text="Temperatuur"/>
-						<ComboBox id="Input_Temperature" value="{RaceMetaData>/TEMPERATURE}" width="50%">
+						<ComboBox id="Input_Temperature" value="{ path : 'RaceMetaData>/TEMPERATURE', type : 'sap.ui.model.type.String', constraints : { minLength : 1} }" width="50%">
 							<items>
 								<sap.ui.core:ListItem id="temp1" key="1" text="-5"/>
 								<sap.ui.core:ListItem id="temp2" key="2" text="0"/>
@@ -78,10 +78,10 @@
 						<Input id="__input10" width="100%"/>
 						-->
 						<Label id="__label11" text="Lengte in CM" width="100%"/>
-						<Input id="Input_DriverLength" width="100%"
+						<Input id="Input_DriverLength" width="10%"
 							value="{ path : 'RaceMetaData>/LENGTH_DRIVER', type : 'sap.ui.model.type.Integer', constraints : { minLength : 3, maxLength : 3 } }"/>
 						<Label id="__label12" text="Gewicht in KG" width="100%"/>
-						<Input id="Input_DriverWeight" width="100%"
+						<Input id="Input_DriverWeight" width="10%"
 							value="{ path : 'RaceMetaData>/WEIGHT_DRIVER', type : 'sap.ui.model.type.Integer', constraints : { minLength : 2, maxLength : 3 } }"/>
 						<Label id="coureur_notities_label" text="Notities"/>
 						<TextArea id="Input_DriverNotes" wrapping="None"/>
