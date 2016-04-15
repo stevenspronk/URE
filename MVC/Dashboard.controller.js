@@ -9,12 +9,14 @@ sap.ui.controller("MVC.Dashboard", {
 	 */
 	onInit: function() {
 	
-
-		var url = "/destinations/McCoy_URE/Overview.xsodata/OVERVIEW(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")?$format=json";
+	
+		raceID = 126;
+		runID = 1;
+		var url = "/destinations/McCoy_URE/Overview.xsodata/OVERVIEW?$filter=RACE_ID%20eq%20" + raceID + "%20and%20RUN_ID%20eq%20" + runID + "&$orderby=SENSOR_TIMESTAMP%20desc&$top=1&$format=json";
 		var dashboardModel = new sap.ui.model.json.JSONModel(url);
+		var data = dashboardModel.getData();
 		dashboardModel.setDefaultBindingMode(sap.ui.model.BindingMode.TwoWay);
 		this.getView().setModel(dashboardModel, "Overview");
-		
 		setTimeout(function() {
 			setInterval(function() {
 				var selectedKey = iconTabBar.getSelectedKey();
@@ -25,6 +27,17 @@ sap.ui.controller("MVC.Dashboard", {
 		}, 1000);
 
 
+	
+	},
+	
+	drawLine: function() {
+	
+					var ctx = c.getContext("2d");
+					ctx.beginPath();
+					
+					ctx.moveTo(10, 0);
+					ctx.rotate(30  * Math.PI / 180);
+					ctx.lineTo(10, 150);	
 	
 	},
 
