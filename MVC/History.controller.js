@@ -4,21 +4,24 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function(Controller) {
 		/**
 		 *@memberOf ProfileServices.controller.Overview
 		 */
-		selectHistory: function() {
-			var oTable = this.byId("__table1");
-			var oSelectedItem = oTable.getSelectedItem();
-			var sPath = oSelectedItem.getBindingContext().getPath();
-			var oDetail = this.getView().getModel().getProperty(sPath);
-			raceID = oDetail.RACE_ID;
-			runID = oDetail.RUN_ID;
+		selectHistory: function(oEvent) {
+			// var oTable = this.byId("__table1");
+			// var oSelectedItem = oTable.getSelectedItem();
+			// var sPath = oSelectedItem.getBindingContext().getPath();
+			// var oDetail = this.getView().getModel().getProperty(sPath);
+			var oSelectedItem = oEvent.getParameter("listItem");
+			var oSelectedRaceID = oSelectedItem.getBindingContext().getProperty("RACE_ID");
+			var oSelectedRunID = oSelectedItem.getBindingContext().getProperty("RUN_ID");
+
+
+			raceID = oSelectedRaceID;
+			runID = oSelectedRunID;
 
 			var oModel = new sap.ui.model.json.JSONModel({
 				raceID: raceID,
 				runID: runID
 			});
 			sap.ui.getCore().setModel(oModel, "ID");
-			
-			debugger;
 			// var end_date = new Date(oDetail.DateEnd);
 			// var start_time = new Date(oDetail.TimeStart.ms).getUTCHours() + ":" + new Date(oDetail.TimeStart.ms).getUTCMinutes() + ":" + new Date(oDetail.TimeStart.ms).getUTCSeconds();
 			// var end_time = new Date(oDetail.TimeEnd.ms).getUTCHours() + ":" + new Date(oDetail.TimeEnd.ms).getUTCMinutes() + ":" + new Date(oDetail.TimeStart.ms).getUTCSeconds();
@@ -30,6 +33,11 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function(Controller) {
 			// this.getView().byId("location").setSelectedKey(oDetail.LocationId);
 			// this.getView().byId("userId").setText(oDetail.UserId);
 			// this.getView().byId("comment").setValue(oDetail.Comment);
+			
+			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			oRouter.navTo("Overview", { //Router navigation is done in manifest.json Code Editor
+				id: 1
+			}, false);
 		},
 		onNavBack: function() {
 			window.history.go(-1);

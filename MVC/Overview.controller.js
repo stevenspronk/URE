@@ -18,8 +18,10 @@ sap.ui.controller("MVC.Overview", {
 		});
 		sap.ui.getCore().setModel(oSelection, "Selection");
 	
+		var self = this;
+		
 		$(window).bind('beforeunload', function(e) {
-			this.newTest();
+			self.newTest();
     	});
 	},
 
@@ -119,7 +121,6 @@ sap.ui.controller("MVC.Overview", {
 		var oId = sap.ui.getCore().getModel("ID");
 		var raceID = oId.oData.raceID;
 		var runID = oId.oData.runID;
-
 
 		var method = "PUT";
 		var url = "/destinations/McCoy_URE/UreMetadata.xsodata/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")";
