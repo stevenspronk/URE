@@ -6,12 +6,12 @@
 			<tiles>
 				<CustomTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" xmlns="sap.m">
 					<content>
-						<html:div xmlns:sap.ui.core="sap.ui.core">
+						<html:div xmlns:sap.ui.core="sap.ui.core" style="width: 100%; height: 100%;">
 							<sap.ui.core:Icon class="dashboardIcon" size="30pt" src="sap-icon://car-rental"/>
 							<html:div class="dashboardTitle">Vermogen</html:div>
-							<html:div class="info_text_tile" id="descriptionDiv">
-								<html:div class="counter" id="counterDiv" style="width: 100%; text-align: center; margin-left: 0px; margin-top: 30px">
-									<ui.commons:NumericContent class="sapUiSmallMargin" style="width: 100%;" id="gearIndicator" scale="" size="S" state="Loaded"
+							<html:div class="info_text_tile" id="descriptionDiv" style="width: 100%; height: 100%;">
+								<html:div class="counter" id="counterDiv" style="width: 100%; height: 100%; text-align: center; margin-left: 0px; margin-top: 30px">
+									<ui.commons:NumericContent class="sapUiSmallMargin" style="width: 100%; height: 100%;" id="gearIndicator" scale="" size="S" state="Loaded"
 										value="{Overview>/d/results/0/POWER}&#47;{Overview>/d/results/0/POWER}" valueColor="Neutral" withMargin="false"/>
 								</html:div>
 							</html:div>
