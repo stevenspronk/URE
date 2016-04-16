@@ -19,14 +19,14 @@ sap.ui.define(["JS/validator"], function(Validator) {
 			if (crudTest === "C") {
 				//this.clearModel();
 			}
-			
+
 			//First read the latest Race and Run ID from the backend.
 			var oRaceMetaData = new sap.ui.model.odata.ODataModel("/destinations/McCoy_URE/UreMetadata.xsodata/");
 			oRaceMetaData.oHeaders = {
 				"DataServiceVersion": "3.0",
 				"MaxDataServiceVersion": "3.0"
 			};
-			
+
 			oRaceMetaData.read("/URE_METADATA?$orderby=RACE_ID%20desc&$top=1", null, null, false, function(oData, oResponse) {
 				raceID = oData.results[0].RACE_ID + 1;
 				runID = 1;
@@ -52,9 +52,8 @@ sap.ui.define(["JS/validator"], function(Validator) {
 				"DRIVER_NOTES": null
 			});
 
-		
 			this.getView().setModel(metaJson, "RaceMetaData");
-			
+
 			var oModel = new sap.ui.model.json.JSONModel({
 				raceID: raceID,
 				runID: runID
@@ -100,18 +99,13 @@ sap.ui.define(["JS/validator"], function(Validator) {
 				};
 				var data = sap.ui.getCore().getModel("RaceMetaData").getData();
 				data.START_TIME = new Date();
-				
+
 				var method;
 				var url;
-				// Create
-				if (crudTest === "C") {
-					url = "/destinations/McCoy_URE/UreMetadata.xsodata/URE_METADATA";
-					method = "POST";
-				} // Update
-				else if (crudTest === "U") {
-					url = "/destinations/McCoy_URE/UreMetadata.xsodata/URE_METADATA('" + raceID + "')";
-					method = "PUT";
-				}
+
+				url = "/destinations/McCoy_URE/UreMetadata.xsodata/URE_METADATA";
+				method = "POST";
+
 				requestObj.requestUri = url;
 				requestObj.method = method;
 				requestObj.data = data;

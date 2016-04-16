@@ -15,14 +15,7 @@ sap.ui.controller("MVC.Dashboard", {
 		
 		sap.ui.getCore().setModel(dashboardModel, "Overview");
 		this.getView().setModel(dashboardModel, "Overview");
-		// setTimeout(function() {
-		// 	setInterval(function() {
-		// 		var selectedKey = iconTabBar.getSelectedKey();
-		// 		if( selectedKey === "Dashboard") {
-		// 			dashboardModel.loadData(url);
-		// 		}
-		// 	}, 1000);
-		// }, 1000);
+
 	},
 	
 	drawLine: function() {

@@ -148,62 +148,16 @@ sap.ui.controller("MVC.Overview", {
 			};
 
 			OData.request(requestObj, function() {
-
+				alert("succesful");
 			});
-
-			var router = sap.ui.core.UIComponent.getRouterFor(this);
-			router.navTo("CreateTest", {
-				id: 1
-			}, false);
-
-			// Set variable crudTest to C = Create		
-			crudTest = 'C';
-
-			sap.m.MessageToast.show("Test gestopt en opgeslagen");
-		}
-	},
-
-	newRun: function() {
-		if (crudTest === "U") {
-			var data = sap.ui.getCore().getModel("RaceMetaData").getData();
-			data.END_TIME = new Date();
-
-			var oId = sap.ui.getCore().getModel("ID");
-			var raceID = oId.oData.raceID;
-			var runID = oId.oData.runID;
-
-			var method = "PUT";
-			var url = "/destinations/McCoy_URE/UreMetadata.xsodata/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")";
-			var requestObj = {
-				requestUri: url,
-				method: method,
-				data: data,
-				headers: {
-					"X-Requested-With": "XMLHttpRequest",
-					"Content-Type": "application/json;odata=minimalmetadata",
-					"DataServiceVersion": "3.0",
-					"MaxDataServiceVersion": "3.0",
-					"Accept": "application/json;odata=minimalmetadata"
-				}
-			};
-			OData.request(requestObj, function() {});
-
-			crudTest = 'C';
-		}
-		if (crudTest === 'C') {
-			var dataRun = sap.ui.getCore().getModel("RaceMetaData").getData();
-
-			var oIdRun = sap.ui.getCore().getModel("ID");
-			var raceIDRun = oIdRun.oData.raceID;
-			var runID1 = oIdRun.oData.runID + 1;
-
-			dataRun = ({
-				"RACE_ID": raceIDRun,
-				"RUN_ID": runID1,
+			
+			data = ({
+				"RACE_ID": raceID + 1,
+				"RUN_ID": 1,
 				"CIRCUIT": null,
 				"TEMPERATURE": null,
 				"RACE_DESCRIPTION": null,
-				"START_TIME": null,
+				"START_TIME": new Date(),
 				"END_TIME": null,
 				"RACE_TYPE": null,
 				"WEATHER": null,
@@ -215,15 +169,38 @@ sap.ui.controller("MVC.Overview", {
 				"WEIGHT_DRIVER": null,
 				"DRIVER_NOTES": null
 			});
-			sap.ui.getCore().getModel("RaceMetaData").setData(dataRun);
-			sap.ui.getCore().getModel("ID").setData(oIdRun);
-debugger;
-			var method = "POST";
-			var url = "/destinations/McCoy_URE/UreMetadata.xsodata/URE_METADATA(RACE_ID=" + raceIDRun + ",RUN_ID=" + runID1 + ")";
+
+			sap.ui.getCore().getModel("RaceMetaData").setData(data);
+
+			// Set variable crudTest to C = Create		
+			crudTest = 'C';
+
+			var router = sap.ui.core.UIComponent.getRouterFor(this);
+			router.navTo("CreateTest", {
+				id: 1
+			}, false);
+
+			sap.m.MessageToast.show("Test gestopt en opgeslagen");
+		}
+	},
+
+	newRun: function() {
+		if (crudTest === "U") {
+			
+			//First we get the current data, add an end-time and update the backend with a HTTP PUT request
+			var RaceModel = sap.ui.getCore().getModel("RaceMetaData");
+			RaceModel.oData.END_TIME = new Date();
+
+			var oId = sap.ui.getCore().getModel("ID");
+			var raceID = oId.oData.raceID;
+			var runID = oId.oData.runID;
+
+			var method = "PUT";
+			var url = "/destinations/McCoy_URE/UreMetadata.xsodata/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")";
 			var requestObj = {
 				requestUri: url,
 				method: method,
-				data: dataRun,
+				data: RaceModel.oData,
 				headers: {
 					"X-Requested-With": "XMLHttpRequest",
 					"Content-Type": "application/json;odata=minimalmetadata",
@@ -232,6 +209,37 @@ debugger;
 					"Accept": "application/json;odata=minimalmetadata"
 				}
 			};
+			OData.request(requestObj, function() {});
+
+
+			//Then we add 1 to the RunId, set a new start time and clear the end time
+			//The rest of the meta data should stay the same
+			runID = runID + 1;
+			oId.oData.runID = runID;
+			RaceModel.oData.RUN_ID = runID;
+			RaceModel.oData.START_TIME = new Date();
+			RaceModel.oData.END_TIME = null;
+			
+	
+			//We create a new entry in the metadata
+			var method = "POST";
+			var url = "/destinations/McCoy_URE/UreMetadata.xsodata/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")";
+			var requestObj = {
+				requestUri: url,
+				method: method,
+				data: RaceModel.oData,
+				headers: {
+					"X-Requested-With": "XMLHttpRequest",
+					"Content-Type": "application/json;odata=minimalmetadata",
+					"DataServiceVersion": "3.0",
+					"MaxDataServiceVersion": "3.0",
+					"Accept": "application/json;odata=minimalmetadata"
+				}
+			};
+
+			OData.request(requestObj, function() {
+
+			});
 		}
 	}
 });
