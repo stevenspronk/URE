@@ -16,10 +16,10 @@ sap.ui.define(["JS/validator"], function(Validator) {
 				oEvent.getParameter("element").setValueState(ValueState.None);
 			});
 			// If it's a new test then clear the model, so that input fields become empty.
-			if (crudTest === "C") {
-				//this.clearModel();
-			}
-
+			// if (crudTest === "C") {
+			// 	//this.clearModel();
+			// }
+			
 			//First read the latest Race and Run ID from the backend.
 			var oRaceMetaData = new sap.ui.model.odata.ODataModel("/destinations/McCoy_URE/UreMetadata.xsodata/");
 			oRaceMetaData.oHeaders = {
@@ -58,6 +58,7 @@ sap.ui.define(["JS/validator"], function(Validator) {
 				raceID: raceID,
 				runID: runID
 			});
+
 			sap.ui.getCore().setModel(oModel, "ID");
 			sap.ui.getCore().setModel(metaJson, "RaceMetaData");
 
@@ -84,6 +85,32 @@ sap.ui.define(["JS/validator"], function(Validator) {
 		//	onExit: function() {
 		//
 		//	}
+		
+		clearEntries: function() {
+			var data = sap.ui.getCore().getModel("RaceMetaData").getData();
+			
+			data = ({
+				"RACE_ID": raceID,
+				"RUN_ID": 1,
+				"CIRCUIT": null,
+				"TEMPERATURE": null,
+				"RACE_DESCRIPTION": null,
+				"START_TIME": new Date(),
+				"END_TIME": null,
+				"RACE_TYPE": null,
+				"WEATHER": null,
+				"NOTES": null,
+				"CAR_ID": null,
+				"CAR_NOTES": null,
+				"NAME_DRIVER": null,
+				"LENGTH_DRIVER": null,
+				"WEIGHT_DRIVER": null,
+				"DRIVER_NOTES": null
+			});
+
+			sap.ui.getCore().getModel("RaceMetaData").setData(data);
+		},
+		
 		saveTest: function() {
 			if (this.onValidate()) {
 				var requestObj = {

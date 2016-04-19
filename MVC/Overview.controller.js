@@ -148,7 +148,7 @@ sap.ui.controller("MVC.Overview", {
 			};
 
 			OData.request(requestObj, function() {
-				alert("succesful");
+				//alert("succesful");
 			});
 			
 			data = ({
