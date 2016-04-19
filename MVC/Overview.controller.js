@@ -9,7 +9,7 @@ sap.ui.controller("MVC.Overview", {
 	 */
 	onInit: function() {
 		var self = this;
-
+		
 		if (crudTest === "R") {
 			this.oView.byId("_newTestBtn").setVisible(false);
 			this.oView.byId("_newRunBtn").setVisible(false);
@@ -211,7 +211,6 @@ sap.ui.controller("MVC.Overview", {
 			};
 			OData.request(requestObj, function() {});
 
-
 			//Then we add 1 to the RunId, set a new start time and clear the end time
 			//The rest of the meta data should stay the same
 			runID = runID + 1;
@@ -219,11 +218,11 @@ sap.ui.controller("MVC.Overview", {
 			RaceModel.oData.RUN_ID = runID;
 			RaceModel.oData.START_TIME = new Date();
 			RaceModel.oData.END_TIME = null;
-			
-	
+
 			//We create a new entry in the metadata
 			var method = "POST";
-			var url = "/destinations/McCoy_URE/UreMetadata.xsodata/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")";
+			var url = "/destinations/McCoy_URE/UreMetadata.xsodata/URE_METADATA";
+	
 			var requestObj = {
 				requestUri: url,
 				method: method,
