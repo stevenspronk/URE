@@ -127,8 +127,8 @@ sap.ui.define(["JS/validator"], function(Validator) {
 						console.log(oResponse);
 						me.goToOverview();
 					},
-					function(oData, oResponse) {
-						alert(oResponse);
+					function(oError) {
+						alert(oError.message);
 					});
 			};
 		},
