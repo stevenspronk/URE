@@ -139,7 +139,9 @@ sap.ui.define([
 				var runID = oId.oData.runID;
 
 				//We save the current test
-				this.saveCurrentTest(raceID, runID);
+				this.saveCurrentTest(raceID, runID, function() {
+					console.log("saved");
+				});
 
 				//Create a new empty metadata and set new raceID, runID, and StartTime
 				var data = emptyMetaData;
@@ -162,7 +164,7 @@ sap.ui.define([
 
 			}
 		},
-		saveCurrentTest: function(raceID, runID) {
+		saveCurrentTest: function(raceID, runID, callBack) {
 			var oRaceMetaData = sap.ui.getCore().getModel("oRaceMetaData");
 			var data = sap.ui.getCore().getModel("RaceMetaData").getData();
 			data.END_TIME = new Date();
@@ -171,12 +173,15 @@ sap.ui.define([
 			var path = "/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")";
 			oRaceMetaData.update(path, data, null, function(oData, oResponse) {
 					sap.m.MessageToast.show("Test gestopt en opgeslagen");
+					oRaceMetaData.refresh();
+					callBack();
 				},
 				function(oError) {
 					sap.m.MessageToast.show(oError.message);
 				});
+				
 		},
-		createNewRun: function(raceID, runID) {
+		createNewRun: function(raceID, runID, callBack) {
 			var oRaceMetaData = sap.ui.getCore().getModel("oRaceMetaData");
 			var RaceMetaData = sap.ui.getCore().getModel("RaceMetaData");
 			var data = RaceMetaData.getData();
@@ -190,10 +195,12 @@ sap.ui.define([
 
 			oRaceMetaData.create("/URE_METADATA", data, null, function(oData, oResponse) {
 					console.log(oResponse);
+					oRaceMetaData.refresh();
+					callBack();
 				},
 				function(oError) {
 					sap.m.MessageToast.show(oError.message);
-				},true);
+				});
 
 		},
 
@@ -203,17 +210,21 @@ sap.ui.define([
 				var oId = sap.ui.getCore().getModel("ID");
 				var raceID = oId.oData.raceID;
 				var runID = oId.oData.runID;
-				
+                var me = this;
 				wait = true;
 
-				this.saveCurrentTest(raceID, runID);
+				this.saveCurrentTest(raceID, runID, function() {
+					runID = runID + 1;
+					oId.oData.runID = runID;
+
+					me.createNewRun(raceID, runID, function() {
+						console.log("finished");
+					});
+				});
 
 				//Then we add 1 to the RunId, set a new start time and clear the end time
 				//The rest of the meta data should stay the same
-				runID = runID + 1;
-				oId.oData.runID = runID;
 
-				this.createNewRun(raceID, runID);
 				wait = false;
 			}
 		}

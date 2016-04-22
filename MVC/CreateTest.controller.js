@@ -7,6 +7,22 @@ sap.ui.define(["JS/validator"], function(Validator) {
 		 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
 		 * @memberOf MVC.CreateTest
 		 */
+		setDefaults: function() {
+			var RaceMetaData = sap.ui.getCore().getModel("RaceMetaData");
+			var data = RaceMetaData.getData();
+			data.CIRCUIT = 'Hockenheim';
+			data.TEMPERATURE = 25;
+			data.RACE_DESCRIPTION = 'Test';
+			data.RACE_TYPE = 'Endurance';
+			data.WEATHER = "Zonnig";
+			data.CAR_ID = "URE11";
+			data.NAME_DRIVER = "The Stig";
+			data.LENGTH_DRIVER = 201;
+			data.WEIGHT_DRIVER = 87;
+			RaceMetaData.setData(data);
+
+		},
+
 		onInit: function() {
 			// Attaches validation handlers
 			sap.ui.getCore().attachValidationError(function(oEvent) {
@@ -18,11 +34,10 @@ sap.ui.define(["JS/validator"], function(Validator) {
 
 			//First read the latest Race and Run ID from the backend.
 			var oRaceMetaData = new sap.ui.model.odata.ODataModel("/destinations/McCoy_URE/UreMetadata.xsodata/", true);
-			oRaceMetaData.oHeaders = {
-				"DataServiceVersion": "3.0",
-				"MaxDataServiceVersion": "3.0"
-			};
-
+			// 			oRaceMetaData.oHeaders = {
+			// 				"DataServiceVersion": "3.0",
+			// 				"MaxDataServiceVersion": "3.0"
+			// 			};
 
 			oRaceMetaData.read("/URE_METADATA?$orderby=RACE_ID%20desc&$top=1", null, null, false, function(oData, oResponse) {
 				raceID = oData.results[0].RACE_ID + 1;
@@ -113,7 +128,7 @@ sap.ui.define(["JS/validator"], function(Validator) {
 
 		saveTest: function() {
 			if (this.onValidate()) {
-			    var me = this;
+				var me = this;
 				var data = sap.ui.getCore().getModel("RaceMetaData").getData();
 				var oRaceMetaData = sap.ui.getCore().getModel("oRaceMetaData");
 
@@ -127,6 +142,7 @@ sap.ui.define(["JS/validator"], function(Validator) {
 					function(oError) {
 						alert(oError.message);
 					});
+
 			};
 		},
 		// This function checks if a string is empty or not

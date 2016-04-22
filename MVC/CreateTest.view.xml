@@ -86,6 +86,7 @@
 				<content>
 					<Button text="History" width="100px" id="__button1" press="goToHistory" align="left"/>
 					<Button text="Clear" width="100px" id="__button2" press="clearEntries"/>
+					    <Button text="Fill" width="100px" id="__button3" press="setDefaults"/>
 				</content>
 				<ToolbarSpacer/>
 				<Button activeIcon="sap-icon://accept" icon="sap-icon://accept" press="saveTest" text="Start test"/>
