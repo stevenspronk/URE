@@ -19,7 +19,7 @@ sap.ui.define(["JS/validator"], function(Validator) {
 			// if (crudTest === "C") {
 			// 	//this.clearModel();
 			// }
-			
+
 			//First read the latest Race and Run ID from the backend.
 			var oRaceMetaData = new sap.ui.model.odata.ODataModel("/destinations/McCoy_URE/UreMetadata.xsodata/");
 			oRaceMetaData.oHeaders = {
@@ -52,6 +52,8 @@ sap.ui.define(["JS/validator"], function(Validator) {
 				"DRIVER_NOTES": null
 			});
 
+			oRaceMetaData.oData[0] = metaJson.getData();
+
 			this.getView().setModel(metaJson, "RaceMetaData");
 
 			var oModel = new sap.ui.model.json.JSONModel({
@@ -59,6 +61,7 @@ sap.ui.define(["JS/validator"], function(Validator) {
 				runID: runID
 			});
 
+			sap.ui.getCore().setModel(oRaceMetaData, "oRaceMetaData");
 			sap.ui.getCore().setModel(oModel, "ID");
 			sap.ui.getCore().setModel(metaJson, "RaceMetaData");
 
@@ -85,10 +88,10 @@ sap.ui.define(["JS/validator"], function(Validator) {
 		//	onExit: function() {
 		//
 		//	}
-		
+
 		clearEntries: function() {
 			var data = sap.ui.getCore().getModel("RaceMetaData").getData();
-			
+
 			data = ({
 				"RACE_ID": raceID,
 				"RUN_ID": 1,
@@ -110,38 +113,23 @@ sap.ui.define(["JS/validator"], function(Validator) {
 
 			sap.ui.getCore().getModel("RaceMetaData").setData(data);
 		},
-		
+
 		saveTest: function() {
 			if (this.onValidate()) {
-				var requestObj = {
-					requestUri: "",
-					method: "",
-					headers: {
-						"X-Requested-With": "XMLHttpRequest",
-						"Content-Type": "application/json;odata=minimalmetadata",
-						"DataServiceVersion": "3.0",
-						"MaxDataServiceVersion": "3.0",
-						"Accept": "application/json;odata=minimalmetadata"
-					}
-				};
+			    var me = this;
 				var data = sap.ui.getCore().getModel("RaceMetaData").getData();
+				var oRaceMetaData = sap.ui.getCore().getModel("oRaceMetaData");
+
 				data.START_TIME = new Date();
+				oRaceMetaData.oData[0] = data;
 
-				var method;
-				var url;
-
-				url = "/destinations/McCoy_URE/UreMetadata.xsodata/URE_METADATA";
-				method = "POST";
-
-				requestObj.requestUri = url;
-				requestObj.method = method;
-				requestObj.data = data;
-				//requestObj.success = this.goToOverview(); // Aanroepen overview scherm
-				var me = this;
-				OData.request(requestObj, function() {
-
-					me.goToOverview();
-				});
+				oRaceMetaData.create("/URE_METADATA", data, null, function(oData, oResponse) {
+						console.log(oResponse);
+						me.goToOverview();
+					},
+					function(oData, oResponse) {
+						alert(oResponse);
+					});
 			};
 		},
 		// This function checks if a string is empty or not

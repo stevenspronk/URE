@@ -1,4 +1,5 @@
 var activeView;
+var wait;
 
 sap.ui.controller("MVC.Overview", {
 
@@ -9,7 +10,7 @@ sap.ui.controller("MVC.Overview", {
 	 */
 	onInit: function() {
 		var self = this;
-		
+
 		if (crudTest === "R") {
 			this.oView.byId("_newTestBtn").setVisible(false);
 			this.oView.byId("_newRunBtn").setVisible(false);
@@ -46,6 +47,7 @@ sap.ui.controller("MVC.Overview", {
 			id: id
 		});
 		this.getView().setModel(model, "data");
+		wait = false;
 	},
 
 	/**
@@ -71,7 +73,10 @@ sap.ui.controller("MVC.Overview", {
 				var oSelection = sap.ui.getCore().getModel("Selection");
 				var key = oSelection.oData.selectedView;
 
-				me.refreshData(key);
+				if (!wait) {
+					me.refreshData(key);
+				}
+
 			}, 1000);
 		}, 1000);
 
@@ -147,10 +152,13 @@ sap.ui.controller("MVC.Overview", {
 				}
 			};
 
+			wait = true;
+
 			OData.request(requestObj, function() {
 				//alert("succesful");
+
 			});
-			
+
 			data = ({
 				"RACE_ID": raceID + 1,
 				"RUN_ID": 1,
@@ -186,7 +194,7 @@ sap.ui.controller("MVC.Overview", {
 
 	newRun: function() {
 		if (crudTest === "U") {
-			
+
 			//First we get the current data, add an end-time and update the backend with a HTTP PUT request
 			var RaceModel = sap.ui.getCore().getModel("RaceMetaData");
 			RaceModel.oData.END_TIME = new Date();
@@ -209,36 +217,55 @@ sap.ui.controller("MVC.Overview", {
 					"Accept": "application/json;odata=minimalmetadata"
 				}
 			};
-			OData.request(requestObj, function() {});
-
-			//Then we add 1 to the RunId, set a new start time and clear the end time
-			//The rest of the meta data should stay the same
-			runID = runID + 1;
-			oId.oData.runID = runID;
-			RaceModel.oData.RUN_ID = runID;
-			RaceModel.oData.START_TIME = new Date();
-			RaceModel.oData.END_TIME = null;
-
-			//We create a new entry in the metadata
-			var method = "POST";
-			var url = "/destinations/McCoy_URE/UreMetadata.xsodata/URE_METADATA";
-	
-			var requestObj = {
-				requestUri: url,
-				method: method,
-				data: RaceModel.oData,
-				headers: {
-					"X-Requested-With": "XMLHttpRequest",
-					"Content-Type": "application/json;odata=minimalmetadata",
-					"DataServiceVersion": "3.0",
-					"MaxDataServiceVersion": "3.0",
-					"Accept": "application/json;odata=minimalmetadata"
-				}
-			};
-
+			wait = true;
 			OData.request(requestObj, function() {
 
+				//Then we add 1 to the RunId, set a new start time and clear the end time
+				//The rest of the meta data should stay the same
+				runID = runID + 1;
+				oId.oData.runID = runID;
+				RaceModel.oData.RUN_ID = runID;
+				RaceModel.oData.START_TIME = new Date();
+				RaceModel.oData.END_TIME = null;
+
+				var requestObj2 = {
+					requestUri: "",
+					method: "",
+					headers: {
+						"X-Requested-With": "XMLHttpRequest",
+						"Content-Type": "application/json;odata=minimalmetadata",
+						"DataServiceVersion": "3.0",
+						"MaxDataServiceVersion": "3.0",
+						"Accept": "application/json;odata=minimalmetadata"
+					}
+				};
+
+				var data2 = RaceModel.oData;
+				var method2;
+				var url2;
+
+				url2 = "/destinations/McCoy_URE/UreMetadata.xsodata/URE_METADATA";
+				method2 = "POST";
+
+				requestObj.requestUri = url2;
+				requestObj.method = method2;
+				requestObj.data = data2;
+				//requestObj.success = this.goToOverview(); // Aanroepen overview scherm
+
+				OData.request(requestObj2, function()
+					{
+						wait = false;
+						alert("Update successful");
+					},
+					function() {
+						wait = false;
+						alert("Update failed");
+					}
+
+				);
+
 			});
+
 		}
 	}
 });
