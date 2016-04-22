@@ -15,17 +15,14 @@ sap.ui.define(["JS/validator"], function(Validator) {
 			sap.ui.getCore().attachValidationSuccess(function(oEvent) {
 				oEvent.getParameter("element").setValueState(ValueState.None);
 			});
-			// If it's a new test then clear the model, so that input fields become empty.
-			// if (crudTest === "C") {
-			// 	//this.clearModel();
-			// }
 
 			//First read the latest Race and Run ID from the backend.
-			var oRaceMetaData = new sap.ui.model.odata.ODataModel("/destinations/McCoy_URE/UreMetadata.xsodata/");
+			var oRaceMetaData = new sap.ui.model.odata.ODataModel("/destinations/McCoy_URE/UreMetadata.xsodata/", true);
 			oRaceMetaData.oHeaders = {
 				"DataServiceVersion": "3.0",
 				"MaxDataServiceVersion": "3.0"
 			};
+
 
 			oRaceMetaData.read("/URE_METADATA?$orderby=RACE_ID%20desc&$top=1", null, null, false, function(oData, oResponse) {
 				raceID = oData.results[0].RACE_ID + 1;

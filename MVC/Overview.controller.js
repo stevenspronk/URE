@@ -153,6 +153,7 @@ sap.ui.define([
 
 				// Set variable crudTest to C = Create		
 				crudTest = 'C';
+				wait = true;
 
 				var router = sap.ui.core.UIComponent.getRouterFor(this);
 				router.navTo("CreateTest", {
@@ -171,8 +172,8 @@ sap.ui.define([
 			oRaceMetaData.update(path, data, null, function(oData, oResponse) {
 					sap.m.MessageToast.show("Test gestopt en opgeslagen");
 				},
-				function(oData, oResponse) {
-					sap.m.MessageToast.show(oResponse);
+				function(oError) {
+					sap.m.MessageToast.show(oError.message);
 				});
 		},
 		createNewRun: function(raceID, runID) {
@@ -191,8 +192,8 @@ sap.ui.define([
 					console.log(oResponse);
 				},
 				function(oError) {
-					alert(oError.message);
-				});
+					sap.m.MessageToast.show(oError.message);
+				},true);
 
 		},
 
@@ -202,6 +203,8 @@ sap.ui.define([
 				var oId = sap.ui.getCore().getModel("ID");
 				var raceID = oId.oData.raceID;
 				var runID = oId.oData.runID;
+				
+				wait = true;
 
 				this.saveCurrentTest(raceID, runID);
 
@@ -211,6 +214,7 @@ sap.ui.define([
 				oId.oData.runID = runID;
 
 				this.createNewRun(raceID, runID);
+				wait = false;
 			}
 		}
 	});
