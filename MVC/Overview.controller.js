@@ -129,35 +129,23 @@ sap.ui.controller("MVC.Overview", {
 	newTest: function() {
 		if (crudTest === "U") {
 
+			var oRaceMetaData = sap.ui.getCore().getModel("oRaceMetaData");
 			var data = sap.ui.getCore().getModel("RaceMetaData").getData();
 			data.END_TIME = new Date();
+			oRaceMetaData.oData[0] = data;
 
 			var oId = sap.ui.getCore().getModel("ID");
 			var raceID = oId.oData.raceID;
 			var runID = oId.oData.runID;
-
-			var method = "PUT";
-			var url = "/destinations/McCoy_URE/UreMetadata.xsodata/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")";
-
-			var requestObj = {
-				requestUri: url,
-				method: method,
-				data: data,
-				headers: {
-					"X-Requested-With": "XMLHttpRequest",
-					"Content-Type": "application/json;odata=minimalmetadata",
-					"DataServiceVersion": "3.0",
-					"MaxDataServiceVersion": "3.0",
-					"Accept": "application/json;odata=minimalmetadata"
-				}
-			};
-
-			wait = true;
-
-			OData.request(requestObj, function() {
-				//alert("succesful");
-
-			});
+            
+            var path = "/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")";
+			oRaceMetaData.update(path, data, null, function(oData, oResponse) {
+					console.log(oResponse);
+				},
+				function(oData, oResponse) {
+					alert(oResponse);
+				});
+		
 
 			data = ({
 				"RACE_ID": raceID + 1,
@@ -252,8 +240,7 @@ sap.ui.controller("MVC.Overview", {
 				requestObj.data = data2;
 				//requestObj.success = this.goToOverview(); // Aanroepen overview scherm
 
-				OData.request(requestObj2, function()
-					{
+				OData.request(requestObj2, function() {
 						wait = false;
 						alert("Update successful");
 					},
