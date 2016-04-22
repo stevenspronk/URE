@@ -50,12 +50,12 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function(Controller) {
 			runID = oModel.RUN_ID;
 			var oRaceMetaData = sap.ui.getCore().getModel("oRaceMetaData");
 
-			oRaceMetaData.remove("/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")", function() {
+			oRaceMetaData.remove("/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")", null, function() {
 				sap.m.MessageToast.show("Test verwijderd");
 			}, function() {
 				sap.m.MessageToast.show("Test verwijderen is mislukt");
 			});
-            oRaceMetaData.refresh(true);
+            //oRaceMetaData.refresh(true);
 		}
 	});
 });
