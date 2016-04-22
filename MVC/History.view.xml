@@ -3,7 +3,7 @@
 		<pages>
 			<Page title="{i18n>title}" showNavButton="true" navButtonPress="onNavBack">
 				<content>
-					<Table noDataText="Drop column list items here and columns in the area above" id="__table1" growing="true" items="{/URE_METADATA}" itemPress="selectHistory" growingScrollToLoad="true" selectionChange="">
+					<Table noDataText="Drop column list items here and columns in the area above" id="__table1" growing="true" items="{/URE_METADATA}" itemPress="selectHistory" growingScrollToLoad="true" selectionChange="" mode="MultiSelect">
 						<items>
 							<ColumnListItem counter="0" type="Active" id="__item1">
 								<cells>
@@ -62,6 +62,14 @@
 						</columns>
 					</Table>
 				</content>
+			<footer>
+			    <Toolbar width="100%" id="__toolbar0">
+			        <content>
+			            <Button text="Delete" width="100px" id="__button0" press="deleteSelected"/>
+			            <ToolbarSpacer id="__spacer0"/>
+			        </content>
+			    </Toolbar>
+			</footer>
 			</Page>
 		</pages>
 	</App>
