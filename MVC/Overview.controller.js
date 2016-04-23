@@ -181,9 +181,8 @@ sap.ui.define([
 
 			RaceMetaData.setData(data);
 			oRaceMetaData.createEntry("/URE_METADATA", data);
-
 		},
-
+		
 		newRun: function() {
 			if (crudTest === "U") {
 

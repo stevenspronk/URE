@@ -104,7 +104,6 @@ sap.ui.define(["JS/validator"], function(Validator) {
 				"WEIGHT_DRIVER": null,
 				"DRIVER_NOTES": null
 			});
-
 			sap.ui.getCore().getModel("RaceMetaData").setData(data);
 		},
 
