@@ -146,12 +146,17 @@ sap.ui.define([
 				//Create a new empty metadata and set new raceID, runID, and StartTime
 				var data = emptyMetaData;
 				raceID = raceID + 1;
+				runID = 1;
 				data.RACE_ID = raceID;
-				data.RUN_ID = 1;
+				data.RUN_ID = runID;
+				oId.oData.raceID = raceID;
+				oId.oData.runID = runID;
+				
 				data.START_TIME = new Date();
 
 				sap.ui.getCore().getModel("RaceMetaData").setData(data);
-				sap.ui.getCore().getModel("oRaceMetaData").oData[0] = data;
+				var oRaceMetaData = sap.ui.getCore().getModel("oRaceMetaData")
+				oRaceMetaData.createEntry("/URE_METADATA", data);
 
 				// Set variable crudTest to C = Create		
 				crudTest = 'C';
@@ -168,20 +173,17 @@ sap.ui.define([
 			var oRaceMetaData = sap.ui.getCore().getModel("oRaceMetaData");
 			var data = sap.ui.getCore().getModel("RaceMetaData").getData();
 			data.END_TIME = new Date();
-			oRaceMetaData.oData[0] = data;
 
-			var path = "/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")";
-			oRaceMetaData.update(path, data, null, function(oData, oResponse) {
-					sap.m.MessageToast.show("Test gestopt en opgeslagen");
-					oRaceMetaData.refresh();
+			oRaceMetaData.submitChanges(function(oData, oResponse) {
+					console.log(oResponse);
 					callBack();
 				},
 				function(oError) {
-					sap.m.MessageToast.show(oError.message);
+					alert(oError.message);
 				});
-				
+
 		},
-		createNewRun: function(raceID, runID, callBack) {
+		createNewRun: function(raceID, runID) {
 			var oRaceMetaData = sap.ui.getCore().getModel("oRaceMetaData");
 			var RaceMetaData = sap.ui.getCore().getModel("RaceMetaData");
 			var data = RaceMetaData.getData();
@@ -190,17 +192,8 @@ sap.ui.define([
 			data.END_TIME = null;
 			data.RUN_ID = runID;
 
-			oRaceMetaData.oData[0] = data;
 			RaceMetaData.setData(data);
-
-			oRaceMetaData.create("/URE_METADATA", data, null, function(oData, oResponse) {
-					console.log(oResponse);
-					oRaceMetaData.refresh();
-					callBack();
-				},
-				function(oError) {
-					sap.m.MessageToast.show(oError.message);
-				});
+			oRaceMetaData.createEntry("/URE_METADATA", data);
 
 		},
 
@@ -210,22 +203,18 @@ sap.ui.define([
 				var oId = sap.ui.getCore().getModel("ID");
 				var raceID = oId.oData.raceID;
 				var runID = oId.oData.runID;
-                var me = this;
+				var me = this;
 				wait = true;
 
 				this.saveCurrentTest(raceID, runID, function() {
 					runID = runID + 1;
 					oId.oData.runID = runID;
 
-					me.createNewRun(raceID, runID, function() {
-						console.log("finished");
-					});
+					me.createNewRun(raceID, runID);
+		
+
+					wait = false;
 				});
-
-				//Then we add 1 to the RunId, set a new start time and clear the end time
-				//The rest of the meta data should stay the same
-
-				wait = false;
 			}
 		}
 	});

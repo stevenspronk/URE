@@ -63,8 +63,8 @@ sap.ui.define(["JS/validator"], function(Validator) {
 				"WEIGHT_DRIVER": null,
 				"DRIVER_NOTES": null
 			});
-
-			oRaceMetaData.oData[0] = metaJson.getData();
+            
+			oRaceMetaData.createEntry("/URE_METADATA", metaJson.getData());
 
 			this.getView().setModel(metaJson, "RaceMetaData");
 
@@ -133,15 +133,7 @@ sap.ui.define(["JS/validator"], function(Validator) {
 				var oRaceMetaData = sap.ui.getCore().getModel("oRaceMetaData");
 
 				data.START_TIME = new Date();
-				oRaceMetaData.oData[0] = data;
-
-				oRaceMetaData.create("/URE_METADATA", data, null, function(oData, oResponse) {
-						console.log(oResponse);
-						me.goToOverview();
-					},
-					function(oError) {
-						alert(oError.message);
-					});
+				me.goToOverview();
 
 			};
 		},
