@@ -85,13 +85,6 @@ sap.ui.define([
 
 		},
 
-		/**
-		 * Called when the Controller is destroyed. Use this one to free resources and finalize activities.
-		 * @memberOf MVC.App
-		 */
-		//	onExit: function() {
-		//
-		//	}
 
 		refreshData: function(key) {
 			switch (key) {
@@ -115,13 +108,7 @@ sap.ui.define([
 			}
 		},
 
-		/**
-		 * Called when the Controller is destroyed. Use this one to free resources and finalize activities.
-		 * @memberOf MVC.Overview
-		 */
-		//	onExit: function() {
-		//
-		//	}
+
 		onNavBack: function() {
 			window.history.go(-1);
 		},
