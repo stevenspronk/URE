@@ -63,8 +63,8 @@ sap.ui.define(["JS/validator"], function(Validator) {
 				"WEIGHT_DRIVER": null,
 				"DRIVER_NOTES": null
 			});
-
-			oRaceMetaData.oData[0] = metaJson.getData();
+            
+			oRaceMetaData.createEntry("/URE_METADATA", metaJson.getData());
 
 			this.getView().setModel(metaJson, "RaceMetaData");
 
@@ -79,27 +79,9 @@ sap.ui.define(["JS/validator"], function(Validator) {
 
 		},
 		clearModel: function() {},
-		/**
-		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
-		 * (NOT before the first rendering! onInit() is used for that one!).
-		 * @memberOf MVC.CreateTest
-		 */
-		//	onBeforeRendering: function() {
-		//
-		//	},
-		/**
-		 * Called when the View has been rendered (so its HTML is part of the document). Post-rendering manipulations of the HTML could be done here.
-		 * This hook is the same one that SAPUI5 controls get after being rendered.
-		 * @memberOf MVC.CreateTest
-		 */
+
 		onAfterRendering: function() {},
-		/**
-		 * Called when thse Controller is destroyed. Use this one to free resources and finalize activities.
-		 * @memberOf MVC.CreateTest
-		 */
-		//	onExit: function() {
-		//
-		//	}
+
 
 		clearEntries: function() {
 			var data = sap.ui.getCore().getModel("RaceMetaData").getData();
@@ -122,7 +104,6 @@ sap.ui.define(["JS/validator"], function(Validator) {
 				"WEIGHT_DRIVER": null,
 				"DRIVER_NOTES": null
 			});
-
 			sap.ui.getCore().getModel("RaceMetaData").setData(data);
 		},
 
@@ -133,15 +114,7 @@ sap.ui.define(["JS/validator"], function(Validator) {
 				var oRaceMetaData = sap.ui.getCore().getModel("oRaceMetaData");
 
 				data.START_TIME = new Date();
-				oRaceMetaData.oData[0] = data;
-
-				oRaceMetaData.create("/URE_METADATA", data, null, function(oData, oResponse) {
-						console.log(oResponse);
-						me.goToOverview();
-					},
-					function(oError) {
-						alert(oError.message);
-					});
+				me.goToOverview();
 
 			};
 		},
