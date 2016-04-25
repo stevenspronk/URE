@@ -20,6 +20,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function(Controller) {
 		},
 		onNavBack: function() {
 			window.history.go(-1);
+			crudTest = "C";
+			debugger;
 		},
 		
 		onInit: function() {
