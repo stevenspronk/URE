@@ -18,7 +18,6 @@
 		</IconTabBar>
 		<footer>
 			<Toolbar>
-
 			    <Title text="{ID>/raceID} / {ID>/runID}" />
 				<ToolbarSpacer/>
 				<Button text="Run" width="100px" id="_newRunBtn" activeIcon="sap-icon://add" icon="sap-icon://add" press="newRun"/>

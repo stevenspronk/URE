@@ -14,7 +14,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function(Controller) {
 		    oId.oData.runID = oSelectedRunID;
 		    oId.updateBindings();
 			
-			
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			oRouter.navTo("Overview", {
 				//Router navigation is done in manifest.json Code Editor

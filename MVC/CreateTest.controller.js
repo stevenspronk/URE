@@ -69,7 +69,6 @@ sap.ui.define(["JS/validator"], function(Validator) {
 // 			this.getView().byId("metaform").bindContext(path);
 // 			oRaceMetaData.updateBindings();
             
-            
 			var oModel = new sap.ui.model.json.JSONModel({
 				raceID: raceID,
 				runID: runID
