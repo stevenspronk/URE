@@ -2,16 +2,19 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function(Controller) {
 	"use strict";
 	return Controller.extend("MVC.History", {
 		selectHistory: function(oEvent) {
+		    var oId = sap.ui.getCore().getModel("ID");
 			var oSelectedItem = oEvent.getParameter("listItem");
 			var oSelectedRaceID = oSelectedItem.getBindingContext().getProperty("RACE_ID");
 			var oSelectedRunID = oSelectedItem.getBindingContext().getProperty("RUN_ID");
+			
 			raceID = oSelectedRaceID;
 			runID = oSelectedRunID;
-			var oModel = new sap.ui.model.json.JSONModel({
-				raceID: raceID,
-				runID: runID
-			});
-			sap.ui.getCore().setModel(oModel, "ID");
+			
+			oId.oData.raceID = oSelectedRaceID;
+		    oId.oData.runID = oSelectedRunID;
+		    oId.updateBindings();
+			
+			
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			oRouter.navTo("Overview", {
 				//Router navigation is done in manifest.json Code Editor
@@ -21,14 +24,11 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function(Controller) {
 		onNavBack: function() {
 			window.history.go(-1);
 		},
-		
+
 		onInit: function() {
 			crudTest = "R";
 			var oRaceHistory = new sap.ui.model.odata.ODataModel("/destinations/McCoy_URE/UreMetadata.xsodata/");
-			oRaceHistory.oHeaders = {
-				"DataServiceVersion": "3.0",
-				"MaxDataServiceVersion": "3.0"
-			};
+
 			this.getView().setModel(oRaceHistory);
 			var tab = this.getView().byId("__table1");
 			var aSorter = [];
@@ -37,25 +37,28 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function(Controller) {
 			var oBinding = tab.getBinding("items");
 			oBinding.sort(aSorter);
 		},
-		/**
-		 *@memberOf MVC.History
-		 */
-		deleteSelected: function() {
-		    debugger;
-			var oTable = this.byId("__table1");
-			var oSelectedItem = oTable.getSelectedItem();
-			var sPath = oSelectedItem.getBindingContext().getPath();
-			var oModel = oTable.getModel().getObject(sPath);
-			raceID = oModel.RACE_ID;
-			runID = oModel.RUN_ID;
-			var oRaceMetaData = sap.ui.getCore().getModel("oRaceMetaData");
 
-			oRaceMetaData.remove("/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")", null, function() {
-				sap.m.MessageToast.show("Test verwijderd");
-			}, function() {
-				sap.m.MessageToast.show("Test verwijderen is mislukt");
-			});
-            //oRaceMetaData.refresh(true);
+		deleteSelected: function() {
+
+			var oTable = this.byId("__table1");
+			var oSelectedItems = oTable.getSelectedItems();
+
+			for (var i = 0; i <= oSelectedItems.length; i++) {
+				var oSelectedItem = oSelectedItems[i];
+				var sPath = oSelectedItem.getBindingContext().getPath();
+				var oModel = oTable.getModel().getObject(sPath);
+				var raceID = oModel.RACE_ID;
+				var runID = oModel.RUN_ID;
+				var oRaceHistory = this.getView().getModel();
+
+				oRaceHistory.remove("/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")", null, function() {
+					sap.m.MessageToast.show("Test verwijderd");
+					oRaceHistory.refresh();
+				}, function() {
+					sap.m.MessageToast.show("Test verwijderen is mislukt");
+				});
+				//oRaceMetaData.refresh(true);
+			}
 		}
 	});
 });

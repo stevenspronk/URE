@@ -2,11 +2,7 @@
 sap.ui.define(["JS/validator"], function(Validator) {
 	"use strict";
 	return sap.ui.controller("MVC.CreateTest", {
-		/**
-		 * Called when a controller is instantiated and its View controls (if available) are already created.
-		 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
-		 * @memberOf MVC.CreateTest
-		 */
+
 		setDefaults: function() {
 			var RaceMetaData = sap.ui.getCore().getModel("RaceMetaData");
 			var data = RaceMetaData.getData();
@@ -20,7 +16,6 @@ sap.ui.define(["JS/validator"], function(Validator) {
 			data.LENGTH_DRIVER = 201;
 			data.WEIGHT_DRIVER = 87;
 			RaceMetaData.setData(data);
-
 		},
 
 		onInit: function() {
@@ -34,15 +29,16 @@ sap.ui.define(["JS/validator"], function(Validator) {
 
 			//First read the latest Race and Run ID from the backend.
 			var oRaceMetaData = new sap.ui.model.odata.ODataModel("/destinations/McCoy_URE/UreMetadata.xsodata/", true);
+			oRaceMetaData.setDefaultBindingMode(sap.ui.model.BindingMode.TwoWay);
 
-            var pathLastRace = "/URE_METADATA?$orderby=RACE_ID%20desc&$top=1";
+			var pathLastRace = "/URE_METADATA?$orderby=RACE_ID%20desc&$top=1";
 			oRaceMetaData.read(pathLastRace, null, null, false, function(oData, oResponse) {
-				raceID = oData.results[0].RACE_ID + 1;
-				runID = 1;
-			},
-			function(oError){
-			    sap.m.MessageToast.show(oError.message);
-			}
+					raceID = oData.results[0].RACE_ID + 1;
+					runID = 1;
+				},
+				function(oError) {
+					sap.m.MessageToast.show(oError.message);
+				}
 			);
 
 			//Then, we create a new JSON model with the Race ID and Run ID filled in
@@ -64,11 +60,16 @@ sap.ui.define(["JS/validator"], function(Validator) {
 				"WEIGHT_DRIVER": null,
 				"DRIVER_NOTES": null
 			});
-            
-			oRaceMetaData.createEntry("/URE_METADATA", metaJson.getData());
+
+			var oContext = oRaceMetaData.createEntry("/URE_METADATA", metaJson.getData());
+			//var path = oContext.getPath();
 
 			this.getView().setModel(metaJson, "RaceMetaData");
-
+// 			this.getView().setModel(oRaceMetaData, "RaceMetaData");
+// 			this.getView().byId("metaform").bindContext(path);
+// 			oRaceMetaData.updateBindings();
+            
+            
 			var oModel = new sap.ui.model.json.JSONModel({
 				raceID: raceID,
 				runID: runID
@@ -82,7 +83,6 @@ sap.ui.define(["JS/validator"], function(Validator) {
 		clearModel: function() {},
 
 		onAfterRendering: function() {},
-
 
 		clearEntries: function() {
 			var data = sap.ui.getCore().getModel("RaceMetaData").getData();
@@ -111,11 +111,26 @@ sap.ui.define(["JS/validator"], function(Validator) {
 		saveTest: function() {
 			if (this.onValidate()) {
 				var me = this;
+				var oId = sap.ui.getCore().getModel("ID");
 				var data = sap.ui.getCore().getModel("RaceMetaData").getData();
 				var oRaceMetaData = sap.ui.getCore().getModel("oRaceMetaData");
 
+				oId.oData.raceID = data.RACE_ID;
+				oId.oData.runID = data.RUN_ID;
+				oId.updateBindings();
+
+				raceID = oId.oData.raceID;
+				runID = oId.oData.runID;
+
 				data.START_TIME = new Date();
-				me.goToOverview();
+
+				oRaceMetaData.submitChanges(function(oData, oResponse) {
+						console.log(oResponse);
+						me.goToOverview();
+					},
+					function(oError) {
+						console.log(oError.message);
+					});
 
 			};
 		},
