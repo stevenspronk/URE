@@ -65,10 +65,10 @@ sap.ui.define(["JS/validator"], function(Validator) {
 			//var path = oContext.getPath();
 
 			this.getView().setModel(metaJson, "RaceMetaData");
-// 			this.getView().setModel(oRaceMetaData, "RaceMetaData");
-// 			this.getView().byId("metaform").bindContext(path);
-// 			oRaceMetaData.updateBindings();
-            
+			// 			this.getView().setModel(oRaceMetaData, "RaceMetaData");
+			// 			this.getView().byId("metaform").bindContext(path);
+			// 			oRaceMetaData.updateBindings();
+
 			var oModel = new sap.ui.model.json.JSONModel({
 				raceID: raceID,
 				runID: runID
@@ -131,7 +131,7 @@ sap.ui.define(["JS/validator"], function(Validator) {
 						console.log(oError.message);
 					});
 
-			};
+			}
 		},
 		// This function checks if a string is empty or not
 		// If it's empty then it will return a NULL value.
@@ -148,6 +148,7 @@ sap.ui.define(["JS/validator"], function(Validator) {
 			// This means that whenever an user goes back to the create view it will update
 			// the already known race.
 			crudTest = "U";
+
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			oRouter.navTo("Overview", {
 				id: 1
@@ -163,9 +164,10 @@ sap.ui.define(["JS/validator"], function(Validator) {
 		 *@memberOf MVC.CreateTest
 		 */
 		goToHistory: function() {
+		    crudTest = "R";
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			oRouter.navTo("History", { //Router navigation is done in manifest.json Code Editor
-				id: 2
+				id: 1
 			}, false);
 		}
 	});

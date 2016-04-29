@@ -30,12 +30,6 @@ sap.ui.define([
 			var oID = sap.ui.getCore().getModel("ID");
 			this.getView().setModel(oID, "ID");
 
-			if (crudTest === "R") {
-				this.oView.byId("_newTestBtn").setVisible(false);
-				this.oView.byId("_newRunBtn").setVisible(false);
-				this.getView().byId("_appView").setShowNavButton(true);
-			}
-
 			this.router = sap.ui.core.UIComponent.getRouterFor(this);
 			this.router.attachRoutePatternMatched(this._handleRouteMatched, this);
 
@@ -61,6 +55,26 @@ sap.ui.define([
 			if ("Overview" !== evt.getParameter("name")) {
 				return;
 			}
+			// 			var oEventBus = sap.ui.getCore().getEventBus();
+			// 			oEventBus.publish("ViewMode", "showHideButtons");
+			if (crudTest === "R") {
+				this.oView.byId("_newTestBtn").setVisible(false);
+				this.oView.byId("_newRunBtn").setVisible(false);
+				this.oView.byId("_appView").setShowNavButton(true);
+			}
+
+			if (crudTest === "C") {
+				this.oView.byId("_newTestBtn").setVisible(true);
+				this.oView.byId("_newRunBtn").setVisible(true);
+				this.oView.byId("_appView").setShowNavButton(false);
+			}
+
+			if (crudTest === "U") {
+				this.oView.byId("_newTestBtn").setVisible(true);
+				this.oView.byId("_newRunBtn").setVisible(true);
+				this.oView.byId("_appView").setShowNavButton(false);
+			}
+
 			var id = evt.getParameter("arguments").id;
 			var model = new sap.ui.model.json.JSONModel({
 				id: id
@@ -115,6 +129,7 @@ sap.ui.define([
 		},
 
 		navButtonTap: function() {
+			this.getView().invalidate();
 			window.history.go(-1);
 		},
 

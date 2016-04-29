@@ -1,33 +1,41 @@
-sap.ui.define(["sap/ui/core/mvc/Controller"], function(Controller) {
+sap.ui.define(['sap/m/Button',
+		'sap/m/Dialog',
+		'sap/m/MessageToast',
+		'sap/m/Text',
+		'sap/m/TextArea',
+		'sap/ui/core/mvc/Controller',
+		'sap/ui/layout/HorizontalLayout',
+		'sap/ui/layout/VerticalLayout'
+	], function(Button, Dialog, MessageToast, Text, TextArea, Controller, HorizontalLayout, VerticalLayout) {
 	"use strict";
+	
 	return Controller.extend("MVC.History", {
 		selectHistory: function(oEvent) {
-		    var oId = sap.ui.getCore().getModel("ID");
+			var oId = sap.ui.getCore().getModel("ID");
 			var oSelectedItem = oEvent.getParameter("listItem");
 			var oSelectedRaceID = oSelectedItem.getBindingContext().getProperty("RACE_ID");
 			var oSelectedRunID = oSelectedItem.getBindingContext().getProperty("RUN_ID");
-			
+
 			raceID = oSelectedRaceID;
 			runID = oSelectedRunID;
-			
+
 			oId.oData.raceID = oSelectedRaceID;
-		    oId.oData.runID = oSelectedRunID;
-		    oId.updateBindings();
-			
+			oId.oData.runID = oSelectedRunID;
+			oId.updateBindings();
+
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			oRouter.navTo("Overview", {
 				//Router navigation is done in manifest.json Code Editor
 				id: 1
 			}, false);
 		},
+
 		onNavBack: function() {
 			window.history.go(-1);
 			crudTest = "C";
-			debugger;
 		},
 
 		onInit: function() {
-			crudTest = "R";
 			var oRaceHistory = new sap.ui.model.odata.ODataModel("/destinations/McCoy_URE/UreMetadata.xsodata/");
 
 			this.getView().setModel(oRaceHistory);
@@ -40,7 +48,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function(Controller) {
 		},
 
 		deleteSelected: function() {
-
 			var oTable = this.byId("__table1");
 			var oSelectedItems = oTable.getSelectedItems();
 
@@ -52,12 +59,36 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function(Controller) {
 				var runID = oModel.RUN_ID;
 				var oRaceHistory = this.getView().getModel();
 
-				oRaceHistory.remove("/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")", null, function() {
-					sap.m.MessageToast.show("Test verwijderd");
-					oRaceHistory.refresh();
-				}, function() {
-					sap.m.MessageToast.show("Test verwijderen is mislukt");
+debugger;
+				var dialog = new sap.m.Dialog({
+					title: "Confirm",
+					type: "Message",
+					content: new Text({
+						text: "Weet je zeker dat je de geselecteerde items wilt verwijderen?"
+					}),
+					beginButton: new sap.m.Button({
+						text: "Ja",
+						press: function() {
+							oRaceHistory.remove("/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")", null, function() {
+								sap.m.MessageToast.show("Test verwijderd");
+								oRaceHistory.refresh();
+							}, function() {
+								sap.m.MessageToast.show("Test verwijderen is mislukt");
+							});
+							dialog.close();
+						}
+					}),
+					endButton: new sap.m.Button({
+						text: "Annuleren",
+						press: function() {
+							dialog.close();
+						}
+					}),
+					afterClose: function() {
+						dialog.destroy();
+					}
 				});
+				dialog.open();
 				//oRaceMetaData.refresh(true);
 			}
 		}
