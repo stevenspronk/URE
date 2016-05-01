@@ -27,9 +27,6 @@ sap.ui.define([
 		onInit: function() {
 			var self = this;
 
-			var oID = sap.ui.getCore().getModel("ID");
-			this.getView().setModel(oID, "ID");
-
 			this.router = sap.ui.core.UIComponent.getRouterFor(this);
 			this.router.attachRoutePatternMatched(this._handleRouteMatched, this);
 
@@ -75,12 +72,10 @@ sap.ui.define([
 				this.oView.byId("_appView").setShowNavButton(false);
 			}
 
-			var id = evt.getParameter("arguments").id;
-			var model = new sap.ui.model.json.JSONModel({
-				id: id
-			});
-			this.getView().setModel(model, "data");
 			wait = false;
+
+			var oID = sap.ui.getCore().getModel("ID");
+			this.getView().setModel(oID, "ID");
 
 		},
 
@@ -135,116 +130,88 @@ sap.ui.define([
 
 		newTest: function() {
 			if (crudTest === "U") {
-
-				//First get current raceID and runID
-				var oId = sap.ui.getCore().getModel("ID");
-				var raceID = oId.oData.raceID;
-				var runID = oId.oData.runID;
+				var me = this;
 
 				//We save the current test
-				this.saveCurrentTest(raceID, runID, function() {
-					console.log("saved");
+				this.saveCurrentTest(function() {
+
+					raceID = raceID + 1;
+					runID = 1;
+					// Set variable crudTest to C = Create		
+					crudTest = 'C';
+					wait = true;
+
+					var router = sap.ui.core.UIComponent.getRouterFor(me);
+					router.navTo("CreateTest");
 				});
-
-				//Create a new empty metadata and set new raceID, runID, and StartTime
-				var data = emptyMetaData;
-				raceID = raceID + 1;
-				runID = 1;
-				data.RACE_ID = raceID;
-				data.RUN_ID = runID;
-				oId.oData.raceID = raceID;
-				oId.oData.runID = runID;
-				oId.updateBindings();
-
-				data.START_TIME = new Date();
-
-				sap.ui.getCore().getModel("RaceMetaData").setData(data);
-				var oRaceMetaData = sap.ui.getCore().getModel("oRaceMetaData")
-				oRaceMetaData.createEntry("/URE_METADATA", data);
-
-				// Set variable crudTest to C = Create		
-				crudTest = 'C';
-				wait = true;
-
-				var router = sap.ui.core.UIComponent.getRouterFor(this);
-				router.navTo("CreateTest", {
-					id: 1
-				}, false);
 
 			}
 		},
-		saveCurrentTest: function(raceID, runID, callBack) {
+		saveCurrentTest: function(callBack) {
 			var oRaceMetaData = sap.ui.getCore().getModel("oRaceMetaData");
-			var data = sap.ui.getCore().getModel("RaceMetaData").getData();
-			data.END_TIME = new Date();
 
-			var path = "/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")";
+			var oPath = "/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")";
+			oRaceMetaData.setProperty(oPath + "/END_TIME", new Date());
 
-			oRaceMetaData.read(path, null, null, false, function(oData, oResponse) {
-
-					oData.END_TIME = new Date();
-
-					oRaceMetaData.update(path, oData, null, function(oData2, oResponse2) {
-							console.log(oResponse2);
-							callBack();
-						},
-						function(oError) {
-							console.log(oError.message);
-						});
-
-				},
-				function(oError) {
-					sap.m.MessageToast.show(oError.message);
-				}
-			);
-
+			if (oRaceMetaData.hasPendingChanges()) {
+				oRaceMetaData.submitChanges({
+					success: function(oData) {
+						sap.m.MessageToast.show("Succesfully saved");
+						callBack();
+					},
+					error: function(oError) {
+						sap.m.MessageToast.show("Error with update");
+					}
+				});
+			} else {
+				sap.m.MessageToast.show("No updates");
+			}
 		},
-		createNewRun: function(raceID, runID, callBack) {
-			// 		    var mParameters = {
-			// 		        json: true,
-			// 		        loadMetadataAsync: true
-			// 		    };
-			// 			var oRaceMetaData = new sap.ui.model.odata.ODataModel("/destinations/McCoy_URE/UreMetadata.xsodata/", mParameters);
+		createNewRun: function(callBack) {
 
 			var oRaceMetaData = sap.ui.getCore().getModel("oRaceMetaData");
-			var RaceMetaData = sap.ui.getCore().getModel("RaceMetaData");
-			var data = RaceMetaData.getData();
+
+			var oPath = "/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")";
+			var data = oRaceMetaData.getProperty(oPath);
 
 			oRaceMetaData.refresh(true, true);
 
+			runID = runID + 1;
 			data.START_TIME = new Date();
 			data.END_TIME = null;
 			data.RUN_ID = runID;
 
-			RaceMetaData.setData(data);
+			oRaceMetaData.createEntry("/URE_METADATA", {
+				properties: data
+			});
 
-			var oContext = oRaceMetaData.createEntry("/URE_METADATA", data);
-			oRaceMetaData.setProperty("START_TIME", new Date(), oContext);
-
-			oRaceMetaData.submitChanges(function(oData, oResponse) {
-					console.log(oResponse);
-					callBack();
-				},
-				function(oError) {
-					console.log(oError.message);
+			if (oRaceMetaData.hasPendingChanges()) {
+				oRaceMetaData.submitChanges({
+					success: function(oData) {
+						sap.m.MessageToast.show("Succesfully saved");
+						callBack();
+					},
+					error: function(oError) {
+						sap.m.MessageToast.show("Error with update");
+					}
 				});
+			} else {
+				sap.m.MessageToast.show("No updates");
+			}
 
 		},
 
 		newRun: function() {
 			if (crudTest === "U") {
 
-				var oId = sap.ui.getCore().getModel("ID");
-				raceID = oId.oData.raceID;
-				runID = oId.oData.runID;
+				var oId = this.getView().getModel("ID");
 				var me = this;
 				wait = true;
 
-				this.saveCurrentTest(raceID, runID, function() {
-					runID = runID + 1;
-					oId.oData.runID = runID;
+				this.saveCurrentTest(function() {
 
-					me.createNewRun(raceID, runID, function() {
+					me.createNewRun(function() {
+						oId.oData.runID = runID;
 						oId.updateBindings();
 						wait = false;
 					});

@@ -1,4 +1,4 @@
-var crudTest = 'C'; // Create, Read, Update, Delete a test. Default C = Create
+var crudTest; // Create, Read, Update, Delete a test. Default C = Create
 var raceID;
 var runID;
 
