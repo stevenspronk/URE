@@ -71,12 +71,10 @@ sap.ui.define([
 				this.oView.byId("_newRunBtn").setVisible(true);
 				this.oView.byId("_appView").setShowNavButton(false);
 			}
-
 			wait = false;
 
 			var oID = sap.ui.getCore().getModel("ID");
 			this.getView().setModel(oID, "ID");
-
 		},
 
 		onAfterRendering: function() {
@@ -156,7 +154,7 @@ sap.ui.define([
 			if (oRaceMetaData.hasPendingChanges()) {
 				oRaceMetaData.submitChanges({
 					success: function(oData) {
-						sap.m.MessageToast.show("Succesfully saved");
+						sap.m.MessageToast.show("Test opgeslagen");
 						callBack();
 					},
 					error: function(oError) {
@@ -188,7 +186,7 @@ sap.ui.define([
 			if (oRaceMetaData.hasPendingChanges()) {
 				oRaceMetaData.submitChanges({
 					success: function(oData) {
-						sap.m.MessageToast.show("Succesfully saved");
+						sap.m.MessageToast.show("Run " + runID + " gestart");
 						callBack();
 					},
 					error: function(oError) {
