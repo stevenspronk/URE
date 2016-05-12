@@ -4,15 +4,23 @@ sap.ui.define(["JS/validator", "sap/m/TablePersoController", "sap/m/TablePersoPr
 	"use strict";
 	return sap.ui.controller("MVC.SmartHistory", {
 		onInit: function() {
-			var me = this;
 			var oRaceHistory = new sap.ui.model.odata.ODataModel("/destinations/McCoy_URE/UreMetadata.xsodata/");
 			this.getView().setModel(oRaceHistory);
 			sap.ui.getCore().setModel(oRaceHistory, "oRaceHistory");
-			//me.sortTable();
 		},
 
-		onExit: function() {
+	onAfterRendering: function() {
 
+ 		var oTable = this.getView().byId("RaceTable");
+		var oBinding = oTable.getBinding("items");
+ 		var aSorter = new sap.ui.model.Sorter("START_TIME", true);
+ 		oBinding.sort(aSorter);
+	},
+
+
+		onExit: function() {
+		    var smartTable = this.getView().byId("LineItemsSmartTable");
+            smartTable.exit();
 		},
 
 		onBeforeRebindFunc: function(oEvent) {
@@ -22,8 +30,9 @@ sap.ui.define(["JS/validator", "sap/m/TablePersoController", "sap/m/TablePersoPr
 		},
 		
 		selectHistory: function(oEvent) {
-            var oTable = this.byId("RaceTable");
+            var oTable = this.getView().byId("RaceTable");
   			var oSelectedItem = oTable.getSelectedItem();
+  			if(oSelectedItem){
   			var sPath = oSelectedItem.getBindingContext().getPath();
   			var oDetail = this.getView().getModel().getProperty(sPath);
   			raceID = oDetail.RACE_ID;
@@ -55,6 +64,9 @@ sap.ui.define(["JS/validator", "sap/m/TablePersoController", "sap/m/TablePersoPr
 				//Router navigation is done in manifest.json Code Editor
 				id: 1
 			}, false);
+  			}else{
+  			    sap.m.MessageToast.show("Geen item geselecteerd");
+  			}
 		},
 
 		onNavBack: function() {
