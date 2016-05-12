@@ -16,6 +16,11 @@
       "templateId": "ui5template.basicSAPUI5ApplicationComponent",
       "templateVersion": "1.4.0",
       "dateTimeStamp": "Fri, 08 Apr 2016 09:53:34 GMT"
+    },
+    {
+      "templateId": "com.sap.webide.annotationmodeller.CreateAnnotationTemplate",
+      "templateVersion": "1.0.0",
+      "dateTimeStamp": "Wed, 11 May 2016 13:14:36 GMT"
     }
   ],
   "mockpreview": {

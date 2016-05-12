@@ -1,17 +1,27 @@
-sap.ui.define(['sap/m/Button',
-	'sap/m/Dialog',
-	'sap/m/MessageToast',
-	'sap/m/Text',
-	'sap/m/TextArea',
-	'sap/ui/core/mvc/Controller',
-	'sap/ui/layout/HorizontalLayout',
-	'sap/ui/layout/VerticalLayout'
-], function(Button, Dialog, MessageToast, Text, TextArea, Controller, HorizontalLayout, VerticalLayout) {
+sap.ui.define(["JS/validator", "sap/m/TablePersoController", "sap/m/TablePersoProvider", "sap/ui/model/odata/v2/ODataModel",
+	"sap/ui/core/mvc/Controller"
+], function() {
 	"use strict";
+	return sap.ui.controller("MVC.SmartHistory", {
+		onInit: function() {
+			var me = this;
+			var oRaceHistory = new sap.ui.model.odata.ODataModel("/destinations/McCoy_URE/UreMetadata.xsodata/");
+			this.getView().setModel(oRaceHistory);
+			sap.ui.getCore().setModel(oRaceHistory, "oRaceHistory");
+			//me.sortTable();
+		},
 
-	return Controller.extend("MVC.History", {
+		onExit: function() {
+
+		},
+
+		onBeforeRebindFunc: function(oEvent) {
+		    var oBindingParams = oEvent.getParameter("bindingParams");
+			oBindingParams.parameters = oBindingParams.parameters || {};
+			oBindingParams.parameters.select = '*'; // for selecting all fields in query or add specific fields
+		},
+		
 		selectHistory: function(oEvent) {
-		    debugger;
 			var oId = sap.ui.getCore().getModel("ID");
 			var oSelectedItem = oEvent.getParameter("listItem");
 			var oSelectedRaceID = oSelectedItem.getBindingContext().getProperty("RACE_ID");
@@ -31,29 +41,9 @@ sap.ui.define(['sap/m/Button',
 			}, false);
 		},
 
-		sortTable: function() {
-		    debugger;
-// 			var tab = this.getView().byId("__table1"); //sap.ui.getCore().getModel("oRaceHistory");
-// 			//tab = tab.sort("RACE_ID");
-			
-// 			var oBinding = tab.getBinding("items");
-// 			var aSorter = [];
-// 			aSorter.push(new sap.ui.model.Sorter("RACE_ID", true, false));
-// 			aSorter.push(new sap.ui.model.Sorter("RUN_ID", true, false));
-// 			oBinding.sort(aSorter);
-		},
-
 		onNavBack: function() {
 			window.history.go(-1);
 			crudTest = "C";
-		},
-
-		onInit: function() {
-			var me = this;
-			var oRaceHistory = new sap.ui.model.odata.ODataModel("/destinations/McCoy_URE/UreMetadata.xsodata/");
-			this.getView().setModel(oRaceHistory);
-			sap.ui.getCore().setModel(oRaceHistory, "oRaceHistory");
-			me.sortTable();
 		},
 
 		deleteSelected: function() {
@@ -86,7 +76,8 @@ sap.ui.define(['sap/m/Button',
 		},
 
 		deleteSelectedDialog: function() {
-			var oTable = this.byId("__table1");
+		    debugger;
+			var oTable = this.byId("RaceTable");
 			var oSelectedItems = oTable.getSelectedItems();
 
 			var i;

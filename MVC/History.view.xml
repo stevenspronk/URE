@@ -1,9 +1,18 @@
-<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.layout="sap.ui.layout" controllerName="MVC.History" beforeRendering="onInit">
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:sap.ui.core="sap.ui.core"
+	xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.layout="sap.ui.layout" controllerName="MVC.History" beforeRendering="onInit">
 	<App id="history">
 		<pages>
 			<Page title="{i18n>title}" showNavButton="true" navButtonPress="onNavBack">
 				<content>
-					<Table noDataText="Drop column list items here and columns in the area above" id="__table1" growing="true" items="{/URE_METADATA}" itemPress="selectHistory" growingScrollToLoad="true" selectionChange="" mode="MultiSelect">
+					<Table noDataText="Drop column list items here and columns in the area above" id="__table1" growing="true" items="{/URE_METADATA}"
+						itemPress="selectHistory" growingScrollToLoad="true" selectionChange="" mode="MultiSelect">
+						<headerToolbar>
+							<Toolbar>
+								<Title level="H2" text="Vorige races"/>
+								<ToolbarSpacer/>
+								<Button press="onTableSettings" icon="sap-icon://drop-down-list"/>
+							</Toolbar>
+						</headerToolbar>
 						<items>
 							<ColumnListItem counter="0" type="Active" id="__item1">
 								<cells>
@@ -14,7 +23,8 @@
 									<Text text="{CIRCUIT}" maxLines="0" id="__text4"/>
 									<Text text="{WEATHER}" maxLines="0" id="__text5"/>
 									<Text text="{path: 'START_TIME', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd.MM.yyyy HH:mm:ss' } }" id="__text6"/>
-									<Text text="{path: 'END_TIME', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy HH:mm:ss' } }" maxLines="0" id="__text7"/>
+									<Text text="{path: 'END_TIME', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy HH:mm:ss' } }" maxLines="0"
+										id="__text7"/>
 								</cells>
 							</ColumnListItem>
 						</items>
@@ -62,14 +72,14 @@
 						</columns>
 					</Table>
 				</content>
-			<footer>
-			    <Toolbar width="100%" id="__toolbar0">
-			        <content>
-			            <Button text="Delete" width="100px" id="__button0" press="deleteSelected"/>
-			            <ToolbarSpacer id="__spacer0"/>
-			        </content>
-			    </Toolbar>
-			</footer>
+				<footer>
+					<Toolbar width="100%" id="__toolbar0">
+						<content>
+							<Button text="Delete" width="100px" id="__button0" press="deleteSelected"/>
+							<ToolbarSpacer id="__spacer0"/>
+						</content>
+					</Toolbar>
+				</footer>
 			</Page>
 		</pages>
 	</App>

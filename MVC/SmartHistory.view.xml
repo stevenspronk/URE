@@ -1,0 +1,208 @@
+<core:View xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:mvc="sap.ui.core.mvc" controllerName="MVC.SmartHistory" height="100%">
+	<Page id="page" title="Historische tests" enableScrolling="true" showNavButton="true" navButtonPress="onNavBack">
+		<!-- use this to make the table occupy the available screen height -->
+		<VBox fitContainer="true">
+			<smartFilterBar:SmartFilterBar id="smartFilterBar" entityType="URE_METADATAType" label="Filters" persistencyKey="SmartFilter_Explored">
+				<smartFilterBar:controlConfiguration>
+					<smartFilterBar:ControlConfiguration key="RACE_ID" label="Race ID" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
+					<smartFilterBar:ControlConfiguration key="RUN_ID" label="Run ID" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false"/>
+					<smartFilterBar:ControlConfiguration key="RACE_DESCRIPTION" label="Description" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
+					<smartFilterBar:ControlConfiguration key="RACE_TYPE" label="Race Type" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
+					<smartFilterBar:ControlConfiguration key="CIRCUIT" label="Circuit" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
+					<smartFilterBar:ControlConfiguration key="WEATHER" label="Weather" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
+					<smartFilterBar:ControlConfiguration key="START_TIME" label="Start Time" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
+					<smartFilterBar:ControlConfiguration key="END_TIME" label="End Time" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
+					<smartFilterBar:ControlConfiguration key="NOTES" label="Notes" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
+					<smartFilterBar:ControlConfiguration key="TEMPERATURE" label="Temperature" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
+					<smartFilterBar:ControlConfiguration key="CAR_ID" label="Car ID" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
+					<smartFilterBar:ControlConfiguration key="CAR_NOTES" label="Car Notes" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
+					<smartFilterBar:ControlConfiguration key="NAME_DRIVER" label="Driver Name" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
+					<smartFilterBar:ControlConfiguration key="LENGTH_DRIVER" label="Driver Length" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
+					<smartFilterBar:ControlConfiguration key="WEIGHT_DRIVER" label="Driver Weight" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
+					<smartFilterBar:ControlConfiguration key="DRIVER_NOTES" label="Driver Notes" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
+				</smartFilterBar:controlConfiguration>
+				<!--<smartFilterBar:controlConfiguration>						-->
+				<!--	<smartFilterBar:ControlConfiguration key="Bukrs">-->
+				<!--	<smartFilterBar:defaultFilterValues>-->
+				<!--			<smartFilterBar:SelectOption low="0001">-->
+				<!--			</smartFilterBar:SelectOption>-->
+				<!--		</smartFilterBar:defaultFilterValues>-->
+				<!--	</smartFilterBar:ControlConfiguration>					-->
+				<!--	<smartFilterBar:ControlConfiguration key="Gjahr">-->
+				<!--		<smartFilterBar:defaultFilterValues>-->
+				<!--				<smartFilterBar:SelectOption low="2014">-->
+				<!--				</smartFilterBar:SelectOption>-->
+				<!--			</smartFilterBar:defaultFilterValues>-->
+				<!--		</smartFilterBar:ControlConfiguration>-->
+				<!--</smartFilterBar:controlConfiguration>-->
+				<!-- layout data used to make the table growing but the filter bar fixed -->
+				<smartFilterBar:layoutData>
+					<FlexItemData shrinkFactor="0"/>
+				</smartFilterBar:layoutData>
+			</smartFilterBar:SmartFilterBar>
+			<smartTable:SmartTable beforeRebindTable="onBeforeRebindFunc" id="LineItemsSmartTable" entitySet="URE_METADATA" smartFilterId="smartFilterBar" tableType="ResponsiveTable" useExportToExcel="true" useVariantManagement="false" useTablePersonalisation="true" header="Aantal tests" showRowCount="true" enableAutoBinding="true">
+				<Table mode="MultiSelect" itemPress="selectHistory" id="RaceTable" growing="true" growingScrollToLoad="true">
+					<columns>
+						<Column>
+							<customData>
+								<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;RACE_ID&quot;,&quot;leadingProperty&quot;: &quot;RACE_ID&quot;,&quot;sortProperty&quot;: &quot;RACE_ID&quot;,&quot;filterProperty&quot;: &quot;RACE_ID&quot;}"/>
+							</customData>
+							<Label text="Race ID"/>
+						</Column>
+						<Column>
+							<customData>
+								<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;RUN_ID&quot;,&quot;leadingProperty&quot;: &quot;RUN_ID&quot;, &quot;sortProperty&quot;: &quot;RUN_ID&quot;,&quot;filterproperty&quot;: &quot;RUN_ID&quot;}"/>
+							</customData>
+							<Label text="Run ID"/>
+						</Column>
+						<Column>
+							<customData>
+								<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;RACE_DESCRIPTION&quot;, &quot;sortProperty&quot;: &quot;RACE_DESCRIPTION&quot;,&quot;filterproperty&quot;: &quot;RACE_DESCRIPTION&quot;}"/>
+							</customData>
+							<Label text="Description"/>
+						</Column>
+						<Column>
+							<customData>
+								<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;RACE_TYPE&quot;, &quot;sortProperty&quot;: &quot;RACE_TYPE&quot;,&quot;filterproperty&quot;: &quot;RACE_TYPE&quot;}"/>
+							</customData>
+							<Label text="Race Type"/>
+						</Column>
+						<Column>
+							<customData>
+								<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;CIRCUIT&quot;, &quot;sortProperty&quot;: &quot;CIRCUIT&quot;,&quot;filterproperty&quot;: &quot;CIRCUIT&quot;}"/>
+							</customData>
+							<Label text="Circuit"/>
+						</Column>
+						<Column>
+							<customData>
+								<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;WEATHER&quot;, &quot;sortProperty&quot;: &quot;WEATHER&quot;,&quot;filterproperty&quot;: &quot;WEATHER&quot;}"/>
+							</customData>
+							<Label text="Weather"/>
+						</Column>
+						<Column>
+							<customData>
+								<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;START_TIME&quot;, &quot;sortProperty&quot;: &quot;START_TIME&quot;,&quot;filterproperty&quot;: &quot;START_TIME&quot;}"/>
+							</customData>
+							<Label text="Start Time"/>
+						</Column>
+						<Column>
+							<customData>
+								<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;END_TIME&quot;, &quot;sortProperty&quot;: &quot;END_TIME&quot;,&quot;filterproperty&quot;: &quot;END_TIME&quot;}"/>
+							</customData>
+							<Label text="End Time"/>
+						</Column>
+						<Column visible="false">
+							<customData>
+								<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;NOTES&quot;, &quot;sortProperty&quot;: &quot;NOTES&quot;,&quot;filterproperty&quot;: &quot;NOTES&quot;}"/>
+							</customData>
+							<Label text="Notes"/>
+						</Column>
+						<Column visible="false">
+							<customData>
+								<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;TEMPERATURE&quot;, &quot;sortProperty&quot;: &quot;TEMPERATURE&quot;,&quot;filterproperty&quot;: &quot;TEMPERATURE&quot;}"/>
+							</customData>
+							<Label text="Temperature"/>
+						</Column>
+						<Column visible="false">
+							<customData>
+								<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;CAR_ID&quot;, &quot;sortProperty&quot;: &quot;CAR_ID&quot;,&quot;filterproperty&quot;: &quot;CAR_ID&quot;}"/>
+							</customData>
+							<Label text="Car ID"/>
+						</Column>
+						<Column visible="false">
+							<customData>
+								<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;CAR_NOTES&quot;, &quot;sortProperty&quot;: &quot;CAR_NOTES&quot;,&quot;filterproperty&quot;: &quot;CAR_NOTES&quot;}"/>
+							</customData>
+							<Label text="Car Notes"/>
+						</Column>
+						<Column visible="false">
+							<customData>
+								<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;NAME_DRIVER&quot;, &quot;sortProperty&quot;: &quot;NAME_DRIVER&quot;,&quot;filterproperty&quot;: &quot;NAME_DRIVER&quot;}"/>
+							</customData>
+							<Label text="Driver Name"/>
+						</Column>
+						<Column visible="false">
+							<customData>
+								<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;LENGTH_DRIVER&quot;, &quot;sortProperty&quot;: &quot;LENGTH_DRIVER&quot;,&quot;filterproperty&quot;: &quot;LENGTH_DRIVER&quot;}"/>
+							</customData>
+							<Label text="Driver Length"/>
+						</Column>
+						<Column visible="false">
+							<customData>
+								<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;WEIGHT_DRIVER&quot;, &quot;sortProperty&quot;: &quot;WEIGHT_DRIVER&quot;,&quot;filterproperty&quot;: &quot;WEIGHT_DRIVER&quot;}"/>
+							</customData>
+							<Label text="Driver Weight"/>
+						</Column>
+						<Column visible="false">
+							<customData>
+								<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;DRIVER_NOTES&quot;, &quot;sortProperty&quot;: &quot;DRIVER_NOTES&quot;,&quot;filterproperty&quot;: &quot;DRIVER_NOTES&quot;}"/>
+							</customData>
+							<Label text="Driver Notes"/>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem>
+							<cells>
+								<ObjectIdentifier title="{RACE_ID}" text="{Race ID}"/>
+							</cells>
+							<cells>
+								<ObjectIdentifier title="{RUN_ID}" text="{Run ID}"/>
+							</cells>
+							<cells>
+								<ObjectIdentifier title="{RACE_DESCRIPTION}" text="{Description}"/>
+							</cells>
+							<cells>
+								<ObjectIdentifier title="{RACE_TYPE}" text="{Race Type}"/>
+							</cells>
+							<cells>
+								<ObjectIdentifier title="{CIRCUIT}" text="{Circuit}"/>
+							</cells>
+							<cells>
+								<ObjectIdentifier title="{WEATHER}" text="{Weather}"/>
+							</cells>
+							<cells>
+								<ObjectIdentifier title="{START_TIME}" text="{path: 'START_TIME', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd.MM.yyyy HH:mm:ss' } }" type="date"/>
+							</cells>
+							<cells>
+								<ObjectIdentifier title="{END_TIME}" text="{path: 'END_TIME', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy HH:mm:ss' } }" type="date"/>
+							</cells>
+							<cells>
+								<ObjectIdentifier title="{NOTES}" text="{Notes}"/>
+							</cells>
+							<cells>
+								<ObjectIdentifier title="{TEMPERATURE}" text="{Temperature}"/>
+							</cells>
+							<cells>
+								<ObjectIdentifier title="{CAR_ID}" text="{Car ID}"/>
+							</cells>
+							<cells>
+								<ObjectIdentifier title="{CAR_NOTES}" text="{Car Notes}"/>
+							</cells>
+							<cells>
+								<ObjectIdentifier title="{NAME_DRIVER}" text="{Driver Name}"/>
+							</cells>
+							<cells>
+								<ObjectIdentifier title="{LENGTH_DRIVER}" text="{Driver Length}"/>
+							</cells>
+							<cells>
+								<ObjectIdentifier title="{WEIGHT_DRIVER}" text="{Driver Weight}"/>
+							</cells>
+							<cells>
+								<ObjectIdentifier title="{DRIVER_NOTES}" text="{Driver Notes}"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</smartTable:SmartTable>
+		</VBox>
+		<footer>
+			<Toolbar width="100%" id="__toolbar0">
+				<content>
+					<Button text="Delete" width="100px" id="__button0" press="deleteSelected"/>
+					<ToolbarSpacer id="__spacer0"/>
+					<Button width="100px" id="__button8" press="selectHistory" activeIcon="sap-icon://column-chart-dual-axis" icon="sap-icon://column-chart-dual-axis"/>
+				</content>
+			</Toolbar>
+		</footer>
+	</Page>
+</core:View>

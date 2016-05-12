@@ -167,7 +167,7 @@ sap.ui.define(["JS/validator", "sap/ui/model/odata/v2/ODataModel"], function(Val
 		goToHistory: function() {
 			crudTest = "R";
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-			oRouter.navTo("History", { //Router navigation is done in manifest.json Code Editor
+			oRouter.navTo("SmartHistory", { //Router navigation is done in manifest.json Code Editor
 				id: 1
 			}, false);
 		},

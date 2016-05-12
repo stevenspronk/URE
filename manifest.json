@@ -4,11 +4,30 @@
 		"_version": "1.1.0",
 		"id": "com.URE",
 		"type": "application",
-		"i18n": "",
+		"i18n": "i18n/i18n.properties",
 		"title": "{{appTitle}}",
 		"description": "{{appDescription}}",
 		"applicationVersion": {
 			"version": "1.0.0"
+		},
+		"dataSources": {
+			"SmartAnnotations": {
+				"uri": "MVC/SmartAnnotations.xml",
+				"type": "ODataAnnotation",
+				"settings": {
+					"localUri": "MVC/SmartAnnotations.xml"
+				}
+			},
+			"McCoy_URE": {
+				"uri": "/destinations/McCoy_URE/UreMetadata.xsodata/",
+				"type": "OData",
+				"settings": {
+					"localUri": "MVC/SmartAnnotations.xml",
+					"annotations": [
+						"SmartAnnotations"
+					]
+				}
+			}
 		}
 	},
 	"sap.ui": {
@@ -59,6 +78,17 @@
 				"name": "Dashboard",
 				"pattern": "Dashboard",
 				"greedy": false
+			}, {
+				"name": "SmartHistory",
+				"pattern": "SmartHistory",
+				"target": "SmartHistory"
+			}, {
+				"path": "/destinations/McCoy_URE",
+				"target": {
+					"type": "destination",
+					"name": "McCoy_URE"
+				},
+				"description": "McCoy_URE"
 			}],
 			"targets": {
 				"Overview": {
@@ -79,15 +109,28 @@
 					"clearAggregation": "true",
 					"viewName": "History",
 					"viewId": "history"
+				},
+				"SmartHistory": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearAggregation": "true",
+					"viewName": "SmartHistory",
+					"viewId": "smarthistory"
 				}
 			}
 		},
 		"models": {
 			"i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
-				"settings": {
-					"bundleName": "com.URE.i18n.i18n"
-				}
+				"uri": "i18n/i18n.properties"
+			},
+			"@i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"uri": "i18n/i18n.properties"
+			},
+			"McCoy_URE": {
+				"dataSource": "McCoy_URE",
+				"settings": {}
 			}
 		},
 		"contentDensities": {

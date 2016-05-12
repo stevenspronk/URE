@@ -47,7 +47,7 @@ sap.ui.define([
 			var oSelection = sap.ui.getCore().getModel("Selection");
 			oSelection.oData.selectedView = key;
 		},
-
+ 
 		_handleRouteMatched: function(evt) {
 			if ("Overview" !== evt.getParameter("name")) {
 				return;
