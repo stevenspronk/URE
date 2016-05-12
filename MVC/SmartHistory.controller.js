@@ -22,17 +22,33 @@ sap.ui.define(["JS/validator", "sap/m/TablePersoController", "sap/m/TablePersoPr
 		},
 		
 		selectHistory: function(oEvent) {
-			var oId = sap.ui.getCore().getModel("ID");
-			var oSelectedItem = oEvent.getParameter("listItem");
-			var oSelectedRaceID = oSelectedItem.getBindingContext().getProperty("RACE_ID");
-			var oSelectedRunID = oSelectedItem.getBindingContext().getProperty("RUN_ID");
+            var oTable = this.byId("RaceTable");
+  			var oSelectedItem = oTable.getSelectedItem();
+  			var sPath = oSelectedItem.getBindingContext().getPath();
+  			var oDetail = this.getView().getModel().getProperty(sPath);
+  			raceID = oDetail.RACE_ID;
+  			runID = oDetail.RUN_ID;
+ 
+ 
+  			var oModel = new sap.ui.model.json.JSONModel({
+  				raceID: raceID,
+  				runID: runID
+  			});
 
-			raceID = oSelectedRaceID;
-			runID = oSelectedRunID;
+            sap.ui.getCore().setModel(oModel, "ID");
 
-			oId.oData.raceID = oSelectedRaceID;
-			oId.oData.runID = oSelectedRunID;
-			oId.updateBindings();
+// WHEN WORKING WITH COLUMNLISTITEMS            
+// 			var oId = sap.ui.getCore().getModel("ID");
+// 			var oSelectedItem = oEvent.getParameter("listItem");
+// 			var oSelectedRaceID = oSelectedItem.getBindingContext().getProperty("RACE_ID");
+// 			var oSelectedRunID = oSelectedItem.getBindingContext().getProperty("RUN_ID");
+
+// 			raceID = oSelectedRaceID;
+// 			runID = oSelectedRunID;
+
+// 			oId.oData.raceID = oSelectedRaceID;
+// 			oId.oData.runID = oSelectedRunID;
+// 			oId.updateBindings();
 
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			oRouter.navTo("Overview", {
@@ -76,7 +92,6 @@ sap.ui.define(["JS/validator", "sap/m/TablePersoController", "sap/m/TablePersoPr
 		},
 
 		deleteSelectedDialog: function() {
-		    debugger;
 			var oTable = this.byId("RaceTable");
 			var oSelectedItems = oTable.getSelectedItems();
 
