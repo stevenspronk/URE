@@ -39,12 +39,11 @@ sap.ui.define(["JS/validator", "sap/m/TablePersoController", "sap/m/TablePersoPr
   			runID = oDetail.RUN_ID;
  
  
-  			var oModel = new sap.ui.model.json.JSONModel({
+  			var oModel = sap.ui.getCore().getModel( "ID");
+  			oModel.setData({
   				raceID: raceID,
   				runID: runID
-  			});
-
-            sap.ui.getCore().setModel(oModel, "ID");
+  				});
 
 // WHEN WORKING WITH COLUMNLISTITEMS            
 // 			var oId = sap.ui.getCore().getModel("ID");

@@ -178,6 +178,10 @@ sap.ui.define(["JS/validator", "sap/ui/model/odata/v2/ODataModel"], function(Val
 		},
 
 		_handleRouteMatched: function(evt) {
+			if ("CreateTest" !== evt.getParameter("name")) {
+				return;
+			}
+
 			if (crudTest === "C") {
 				this.createEntry(raceID, runID);
 			} else {

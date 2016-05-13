@@ -47,7 +47,7 @@ sap.ui.define([
 			var oSelection = sap.ui.getCore().getModel("Selection");
 			oSelection.oData.selectedView = key;
 		},
- 
+
 		_handleRouteMatched: function(evt) {
 			if ("Overview" !== evt.getParameter("name")) {
 				return;
@@ -75,6 +75,10 @@ sap.ui.define([
 
 			var oID = sap.ui.getCore().getModel("ID");
 			this.getView().setModel(oID, "ID");
+
+			raceID = oID.getData().raceID;
+			runID = oID.getData().runID;
+
 		},
 
 		onAfterRendering: function() {
@@ -83,6 +87,10 @@ sap.ui.define([
 
 			setTimeout(function() {
 				setInterval(function() {
+					var oID = sap.ui.getCore().getModel("ID");
+					raceID = oID.getData().raceID;
+					runID = oID.getData().runID;
+
 					var oSelection = sap.ui.getCore().getModel("Selection");
 					var key = oSelection.oData.selectedView;
 
