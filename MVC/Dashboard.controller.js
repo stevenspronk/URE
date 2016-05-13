@@ -8,6 +8,7 @@ sap.ui.controller("MVC.Dashboard", {
 	 * @memberOf MVC.Dashboard
 	 */
 	onInit: function() {
+		raceID = 180;
 		var url = "/destinations/McCoy_URE/Overview.xsodata/OVERVIEW?$filter=RACE_ID%20eq%20" + raceID + "%20and%20RUN_ID%20eq%20" + runID + "&$orderby=SENSOR_TIMESTAMP%20desc&$top=1&$format=json";
 		var dashboardModel = new sap.ui.model.json.JSONModel(url);
 		var data = dashboardModel.getData();
@@ -44,9 +45,51 @@ sap.ui.controller("MVC.Dashboard", {
 	 * @memberOf MVC.Dashboard
 	 */
 	onAfterRendering: function() {
+	  
+	   this.refreshSteer();
+	     
+	    var me = this;
+
+		setTimeout(function() {
+			setInterval(function() {
+					me.refreshSteer();
+			}, 1000);
+		}, 1000);
+		
 		iconTabBar = this.getView().byId("Dashboard").getParent().getParent().getParent();
 	},
-
+	
+	refreshSteer: function()
+	{
+	    //var _stuuruitslagHtml =  this.getView().byId("stuuruitslag");
+	   
+	    var data = sap.ui.getCore().getModel("Overview");
+	    var value =	data.getProperty("/d/results/0/POWER");
+	   
+	     value = 0 - Math.floor(Math.random()*70);
+	    var html = '<div style="width: 100%; height: 100%; background-size: contain; background-image: url(\'/IMG/steer.png\'); background-repeat: no-repeat; background-position: center; -ms-transform: rotate(' + value + 'deg); /* IE 9 */ -webkit-transform: rotate(' + value + 'deg); /* Chrome, Safari, Opera */ transform: rotate(' + value + 'deg);"></div>';
+        
+	    var htmlComponent = new sap.ui.core.HTML();
+        htmlComponent.setContent(html);
+        htmlComponent.placeAt("__xmlview2--stuuruitslagDiv", "only");
+        
+        
+	    //var data = sap.ui.getCore().getModel("Overview");
+	    //var value =	data.getProperty("/d/results/0/POWER");
+	    
+	    /// DEMO
+	   var x = Math.floor(Math.random()*150);
+	   var y = Math.floor(Math.random()*150);
+	   
+	    var dot = '<div width="100%" height="100%" style="text-align: left"><img src="/IMG/dot.png" style="margin-left: ' + y + 'px; margin-top: ' + x + 'px" ></div>';
+        
+	    var dotComponent = new sap.ui.core.HTML();
+        dotComponent.setContent(dot);
+        dotComponent.placeAt("__xmlview2--eight_curve", "only");
+        
+        
+	},
+		
 	/**
 	 * Called when the Controller is destroyed. Use this one to free resources and finalize activities.
 	 * @memberOf MVC.Dashboard

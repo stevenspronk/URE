@@ -58,12 +58,11 @@
 						<html:div class="container">
 							<sap.ui.core:Icon size="30pt" class="dashboardIcon" src="sap-icon://connected"/>
 							<html:div class="dashboardTitle">State of charge</html:div>
-							<html:div class="counter_home" id="counterDiv" style="text-align: center">
-								<ui.commons:ColumnMicroChart class="sapUiSmallMargin" height="100px" press="press" size="S" width="15%">
+							<html:div class="counter_home" id="counterDiv" style="padding: 20%;">
+								<ui.commons:ColumnMicroChart class="sapUiSmallMargin" press="press" size="S">
 									<ui.commons:columns>
 										<ui.commons:ColumnData
-											color="{= ${Overview>/d/results/0/STATE_OF_CHARGE} &lt; 20 ? 'Critical' : ${Overview>/d/results/0/STATE_OF_CHARGE} &gt; 40 ? 'Good' : 'Neutral' }"
-											height="5px" value="{Overview>/d/results/0/STATE_OF_CHARGE}" width="7px"/>
+											color="{= ${Overview>/d/results/0/STATE_OF_CHARGE} &lt; 20 ? 'Critical' : ${Overview>/d/results/0/STATE_OF_CHARGE} &gt; 40 ? 'Good' : 'Neutral' }" value="{Overview>/d/results/0/STATE_OF_CHARGE}"/>
 									</ui.commons:columns>
 								</ui.commons:ColumnMicroChart>
 							</html:div>
@@ -76,7 +75,7 @@
 							<sap.ui.core:Icon size="30pt" class="dashboardIcon" src="sap-icon://performance"/>
 							<html:div class="dashboardTitle">Water-temperatuur</html:div>
 							<html:div class="counter_home" id="counterDiv" style="text-align: center">
-								<ui.commons:ColumnMicroChart class="sapUiSmallMargin" height="100px" press="press" size="S" width="30%">
+								<ui.commons:ColumnMicroChart class="sapUiSmallMargin" height="100px" press="press" size="S">
 									<ui.commons:columns>
 										<ui.commons:ColumnData
 											color="{= ${Overview>/d/results/0/WATER_TEMP1} &lt; 60 ? 'Good' : ${Overview>/d/results/0/WATER_TEMP1} &gt; 70 ? 'Neutral' : 'Critical' }"
@@ -97,7 +96,7 @@
 							<html:div class="dashboardTitle">Minimale celvoltage</html:div>
 							<html:div class="info_text_tile" id="descriptionDiv">
 								<html:div class="counter_home" id="counterDiv" style="text-align: center">
-									<ui.commons:ColumnMicroChart class="sapUiSmallMargin" height="100px" press="press" size="S" width="30%">
+									<ui.commons:ColumnMicroChart class="sapUiSmallMargin" height="100px" press="press" size="S">
 										<ui.commons:columns>
 											<ui.commons:ColumnData
 												color="{= ${Overview>/d/results/0/MIN_CELL_VOLT} &lt; 60 ? 'Good' : ${Overview>/d/results/0/MIN_CELL_VOLT} &gt; 70 ? 'Neutral' : 'Critical' }"
@@ -119,11 +118,11 @@
 							<sap.ui.core:Icon class="dashboardIcon" size="30pt" src="sap-icon://sort"/>
 							<html:div class="dashboardTitle">Stand van de pedalen</html:div>
 							<html:div>
-								<html:div class="counter_home" style="width: 100%; margin-left: 50px" id="counterDiv">
-									<ui.commons:ColumnMicroChart class="sapUiSmallMargin" height="100px" press="press" size="S" width="30%">
+								<html:div class="counter_home" style="width: 100%;" id="counterDiv">
+									<ui.commons:ColumnMicroChart class="sapUiSmallMargin" height="100px" press="press" size="S">
 										<ui.commons:columns>
-											<ui.commons:ColumnData color="Error" height="5px" value="{Overview>/d/results/0/BRAKE}" width="7px"/>
-											<ui.commons:ColumnData color="Good" height="5px" value="{Overview>/d/results/0/THROTTLE}" width="7px"/>
+											<ui.commons:ColumnData color="Error" height="5px" value="{Overview>/d/results/0/BREAK}"/>
+											<ui.commons:ColumnData color="Good" height="5px" value="{Overview>/d/results/0/THROTTLE}"/>
 										</ui.commons:columns>
 									</ui.commons:ColumnMicroChart>
 								</html:div>
@@ -131,17 +130,12 @@
 						</html:div>
 					</content>
 				</CustomTile>
-				<CustomTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" xmlns="sap.m">
+				<CustomTile id="_stuuruitslagTile" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" xmlns="sap.m">
 					<content>
-						<html:div class="container" style="width: 100%; height: 100%;">
-							<sap.ui.core:Icon size="30pt" class="dashboardIcon" src="sap-icon://chart-axis"/>
+						<html:div xmlns:sap.ui.core="sap.ui.core" style="width: 100%; height: 100%;">
+							<sap.ui.core:Icon class="dashboardIcon" size="30pt" src="sap-icon://sort"/>
 							<html:div class="dashboardTitle">Stuuruitslag</html:div>
-							<html:div class="info_text_tile" id="descriptionDiv" style="width: 100%; height: 65%;">
-								<html:div class="counter" id="counterDiv" style="width: 100%; height: 100%;">
-									<html:div id="stuuruitslag"
-										style="width: 100%; height: 100%; background-size: contain; background-image: url('/IMG/steer.png'); background-repeat: no-repeat; background-position: center; "></html:div>
-								</html:div>
-							</html:div>
+							<html:div class="info_text_tile" id="stuuruitslagDiv" style="width: 100%; text-align: center; height: 65%;"></html:div>
 						</html:div>
 					</content>
 				</CustomTile>
@@ -150,11 +144,8 @@
 						<html:div xmlns:sap.ui.core="sap.ui.core" style="width: 100%; height: 100%;">
 							<sap.ui.core:Icon class="dashboardIcon" size="30pt" src="sap-icon://sort"/>
 							<html:div class="dashboardTitle">Acceleratie</html:div>
-							<html:div class="info_text_tile" id="descriptionDiv" style="width: 100%; text-align: center; height: 65%;">
-								<html:div class="counter" id="counterDiv" style="width: 100%; text-align: center; height: 100%;">
-									<html:div id="eight_curve"
-										style="margin-left: 5px; margin-right: 5px; height:100%; background-size: contain; background-image: url('/IMG/eight_curve.png'); background-repeat: no-repeat; background-position: center; "></html:div>
-								</html:div>
+							<html:div class="info_text_tile" id="AcceleratieDiv" style="width: 100%; text-align: center; height: 65%;">
+								<html:div id="eight_curve" style="margin-left: 5px; margin-right: 5px; height:100%; background-size: contain; background-image: url('/IMG/eight_curve.png'); background-repeat: no-repeat; background-position: center; "></html:div>
 							</html:div>
 						</html:div>
 					</content>

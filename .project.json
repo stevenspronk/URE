@@ -24,8 +24,8 @@
     }
   ],
   "mockpreview": {
-    "mockUri": "/destinations/McCoy_URE/UreOdataService.xsodata",
-    "metadataFilePath": "",
+    "mockUri": "/destinations/McCoy_URE/UreMetadata.xsodata/",
+    "metadataFilePath": "MVC/SmartAnnotations.xml",
     "loadJSONFiles": false,
     "loadCustomRequests": false,
     "mockRequestsFilePath": ""
