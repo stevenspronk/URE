@@ -92,28 +92,28 @@
 							</customData>
 							<Label text="Race Type"/>
 						</Column>
-						<Column>
+						<Column width="9em">
 							<customData>
 								<core:CustomData key="p13nData"
 									value="\{&quot;columnKey&quot;: &quot;CIRCUIT&quot;, &quot;sortProperty&quot;: &quot;CIRCUIT&quot;,&quot;filterproperty&quot;: &quot;CIRCUIT&quot;}"/>
 							</customData>
 							<Label text="Circuit"/>
 						</Column>
-						<Column>
+						<Column width="9em">
 							<customData>
 								<core:CustomData key="p13nData"
 									value="\{&quot;columnKey&quot;: &quot;WEATHER&quot;, &quot;sortProperty&quot;: &quot;WEATHER&quot;,&quot;filterproperty&quot;: &quot;WEATHER&quot;}"/>
 							</customData>
 							<Label text="Weather"/>
 						</Column>
-						<Column>
+						<Column width="9em">
 							<customData>
 								<core:CustomData key="p13nData"
 									value="\{&quot;columnKey&quot;: &quot;START_TIME&quot;, &quot;sortProperty&quot;: &quot;START_TIME&quot;,&quot;filterproperty&quot;: &quot;START_TIME&quot;}"/>
 							</customData>
 							<Label text="Start Time"/>
 						</Column>
-						<Column>
+						<Column width="9em">
 							<customData>
 								<core:CustomData key="p13nData"
 									value="\{&quot;columnKey&quot;: &quot;END_TIME&quot;, &quot;sortProperty&quot;: &quot;END_TIME&quot;,&quot;filterproperty&quot;: &quot;END_TIME&quot;}"/>
