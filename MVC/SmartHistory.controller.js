@@ -4,8 +4,7 @@ sap.ui.define(["JS/validator", "sap/ui/model/odata/v2/ODataModel",
 	"use strict";
 	return sap.ui.controller("MVC.SmartHistory", {
 		onInit: function() {
-		    debugger;
-			var oRaceHistory = new sap.ui.model.odata.ODataModel("/destinations/McCoy_URE/UreMetadata.xsodata/");
+		    var oRaceHistory = new sap.ui.model.odata.ODataModel("/destinations/McCoy_URE/UreMetadata.xsodata/");
 			this.getView().setModel(oRaceHistory);
 			sap.ui.getCore().setModel(oRaceHistory, "oRaceHistory");
 		},
