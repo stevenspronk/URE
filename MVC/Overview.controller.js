@@ -175,7 +175,6 @@ sap.ui.define([
 		},
 		
 		onExit: function() {
-		    debugger;
 		    var me = this;
 		    me.saveCurrentTest();
 		},
