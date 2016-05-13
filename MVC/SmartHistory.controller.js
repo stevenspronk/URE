@@ -1,9 +1,10 @@
-sap.ui.define(["JS/validator", "sap/m/TablePersoController", "sap/m/TablePersoProvider", "sap/ui/model/odata/v2/ODataModel",
+sap.ui.define(["JS/validator", "sap/ui/model/odata/v2/ODataModel",
 	"sap/ui/core/mvc/Controller"
 ], function() {
 	"use strict";
 	return sap.ui.controller("MVC.SmartHistory", {
 		onInit: function() {
+		    debugger;
 			var oRaceHistory = new sap.ui.model.odata.ODataModel("/destinations/McCoy_URE/UreMetadata.xsodata/");
 			this.getView().setModel(oRaceHistory);
 			sap.ui.getCore().setModel(oRaceHistory, "oRaceHistory");
