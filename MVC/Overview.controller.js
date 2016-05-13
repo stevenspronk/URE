@@ -173,6 +173,13 @@ sap.ui.define([
 				sap.m.MessageToast.show("No updates");
 			}
 		},
+		
+		onExit: function() {
+		    debugger;
+		    var me = this;
+		    me.saveCurrentTest();
+		},
+		
 		createNewRun: function(callBack) {
 
 			var oRaceMetaData = sap.ui.getCore().getModel("oRaceMetaData");
