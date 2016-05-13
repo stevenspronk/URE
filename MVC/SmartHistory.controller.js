@@ -9,63 +9,78 @@ sap.ui.define(["JS/validator", "sap/m/TablePersoController", "sap/m/TablePersoPr
 			sap.ui.getCore().setModel(oRaceHistory, "oRaceHistory");
 		},
 
-	onAfterRendering: function() {
-
- 		var oTable = this.getView().byId("RaceTable");
-		var oBinding = oTable.getBinding("items");
- 		var aSorter = new sap.ui.model.Sorter("START_TIME", true);
- 		oBinding.sort(aSorter);
-	},
-
+		onAfterRendering: function() {
+			var oTable = this.getView().byId("RaceTable");
+			var oBinding = oTable.getBinding("items");
+			var aSorter = new sap.ui.model.Sorter("START_TIME", true);
+			oBinding.sort(aSorter);
+		},
 
 		onExit: function() {
-		    var smartTable = this.getView().byId("LineItemsSmartTable");
-            smartTable.exit();
+			var smartTable = this.getView().byId("LineItemsSmartTable");
+			smartTable.exit();
 		},
 
 		onBeforeRebindFunc: function(oEvent) {
-		    var oBindingParams = oEvent.getParameter("bindingParams");
+			var oBindingParams = oEvent.getParameter("bindingParams");
 			oBindingParams.parameters = oBindingParams.parameters || {};
 			oBindingParams.parameters.select = '*'; // for selecting all fields in query or add specific fields
 		},
-		
-		selectHistory: function(oEvent) {
-            var oTable = this.getView().byId("RaceTable");
-  			var oSelectedItem = oTable.getSelectedItem();
-  			if(oSelectedItem){
-  			var sPath = oSelectedItem.getBindingContext().getPath();
-  			var oDetail = this.getView().getModel().getProperty(sPath);
-  			raceID = oDetail.RACE_ID;
-  			runID = oDetail.RUN_ID;
- 
- 
-  			var oModel = sap.ui.getCore().getModel( "ID");
-  			oModel.setData({
-  				raceID: raceID,
-  				runID: runID
-  				});
 
-// WHEN WORKING WITH COLUMNLISTITEMS            
-// 			var oId = sap.ui.getCore().getModel("ID");
-// 			var oSelectedItem = oEvent.getParameter("listItem");
-// 			var oSelectedRaceID = oSelectedItem.getBindingContext().getProperty("RACE_ID");
-// 			var oSelectedRunID = oSelectedItem.getBindingContext().getProperty("RUN_ID");
+		selectHistory: function() {
+			var oTable = this.byId("RaceTable");
+			var oSelectedItems = oTable.getSelectedItems();
 
-// 			raceID = oSelectedRaceID;
-// 			runID = oSelectedRunID;
+			var i;
+			for (i = 0; i < oSelectedItems.length; i++) {
+				var oSelectedItem = oSelectedItems[i];
+				var sPath = oSelectedItem.getBindingContext().getPath();
+			}
 
-// 			oId.oData.raceID = oSelectedRaceID;
-// 			oId.oData.runID = oSelectedRunID;
-// 			oId.updateBindings();
+			if (oSelectedItem) {
+				var oDetail = this.getView().getModel().getProperty(sPath);
+				raceID = oDetail.RACE_ID;
+				runID = oDetail.RUN_ID;
 
-			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-			oRouter.navTo("Overview", {
-				//Router navigation is done in manifest.json Code Editor
-				id: 1
-			}, false);
-  			}else{
-  			    sap.m.MessageToast.show("Geen item geselecteerd");
-  			}
+				var oModel = new sap.ui.model.json.JSONModel({
+					raceID: raceID,
+					runID: runID
+				});
+
+				sap.ui.getCore().setModel(oModel, "ID");
+
+				// WHEN WORKING WITH COLUMNLISTITEMS            
+				// 			var oId = sap.ui.getCore().getModel("ID");
+				// 			var oSelectedItem = oEvent.getParameter("listItem");
+				// 			var oSelectedRaceID = oSelectedItem.getBindingContext().getProperty("RACE_ID");
+				// 			var oSelectedRunID = oSelectedItem.getBindingContext().getProperty("RUN_ID");
+
+				// 			raceID = oSelectedRaceID;
+				// 			runID = oSelectedRunID;
+
+				// 			oId.oData.raceID = oSelectedRaceID;
+				// 			oId.oData.runID = oSelectedRunID;
+				// 			oId.updateBindings();
+
+				if (i === 1) {
+					var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+					oRouter.navTo("Overview", {
+						//Router navigation is done in manifest.json Code Editor
+						id: 1
+					}, false);
+				} else {
+					console.log("error");
+				}
+			}
+
+			if (i < 1) {
+				sap.m.MessageToast.show("Selecteer minimaal één test");
+			}
+
+			if (i > 1) {
+				sap.m.MessageToast.show("Selecteer maximaal één test");
+			}
+
 		},
 
 		onNavBack: function() {
