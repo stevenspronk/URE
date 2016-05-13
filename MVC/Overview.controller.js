@@ -175,8 +175,10 @@ sap.ui.define([
 		},
 		
 		onExit: function() {
-		    var me = this;
-		    me.saveCurrentTest();
+		    if (crudTest === "U") {
+		        var me = this;
+		        me.saveCurrentTest();
+		    }
 		},
 		
 		createNewRun: function(callBack) {
