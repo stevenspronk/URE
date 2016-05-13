@@ -5,7 +5,7 @@
 	<Page id="page" title="Historische tests" enableScrolling="true" showNavButton="true" navButtonPress="onNavBack">
 		<!-- use this to make the table occupy the available screen height -->
 		<VBox fitContainer="true">
-			<smartFilterBar:SmartFilterBar id="smartFilterBar" entityType="URE_METADATAType" label="Filters" persistencyKey="SmartFilter_Explored">
+			<smartFilterBar:SmartFilterBar id="smartFilterBar" entityType="URE_METADATAType" label="Filters" enableBasicSearch="true">
 				<smartFilterBar:controlConfiguration>
 					<smartFilterBar:ControlConfiguration key="RACE_ID" label="Race ID" visibleInAdvancedArea="false"
 						preventInitialDataFetchInValueHelpDialog="false"/>
@@ -13,9 +13,9 @@
 						preventInitialDataFetchInValueHelpDialog="false"/>
 					<smartFilterBar:ControlConfiguration key="RACE_DESCRIPTION" label="Description" visibleInAdvancedArea="false"
 						preventInitialDataFetchInValueHelpDialog="false"/>
-					<smartFilterBar:ControlConfiguration key="RACE_TYPE" label="Race Type" visibleInAdvancedArea="true"
+					<smartFilterBar:ControlConfiguration key="RACE_TYPE" label="Race Type" visibleInAdvancedArea="false"
 						preventInitialDataFetchInValueHelpDialog="false"/>
-					<smartFilterBar:ControlConfiguration key="CIRCUIT" label="Circuit" visibleInAdvancedArea="true"
+					<smartFilterBar:ControlConfiguration key="CIRCUIT" label="Circuit" visibleInAdvancedArea="false"
 						preventInitialDataFetchInValueHelpDialog="false"/>
 					<smartFilterBar:ControlConfiguration key="WEATHER" label="Weather" visibleInAdvancedArea="false"
 						preventInitialDataFetchInValueHelpDialog="false"/>
@@ -64,28 +64,28 @@
 				useTablePersonalisation="true" header="Aantal tests" showRowCount="true" enableAutoBinding="true">
 				<Table mode="MultiSelect" itemPress="selectHistory" id="RaceTable" growing="true" growingScrollToLoad="true">
 					<columns>
-						<Column>
+						<Column width="9em">
 							<customData>
 								<core:CustomData key="p13nData"
 									value="\{&quot;columnKey&quot;: &quot;RACE_ID&quot;,&quot;leadingProperty&quot;: &quot;RACE_ID&quot;,&quot;sortProperty&quot;: &quot;RACE_ID&quot;,&quot;filterProperty&quot;: &quot;RACE_ID&quot;}"/>
 							</customData>
 							<Label text="Race ID"/>
 						</Column>
-						<Column>
+						<Column width="9em">
 							<customData>
 								<core:CustomData key="p13nData"
 									value="\{&quot;columnKey&quot;: &quot;RUN_ID&quot;,&quot;leadingProperty&quot;: &quot;RUN_ID&quot;, &quot;sortProperty&quot;: &quot;RUN_ID&quot;,&quot;filterproperty&quot;: &quot;RUN_ID&quot;}"/>
 							</customData>
 							<Label text="Run ID"/>
 						</Column>
-						<Column>
+						<Column width="9em">
 							<customData>
 								<core:CustomData key="p13nData"
 									value="\{&quot;columnKey&quot;: &quot;RACE_DESCRIPTION&quot;, &quot;sortProperty&quot;: &quot;RACE_DESCRIPTION&quot;,&quot;filterproperty&quot;: &quot;RACE_DESCRIPTION&quot;}"/>
 							</customData>
 							<Label text="Description"/>
 						</Column>
-						<Column>
+						<Column width="9em">
 							<customData>
 								<core:CustomData key="p13nData"
 									value="\{&quot;columnKey&quot;: &quot;RACE_TYPE&quot;, &quot;sortProperty&quot;: &quot;RACE_TYPE&quot;,&quot;filterproperty&quot;: &quot;RACE_TYPE&quot;}"/>
