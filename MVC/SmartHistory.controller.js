@@ -71,7 +71,7 @@ sap.ui.define(["JS/validator", "sap/m/TablePersoController", "sap/m/TablePersoPr
 
 		onNavBack: function() {
 			window.history.go(-1);
-			crudTest = "C";
+			crudTest = "R";
 		},
 
 		deleteSelected: function() {

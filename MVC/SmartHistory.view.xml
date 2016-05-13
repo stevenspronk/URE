@@ -178,7 +178,7 @@
 						</Column>
 					</columns>
 					<items>
-						<ColumnListItem>
+						<ColumnListItem detailPress="selectHistory">
 							<cells>
 								<ObjectIdentifier text="{RACE_ID}"/>
 							</cells>

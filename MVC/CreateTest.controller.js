@@ -21,7 +21,6 @@ sap.ui.define(["JS/validator", "sap/ui/model/odata/v2/ODataModel"], function(Val
 
 		onInit: function() {
 
-			var me = this;
 			this.router = sap.ui.core.UIComponent.getRouterFor(this);
 			this.router.attachRoutePatternMatched(this._handleRouteMatched, this);
 
@@ -43,6 +42,13 @@ sap.ui.define(["JS/validator", "sap/ui/model/odata/v2/ODataModel"], function(Val
 			this.getView().setModel(oRaceMetaData);
 			sap.ui.getCore().setModel(oRaceMetaData, "oRaceMetaData");
 
+			this.readLatest();
+
+		},
+
+		readLatest: function() {
+			var me = this;
+			var oRaceMetaData = this.getView().getModel();
 			var path = "/URE_METADATA";
 			var aParameters = new Array("$top=1");
 
@@ -61,7 +67,6 @@ sap.ui.define(["JS/validator", "sap/ui/model/odata/v2/ODataModel"], function(Val
 					sap.m.MessageToast.show(oError.message);
 				}
 			});
-
 		},
 
 		createEntry: function(raceID, runID) {
@@ -176,7 +181,10 @@ sap.ui.define(["JS/validator", "sap/ui/model/odata/v2/ODataModel"], function(Val
 			if (crudTest === "C") {
 				this.createEntry(raceID, runID);
 			} else {
-//
+				if (crudTest === "R") {
+					this.readLatest();
+				}
+
 			}
 		}
 
