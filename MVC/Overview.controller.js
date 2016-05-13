@@ -11,7 +11,7 @@ sap.ui.define([
 		"TEMPERATURE": null,
 		"RACE_DESCRIPTION": null,
 		"START_TIME": null,
-		"END_TIME": null
+		"END_TIME": null,
 		"RACE_TYPE": null,
 		"WEATHER": null,
 		"NOTES": null,
