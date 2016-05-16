@@ -1,151 +1,173 @@
-<mvc:View controllerName="MVC.Dashboard" height="100%" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="MVC.Dashboard"
-	xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.layout="sap.ui.layout"
-	xmlns:ui.commons="sap.suite.ui.commons" xmlns="sap.m">
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="MVC.Dashboard" xmlns:sap.ui.core="sap.ui.core"
+	xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.layout="sap.ui.layout" xmlns:ui.commons="sap.suite.ui.commons" xmlns="sap.m"
+	xmlns:microchart="sap.suite.ui.microchart" controllerName="MVC.Dashboard" height="100%">
 	<Page showFooter="false" id="Dashboard" showHeader="false">
 		<TileContainer allowAdd="false" busy="false" editable="false" height="100%" id="__container0">
 			<tiles>
-				<CustomTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" xmlns="sap.m">
+				<CustomTile xmlns="sap.m" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" height="100%">
 					<content>
-						<html:div xmlns:sap.ui.core="sap.ui.core" style="width: 100%; height: 100%;">
-							<sap.ui.core:Icon class="dashboardIcon" size="30pt" src="sap-icon://car-rental"/>
-							<html:div class="dashboardTitle">Vermogen</html:div>
-							<html:div class="info_text_tile" id="descriptionDiv" style="width: 100%; height: 100%;">
-								<html:div class="counter" id="counterDiv" style="width: 100%; height: 100%; text-align: center; margin-left: 0px; margin-top: 30px">
-									<ui.commons:NumericContent class="sapUiSmallMargin" style="width: 100%; height: 100%;" id="gearIndicator" scale="" size="S" state="Loaded"
-										value="{Overview>/d/results/0/POWER}&#47;{Overview>/d/results/0/POWER}" valueColor="Neutral" withMargin="false"/>
-								</html:div>
-							</html:div>
-							<html:content></html:content>
-						</html:div>
+						<Panel class="dashboardTilePanel" height="100%" backgroundDesign="Transparent">
+							<headerToolbar>
+								<Toolbar>
+									<sap.ui.core:Icon src="sap-icon://car-rental" size="30pt"/>
+									<Text textAlign="Left" text="Vermogen" wrapping="true"/>
+								</Toolbar>
+							</headerToolbar>
+							<FlexBox height="100%" alignItems="Center" justifyContent="Center">
+								<items>
+									<Text textAlign="Center" width="100%" height="100%" text="32220/2222" wrapping="true" id="dashboardTilePowerText"/>
+								</items>
+							</FlexBox>
+						</Panel>
 					</content>
 				</CustomTile>
-				<CustomTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" xmlns="sap.m">
+				<CustomTile xmlns="sap.m" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" height="100%" width="100%">
 					<content>
-						<html:div xmlns:sap.ui.core="sap.ui.core">
-							<sap.ui.core:Icon class="dashboardIcon" size="30pt" src="sap-icon://temperature"/>
-							<html:div class="dashboardTitle">Temperatuur per cel</html:div>
-							<html:div>
-								<html:div class="counter_home" id="counterDiv" style="text-align: center">
-									<ui.commons:ColumnMicroChart class="sapUiSmallMargin" height="100px" press="press" size="S" width="80%">
+						<Panel height="100%" width="100%" backgroundDesign="Transparent">
+							<headerToolbar>
+								<Toolbar>
+									<sap.ui.core:Icon src="sap-icon://temperature" color="#007cc0" size="30pt"/>
+									<Text textAlign="Left" text="Temperatuur per cel" wrapping="true"/>
+								</Toolbar>
+							</headerToolbar>
+							<FlexBox height="100%" width="100%" alignItems="Center" justifyContent="Center">
+								<items>
+									<ui.commons:ColumnMicroChart>
 										<ui.commons:columns>
 											<ui.commons:ColumnData
 												color="{= ${Overview>/d/results/0/MAX_TEMP_BUCKET1} &gt; 0 &amp;&amp; ${Overview>/d/results/0/MAX_TEMP_BUCKET1} &lt; 41 ? 'Good' : ${Overview>/d/results/0/MAX_TEMP_BUCKET1} &gt; 40 &amp;&amp; ${Overview>/d/results/0/MAX_TEMP_BUCKET1} &lt; 61 ? 'Critical' : 'Neutral' }"
-												height="5px" value="{Overview>/d/0/MAX_TEMP_BUCKET1}" width="7px"/>
+												value="{Overview>/d/results/0/MAX_TEMP_BUCKET1}"/>
 											<ui.commons:ColumnData
 												color="{= ${Overview>/d/results/0/MAX_TEMP_BUCKET2} &gt; 0 &amp;&amp; ${Overview>/d/results/0/MAX_TEMP_BUCKET2} &lt; 41 ? 'Good' : 'Neutral' }"
-												height="5px" value="{Overview>/d/results/0/MAX_TEMP_BUCKET5}" width="7px"/>
+												value="{Overview>/d/results/0/MAX_TEMP_BUCKET2}"/>
 											<ui.commons:ColumnData
 												color="{= ${Overview>/d/results/0/MAX_TEMP_BUCKET3} &gt; 0 &amp;&amp; ${Overview>/d/results/0/MAX_TEMP_BUCKET3} &lt; 41 ? 'Good' : 'Neutral' }"
-												height="5px" value="{Overview>/d/results/0/MAX_TEMP_BUCKET4}" width="7px"/>
+												value="{Overview>/d/results/0/MAX_TEMP_BUCKET3}"/>
 											<ui.commons:ColumnData
 												color="{= ${Overview>/d/results/0/MAX_TEMP_BUCKET4} &gt; 0 &amp;&amp; ${Overview>/d/results/0/MAX_TEMP_BUCKET4} &lt; 41 ? 'Good' : 'Neutral' }"
-												height="5px" value="{Overview>/d/results/0/MAX_TEMP_BUCKET3}" width="7px"/>
+												value="{Overview>/d/results/0/MAX_TEMP_BUCKET3}"/>
 											<ui.commons:ColumnData
 												color="{= ${Overview>/d/results/0/MAX_TEMP_BUCKET5} &gt; 0 &amp;&amp; ${Overview>/d/results/0/MAX_TEMP_BUCKET5} &lt; 41 ? 'Good' : 'Neutral' }"
-												height="7px" value="{Overview>/d/results/0/MAX_TEMP_BUCKET2}" width="7px"/>
+												value="{Overview>/d/results/0/MAX_TEMP_BUCKET5}"/>
 											<ui.commons:ColumnData
 												color="{= ${Overview>/d/results/0/MAX_TEMP_BUCKET6} &gt; 0 &amp;&amp; ${Overview>/d/results/0/MAX_TEMP_BUCKET6} &lt; 41 ? 'Good' : 'Neutral' }"
-												height="5px" value="{Overview>/d/results/0/MAX_TEMP_BUCKET1}" width="7px"/>
+												value="{Overview>/d/results/0/MAX_TEMP_BUCKET4}"/>
 										</ui.commons:columns>
 									</ui.commons:ColumnMicroChart>
-								</html:div>
-							</html:div>
-						</html:div>
+								</items>
+							</FlexBox>
+						</Panel>
 					</content>
 				</CustomTile>
-				<CustomTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" xmlns="sap.m">
+				<CustomTile xmlns="sap.m" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" height="100%" width="100%">
 					<content>
-						<html:div class="container">
-							<sap.ui.core:Icon size="30pt" class="dashboardIcon" src="sap-icon://connected"/>
-							<html:div class="dashboardTitle">State of charge</html:div>
-							<html:div class="counter_home" id="counterDiv" style="padding: 20%;">
-								<ui.commons:ColumnMicroChart class="sapUiSmallMargin" press="press" size="S">
-									<ui.commons:columns>
-										<ui.commons:ColumnData
-											color="{= ${Overview>/d/results/0/STATE_OF_CHARGE} &lt; 20 ? 'Critical' : ${Overview>/d/results/0/STATE_OF_CHARGE} &gt; 40 ? 'Good' : 'Neutral' }" value="{Overview>/d/results/0/STATE_OF_CHARGE}"/>
-									</ui.commons:columns>
-								</ui.commons:ColumnMicroChart>
-							</html:div>
-						</html:div>
+						<Panel height="100%" width="100%" backgroundDesign="Transparent">
+							<headerToolbar>
+								<Toolbar>
+									<sap.ui.core:Icon src="sap-icon://connected" color="#007cc0" size="30pt"/>
+									<Text textAlign="Left" text="State of charge" wrapping="true"/>
+								</Toolbar>
+							</headerToolbar>
+							<FlexBox height="100%" width="100%" alignItems="Center" justifyContent="Center">
+								<items>
+									<microchart:RadialMicroChart percentage="{Overview>/d/results/0/STATE_OF_CHARGE}"
+										valueColor="{= ${Overview>/d/results/0/STATE_OF_CHARGE} &lt; 20 ? 'Critical' : ${Overview>/d/results/0/STATE_OF_CHARGE} &gt; 40 ? 'Good' : 'Neutral' }"></microchart:RadialMicroChart>
+								</items>
+							</FlexBox>
+						</Panel>
 					</content>
 				</CustomTile>
-				<CustomTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" xmlns="sap.m">
+				<CustomTile xmlns="sap.m" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" height="100%" width="100%">
 					<content>
-						<html:div class="container">
-							<sap.ui.core:Icon size="30pt" class="dashboardIcon" src="sap-icon://performance"/>
-							<html:div class="dashboardTitle">Water-temperatuur</html:div>
-							<html:div class="counter_home" id="counterDiv" style="text-align: center">
-								<ui.commons:ColumnMicroChart class="sapUiSmallMargin" height="100px" press="press" size="S">
-									<ui.commons:columns>
-										<ui.commons:ColumnData
-											color="{= ${Overview>/d/results/0/WATER_TEMP1} &lt; 60 ? 'Good' : ${Overview>/d/results/0/WATER_TEMP1} &gt; 70 ? 'Neutral' : 'Critical' }"
-											height="5px" value="{Overview>/d/results/0/WATER_TEMP1}" width="7px"/>
-										<ui.commons:ColumnData
-											color="{= ${Overview>/d/results/0/WATER_TEMP2} &lt; 60 ? 'Good' : ${Overview>/d/results/0/WATER_TEMP2} &gt; 70 ? 'Neutral' : 'Critical' }"
-											height="5px" value="{Overview>/d/results/0/WATER_TEMP2}" width="7px"/>
-									</ui.commons:columns>
-								</ui.commons:ColumnMicroChart>
-							</html:div>
-						</html:div>
+						<Panel height="100%" width="100%" backgroundDesign="Transparent">
+							<headerToolbar>
+								<Toolbar>
+									<sap.ui.core:Icon src="sap-icon://performance" color="#007cc0" size="30pt"/>
+									<Text textAlign="Left" text="Water temperatuur" wrapping="true"/>
+								</Toolbar>
+							</headerToolbar>
+							<FlexBox height="100%" width="100%" alignItems="Center" justifyContent="Center">
+								<items>
+									<ui.commons:ColumnMicroChart>
+										<ui.commons:columns>
+											<ui.commons:ColumnData
+												color="{= ${Overview>/d/results/0/WATER_TEMP1} &lt; 60 ? 'Good' : ${Overview>/d/results/0/WATER_TEMP1} &gt; 70 ? 'Neutral' : 'Critical' }"
+												height="5px" value="{Overview>/d/results/0/WATER_TEMP1}"/>
+											<ui.commons:ColumnData
+												color="{= ${Overview>/d/results/0/WATER_TEMP2} &lt; 60 ? 'Good' : ${Overview>/d/results/0/WATER_TEMP2} &gt; 70 ? 'Neutral' : 'Critical' }"
+												height="5px" value="{Overview>/d/results/0/WATER_TEMP2}"/>
+										</ui.commons:columns>
+									</ui.commons:ColumnMicroChart>
+								</items>
+							</FlexBox>
+						</Panel>
 					</content>
 				</CustomTile>
-				<CustomTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" xmlns="sap.m">
+				<CustomTile xmlns="sap.m" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" height="100%" width="100%">
 					<content>
-						<html:div xmlns:sap.ui.core="sap.ui.core">
-							<sap.ui.core:Icon class="dashboardIcon" size="30pt" src="sap-icon://photo-voltaic"/>
-							<html:div class="dashboardTitle">Minimale celvoltage</html:div>
-							<html:div class="info_text_tile" id="descriptionDiv">
-								<html:div class="counter_home" id="counterDiv" style="text-align: center">
-									<ui.commons:ColumnMicroChart class="sapUiSmallMargin" height="100px" press="press" size="S">
+						<Panel height="100%" width="100%" backgroundDesign="Transparent">
+							<headerToolbar>
+								<Toolbar>
+									<sap.ui.core:Icon src="sap-icon://photo-voltaic" color="#007cc0" size="30pt"/>
+									<Text textAlign="Left" text="Minimale celvoltage" wrapping="true"/>
+								</Toolbar>
+							</headerToolbar>
+							<FlexBox height="100%" width="100%" alignItems="Center" justifyContent="Center">
+								<items>
+									<ui.commons:ColumnMicroChart>
 										<ui.commons:columns>
 											<ui.commons:ColumnData
 												color="{= ${Overview>/d/results/0/MIN_CELL_VOLT} &lt; 60 ? 'Good' : ${Overview>/d/results/0/MIN_CELL_VOLT} &gt; 70 ? 'Neutral' : 'Critical' }"
-												height="5px" value="{Overview>/d/results/0/MIN_CELL_VOLT}" width="7px"/>
+												height="5px" value="{Overview>/d/results/0/MIN_CELL_VOLT}"/>
 											<ui.commons:ColumnData
 												color="{= ${Overview>/d/results/0/MAX_CELL_VOLT} &lt; 60 ? 'Good' : ${Overview>/d/results/0/MAX_CELL_VOLT} &gt; 70 ? 'Neutral' : 'Critical' }"
-												height="5px" value="{Overview>/d/results/0/MAX_CELL_VOLT}" width="7px"/>
+												height="5px" value="{Overview>/d/results/0/MAX_CELL_VOLT}"/>
 										</ui.commons:columns>
 									</ui.commons:ColumnMicroChart>
-								</html:div>
-							</html:div>
-							<html:content></html:content>
-						</html:div>
+								</items>
+							</FlexBox>
+						</Panel>
 					</content>
 				</CustomTile>
-				<CustomTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" xmlns="sap.m">
+				<CustomTile xmlns="sap.m" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" height="100%" width="100%">
 					<content>
-						<html:div xmlns:sap.ui.core="sap.ui.core">
-							<sap.ui.core:Icon class="dashboardIcon" size="30pt" src="sap-icon://sort"/>
-							<html:div class="dashboardTitle">Stand van de pedalen</html:div>
-							<html:div>
-								<html:div class="counter_home" style="width: 100%;" id="counterDiv">
-									<ui.commons:ColumnMicroChart class="sapUiSmallMargin" height="100px" press="press" size="S">
+						<Panel height="100%" width="100%" backgroundDesign="Transparent">
+							<headerToolbar>
+								<Toolbar>
+									<sap.ui.core:Icon src="sap-icon://sort" color="#007cc0" size="30pt"/>
+									<Text textAlign="Left" text="Stand van de pedalen" wrapping="true"/>
+								</Toolbar>
+							</headerToolbar>
+							<FlexBox height="100%" width="100%" alignItems="Center" justifyContent="Center">
+								<items>
+									<ui.commons:ColumnMicroChart>
 										<ui.commons:columns>
 											<ui.commons:ColumnData color="Error" height="5px" value="{Overview>/d/results/0/BREAK}"/>
 											<ui.commons:ColumnData color="Good" height="5px" value="{Overview>/d/results/0/THROTTLE}"/>
 										</ui.commons:columns>
 									</ui.commons:ColumnMicroChart>
-								</html:div>
-							</html:div>
-						</html:div>
+								</items>
+							</FlexBox>
+						</Panel>
 					</content>
 				</CustomTile>
-				<CustomTile id="_stuuruitslagTile" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" xmlns="sap.m">
+				<CustomTile xmlns="sap.m" id="_stuuruitslagTile" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile">
 					<content>
 						<html:div xmlns:sap.ui.core="sap.ui.core" style="width: 100%; height: 100%;">
-							<sap.ui.core:Icon class="dashboardIcon" size="30pt" src="sap-icon://sort"/>
+							<sap.ui.core:Icon src="sap-icon://chart-axis" color="#007cc0" size="30pt"/>
 							<html:div class="dashboardTitle">Stuuruitslag</html:div>
-							<html:div class="info_text_tile" id="stuuruitslagDiv" style="width: 100%; text-align: center; height: 65%;"></html:div>
+							<html:div id="stuuruitslagDiv" style="width: 100%; text-align: center; height: 100%;"></html:div>
 						</html:div>
 					</content>
 				</CustomTile>
-				<CustomTile class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" xmlns="sap.m">
+				<CustomTile xmlns="sap.m" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile">
 					<content>
 						<html:div xmlns:sap.ui.core="sap.ui.core" style="width: 100%; height: 100%;">
 							<sap.ui.core:Icon class="dashboardIcon" size="30pt" src="sap-icon://sort"/>
 							<html:div class="dashboardTitle">Acceleratie</html:div>
 							<html:div class="info_text_tile" id="AcceleratieDiv" style="width: 100%; text-align: center; height: 65%;">
-								<html:div id="eight_curve" style="margin-left: 5px; margin-right: 5px; height:100%; background-size: contain; background-image: url('/IMG/eight_curve.png'); background-repeat: no-repeat; background-position: center; "></html:div>
+								<html:div id="eight_curve"
+									style="margin-left: 5px; margin-right: 5px; height:100%; background-size: contain; background-image: url('/IMG/eight_curve.png'); background-repeat: no-repeat; background-position: center; "></html:div>
 							</html:div>
 						</html:div>
 					</content>

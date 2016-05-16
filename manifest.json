@@ -23,9 +23,7 @@
 				"type": "OData",
 				"settings": {
 					"localUri": "MVC/SmartAnnotations.xml",
-					"annotations": [
-						"SmartAnnotations"
-					]
+					"annotations": ["SmartAnnotations"]
 				}
 			}
 		}
@@ -136,6 +134,12 @@
 		"contentDensities": {
 			"compact": false,
 			"cozy": false
+		},
+		"resources": {
+			"css": [{
+				"uri": "css/style.css",
+				"id": "style.css"
+			}]
 		}
 	}
 }
