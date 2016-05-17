@@ -38,7 +38,8 @@ sap.ui.define([
 			sap.ui.getCore().setModel(oSelection, "Selection");
 
 			$(window).bind('beforeunload', function(e) {
-				self.newTest();
+				var exit = true;
+				self.newTest(exit);
 			});
 		},
 
@@ -145,13 +146,13 @@ sap.ui.define([
 			window.history.go(-1);
 		},
 
-		newTest: function() {
+		newTest: function(exit) {
 			if (crudTest === "U") {
 				var me = this;
 				wait = true;
 
 				//We save the current test
-				this.saveCurrentTest(function() {
+				this.saveCurrentTest(exit, function() {
 
 					raceID = raceID + 1;
 					runID = 1;
@@ -164,13 +165,14 @@ sap.ui.define([
 
 			}
 		},
-		saveCurrentTest: function(callBack) {
+		saveCurrentTest: function(exit, callBack) {
 			var oRaceMetaData = sap.ui.getCore().getModel("oRaceMetaData");
 
 			var oPath = "/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")";
 			oRaceMetaData.setProperty(oPath + "/END_TIME", new Date());
 
 			if (oRaceMetaData.hasPendingChanges()) {
+
 				oRaceMetaData.submitChanges({
 					success: function(oData) {
 						sap.m.MessageToast.show("Test opgeslagen");
@@ -180,6 +182,12 @@ sap.ui.define([
 						sap.m.MessageToast.show("Error with update");
 					}
 				});
+
+				if (exit) {
+					setTimeout(function() {
+						exit = false;
+					}, 1000);
+				}
 			} else {
 				sap.m.MessageToast.show("No updates");
 			}
@@ -188,7 +196,7 @@ sap.ui.define([
 		onExit: function() {
 			if (crudTest === "U") {
 
-				  me.saveCurrentTest();
+				//	  me.saveCurrentTest();
 			}
 		},
 
