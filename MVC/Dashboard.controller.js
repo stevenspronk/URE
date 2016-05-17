@@ -8,7 +8,7 @@ sap.ui.controller("MVC.Dashboard", {
 	 * @memberOf MVC.Dashboard
 	 */
 	onInit: function() {
-		raceID = 180;
+		//raceID = 180;
 		var url = "/destinations/McCoy_URE/Overview.xsodata/OVERVIEW?$filter=RACE_ID%20eq%20" + raceID + "%20and%20RUN_ID%20eq%20" + runID + "&$orderby=SENSOR_TIMESTAMP%20desc&$top=1&$format=json";
 		var dashboardModel = new sap.ui.model.json.JSONModel(url);
 		var data = dashboardModel.getData();
@@ -52,7 +52,7 @@ sap.ui.controller("MVC.Dashboard", {
 
 		setTimeout(function() {
 			setInterval(function() {
-					me.refreshSteer();
+				//	me.refreshSteer();
 			}, 1000);
 		}, 1000);
 		

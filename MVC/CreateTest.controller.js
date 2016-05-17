@@ -42,13 +42,8 @@ sap.ui.define(["JS/validator", "sap/ui/model/odata/v2/ODataModel"], function(Val
 			this.getView().setModel(oRaceMetaData);
 			sap.ui.getCore().setModel(oRaceMetaData, "oRaceMetaData");
 
-			this.readLatest();
-
-		},
-
-		readLatest: function() {
 			var me = this;
-			var oRaceMetaData = this.getView().getModel();
+
 			var path = "/URE_METADATA";
 			var aParameters = new Array("$top=1");
 
@@ -67,12 +62,31 @@ sap.ui.define(["JS/validator", "sap/ui/model/odata/v2/ODataModel"], function(Val
 					sap.m.MessageToast.show(oError.message);
 				}
 			});
+
+		},
+
+		readLatest: function() {
+
+			var oRaceMetaData = this.getView().getModel();
+			var oContext = this.getView().getBindingContext();
+			var oPath = oContext.getPath();
+			
+			raceID = oRaceMetaData.getProperty(oPath + "/RACE_ID");
+			runID = oRaceMetaData.getProperty(oPath + "/RUN_ID");
+
+			var oId = sap.ui.getCore().getModel("ID");
+			oId.oData.raceID = raceID;
+			oId.oData.runID = runID;
+			
+			//oRaceMetaData.deleteCreatedEntry(oContext);
+			//this.createEntry(raceID, runID);
+
 		},
 
 		createEntry: function(raceID, runID) {
 
 			var oRaceMetaData = this.getView().getModel();
-			oRaceMetaData.refresh(false, true);
+			oRaceMetaData.refresh(true, true);
 			var data = {
 				"RACE_ID": raceID,
 				"RUN_ID": runID,

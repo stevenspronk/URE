@@ -58,6 +58,8 @@ sap.ui.define([
 				this.oView.byId("_newTestBtn").setVisible(false);
 				this.oView.byId("_newRunBtn").setVisible(false);
 				this.oView.byId("_appView").setShowNavButton(true);
+				this.refreshData(key);
+				wait = true;
 			}
 
 			if (crudTest === "C") {
@@ -70,14 +72,21 @@ sap.ui.define([
 				this.oView.byId("_newTestBtn").setVisible(true);
 				this.oView.byId("_newRunBtn").setVisible(true);
 				this.oView.byId("_appView").setShowNavButton(false);
+
+				wait = false;
 			}
-			wait = false;
 
 			var oID = sap.ui.getCore().getModel("ID");
 			this.getView().setModel(oID, "ID");
 
 			raceID = oID.getData().raceID;
 			runID = oID.getData().runID;
+
+			var oTimeOut = new sap.ui.model.json.JSONModel({
+				wait: wait
+			});
+
+			this.getView().setModel(oTimeOut, "TimeOut");
 
 		},
 
@@ -93,6 +102,8 @@ sap.ui.define([
 
 					var oSelection = sap.ui.getCore().getModel("Selection");
 					var key = oSelection.oData.selectedView;
+					me.getView().byId("_newTestBtn").setEnabled(!wait);
+					me.getView().byId("_newRunBtn").setEnabled(!wait);
 
 					if (!wait) {
 						me.refreshData(key);
@@ -137,6 +148,7 @@ sap.ui.define([
 		newTest: function() {
 			if (crudTest === "U") {
 				var me = this;
+				wait = true;
 
 				//We save the current test
 				this.saveCurrentTest(function() {
@@ -145,7 +157,6 @@ sap.ui.define([
 					runID = 1;
 					// Set variable crudTest to C = Create		
 					crudTest = 'C';
-					wait = true;
 
 					var router = sap.ui.core.UIComponent.getRouterFor(me);
 					router.navTo("CreateTest");
@@ -173,14 +184,14 @@ sap.ui.define([
 				sap.m.MessageToast.show("No updates");
 			}
 		},
-		
+
 		onExit: function() {
-		    if (crudTest === "U") {
-		        var me = this;
-		        me.saveCurrentTest();
-		    }
+			if (crudTest === "U") {
+
+				  me.saveCurrentTest();
+			}
 		},
-		
+
 		createNewRun: function(callBack) {
 
 			var oRaceMetaData = sap.ui.getCore().getModel("oRaceMetaData");
