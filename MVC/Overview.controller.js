@@ -214,6 +214,8 @@ sap.ui.define([
 			data.END_TIME = null;
 			data.RUN_ID = runID;
 
+			
+
 			oRaceMetaData.createEntry("/URE_METADATA", {
 				properties: data
 			});
@@ -240,8 +242,9 @@ sap.ui.define([
 				var oId = this.getView().getModel("ID");
 				var me = this;
 				wait = true;
+			    var exit = false;
 
-				this.saveCurrentTest(function() {
+				this.saveCurrentTest(exit,function() {
 
 					me.createNewRun(function() {
 						oId.oData.runID = runID;
