@@ -61,19 +61,21 @@
 				</CustomTile>
 				<CustomTile xmlns="sap.m" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" height="100%" width="100%">
 					<content>
-						<Panel height="100%" width="100%" backgroundDesign="Transparent">
+						<Panel height="100%" width="100%" backgroundDesign="Transparent" class="sapUiDemoFlexBoxSizeAdjustments">
 							<headerToolbar>
-								<Toolbar>
+								<OverflowToolbar>
 									<sap.ui.core:Icon src="sap-icon://connected" color="#007cc0" size="30pt"/>
 									<Text textAlign="Left" text="State of charge" wrapping="true"/>
-								</Toolbar>
+								</OverflowToolbar>
 							</headerToolbar>
-							<FlexBox height="100%" width="100%" alignItems="Center" justifyContent="Center">
+							<content>
+							<FlexBox height="90%" width="90%" alignItems="Center">
 								<items>
 									<microchart:RadialMicroChart percentage="{Overview>/d/results/0/STATE_OF_CHARGE}"
 										valueColor="{= ${Overview>/d/results/0/STATE_OF_CHARGE} &lt; 20 ? 'Critical' : ${Overview>/d/results/0/STATE_OF_CHARGE} &gt; 40 ? 'Good' : 'Neutral' }"></microchart:RadialMicroChart>
 								</items>
 							</FlexBox>
+							</content>
 						</Panel>
 					</content>
 				</CustomTile>
@@ -154,17 +156,17 @@
 				<CustomTile xmlns="sap.m" id="_stuuruitslagTile" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile">
 					<content>
 						<html:div xmlns:sap.ui.core="sap.ui.core" style="width: 100%; height: 100%;">
-							<sap.ui.core:Icon src="sap-icon://chart-axis" color="#007cc0" size="30pt"/>
-							<html:div class="dashboardTitle">Stuuruitslag</html:div>
-							<html:div id="stuuruitslagDiv" style="width: 100%; text-align: center; height: 100%;"></html:div>
+							<sap.ui.core:Icon class="dashboardIcon" src="sap-icon://chart-axis" color="#007cc0" size="30pt"/>
+							<html:div  style="float: right;" class="dashboardTitle">Stuuruitslag</html:div>
+							<html:div id="stuuruitslagDiv" style="width: 75%; margin-left: 12%; text-align: center; height: 75%;"></html:div>
 						</html:div>
 					</content>
 				</CustomTile>
 				<CustomTile xmlns="sap.m" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile">
 					<content>
-						<html:div xmlns:sap.ui.core="sap.ui.core" style="width: 100%; height: 100%;">
-							<sap.ui.core:Icon class="dashboardIcon" size="30pt" src="sap-icon://sort"/>
-							<html:div class="dashboardTitle">Acceleratie</html:div>
+						<html:div style="width: 100%; height: 100%;">
+								<sap.ui.core:Icon class="dashboardIcon" src="sap-icon://sort" color="#007cc0" size="30pt"/>
+							<html:div style="float: right;" class="dashboardTitle">Acceleratie</html:div>
 							<html:div class="info_text_tile" id="AcceleratieDiv" style="width: 100%; text-align: center; height: 65%;">
 								<html:div id="eight_curve"
 									style="margin-left: 5px; margin-right: 5px; height:100%; background-size: contain; background-image: url('/IMG/eight_curve.png'); background-repeat: no-repeat; background-position: center; "></html:div>

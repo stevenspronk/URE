@@ -11,8 +11,25 @@
 .counter {
     margin-left: 54px;
 }
+
+.sapMTile
+{
+	
+}
+
 .dashboardIcon {
-    color: red;
+	padding-left: 0.75rem;
+	margin-top: 10px;
+}
+
+.sapSuiteUiMicroChartRMC
+{
+	margin-left: 5%;
+}
+
+.sapMPanelContent
+{
+	overflow: hidden;
 }
 
 .sapMIBar.sapMTB .sapMBarChild {

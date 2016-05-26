@@ -59,6 +59,10 @@ sap.ui.controller("MVC.Dashboard", {
 	onAfterRendering: function() {
 		iconTabBar = this.getView().byId("Dashboard").getParent().getParent().getParent();
         loaded = true;
+       /* var dot = '<div style="text-align: left; width: 100%; height: 100%;  background-image: url(/IMG/dot.png); background-position: 50% 50%;  background-repeat: no-repeat;"></div>';   
+	    var dotComponent = new sap.ui.core.HTML();
+        dotComponent.setContent(dot);
+        dotComponent.placeAt("__xmlview2--eight_curve", "only");*/
 	},
 	
 	refreshSteer: function()
@@ -84,9 +88,33 @@ sap.ui.controller("MVC.Dashboard", {
 	    /// DEMO
 	   var x = Math.floor(Math.random()*150);
 	   var y = Math.floor(Math.random()*150);
+	   var x = 0.0;
+	   var y = 0.0;
 	   
-	    var dot = '<div width="100%" height="100%" style="text-align: left"><img src="/IMG/dot.png" style="margin-left: ' + y + 'px; margin-top: ' + x + 'px" ></div>';
-        
+	   var percent_x = 0;
+	   var percent_y = 0;
+	   
+	   if(x != 0.0)
+	   {
+	    percent_x = ( ( 3.0 - Math.abs(x) ) * (50 / 30) );
+	   }
+	   
+	   if(y != 0.0)
+	   {
+	    percent_y = ( ( 2.0 - Math.abs(x) ) * (50 / 20) );
+	   }
+	   
+	   if(x >= 0)
+	   {
+	   	percent_x = 50 + percent_x;
+	   }
+	   
+	   if(y >= 0)
+	   {
+	   	percent_y = 50 + percent_y;
+	   }
+	 
+		var dot = '<div style="text-align: left; width: 100%; height: 100%;  background-image: url(/IMG/dot.png); background-position: ' + percent_x + '% ' + percent_y + '%;  background-repeat: no-repeat;"></div>';   
 	    var dotComponent = new sap.ui.core.HTML();
         dotComponent.setContent(dot);
         dotComponent.placeAt("__xmlview2--eight_curve", "only");
