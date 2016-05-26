@@ -15,7 +15,7 @@
 					<core.mvc:XMLView viewName="MVC.Powertrain"/>
 				</IconTabFilter>
 			</items>
-		</IconTabBar>
+		</IconTabBar> 
 		<footer>
 			<Toolbar>
 			    <Title text="{ID>/raceID} / {ID>/runID}" />

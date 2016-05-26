@@ -119,7 +119,7 @@ sap.ui.controller("MVC.Dashboard", {
         dotComponent.setContent(dot);
         dotComponent.placeAt("__xmlview2--eight_curve", "only");
         
-         
+          
 	},
 		
 	/**
