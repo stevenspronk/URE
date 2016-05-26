@@ -81,12 +81,9 @@
 				"pattern": "SmartHistory",
 				"target": "SmartHistory"
 			}, {
-				"path": "/destinations/McCoy_URE",
-				"target": {
-					"type": "destination",
-					"name": "McCoy_URE"
-				},
-				"description": "McCoy_URE"
+				"name": "SmartCar",
+				"pattern": "SmartCar",
+				"target": "SmartCar"
 			}],
 			"targets": {
 				"Overview": {
@@ -114,6 +111,13 @@
 					"clearAggregation": "true",
 					"viewName": "SmartHistory",
 					"viewId": "smarthistory"
+				},
+				"SmartCar": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "SmartCar",
+					"viewId": "smartcar"
 				}
 			}
 		},

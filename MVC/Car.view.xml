@@ -1,17 +1,42 @@
 <mvc:View height="100%" width="100%"
 	controllerName="MVC.Car"
-    xmlns:l="sap.ui.layout" 
+    xmlns:layout="sap.ui.layout" 
     xmlns:viz="sap.viz.ui5.controls" 
     xmlns:mvc="sap.ui.core.mvc" 
     xmlns:suite="sap.suite.ui.commons"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
     xmlns="sap.m"
 	>
-   <l:FixFlex id="idFixFlex" class="fixFlexFixedSize" minFlexSize="250"> 
+   <layout:FixFlex id="idFixFlex" class="fixFlexFixedSize" minFlexSize="250"> 
         <!--Below is the chart area-->
-        <l:flexContent>
+        <layout:fixContent>
+            <Panel id='settingsPanel' class="panelStyle" expandable="true" expanded="true" headerText="Settings" width="auto">
+               <content>
+                    <HBox class='settingsHBox'>
+                    <VBox class='settingsBox'>
+                        <Label text='{/series/name}' design="Bold" class='settingsLabel'></Label>
+                        <RadioButtonGroup id='seriesRadioGroup'
+                            buttons="{path :'/series/values'}" >
+                            <buttons>
+                                <RadioButton class='settingsRadio' text="{name}" select='onSeriesSelected'/>
+                            </buttons>
+                        </RadioButtonGroup>
+                    </VBox>
+                    </HBox>
+                </content>
+            </Panel>
+        </layout:fixContent>
+        <layout:flexContent>
             <viz:Popover id="idPopOver"></viz:Popover>
-            <viz:VizFrame id="idVizFrameLine" uiConfig="{applicationSet:'fiori'}" height="100%" width="100%"></viz:VizFrame>
-        </l:flexContent>
+            <viz:VizFrame id="idVizFrameLine" uiConfig="{applicationSet:'fiori'}" height="100%" width="100%">
+            	<viz:feeds>
+                    <viz.feeds:FeedItem id='valueAxisFeed' uid="valueAxis" type="Measure"
+                        values="Revenue" />
+                    <viz.feeds:FeedItem uid="categoryAxis" type="Dimension"
+                        values="Store Name" />
+                </viz:feeds>
+            </viz:VizFrame>
+        </layout:flexContent>
         <!--Above is the chart area-->
-    </l:FixFlex> 
+    </layout:FixFlex> 
 </mvc:View>

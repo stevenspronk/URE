@@ -9,13 +9,34 @@ sap.ui.define([
 	"use strict";
 
 	var LineController = Controller.extend("MVC.Car", {
+
+		settingsModel : {
+			series : {
+				name : "Series",
+				defaultSelected : 0,
+				values : [{
+					name: "BATTERY CURRENT",
+					value: ["BATTERY_CURRENT"]
+				}, {
+					name: "BATTERY TEMPERATURE",
+					value: ["BATTERY_CURRENT", "MAX_TEMP_BUCKET2"]
+				}]
+			}
+		},
+
+		oVizFrame : null,
+		
 		onInit: function(oEvent) {
-			var oVizFrame = this.getView().byId("idVizFrameLine");
+			var sModel = new JSONModel(this.settingsModel);
+            sModel.setDefaultBindingMode(sap.ui.model.BindingMode.OneWay);
+            this.getView().setModel(sModel);
+
+			
+			var oVizFrame = this.oVizFrame = this.getView().byId("idVizFrameLine");
 			var oFixFlex = this.getView().byId("idFixFlex");
 			ControllerOverall.customFormat(); // set customized format
 			ControllerOverall.loadLibrary(oVizFrame, oFixFlex); // load "sap.suite.ui.commons"
 
-			var oVizFrame = this.getView().byId("idVizFrameLine");
 			oVizFrame.setVizType('line');
 			oVizFrame.setUiConfig({
 				"applicationSet": "fiori"
@@ -178,7 +199,7 @@ sap.ui.define([
 						visible: true,
 						text: "text3",
 						formatString: FIORI_LABEL_SHORTFORMAT_2
-					},
+					}
 				},
 				legend: {
 					title: {
@@ -218,6 +239,20 @@ sap.ui.define([
 			oVizFrame.addFeed(feedCategoryAxis);
 		},
 
+		onSeriesSelected: function(oEvent) {
+			
+			debugger;
+			var seriesRadio = oEvent.getSource();
+			if (this.oVizFrame && seriesRadio.getSelected()) {
+				var bindValue = seriesRadio.getBindingContext().getObject();
+
+				var feedValueAxis = this.getView().byId("valueAxisFeed");
+				this.oVizFrame.removeFeed(feedValueAxis);
+				feedValueAxis.setValues(bindValue.value);
+				this.oVizFrame.addFeed(feedValueAxis);
+			}
+		},
+
 		onAfterRendering: function() {
 			var oDataModel = this.getView().getModel("RaceData");
 
@@ -230,6 +265,11 @@ sap.ui.define([
 					refreshData();
 				}, 1000);
 			}, 1000);
+			
+			debugger;
+			var seriesRadioGroup = this.getView().byId('seriesRadioGroup');
+            seriesRadioGroup.setSelectedIndex(this.settingsModel.series.defaultSelected);
+        
 		}
 
 	});
