@@ -43,13 +43,12 @@ sap.ui.define(["JS/validator", "sap/ui/model/odata/v2/ODataModel",
 			}
 
 			if (oSelectedItem) {
+				debugger;
 				var oDetail = this.getView().getModel().getProperty(sPath);
-				raceID = oDetail.RACE_ID;
-				runID = oDetail.RUN_ID;
-
+				
 				var oModel = new sap.ui.model.json.JSONModel({
-					raceID: raceID,
-					runID: runID
+					raceID: oDetail.RACE_ID,
+					runID: oDetail.RUN_ID
 				});
 
 				sap.ui.getCore().setModel(oModel, "ID");
@@ -125,7 +124,7 @@ sap.ui.define(["JS/validator", "sap/ui/model/odata/v2/ODataModel",
 
 				if (i === 1) {
 					var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-					oRouter.navTo("SmartCar", {
+					oRouter.navTo("Car", {
 						//Router navigation is done in manifest.json Code Editor
 						id: 1
 					}, false);

@@ -77,17 +77,17 @@ sap.ui.define([
 				wait = false;
 			}
 
-			var oID = sap.ui.getCore().getModel("ID");
-			this.getView().setModel(oID, "ID");
+			// var oID = sap.ui.getCore().getModel("ID");
+			// this.getView().setModel(oID, "ID");
 
-			raceID = oID.getData().raceID;
-			runID = oID.getData().runID;
+			// raceID = oID.getData().raceID;
+			// runID = oID.getData().runID;
 
-			var oTimeOut = new sap.ui.model.json.JSONModel({
-				wait: wait
-			});
+			// var oTimeOut = new sap.ui.model.json.JSONModel({
+			// 	wait: wait
+			// });
 
-			this.getView().setModel(oTimeOut, "TimeOut");
+			// this.getView().setModel(oTimeOut, "TimeOut");
 
 		},
 

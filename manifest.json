@@ -81,9 +81,10 @@
 				"pattern": "SmartHistory",
 				"target": "SmartHistory"
 			}, {
-				"name": "SmartCar",
-				"pattern": "SmartCar",
-				"target": "SmartCar"
+				"name": "Car",
+				"pattern": "Car",
+				"greedy": false,
+				"target": ["Car"]
 			}],
 			"targets": {
 				"Overview": {
@@ -112,12 +113,12 @@
 					"viewName": "SmartHistory",
 					"viewId": "smarthistory"
 				},
-				"SmartCar": {
+				"Car": {
 					"viewType": "XML",
 					"transition": "slide",
 					"clearAggregation": true,
-					"viewName": "SmartCar",
-					"viewId": "smartcar"
+					"viewName": "Car",
+					"viewId": "car"
 				}
 			}
 		},
