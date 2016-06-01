@@ -32,6 +32,10 @@
 	overflow: hidden;
 }
 
+.sapMIBar-CTX.sapMFooter-CTX {
+	height: 3rem;
+}
+
 .sapMIBar.sapMTB .sapMBarChild {
     color: #007cc0;
     font-size: 14pt;

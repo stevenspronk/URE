@@ -15,7 +15,7 @@
 							</headerToolbar>
 							<FlexBox height="100%" alignItems="Center" justifyContent="Center">
 								<items>
-									<Text textAlign="Center" width="100%" height="100%" text="32220/2222" wrapping="true" id="dashboardTilePowerText"/>
+									<Text textAlign="Center" width="100%" height="100%" text="{parts:[{path:'Overview>/d/results/0/BATTERY_CURRENT'},{path:'Overview>/d/results/0/BATTERY_VOLTAGE'}], formatter:'.calculatePower'}" wrapping="true" id="dashboardTilePowerText"/>
 								</items>
 							</FlexBox>
 						</Panel>
