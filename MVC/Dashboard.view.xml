@@ -5,7 +5,7 @@
 		<TileContainer allowAdd="false" busy="false" editable="false" height="100%" id="__container0">
 			<tiles> 
 				<CustomTile xmlns="sap.m" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" height="100%">
-					<content>
+					<content> 
 						<Panel class="dashboardTilePanel" height="100%" backgroundDesign="Transparent">
 							<headerToolbar>
 								<Toolbar>

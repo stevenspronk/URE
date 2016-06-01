@@ -1,6 +1,6 @@
 var iconTabBar;
 var loaded;
- 
+  
 sap.ui.controller("MVC.Dashboard", {
 
 	/**
