@@ -4,8 +4,9 @@ sap.ui.define([
 	'sap/viz/ui5/controls/common/feeds/FeedItem',
 	'sap/viz/ui5/data/FlattenedDataset',
 	'sap/viz/ui5/format/ChartFormatter',
-	'MVC/CustomerFormat'
-], function(Controller, JSONModel, FeedItem, FlattenedDataset, ChartFormatter, CustomerFormat) {
+	'MVC/CustomerFormat',
+	'MVC/ControllerOverall'
+], function(Controller, JSONModel, FeedItem, FlattenedDataset, ChartFormatter, CustomerFormat, ControllerOverall) {
 	"use strict";
 
 	var LineController = Controller.extend("MVC.Car", {
@@ -42,9 +43,9 @@ sap.ui.define([
 			this.getView().setModel(sModel);
 
 			var oVizFrame = this.oVizFrame = this.getView().byId("idVizFrame");
-			// var oFixFlex = this.getView().byId("idFixFlex");
-			// ControllerOverall.customFormat(); // set customized format
-			// ControllerOverall.loadLibrary(oVizFrame, oFixFlex); // load "sap.suite.ui.commons"
+			var oFixFlex = this.getView().byId("idFixFlex");
+			ControllerOverall.customFormat(); // set customized format
+			ControllerOverall.loadLibrary(oVizFrame, oFixFlex); // load "sap.suite.ui.commons"
 
 			// oVizFrame.setVizType('line');
 			// oVizFrame.setUiConfig({
@@ -87,23 +88,22 @@ sap.ui.define([
 
 			this.getView().setModel(oDataModel, "RaceData");
 
-			var oDataset = new FlattenedDataset({
-				dimensions: [{
-					name: 'SENSOR_TIMESTAMP',
-					value: "{SENSOR_TIMESTAMP}",
-					formatString: CustomerFormat.MFS1                   
-				}],
-				measures: [{
-					name: 'MAX_TEMP_BUCKET1',
-					value: '{MAX_TEMP_BUCKET1}'
-				}, {
-					name: 'MAX_TEMP_BUCKET2',
-					value: '{MAX_TEMP_BUCKET2}'
-				}],
-				data: {
-					path: "/d/results/"
-				}
-			});
+			// var oDataset = new FlattenedDataset({
+			// 	dimensions: [{
+			// 		name: 'SENSOR_TIMESTAMP',
+			// 		value: "{SENSOR_TIMESTAMP}",
+			// 	}],
+			// 	measures: [{
+			// 		name: 'MAX_TEMP_BUCKET1',
+			// 		value: '{MAX_TEMP_BUCKET1}'
+			// 	}, {
+			// 		name: 'MAX_TEMP_BUCKET2',
+			// 		value: '{MAX_TEMP_BUCKET2}'
+			// 	}],
+			// 	data: {
+			// 		path: "/d/results"
+			// 	}
+			// });
 
 			oVizFrame.setVizProperties({
 				// general: {
@@ -114,14 +114,7 @@ sap.ui.define([
 				plotArea: {
 					dataLabel: {
 						formatString: CustomerFormat.FIORI_LABEL_SHORTFORMAT_2,
-						visible: true
-					}
-				},
-				xAxis: {
-					scale: {
-						fixedRange: false,
-						maxValue: 1,
-						minValue: 500
+						visible: false
 					}
 				},
 				valueAxis: {
@@ -145,16 +138,16 @@ sap.ui.define([
 				// },
 				title: {
 					visible: true,
-					text: "text5"
+					text: "Analyse"
 				}
 			});
 
 			// oVizFrame.setDataset(oDataset);
 			oVizFrame.setModel(oDataModel);
 
-			var oPopOver = this.getView().byId("idPopOver");
-			oPopOver.connect(oVizFrame.getVizUid());
-			oPopOver.setFormatString(CustomerFormat.FIORI_LABEL_FORMAT_2);
+			// var oPopOver = this.getView().byId("idPopOver");
+			// oPopOver.connect(oVizFrame.getVizUid());
+			// oPopOver.setFormatString(CustomerFormat.FIORI_LABEL_FORMAT_2);
 
 			// var feedValueAxis = new FeedItem({
 			// 		'uid': "valueAxis",
