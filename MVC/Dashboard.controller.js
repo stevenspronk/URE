@@ -1,6 +1,6 @@
 var iconTabBar;
 var loaded;
-
+  
 sap.ui.controller("MVC.Dashboard", {
 
 	/**
@@ -10,7 +10,7 @@ sap.ui.controller("MVC.Dashboard", {
 	 */
 	onInit: function() {
 	    loaded = false;
-		
+		 
 		var url = "/destinations/McCoy_URE/Overview.xsodata/OVERVIEW?$filter=RACE_ID%20eq%20" + raceID + "%20and%20RUN_ID%20eq%20" + runID + "&$orderby=SENSOR_TIMESTAMP%20desc&$top=1&$format=json";
 		var dashboardModel = new sap.ui.model.json.JSONModel(url);
 	//	var data = dashboardModel.getData();

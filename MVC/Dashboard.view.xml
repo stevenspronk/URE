@@ -3,9 +3,9 @@
 	xmlns:microchart="sap.suite.ui.microchart" controllerName="MVC.Dashboard" height="100%">
 	<Page showFooter="false" id="Dashboard" showHeader="false">
 		<TileContainer allowAdd="false" busy="false" editable="false" height="100%" id="__container0">
-			<tiles>
+			<tiles> 
 				<CustomTile xmlns="sap.m" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" height="100%">
-					<content>
+					<content> 
 						<Panel class="dashboardTilePanel" height="100%" backgroundDesign="Transparent">
 							<headerToolbar>
 								<Toolbar>
@@ -35,23 +35,23 @@
 									<ui.commons:ColumnMicroChart>
 										<ui.commons:columns>
 											<ui.commons:ColumnData
-												color="{= ${Overview>/d/results/0/MAX_TEMP_BUCKET1} &gt; 0 &amp;&amp; ${Overview>/d/results/0/MAX_TEMP_BUCKET1} &lt; 41 ? 'Good' : ${Overview>/d/results/0/MAX_TEMP_BUCKET1} &gt; 40 &amp;&amp; ${Overview>/d/results/0/MAX_TEMP_BUCKET1} &lt; 61 ? 'Critical' : 'Neutral' }"
+												color="{= ${Overview>/d/results/0/MAX_TEMP_BUCKET1} &gt; 0 &amp;&amp; ${Overview>/d/results/0/MAX_TEMP_BUCKET1} &lt; 41 ? 'Good' : 'Critical' }"
 												value="{Overview>/d/results/0/MAX_TEMP_BUCKET1}"/>
 											<ui.commons:ColumnData
-												color="{= ${Overview>/d/results/0/MAX_TEMP_BUCKET2} &gt; 0 &amp;&amp; ${Overview>/d/results/0/MAX_TEMP_BUCKET2} &lt; 41 ? 'Good' : 'Neutral' }"
+												color="{= ${Overview>/d/results/0/MAX_TEMP_BUCKET2} &gt; 0 &amp;&amp; ${Overview>/d/results/0/MAX_TEMP_BUCKET2} &lt; 41 ? 'Good' : 'Critical' }"
 												value="{Overview>/d/results/0/MAX_TEMP_BUCKET2}"/>
 											<ui.commons:ColumnData
-												color="{= ${Overview>/d/results/0/MAX_TEMP_BUCKET3} &gt; 0 &amp;&amp; ${Overview>/d/results/0/MAX_TEMP_BUCKET3} &lt; 41 ? 'Good' : 'Neutral' }"
+												color="{= ${Overview>/d/results/0/MAX_TEMP_BUCKET3} &gt; 0 &amp;&amp; ${Overview>/d/results/0/MAX_TEMP_BUCKET3} &lt; 41 ? 'Good' : 'Critical' }"
 												value="{Overview>/d/results/0/MAX_TEMP_BUCKET3}"/>
 											<ui.commons:ColumnData
-												color="{= ${Overview>/d/results/0/MAX_TEMP_BUCKET4} &gt; 0 &amp;&amp; ${Overview>/d/results/0/MAX_TEMP_BUCKET4} &lt; 41 ? 'Good' : 'Neutral' }"
-												value="{Overview>/d/results/0/MAX_TEMP_BUCKET3}"/>
+												color="{= ${Overview>/d/results/0/MAX_TEMP_BUCKET4} &gt; 0 &amp;&amp; ${Overview>/d/results/0/MAX_TEMP_BUCKET4} &lt; 41 ? 'Good' : 'Critical' }"
+												value="{Overview>/d/results/0/MAX_TEMP_BUCKET4}"/>
 											<ui.commons:ColumnData
-												color="{= ${Overview>/d/results/0/MAX_TEMP_BUCKET5} &gt; 0 &amp;&amp; ${Overview>/d/results/0/MAX_TEMP_BUCKET5} &lt; 41 ? 'Good' : 'Neutral' }"
+												color="{= ${Overview>/d/results/0/MAX_TEMP_BUCKET5} &gt; 0 &amp;&amp; ${Overview>/d/results/0/MAX_TEMP_BUCKET5} &lt; 41 ? 'Good' : 'Critical' }"
 												value="{Overview>/d/results/0/MAX_TEMP_BUCKET5}"/>
 											<ui.commons:ColumnData
-												color="{= ${Overview>/d/results/0/MAX_TEMP_BUCKET6} &gt; 0 &amp;&amp; ${Overview>/d/results/0/MAX_TEMP_BUCKET6} &lt; 41 ? 'Good' : 'Neutral' }"
-												value="{Overview>/d/results/0/MAX_TEMP_BUCKET4}"/>
+												color="{= ${Overview>/d/results/0/MAX_TEMP_BUCKET6} &gt; 0 &amp;&amp; ${Overview>/d/results/0/MAX_TEMP_BUCKET6} &lt; 41 ? 'Good' : 'Critical' }"
+												value="{Overview>/d/results/0/MAX_TEMP_BUCKET6}"/>
 										</ui.commons:columns>
 									</ui.commons:ColumnMicroChart>
 								</items>
@@ -72,7 +72,7 @@
 							<FlexBox height="90%" width="90%" alignItems="Center">
 								<items>
 									<microchart:RadialMicroChart percentage="{Overview>/d/results/0/STATE_OF_CHARGE}"
-										valueColor="{= ${Overview>/d/results/0/STATE_OF_CHARGE} &lt; 20 ? 'Critical' : ${Overview>/d/results/0/STATE_OF_CHARGE} &gt; 40 ? 'Good' : 'Neutral' }"></microchart:RadialMicroChart>
+										valueColor="{= ${Overview>/d/results/0/STATE_OF_CHARGE} &lt; 20 ? 'Critical' : 'Good' }"></microchart:RadialMicroChart>
 								</items>
 							</FlexBox>
 							</content>
@@ -93,10 +93,10 @@
 									<ui.commons:ColumnMicroChart>
 										<ui.commons:columns>
 											<ui.commons:ColumnData
-												color="{= ${Overview>/d/results/0/WATER_TEMP1} &lt; 60 ? 'Good' : ${Overview>/d/results/0/WATER_TEMP1} &gt; 70 ? 'Neutral' : 'Critical' }"
+												color="{= ${Overview>/d/results/0/WATER_TEMP1} &lt; 60 ? 'Good' : 'Critical' }"
 												height="5px" value="{Overview>/d/results/0/WATER_TEMP1}"/>
 											<ui.commons:ColumnData
-												color="{= ${Overview>/d/results/0/WATER_TEMP2} &lt; 60 ? 'Good' : ${Overview>/d/results/0/WATER_TEMP2} &gt; 70 ? 'Neutral' : 'Critical' }"
+												color="{= ${Overview>/d/results/0/WATER_TEMP2} &lt; 60 ? 'Good' : 'Critical' }"
 												height="5px" value="{Overview>/d/results/0/WATER_TEMP2}"/>
 										</ui.commons:columns>
 									</ui.commons:ColumnMicroChart>
@@ -119,10 +119,10 @@
 									<ui.commons:ColumnMicroChart>
 										<ui.commons:columns>
 											<ui.commons:ColumnData
-												color="{= ${Overview>/d/results/0/MIN_CELL_VOLT} &lt; 60 ? 'Good' : ${Overview>/d/results/0/MIN_CELL_VOLT} &gt; 70 ? 'Neutral' : 'Critical' }"
+												color="{= ${Overview>/d/results/0/MIN_CELL_VOLT} &lt; 60 ? 'Good' : 'Critical' }"
 												height="5px" value="{Overview>/d/results/0/MIN_CELL_VOLT}"/>
 											<ui.commons:ColumnData
-												color="{= ${Overview>/d/results/0/MAX_CELL_VOLT} &lt; 60 ? 'Good' : ${Overview>/d/results/0/MAX_CELL_VOLT} &gt; 70 ? 'Neutral' : 'Critical' }"
+												color="{= ${Overview>/d/results/0/MAX_CELL_VOLT} &lt; 60 ? 'Good' : 'Critical' }"
 												height="5px" value="{Overview>/d/results/0/MAX_CELL_VOLT}"/>
 										</ui.commons:columns>
 									</ui.commons:ColumnMicroChart>
@@ -144,7 +144,7 @@
 								<items>
 									<ui.commons:ColumnMicroChart>
 										<ui.commons:columns>
-											<ui.commons:ColumnData color="Error" height="5px" value="{Overview>/d/results/0/BREAK}"/>
+											<ui.commons:ColumnData color="Good" height="5px" value="{Overview>/d/results/0/BREAK}"/>
 											<ui.commons:ColumnData color="Good" height="5px" value="{Overview>/d/results/0/THROTTLE}"/>
 										</ui.commons:columns>
 									</ui.commons:ColumnMicroChart>
