@@ -19,7 +19,7 @@ sap.ui.controller("MVC.Dashboard", {
 		sap.ui.getCore().setModel(dashboardModel, "Overview");
 		this.getView().setModel(dashboardModel, "Overview");
 
-        this.refreshSteer();
+        //this.refreshSteer();
 	    var me = this;
 	    
       		setTimeout(function() {
@@ -70,12 +70,7 @@ sap.ui.controller("MVC.Dashboard", {
 	    var data = sap.ui.getCore().getModel("Overview");
 	    var value =	data.getProperty("/d/results/0/STEERING");
 	   
-	   // var test = Math.round(Math.random());
-	   // value = Math.floor(Math.random()*90);
-	    
-	    if(test === 0) {
-	        value = 0 - value;
-	    }
+	    value = Math.floor(value);
 	    
 	    var html = '<div style="width: 100%; height: 100%; background-size: contain; background-image: url(\'/IMG/steer.png\'); background-repeat: no-repeat; background-position: center; -ms-transform: rotate(' + value + 'deg); /* IE 9 */ -webkit-transform: rotate(' + value + 'deg); /* Chrome, Safari, Opera */ transition: 300ms linear all; transform: rotate(' + value + 'deg);"></div>';
 	    var htmlComponent = new sap.ui.core.HTML();
@@ -85,9 +80,11 @@ sap.ui.controller("MVC.Dashboard", {
 	    //var data = sap.ui.getCore().getModel("Overview");
 	    //var value =	data.getProperty("/d/results/0/POWER");
 	    
+	    var value_x =	data.getProperty("/d/results/0/ACCELERATION_X");
+	    var value_y =	data.getProperty("/d/results/0/ACCELERATION_Y");
 	    /// DEMO 
-	   var x = Math.floor(Math.random()*150);
-	   var y = Math.floor(Math.random()*150);
+	   var x = Math.floor(value_x);
+	   var y = Math.floor(value_y);
 	   var x = 0.0;
 	   var y = 0.0;
 	   
@@ -117,7 +114,7 @@ sap.ui.controller("MVC.Dashboard", {
 		var dot = '<div style="text-align: left; width: 100%; height: 100%;  background-image: url(/IMG/dot.png); background-position: ' + percent_x + '% ' + percent_y + '%;  background-repeat: no-repeat;"></div>';   
 	    var dotComponent = new sap.ui.core.HTML();
         dotComponent.setContent(dot);
-        dotComponent.placeAt("__xmlview2--eight_curve", "only");
+        dotComponent.placeAt("__xmlview1--OverviewElement--eight_curve", "only");
         
           
 	},
