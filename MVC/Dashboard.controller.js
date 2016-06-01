@@ -85,7 +85,7 @@ sap.ui.controller("MVC.Dashboard", {
 	    //var data = sap.ui.getCore().getModel("Overview");
 	    //var value =	data.getProperty("/d/results/0/POWER");
 	    
-	    /// DEMO
+	    /// DEMO 
 	   var x = Math.floor(Math.random()*150);
 	   var y = Math.floor(Math.random()*150);
 	   var x = 0.0;
