@@ -1,6 +1,7 @@
 <mvc:View height="100%" width="100%" controllerName="MVC.Car" xmlns:layout="sap.ui.layout" xmlns:viz="sap.viz.ui5.controls"
 	xmlns:mvc="sap.ui.core.mvc" xmlns:suite="sap.suite.ui.commons" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
 	xmlns:viz.data="sap.viz.ui5.data" xmlns="sap.m">
+	
 	<layout:FixFlex id="idFixFlex" class="fixFlexFixedSize" minFlexSize="250">
 		<!--Below is the chart area-->
 		<layout:fixContent>
@@ -20,6 +21,7 @@
 			</Panel>
 		</layout:fixContent>
 		<layout:flexContent>
+			<!--<ScrollContainer height="100%" width="100%" horizontal="false" vertical="true" focusable="true">-->
 			<viz:Popover id="idPopOver"></viz:Popover>
 			<viz:VizFrame id="idVizFrame" uiConfig="{applicationSet:'fiori'}" height='100%' width="100%" vizType='line'>
 				<viz:dataset>
@@ -51,6 +53,7 @@
 					<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="SENSOR_TIMESTAMP"/>
 				</viz:feeds>
 			</viz:VizFrame>
+			<!--</ScrollContainer>-->
 		</layout:flexContent>
 		<!--Above is the chart area-->
 	</layout:FixFlex>

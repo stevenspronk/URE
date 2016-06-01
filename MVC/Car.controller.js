@@ -87,22 +87,23 @@ sap.ui.define([
 
 			this.getView().setModel(oDataModel, "RaceData");
 
-			// var oDataset = new FlattenedDataset({
-			// 	dimensions: [{
-			// 		name: 'SENSOR_TIMESTAMP',
-			// 		value: "{SENSOR_TIMESTAMP}"
-			// 	}],
-			// 	measures: [{
-			// 		name: 'MAX_TEMP_BUCKET1',
-			// 		value: '{MAX_TEMP_BUCKET1}'
-			// 	}, {
-			// 		name: 'MAX_TEMP_BUCKET2',
-			// 		value: '{MAX_TEMP_BUCKET2}'
-			// 	}],
-			// 	data: {
-			// 		path: "/d/results/"
-			// 	}
-			// });
+			var oDataset = new FlattenedDataset({
+				dimensions: [{
+					name: 'SENSOR_TIMESTAMP',
+					value: "{SENSOR_TIMESTAMP}",
+					formatString: CustomerFormat.MFS1                   
+				}],
+				measures: [{
+					name: 'MAX_TEMP_BUCKET1',
+					value: '{MAX_TEMP_BUCKET1}'
+				}, {
+					name: 'MAX_TEMP_BUCKET2',
+					value: '{MAX_TEMP_BUCKET2}'
+				}],
+				data: {
+					path: "/d/results/"
+				}
+			});
 
 			oVizFrame.setVizProperties({
 				// general: {
@@ -114,6 +115,13 @@ sap.ui.define([
 					dataLabel: {
 						formatString: CustomerFormat.FIORI_LABEL_SHORTFORMAT_2,
 						visible: true
+					}
+				},
+				xAxis: {
+					scale: {
+						fixedRange: false,
+						maxValue: 1,
+						minValue: 500
 					}
 				},
 				valueAxis: {
