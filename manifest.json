@@ -69,10 +69,6 @@
 				"name": "Overview",
 				"target": "Overview"
 			}, {
-				"pattern": "History",
-				"name": "History",
-				"target": "History"
-			}, {
 				"name": "Dashboard",
 				"pattern": "Dashboard",
 				"greedy": false
@@ -80,11 +76,6 @@
 				"name": "SmartHistory",
 				"pattern": "SmartHistory",
 				"target": "SmartHistory"
-			}, {
-				"name": "Car",
-				"pattern": "Car",
-				"greedy": false,
-				"target": ["Car"]
 			}],
 			"targets": {
 				"Overview": {
@@ -99,26 +90,12 @@
 					"viewName": "Dashboard",
 					"viewId": "dashboard"
 				},
-				"History": {
-					"viewType": "XML",
-					"transition": "slide",
-					"clearAggregation": "true",
-					"viewName": "History",
-					"viewId": "history"
-				},
 				"SmartHistory": {
 					"viewType": "XML",
 					"transition": "slide",
 					"clearAggregation": "true",
 					"viewName": "SmartHistory",
 					"viewId": "smarthistory"
-				},
-				"Car": {
-					"viewType": "XML",
-					"transition": "slide",
-					"clearAggregation": true,
-					"viewName": "Car",
-					"viewId": "car"
 				}
 			}
 		},

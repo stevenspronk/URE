@@ -199,7 +199,6 @@
 			<Toolbar width="100%" id="__toolbar0">
 				<content>
 					<Button text="Delete" width="100px" id="__button0" press="deleteSelected"/>
-					<Button text="Sensorchart" width="150px" id="__button9" press="selectChart"/>
 					<ToolbarSpacer id="__spacer0"/>
 					<Button width="100px" id="__button8" press="selectHistory" activeIcon="sap-icon://column-chart-dual-axis" icon="sap-icon://column-chart-dual-axis"/>
 				</content>

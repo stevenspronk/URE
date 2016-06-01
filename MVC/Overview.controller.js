@@ -59,7 +59,9 @@ sap.ui.define([
 				this.oView.byId("_newTestBtn").setVisible(false);
 				this.oView.byId("_newRunBtn").setVisible(false);
 				this.oView.byId("_appView").setShowNavButton(true);
-				this.refreshData(key);
+				this.oView.byId("OverviewElement").setVisible(false);
+				this.oView.byId("OverviewTab").setVisible(false);
+				//this.refreshData(key);
 				wait = true;
 			}
 

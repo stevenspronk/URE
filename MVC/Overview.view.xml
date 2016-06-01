@@ -2,8 +2,8 @@
 	<Page title="URE Racing: Overview" class="sapUiContentPadding" id="_appView" navButtonPress="onNavBack" showNavButton="false">
 		<IconTabBar id="idIconTabBarNoIcons" stretchContentHeight="true" expanded="true" expandable="false" class="sapUiResponsiveContentPadding" select="onSelect" backgroundDesign="Transparent">
 			<items>
-				<IconTabFilter key="Dashboard" text="Overview">
-					<core.mvc:XMLView viewName="MVC.Dashboard"/>
+				<IconTabFilter key="Dashboard" text="Overview" id="OverviewTab">
+					<core.mvc:XMLView viewName="MVC.Dashboard" id="OverviewElement"/>
 				</IconTabFilter>
 				<IconTabFilter key="Car" text="Auto">
 					<core.mvc:XMLView viewName="MVC.Car"/>
@@ -18,11 +18,12 @@
 		</IconTabBar> 
 		<footer>
 			<Toolbar>
-			    <Title text="{ID>/raceID} / {ID>/runID}" />
-				<ToolbarSpacer/>
+			<content>
+			    <Label text="{ID>/raceID} / {ID>/runID}" width="100%" id="raceIdentify"/>
+			</content>
+			    <ToolbarSpacer/>
 				<Button text="Run" width="100px" id="_newRunBtn" activeIcon="sap-icon://add" icon="sap-icon://add" press="newRun"/>
 				<Button text="Stop Test" activeIcon="sap-icon://stop" press="newTest" icon="sap-icon://stop" id="_newTestBtn"/>
-			<content/>
 			</Toolbar>
 		</footer>
 	</Page>
