@@ -10,7 +10,7 @@ sap.ui.controller("MVC.Dashboard", {
 	 */
 	onInit: function() {
 	    loaded = false;
-	//	raceID = 180;
+	//	raceID = 180; 
 		var url = "/destinations/McCoy_URE/Overview.xsodata/OVERVIEW?$filter=RACE_ID%20eq%20" + raceID + "%20and%20RUN_ID%20eq%20" + runID + "&$orderby=SENSOR_TIMESTAMP%20desc&$top=1&$format=json";
 		var dashboardModel = new sap.ui.model.json.JSONModel(url);
 	//	var data = dashboardModel.getData();
@@ -19,7 +19,7 @@ sap.ui.controller("MVC.Dashboard", {
 		sap.ui.getCore().setModel(dashboardModel, "Overview");
 		this.getView().setModel(dashboardModel, "Overview");
 
-        //this.refreshSteer();
+        this.refreshSteer();
 	    var me = this;
 	    
       		setTimeout(function() {
@@ -68,10 +68,10 @@ sap.ui.controller("MVC.Dashboard", {
 	refreshSteer: function()
 	{
 	    var data = sap.ui.getCore().getModel("Overview");
-	    var value =	data.getProperty("/d/results/0/POWER");
+	    var value =	data.getProperty("/d/results/0/STEERING");
 	   
-	    var test = Math.round(Math.random());
-	    value = Math.floor(Math.random()*90);
+	   // var test = Math.round(Math.random());
+	   // value = Math.floor(Math.random()*90);
 	    
 	    if(test === 0) {
 	        value = 0 - value;
@@ -80,7 +80,7 @@ sap.ui.controller("MVC.Dashboard", {
 	    var html = '<div style="width: 100%; height: 100%; background-size: contain; background-image: url(\'/IMG/steer.png\'); background-repeat: no-repeat; background-position: center; -ms-transform: rotate(' + value + 'deg); /* IE 9 */ -webkit-transform: rotate(' + value + 'deg); /* Chrome, Safari, Opera */ transition: 300ms linear all; transform: rotate(' + value + 'deg);"></div>';
 	    var htmlComponent = new sap.ui.core.HTML();
         htmlComponent.setContent(html);
-        htmlComponent.placeAt("__xmlview2--stuuruitslagDiv", "only");
+        htmlComponent.placeAt("__xmlview1--OverviewElement--stuuruitslagDiv", "only");
         
 	    //var data = sap.ui.getCore().getModel("Overview");
 	    //var value =	data.getProperty("/d/results/0/POWER");
