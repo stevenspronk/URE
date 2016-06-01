@@ -8,7 +8,7 @@ sap.ui.define([
 	'MVC/ControllerOverall'
 ], function(Controller, JSONModel, FeedItem, FlattenedDataset, ChartFormatter, CustomerFormat, ControllerOverall) {
 	"use strict";
-
+ 
 	var LineController = Controller.extend("MVC.Car", {
 
 		settingsModel: {
@@ -84,9 +84,10 @@ sap.ui.define([
 			runID = oModel.oData.runID;
 
 			var url = "/destinations/McCoy_URE/Overview.xsodata/OVERVIEW?$format=json&$filter=RACE_ID eq " + raceID + " and RUN_ID eq " + runID;
-			var oDataModel = new sap.ui.model.json.JSONModel(url);
+			var carModel = new sap.ui.model.json.JSONModel(url);
 
-			this.getView().setModel(oDataModel, "RaceData");
+			sap.ui.getCore().setModel(carModel, "RaceData");
+			this.getView().setModel(carModel, "RaceData");
 
 			// var oDataset = new FlattenedDataset({
 			// 	dimensions: [{
@@ -143,7 +144,7 @@ sap.ui.define([
 			});
 
 			// oVizFrame.setDataset(oDataset);
-			oVizFrame.setModel(oDataModel);
+			oVizFrame.setModel(carModel);
 
 			// var oPopOver = this.getView().byId("idPopOver");
 			// oPopOver.connect(oVizFrame.getVizUid());
@@ -176,12 +177,12 @@ sap.ui.define([
 				this.oVizFrame.addFeed(feedValueAxis);
 			}
 		},
-
+		
 		onAfterRendering: function() {
-			var oDataModel = this.getView().getModel("RaceData");
-
 			function refreshData() {
-				oDataModel.refresh();
+				var curl = "/destinations/McCoy_URE/Overview.xsodata/OVERVIEW?$format=json&$filter=RACE_ID eq " + raceID + " and RUN_ID eq " + runID;
+					var carModel = sap.ui.getCore().getModel("RaceData");
+					carModel.loadData(curl);
 			}
 
 			setTimeout(function() {

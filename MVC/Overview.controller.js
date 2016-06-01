@@ -124,14 +124,14 @@ sap.ui.define([
 					oMsg.refresh();
 					break;
 				case "Dashboard":
-					var url = "/destinations/McCoy_URE/Overview.xsodata/OVERVIEW?$filter=RACE_ID%20eq%20" + raceID + "%20and%20RUN_ID%20eq%20" +
+					var durl = "/destinations/McCoy_URE/Overview.xsodata/OVERVIEW?$filter=RACE_ID%20eq%20" + raceID + "%20and%20RUN_ID%20eq%20" +
 						runID +
 						"&$orderby=SENSOR_TIMESTAMP%20desc&$top=1&$format=json";
 					var dashboardModel = sap.ui.getCore().getModel("Overview");
-					dashboardModel.loadData(url);
+					dashboardModel.loadData(durl);
 					break;
 				case "Car":
-
+					
 					break;
 				case "Driver":
 

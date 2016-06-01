@@ -5,7 +5,7 @@
 	<layout:FixFlex id="idFixFlex" class="fixFlexFixedSize" minFlexSize="250">
 		<!--Below is the chart area-->
 		<layout:fixContent>
-			<Panel id='settingsPanel' class="panelStyle" expandable="true" expanded="true" headerText="Settings" width="auto">
+			<Panel id='settingsPanel' class="panelStyle" expandable="true" expanded="false" headerText="Settings" width="auto">
 				<content>
 					<HBox class='settingsHBox'>
 						<VBox class='settingsBox'>
@@ -27,7 +27,7 @@
 				<viz:dataset>
 					<viz.data:FlattenedDataset data="{/d/results/}">
 						<viz.data:dimensions>
-							<viz.data:DimensionDefinition name="SENSOR_TIMESTAMP" value="{SENSOR_TIMESTAMP}"/>
+							<viz.data:DimensionDefinition name="FORMATTED_TIME" value="{FORMATTED_TIME}"/>
 						</viz.data:dimensions>
 						<viz.data:measures>
 							<viz.data:MeasureDefinition name="MAX_TEMP_BUCKET1" value="{MAX_TEMP_BUCKET1}"/>
@@ -50,7 +50,7 @@
 				</viz:dataset>
 				<viz:feeds>
 					<viz.feeds:FeedItem id='valueAxisFeed' uid="valueAxis" type="Measure" values="STATE_OF_CHARGE"/>
-					<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="SENSOR_TIMESTAMP"/>
+					<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="FORMATTED_TIME"/>
 				</viz:feeds>
 			</viz:VizFrame>
 			<!--</ScrollContainer>-->
