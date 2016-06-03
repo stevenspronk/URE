@@ -16,6 +16,14 @@
 								</buttons>
 							</RadioButtonGroup>
 						</VBox>
+						<VBox class='settingsBox'>
+                        <Label text = '{/dataLabel/name}' design="Bold" class='settingsLabel'></Label>
+                        <Switch class='settingsSwitch' state="{/dataLabel/defaultState}" change='onDataLabelChanged'>
+                            <layoutData>
+                                <FlexItemData growFactor="1" />
+                            </layoutData>
+                        </Switch>
+                    </VBox>
 					</HBox>
 				</content>
 			</Panel>

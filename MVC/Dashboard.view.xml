@@ -1,6 +1,4 @@
-<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="MVC.Dashboard" xmlns:sap.ui.core="sap.ui.core"
-	xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.layout="sap.ui.layout" xmlns:ui.commons="sap.suite.ui.commons" xmlns="sap.m"
-	xmlns:microchart="sap.suite.ui.microchart" controllerName="MVC.Dashboard" height="100%">
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="MVC.Dashboard" xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.layout="sap.ui.layout" xmlns:ui.commons="sap.suite.ui.commons" xmlns="sap.m" xmlns:microchart="sap.suite.ui.microchart" controllerName="MVC.Dashboard" height="100%">
 	<Page showFooter="false" id="Dashboard" showHeader="false">
 		<TileContainer allowAdd="false" busy="false" editable="false" height="100%" id="__container0">
 			<tiles> 
@@ -15,7 +13,7 @@
 							</headerToolbar>
 							<FlexBox height="100%" alignItems="Center" justifyContent="Center">
 								<items>
-									<Text textAlign="Center" width="100%" height="100%" text="{parts:[{path:'Overview>/d/results/0/BATTERY_CURRENT'},{path:'Overview>/d/results/0/BATTERY_VOLTAGE'}], formatter:'.calculatePower'}" wrapping="true" id="dashboardTilePowerText"/>
+									<Text textAlign="Center" width="100%" height="100%" text="{parts:[{path:'Overview>/d/results/0/BATTERY_CURRENT'},{path:'Overview&gt;/d/results/0/BATTERY_VOLTAGE'}], formatter:'.calculatePower'}" wrapping="true" id="dashboardTilePowerText"/>
 								</items>
 							</FlexBox>
 						</Panel>
@@ -34,24 +32,12 @@
 								<items>
 									<ui.commons:ColumnMicroChart>
 										<ui.commons:columns>
-											<ui.commons:ColumnData
-												color="{= ${Overview>/d/results/0/MAX_TEMP_BUCKET1} &gt; 0 &amp;&amp; ${Overview>/d/results/0/MAX_TEMP_BUCKET1} &lt; 41 ? 'Good' : 'Critical' }"
-												value="{Overview>/d/results/0/MAX_TEMP_BUCKET1}"/>
-											<ui.commons:ColumnData
-												color="{= ${Overview>/d/results/0/MAX_TEMP_BUCKET2} &gt; 0 &amp;&amp; ${Overview>/d/results/0/MAX_TEMP_BUCKET2} &lt; 41 ? 'Good' : 'Critical' }"
-												value="{Overview>/d/results/0/MAX_TEMP_BUCKET2}"/>
-											<ui.commons:ColumnData
-												color="{= ${Overview>/d/results/0/MAX_TEMP_BUCKET3} &gt; 0 &amp;&amp; ${Overview>/d/results/0/MAX_TEMP_BUCKET3} &lt; 41 ? 'Good' : 'Critical' }"
-												value="{Overview>/d/results/0/MAX_TEMP_BUCKET3}"/>
-											<ui.commons:ColumnData
-												color="{= ${Overview>/d/results/0/MAX_TEMP_BUCKET4} &gt; 0 &amp;&amp; ${Overview>/d/results/0/MAX_TEMP_BUCKET4} &lt; 41 ? 'Good' : 'Critical' }"
-												value="{Overview>/d/results/0/MAX_TEMP_BUCKET4}"/>
-											<ui.commons:ColumnData
-												color="{= ${Overview>/d/results/0/MAX_TEMP_BUCKET5} &gt; 0 &amp;&amp; ${Overview>/d/results/0/MAX_TEMP_BUCKET5} &lt; 41 ? 'Good' : 'Critical' }"
-												value="{Overview>/d/results/0/MAX_TEMP_BUCKET5}"/>
-											<ui.commons:ColumnData
-												color="{= ${Overview>/d/results/0/MAX_TEMP_BUCKET6} &gt; 0 &amp;&amp; ${Overview>/d/results/0/MAX_TEMP_BUCKET6} &lt; 41 ? 'Good' : 'Critical' }"
-												value="{Overview>/d/results/0/MAX_TEMP_BUCKET6}"/>
+											<ui.commons:ColumnData color="{= ${Overview>/d/results/0/MAX_TEMP_BUCKET1} &gt; 0 &amp;&amp; ${Overview>/d/results/0/MAX_TEMP_BUCKET1} &lt; 41 ? 'Good' : 'Critical' }" value="{Overview>/d/results/0/MAX_TEMP_BUCKET1}"/>
+											<ui.commons:ColumnData color="{= ${Overview>/d/results/0/MAX_TEMP_BUCKET2} &gt; 0 &amp;&amp; ${Overview>/d/results/0/MAX_TEMP_BUCKET2} &lt; 41 ? 'Good' : 'Critical' }" value="{Overview>/d/results/0/MAX_TEMP_BUCKET2}"/>
+											<ui.commons:ColumnData color="{= ${Overview>/d/results/0/MAX_TEMP_BUCKET3} &gt; 0 &amp;&amp; ${Overview>/d/results/0/MAX_TEMP_BUCKET3} &lt; 41 ? 'Good' : 'Critical' }" value="{Overview>/d/results/0/MAX_TEMP_BUCKET3}"/>
+											<ui.commons:ColumnData color="{= ${Overview>/d/results/0/MAX_TEMP_BUCKET4} &gt; 0 &amp;&amp; ${Overview>/d/results/0/MAX_TEMP_BUCKET4} &lt; 41 ? 'Good' : 'Critical' }" value="{Overview>/d/results/0/MAX_TEMP_BUCKET4}"/>
+											<ui.commons:ColumnData color="{= ${Overview>/d/results/0/MAX_TEMP_BUCKET5} &gt; 0 &amp;&amp; ${Overview>/d/results/0/MAX_TEMP_BUCKET5} &lt; 41 ? 'Good' : 'Critical' }" value="{Overview>/d/results/0/MAX_TEMP_BUCKET5}"/>
+											<ui.commons:ColumnData color="{= ${Overview>/d/results/0/MAX_TEMP_BUCKET6} &gt; 0 &amp;&amp; ${Overview>/d/results/0/MAX_TEMP_BUCKET6} &lt; 41 ? 'Good' : 'Critical' }" value="{Overview>/d/results/0/MAX_TEMP_BUCKET6}"/>
 										</ui.commons:columns>
 									</ui.commons:ColumnMicroChart>
 								</items>
@@ -65,14 +51,13 @@
 							<headerToolbar>
 								<OverflowToolbar>
 									<sap.ui.core:Icon src="sap-icon://connected" color="#007cc0" size="30pt"/>
-									<Text textAlign="Left" text="State of charge" wrapping="true"/>
+									<Text textAlign="Left" text="Lading" wrapping="true"/>
 								</OverflowToolbar>
 							</headerToolbar>
 							<content>
 							<FlexBox height="90%" width="90%" alignItems="Center">
 								<items>
-									<microchart:RadialMicroChart percentage="{Overview>/d/results/0/STATE_OF_CHARGE}"
-										valueColor="{= ${Overview>/d/results/0/STATE_OF_CHARGE} &lt; 20 ? 'Critical' : 'Good' }"></microchart:RadialMicroChart>
+									<microchart:RadialMicroChart percentage="{Overview>/d/results/0/STATE_OF_CHARGE}" valueColor="{= ${Overview>/d/results/0/STATE_OF_CHARGE} &lt; 20 ? 'Critical' : 'Good' }"/>
 								</items>
 							</FlexBox>
 							</content>
@@ -92,12 +77,8 @@
 								<items>
 									<ui.commons:ColumnMicroChart>
 										<ui.commons:columns>
-											<ui.commons:ColumnData
-												color="{= ${Overview>/d/results/0/WATER_TEMP1} &lt; 60 ? 'Good' : 'Critical' }"
-												height="5px" value="{Overview>/d/results/0/WATER_TEMP1}"/>
-											<ui.commons:ColumnData
-												color="{= ${Overview>/d/results/0/WATER_TEMP2} &lt; 60 ? 'Good' : 'Critical' }"
-												height="5px" value="{Overview>/d/results/0/WATER_TEMP2}"/>
+											<ui.commons:ColumnData color="{= ${Overview>/d/results/0/WATER_TEMP1} &lt; 60 ? 'Good' : 'Critical' }" height="5px" value="{Overview>/d/results/0/WATER_TEMP1}"/>
+											<ui.commons:ColumnData color="{= ${Overview>/d/results/0/WATER_TEMP2} &lt; 60 ? 'Good' : 'Critical' }" height="5px" value="{Overview>/d/results/0/WATER_TEMP2}"/>
 										</ui.commons:columns>
 									</ui.commons:ColumnMicroChart>
 								</items>
@@ -118,12 +99,8 @@
 								<items>
 									<ui.commons:ColumnMicroChart>
 										<ui.commons:columns>
-											<ui.commons:ColumnData
-												color="{= ${Overview>/d/results/0/MIN_CELL_VOLT} &lt; 60 ? 'Good' : 'Critical' }"
-												height="5px" value="{Overview>/d/results/0/MIN_CELL_VOLT}"/>
-											<ui.commons:ColumnData
-												color="{= ${Overview>/d/results/0/MAX_CELL_VOLT} &lt; 60 ? 'Good' : 'Critical' }"
-												height="5px" value="{Overview>/d/results/0/MAX_CELL_VOLT}"/>
+											<ui.commons:ColumnData color="{= ${Overview>/d/results/0/MIN_CELL_VOLT} &lt; 60 ? 'Good' : 'Critical' }" height="5px" value="{Overview>/d/results/0/MIN_CELL_VOLT}"/>
+											<ui.commons:ColumnData color="{= ${Overview>/d/results/0/MAX_CELL_VOLT} &lt; 60 ? 'Good' : 'Critical' }" height="5px" value="{Overview>/d/results/0/MAX_CELL_VOLT}"/>
 										</ui.commons:columns>
 									</ui.commons:ColumnMicroChart>
 								</items>
@@ -144,7 +121,7 @@
 								<items>
 									<ui.commons:ColumnMicroChart>
 										<ui.commons:columns>
-											<ui.commons:ColumnData color="Good" height="5px" value="{Overview>/d/results/0/BREAK}"/>
+											<ui.commons:ColumnData color="Good" height="5px" value="{Overview>/d/results/0/BRAKE}"/>
 											<ui.commons:ColumnData color="Good" height="5px" value="{Overview>/d/results/0/THROTTLE}"/>
 										</ui.commons:columns>
 									</ui.commons:ColumnMicroChart>
@@ -157,7 +134,7 @@
 					<content>
 						<html:div xmlns:sap.ui.core="sap.ui.core" style="width: 100%; height: 100%;">
 							<sap.ui.core:Icon class="dashboardIcon" src="sap-icon://chart-axis" color="#007cc0" size="30pt"/>
-							<html:div  style="float: right;" class="dashboardTitle">Stuuruitslag</html:div>
+							<html:div style="float: right;" class="dashboardTitle">Stuuruitslag</html:div>
 							<html:div id="stuuruitslagDiv" style="width: 75%; margin-left: 12%; text-align: center; height: 75%;"></html:div>
 						</html:div>
 					</content>
@@ -168,8 +145,7 @@
 								<sap.ui.core:Icon class="dashboardIcon" src="sap-icon://sort" color="#007cc0" size="30pt"/>
 							<html:div style="float: right;" class="dashboardTitle">Acceleratie</html:div>
 							<html:div class="info_text_tile" id="AcceleratieDiv" style="width: 100%; text-align: center; height: 65%;">
-								<html:div id="eight_curve"
-									style="margin-left: 5px; margin-right: 5px; height:100%; background-size: contain; background-image: url('/IMG/eight_curve.png'); background-repeat: no-repeat; background-position: center; "></html:div>
+								<html:div id="eight_curve" style="margin-left: 5px; margin-right: 5px; height:100%; background-size: contain; background-image: url('/IMG/eight_curve.png'); background-repeat: no-repeat; background-position: center; "></html:div>
 							</html:div>
 						</html:div>
 					</content>

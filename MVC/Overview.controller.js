@@ -241,7 +241,8 @@ sap.ui.define([
 		newRun: function() {
 			if (crudTest === "U") {
 
-				var oId = this.getView().getModel("ID");
+debugger;
+				var oId = sap.ui.getCore().getModel("ID"); //this.getView().getModel("ID");
 				var me = this;
 				wait = true;
 			    var exit = false;

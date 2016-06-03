@@ -19,7 +19,7 @@
 		<footer>
 			<Toolbar>
 			<content>
-			    <Label text="{ID>/raceID} / {ID>/runID}" width="100%" id="raceIdentify"/>
+			    <Label text="{ID>/raceID} / {ID>/runID}" width="100%" id="raceIdentify" visible="true"/>
 			</content>
 			    <ToolbarSpacer/>
 				<Button text="Run" width="100px" id="_newRunBtn" activeIcon="sap-icon://add" icon="sap-icon://add" press="newRun"/>

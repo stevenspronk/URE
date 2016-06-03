@@ -6,20 +6,20 @@
 				<smartFilterBar:controlConfiguration>
 					<smartFilterBar:ControlConfiguration key="RACE_ID" label="Race ID" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
 					<smartFilterBar:ControlConfiguration key="RUN_ID" label="Run ID" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
-					<smartFilterBar:ControlConfiguration key="RACE_DESCRIPTION" label="Description" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
+					<smartFilterBar:ControlConfiguration key="RACE_DESCRIPTION" label="Omschrijving" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
 					<smartFilterBar:ControlConfiguration key="RACE_TYPE" label="Race Type" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
 					<smartFilterBar:ControlConfiguration key="CIRCUIT" label="Circuit" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
-					<smartFilterBar:ControlConfiguration key="WEATHER" label="Weather" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
-					<smartFilterBar:ControlConfiguration key="START_TIME" label="Start Time" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
-					<smartFilterBar:ControlConfiguration key="END_TIME" label="End Time" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
-					<smartFilterBar:ControlConfiguration key="NOTES" label="Notes" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
-					<smartFilterBar:ControlConfiguration key="TEMPERATURE" label="Temperature" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
+					<smartFilterBar:ControlConfiguration key="WEATHER" label="Weer" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
+					<smartFilterBar:ControlConfiguration key="START_TIME" label="Start Tijd" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
+					<smartFilterBar:ControlConfiguration key="END_TIME" label="Eind Tijd" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
+					<smartFilterBar:ControlConfiguration key="NOTES" label="Notities" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
+					<smartFilterBar:ControlConfiguration key="TEMPERATURE" label="Temperatuur" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
 					<smartFilterBar:ControlConfiguration key="CAR_ID" label="Car ID" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
 					<smartFilterBar:ControlConfiguration key="CAR_NOTES" label="Car Notes" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
-					<smartFilterBar:ControlConfiguration key="NAME_DRIVER" label="Driver Name" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
-					<smartFilterBar:ControlConfiguration key="LENGTH_DRIVER" label="Driver Length" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
-					<smartFilterBar:ControlConfiguration key="WEIGHT_DRIVER" label="Driver Weight" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
-					<smartFilterBar:ControlConfiguration key="DRIVER_NOTES" label="Driver Notes" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
+					<smartFilterBar:ControlConfiguration key="NAME_DRIVER" label="Coureur Naam" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
+					<smartFilterBar:ControlConfiguration key="LENGTH_DRIVER" label="Coureur Lengte" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
+					<smartFilterBar:ControlConfiguration key="WEIGHT_DRIVER" label="Coureur Gewicht" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
+					<smartFilterBar:ControlConfiguration key="DRIVER_NOTES" label="Coureur Notities" visibleInAdvancedArea="false" preventInitialDataFetchInValueHelpDialog="false"/>
 				</smartFilterBar:controlConfiguration>
 				<!--<smartFilterBar:controlConfiguration>						-->
 				<!--	<smartFilterBar:ControlConfiguration key="Bukrs">-->
@@ -59,7 +59,7 @@
 							<customData>
 								<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;RACE_DESCRIPTION&quot;, &quot;sortProperty&quot;: &quot;RACE_DESCRIPTION&quot;,&quot;filterproperty&quot;: &quot;RACE_DESCRIPTION&quot;}"/>
 							</customData>
-							<Label text="Description"/>
+							<Label text="Omschrijving"/>
 						</Column>
 						<Column width="9em">
 							<customData>
@@ -77,31 +77,31 @@
 							<customData>
 								<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;WEATHER&quot;, &quot;sortProperty&quot;: &quot;WEATHER&quot;,&quot;filterproperty&quot;: &quot;WEATHER&quot;}"/>
 							</customData>
-							<Label text="Weather"/>
+							<Label text="Weer"/>
 						</Column>
 						<Column width="9em">
 							<customData>
 								<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;START_TIME&quot;, &quot;sortProperty&quot;: &quot;START_TIME&quot;,&quot;filterproperty&quot;: &quot;START_TIME&quot;}"/>
 							</customData>
-							<Label text="Start Time"/>
+							<Label text="Start Tijd"/>
 						</Column>
 						<Column width="9em">
 							<customData>
 								<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;END_TIME&quot;, &quot;sortProperty&quot;: &quot;END_TIME&quot;,&quot;filterproperty&quot;: &quot;END_TIME&quot;}"/>
 							</customData>
-							<Label text="End Time"/>
+							<Label text="Eind Tijd"/>
 						</Column>
 						<Column visible="false">
 							<customData>
 								<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;NOTES&quot;, &quot;sortProperty&quot;: &quot;NOTES&quot;,&quot;filterproperty&quot;: &quot;NOTES&quot;}"/>
 							</customData>
-							<Label text="Notes"/>
+							<Label text="Notities"/>
 						</Column>
 						<Column visible="false">
 							<customData>
 								<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;TEMPERATURE&quot;, &quot;sortProperty&quot;: &quot;TEMPERATURE&quot;,&quot;filterproperty&quot;: &quot;TEMPERATURE&quot;}"/>
 							</customData>
-							<Label text="Temperature"/>
+							<Label text="Temperatuur"/>
 						</Column>
 						<Column visible="false">
 							<customData>
@@ -113,31 +113,31 @@
 							<customData>
 								<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;CAR_NOTES&quot;, &quot;sortProperty&quot;: &quot;CAR_NOTES&quot;,&quot;filterproperty&quot;: &quot;CAR_NOTES&quot;}"/>
 							</customData>
-							<Label text="Car Notes"/>
+							<Label text="Car Notities"/>
 						</Column>
 						<Column visible="false">
 							<customData>
 								<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;NAME_DRIVER&quot;, &quot;sortProperty&quot;: &quot;NAME_DRIVER&quot;,&quot;filterproperty&quot;: &quot;NAME_DRIVER&quot;}"/>
 							</customData>
-							<Label text="Driver Name"/>
+							<Label text="Coureur Naam"/>
 						</Column>
 						<Column visible="false">
 							<customData>
 								<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;LENGTH_DRIVER&quot;, &quot;sortProperty&quot;: &quot;LENGTH_DRIVER&quot;,&quot;filterproperty&quot;: &quot;LENGTH_DRIVER&quot;}"/>
 							</customData>
-							<Label text="Driver Length"/>
+							<Label text="Coureur Lengte"/>
 						</Column>
 						<Column visible="false">
 							<customData>
 								<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;WEIGHT_DRIVER&quot;, &quot;sortProperty&quot;: &quot;WEIGHT_DRIVER&quot;,&quot;filterproperty&quot;: &quot;WEIGHT_DRIVER&quot;}"/>
 							</customData>
-							<Label text="Driver Weight"/>
+							<Label text="Coureur Gewicht"/>
 						</Column>
 						<Column visible="false">
 							<customData>
 								<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;DRIVER_NOTES&quot;, &quot;sortProperty&quot;: &quot;DRIVER_NOTES&quot;,&quot;filterproperty&quot;: &quot;DRIVER_NOTES&quot;}"/>
 							</customData>
-							<Label text="Driver Notes"/>
+							<Label text="Coureur Notities"/>
 						</Column>
 					</columns>
 					<items>
@@ -198,7 +198,7 @@
 		<footer>
 			<Toolbar width="100%" id="__toolbar0">
 				<content>
-					<Button text="Delete" width="100px" id="__button0" press="deleteSelected"/>
+					<Button text="Verwijder" width="100px" id="__button0" press="deleteSelected"/>
 					<ToolbarSpacer id="__spacer0"/>
 					<Button width="100px" id="__button8" press="selectHistory" activeIcon="sap-icon://column-chart-dual-axis" icon="sap-icon://column-chart-dual-axis"/>
 				</content>

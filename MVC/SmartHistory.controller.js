@@ -11,7 +11,7 @@ sap.ui.define(["JS/validator", "sap/ui/model/odata/v2/ODataModel",
 
 		onAfterRendering: function() {
 			var me = this;
-			//me.sortHistory();
+			me.sortHistory();
 		},
 
 		onExit: function() {
