@@ -7,15 +7,16 @@ sap.ui.define([
 	return Controller.extend("MVC.LiveData", {
 
 		onInit: function() {
+			debugger;
 			this.component = sap.ui.component(sap.ui.core.Component.getOwnerIdFor(this.getView()));
 			
 			// Get a reference to the model and add a TimeSeries property
-			var chartModel = this.component.getModel("chart");
+			var chartModel = sap.ui.getCore().getModel("RaceData");
 			chartModel.setProperty("/random", new TimeSeries());
 
 			// Every 500ms a new random number between 0 and 10,000 is added to the time series
 			setInterval(function() {
-		        chartModel.getProperty("/random").append(new Date().getTime(), Math.random() * 10000);
+		        chartModel.getProperty("/random").append("{MAX_TEMP_BUCKET1}");//new Date().getTime(), Math.random() * 10000);
 		    }, 500);
 		    
 		},
