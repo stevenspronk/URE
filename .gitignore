@@ -7,3 +7,6 @@ changes_preview_index.html
 mock_preview_sapui5.html
 .*/mock_preview_sapui5.html
 /preview_hidden.html
+changes_preview.js
+extended_runnable_file.html
+.*/extended_runnable_file.html
