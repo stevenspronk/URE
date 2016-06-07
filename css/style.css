@@ -45,6 +45,14 @@
 	font-weight: bold;
 }
 
+.sap-desktop .sapMShellCentralBox {
+    box-shadow: 0 0 25px rgba(0,0,0,0.4);
+}
+
+.sapMTile {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.35);
+}
+
 .sapMShellBrandingBar{background-color:#000 !important;}  
 
 .sapMGlobalBackgroundColor{background-color:#fff !important; opacity:0.9}  
