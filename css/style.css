@@ -7,11 +7,44 @@
     margin-top: 15px;
     height: 50px;
     vertical-align: middle;
+    font-weight: bold;
 }
 .counter {
     margin-left: 54px;
 }
   
+.sapMTile
+{
+	
+}
+.sapMPage {
+	background-color: #F2F2F2;
+}
+
+.sapMITBSelected>.sapMITBContentArrow {
+    border-bottom-color: orange;
+}
+
+.sapMITBTextOnly .sapMITBFilterDefault.sapMITBSelected>.sapMITBText
+{
+	color: orange;
+}
+
+.brake
+{
+	float:left;
+	margin-right: 5px;
+}
+
+.throttle {
+	float: left;
+}
+
+.sapMIBar.sapMTB .sapMBarChild
+{
+	font-weight: bold;
+}
+
 .sapMShellBrandingBar{background-color:#000 !important;}  
 
 .sapMGlobalBackgroundColor{background-color:#fff !important; opacity:0.9}  
@@ -23,7 +56,7 @@
 
 .sapSuiteUiMicroChartRMC
 {
-	margin-left: 5%;
+	/*margin-left: 5%;*/
 }
 
 .sapMPanelContent
