@@ -1,5 +1,5 @@
 <core:View xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:mvc="sap.ui.core.mvc" controllerName="MVC.SmartHistory" height="100%">
-	<Page id="page" title="Historische tests" enableScrolling="true" showNavButton="true" navButtonPress="onNavBack">
+	<Page id="page" title="Analyse" enableScrolling="true" showNavButton="true" navButtonPress="onNavBack">
 		<!-- use this to make the table occupy the available screen height -->
 		<VBox fitContainer="true">
 			<smartFilterBar:SmartFilterBar id="smartFilterBar" entityType="URE_METADATAType" enableBasicSearch="true">

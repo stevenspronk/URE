@@ -203,17 +203,17 @@ sap.ui.define([
 			}
 		},
 		onAfterRendering: function() {
-			function refreshData() {
-				var curl = "/destinations/McCoy_URE/Overview.xsodata/OVERVIEW?$format=json&$filter=RACE_ID eq " + raceID + " and RUN_ID eq " + runID;
-				var carModel = sap.ui.getCore().getModel("RaceData");
-				carModel.loadData(curl);
-			}
+			// function refreshData() {
+			// 	var curl = "/destinations/McCoy_URE/Overview.xsodata/OVERVIEW?$format=json&$filter=RACE_ID eq " + raceID + " and RUN_ID eq " + runID;
+			// 	var carModel = sap.ui.getCore().getModel("RaceData");
+			// 	carModel.loadData(curl);
+			// }
 
-			setTimeout(function() {
-				setInterval(function() {
-					refreshData();
-				}, 1000);
-			}, 1000);
+			// setTimeout(function() {
+			// 	setInterval(function() {
+			// 		refreshData();
+			// 	}, 1000);
+			// }, 1000);
 
 			var seriesRadioGroup = this.getView().byId('seriesRadioGroup');
 			seriesRadioGroup.setSelectedIndex(this.settingsModel.series.defaultSelected);

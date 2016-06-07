@@ -1,46 +1,18 @@
 <mvc:View controllerName="MVC.LiveData" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
 	xmlns:smoothie="com.URE.Controls" xmlns="sap.m" xmlns:microchart="sap.suite.ui.microchart">
-	<GenericTile header="Vermogen" size="M" frameType="OneByOne">
-		<tileContent>
-			<TileContent footer="">
+
+	<App>
+		<pages>
+			<Page title="{i18n>title}">
 				<content>
-					<FlexBox height="100%" alignItems="Center" justifyContent="Center">
-						<items>
-							<Text textAlign="Center" width="100%" height="100%"
-								text="{parts:[{path:'Overview>/d/results/0/BATTERY_CURRENT'},{path:'Overview&gt;/d/results/0/BATTERY_VOLTAGE'}], formatter:'.calculatePower'} W"
-								wrapping="true" id="dashboardTilePowerText"/>
-						</items>
-					</FlexBox>
+					<smoothie:SmoothieChart 
+						id="awesome" 
+						width="500px" 
+						height="200px" />
 				</content>
-			</TileContent>
-		</tileContent>
-	</GenericTile>
-	<GenericTile header="Temperatuur per cel" subheader="" frameType="SixByOne">
-		<tileContent>
-			<TileContent footer="">
-				<content>
-					<microchart:RadialMicroChart percentage="10" valueColor="Good"/>
-					<microchart:RadialMicroChart percentage="20" valueColor="Error"/>
-					<microchart:RadialMicroChart percentage="10" valueColor="Good"/>
-					<microchart:RadialMicroChart percentage="20" valueColor="Error"/>
-					<microchart:RadialMicroChart percentage="10" valueColor="Good"/>
-					<microchart:RadialMicroChart percentage="20" valueColor="Error"/>
-				</content>
-			</TileContent>
-		</tileContent>
-	</GenericTile>
-	<!--<App>-->
-	<!--	<pages>-->
-	<!--		<Page title="{i18n>title}">-->
-	<!--			<content>-->
-	<!--				<smoothie:SmoothieChart -->
-	<!--					id="awesome" -->
-	<!--					width="500px" -->
-	<!--					height="200px" />-->
-	<!--			</content>-->
-	<!--		</Page>-->
-	<!--	</pages>-->
-	<!--</App>-->
+			</Page>
+		</pages>
+	</App>
 </mvc:View>
 <!--<mvc:View height="100%" width="100%" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="MVC.LiveData" xmlns:layout="sap.ui.layout" xmlns:viz="sap.viz.ui5.controls"-->
 <!--	xmlns:mvc="sap.ui.core.mvc" xmlns:suite="sap.suite.ui.commons" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"-->

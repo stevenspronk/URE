@@ -101,7 +101,7 @@
 						<Panel height="100%" width="100%" backgroundDesign="Transparent">
 							<headerToolbar>
 								<Toolbar>
-									<sap.ui.core:Icon src="../IMG/voltage.png" size="30pt"/>
+									<sap.ui.core:Icon src="/IMG/voltage.png" size="30pt"/>
 									<Text textAlign="Left" text="Celvoltage" wrapping="true"/>
 								</Toolbar>
 							</headerToolbar>

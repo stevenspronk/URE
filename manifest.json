@@ -123,6 +123,9 @@
 			"McCoy_URE": {
 				"dataSource": "McCoy_URE",
 				"settings": {}
+			},
+			"chart": {
+				"type": "sap.ui.model.json.JSONModel"
 			}
 		},
 		"contentDensities": {

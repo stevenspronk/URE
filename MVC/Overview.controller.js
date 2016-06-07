@@ -61,6 +61,10 @@ sap.ui.define([
 				this.oView.byId("_appView").setShowNavButton(true);
 				this.oView.byId("OverviewElement").setVisible(false);
 				this.oView.byId("OverviewTab").setVisible(false);
+				this.oView.byId("CoureurElement").setVisible(true);
+				this.oView.byId("CoureurTab").setVisible(true);
+				this.oView.byId("CarElement").setVisible(true);
+				this.oView.byId("CarTab").setVisible(true);
 				//this.refreshData(key);
 				wait = true;
 			}
@@ -71,6 +75,10 @@ sap.ui.define([
 				this.oView.byId("_appView").setShowNavButton(false);
 				this.oView.byId("OverviewElement").setVisible(true);
 				this.oView.byId("OverviewTab").setVisible(true);
+				this.oView.byId("CoureurElement").setVisible(false);
+				this.oView.byId("CoureurTab").setVisible(false);
+				this.oView.byId("CarElement").setVisible(false);
+				this.oView.byId("CarTab").setVisible(false);
 			}
 
 			if (crudTest === "U") {
@@ -79,7 +87,11 @@ sap.ui.define([
 				this.oView.byId("_appView").setShowNavButton(false);
 				this.oView.byId("OverviewElement").setVisible(true);
 				this.oView.byId("OverviewTab").setVisible(true);
-
+				this.oView.byId("CoureurElement").setVisible(false);
+				this.oView.byId("CoureurTab").setVisible(false);
+				this.oView.byId("CarElement").setVisible(false);
+				this.oView.byId("CarTab").setVisible(false);
+			
 				wait = false;
 			}
 

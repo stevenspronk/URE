@@ -5,11 +5,11 @@
 				<IconTabFilter key="Dashboard" text="Overview" id="OverviewTab">
 					<core.mvc:XMLView viewName="MVC.Dashboard" id="OverviewElement"/>
 				</IconTabFilter>
-				<IconTabFilter key="Car" text="Auto">
-					<core.mvc:XMLView viewName="MVC.Car"/>
+				<IconTabFilter key="Car" text="Auto" id="CarTab">
+					<core.mvc:XMLView viewName="MVC.Car" id="CarElement"/>
 				</IconTabFilter>
-				<IconTabFilter key="Driver" text="Coureur" press="onNavBack">
-					<core.mvc:XMLView viewName="MVC.Driver"/>
+				<IconTabFilter key="Driver" text="Coureur" id="CoureurTab">
+					<core.mvc:XMLView viewName="MVC.Driver" id="CoureurElement"/>
 				</IconTabFilter>
 				<IconTabFilter key="Powertrain" text="Powertrain">
 					<core.mvc:XMLView viewName="MVC.Powertrain"/>

@@ -12,10 +12,9 @@
     margin-left: 54px;
 }
   
-.sapMTile
-{
-	
-}
+.sapMShellBrandingBar{background-color:#000 !important;}  
+
+.sapMGlobalBackgroundColor{background-color:#fff !important; opacity:0.9}  
 
 .dashboardIcon {
 	padding-left: 0.75rem;
