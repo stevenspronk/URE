@@ -69,12 +69,16 @@ sap.ui.define([
 				this.oView.byId("_newTestBtn").setVisible(true);
 				this.oView.byId("_newRunBtn").setVisible(true);
 				this.oView.byId("_appView").setShowNavButton(false);
+				this.oView.byId("OverviewElement").setVisible(true);
+				this.oView.byId("OverviewTab").setVisible(true);
 			}
 
 			if (crudTest === "U") {
 				this.oView.byId("_newTestBtn").setVisible(true);
 				this.oView.byId("_newRunBtn").setVisible(true);
 				this.oView.byId("_appView").setShowNavButton(false);
+				this.oView.byId("OverviewElement").setVisible(true);
+				this.oView.byId("OverviewTab").setVisible(true);
 
 				wait = false;
 			}
@@ -112,8 +116,8 @@ sap.ui.define([
 						me.refreshData(key);
 					}
 
-				}, 1000);
-			}, 1000);
+				}, 100);
+			}, 100);
 
 		},
 
@@ -197,13 +201,14 @@ sap.ui.define([
 
 		onExit: function() {
 			if (crudTest === "U") {
-
-				//	  me.saveCurrentTest();
+				
+				var me = this;
+				me.saveCurrentTest();
 			}
 		},
 
 		createNewRun: function(callBack) {
-
+debugger;
 			var oRaceMetaData = sap.ui.getCore().getModel("oRaceMetaData");
 
 			var oPath = "/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")";
@@ -215,8 +220,6 @@ sap.ui.define([
 			data.START_TIME = new Date();
 			data.END_TIME = null;
 			data.RUN_ID = runID;
-
-			
 
 			oRaceMetaData.createEntry("/URE_METADATA", {
 				properties: data
@@ -241,8 +244,7 @@ sap.ui.define([
 		newRun: function() {
 			if (crudTest === "U") {
 
-debugger;
-				var oId = sap.ui.getCore().getModel("ID"); //this.getView().getModel("ID");
+				var oId = sap.ui.getCore().getModel         ("ID"); //this.getView().getModel("ID");
 				var me = this;
 				wait = true;
 			    var exit = false;

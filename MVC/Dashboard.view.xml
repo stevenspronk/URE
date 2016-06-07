@@ -1,19 +1,19 @@
 <mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="MVC.Dashboard" xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.layout="sap.ui.layout" xmlns:ui.commons="sap.suite.ui.commons" xmlns="sap.m" xmlns:microchart="sap.suite.ui.microchart" controllerName="MVC.Dashboard" height="100%">
 	<Page showFooter="false" id="Dashboard" showHeader="false">
 		<TileContainer allowAdd="false" busy="false" editable="false" height="100%" id="__container0">
-			<tiles> 
+			<tiles>
 				<CustomTile xmlns="sap.m" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" height="100%">
-					<content> 
+					<content>
 						<Panel class="dashboardTilePanel" height="100%" backgroundDesign="Transparent">
 							<headerToolbar>
 								<Toolbar>
-									<sap.ui.core:Icon src="sap-icon://car-rental" size="30pt"/>
+									<sap.ui.core:Icon src="sap-icon://performance" size="30pt"/>
 									<Text textAlign="Left" text="Vermogen" wrapping="true"/>
 								</Toolbar>
 							</headerToolbar>
 							<FlexBox height="100%" alignItems="Center" justifyContent="Center">
 								<items>
-									<Text textAlign="Center" width="100%" height="100%" text="{parts:[{path:'Overview>/d/results/0/BATTERY_CURRENT'},{path:'Overview&gt;/d/results/0/BATTERY_VOLTAGE'}], formatter:'.calculatePower'}" wrapping="true" id="dashboardTilePowerText"/>
+									<Text textAlign="Center" width="100%" height="100%" text="{parts:[{path:'Overview>/d/results/0/BATTERY_CURRENT'},{path:'Overview&gt;/d/results/0/BATTERY_VOLTAGE'}], formatter:'.calculatePower'} W" wrapping="true" id="dashboardTilePowerText"/>
 								</items>
 							</FlexBox>
 						</Panel>
@@ -21,10 +21,10 @@
 				</CustomTile>
 				<CustomTile xmlns="sap.m" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" height="100%" width="100%">
 					<content>
-						<Panel height="100%" width="100%" backgroundDesign="Transparent">
+						<Panel height="100%" backgroundDesign="Transparent">
 							<headerToolbar>
 								<Toolbar>
-									<sap.ui.core:Icon src="sap-icon://temperature" color="#007cc0" size="30pt"/>
+									<sap.ui.core:Icon src="sap-icon://temperature" size="30pt"/>
 									<Text textAlign="Left" text="Temperatuur per cel" wrapping="true"/>
 								</Toolbar>
 							</headerToolbar>
@@ -47,19 +47,51 @@
 				</CustomTile>
 				<CustomTile xmlns="sap.m" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" height="100%" width="100%">
 					<content>
+						<Panel height="100%" width="100%" backgroundDesign="Transparent">
+							<headerToolbar>
+								<Toolbar>
+									<sap.ui.core:Icon src="sap-icon://temperature" size="30pt"/>
+									<Text textAlign="Left" text="Water temperatuur" wrapping="true"/>
+								</Toolbar>
+							</headerToolbar>
+							<content>
+								<FlexBox height="40%" width="90%" alignItems="Center" justifyContent="Center">
+									<items>
+										<Text text="{Overview>/d/results/0/WATER_TEMP1} ℃" valueColor="{= ${Overview>/d/results/0/WATER_TEMP1} &lt; 60 ? 'Good' : 'Critical' }"/>
+									</items>
+								</FlexBox>
+								<FlexBox height="40%" width="90%" alignItems="Center" justifyContent="Center">
+									<items>
+										<Text text="{Overview>/d/results/0/WATER_TEMP2} ℃" valueColor="{= ${Overview>/d/results/0/WATER_TEMP2} &lt; 60 ? 'Good' : 'Critical' }"/>
+									</items>
+									<!--<items>-->
+									<!--	<ui.commons:ColumnMicroChart>-->
+									<!--		<ui.commons:columns>-->
+									<!--			<ui.commons:ColumnData color="{= ${Overview>/d/results/0/WATER_TEMP1} &lt; 60 ? 'Good' : 'Critical' }" height="5px" value="{Overview>/d/results/0/WATER_TEMP1}"/>-->
+									<!--			<ui.commons:ColumnData color="{= ${Overview>/d/results/0/WATER_TEMP2} &lt; 60 ? 'Good' : 'Critical' }" height="5px" value="{Overview>/d/results/0/WATER_TEMP2}"/>-->
+									<!--		</ui.commons:columns>-->
+									<!--	</ui.commons:ColumnMicroChart>-->
+									<!--</items>-->
+								</FlexBox>
+							</content>
+						</Panel>
+					</content>
+				</CustomTile>
+				<CustomTile xmlns="sap.m" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" height="100%" width="100%">
+					<content>
 						<Panel height="100%" width="100%" backgroundDesign="Transparent" class="sapUiDemoFlexBoxSizeAdjustments">
 							<headerToolbar>
 								<OverflowToolbar>
-									<sap.ui.core:Icon src="sap-icon://connected" color="#007cc0" size="30pt"/>
+									<sap.ui.core:Icon src="sap-icon://connected" size="30pt"/>
 									<Text textAlign="Left" text="Lading" wrapping="true"/>
 								</OverflowToolbar>
 							</headerToolbar>
 							<content>
-							<FlexBox height="90%" width="90%" alignItems="Center">
-								<items>
-									<microchart:RadialMicroChart percentage="{Overview>/d/results/0/STATE_OF_CHARGE}" valueColor="{= ${Overview>/d/results/0/STATE_OF_CHARGE} &lt; 20 ? 'Critical' : 'Good' }"/>
-								</items>
-							</FlexBox>
+								<FlexBox height="90%" width="90%" alignItems="Center">
+									<items>
+										<microchart:RadialMicroChart percentage="{Overview>/d/results/0/STATE_OF_CHARGE}" valueColor="{= ${Overview>/d/results/0/STATE_OF_CHARGE} &lt; 20 ? 'Critical' : 'Good' }"/>
+									</items>
+								</FlexBox>
 							</content>
 						</Panel>
 					</content>
@@ -69,20 +101,30 @@
 						<Panel height="100%" width="100%" backgroundDesign="Transparent">
 							<headerToolbar>
 								<Toolbar>
-									<sap.ui.core:Icon src="sap-icon://performance" color="#007cc0" size="30pt"/>
-									<Text textAlign="Left" text="Water temperatuur" wrapping="true"/>
+									<sap.ui.core:Icon src="../IMG/voltage.png" size="30pt"/>
+									<Text textAlign="Left" text="Celvoltage" wrapping="true"/>
 								</Toolbar>
 							</headerToolbar>
-							<FlexBox height="100%" width="100%" alignItems="Center" justifyContent="Center">
+							<FlexBox height="40%" width="90%" alignItems="Center" justifyContent="Center">
 								<items>
-									<ui.commons:ColumnMicroChart>
-										<ui.commons:columns>
-											<ui.commons:ColumnData color="{= ${Overview>/d/results/0/WATER_TEMP1} &lt; 60 ? 'Good' : 'Critical' }" height="5px" value="{Overview>/d/results/0/WATER_TEMP1}"/>
-											<ui.commons:ColumnData color="{= ${Overview>/d/results/0/WATER_TEMP2} &lt; 60 ? 'Good' : 'Critical' }" height="5px" value="{Overview>/d/results/0/WATER_TEMP2}"/>
-										</ui.commons:columns>
-									</ui.commons:ColumnMicroChart>
+									<Text textAlign="Center" width="100%" height="100%" text="Min: {Overview>/d/results/0/MIN_CELL_VOLT} V" wrapping="true" id="minCellVolt"/>
 								</items>
 							</FlexBox>
+							<FlexBox height="40%" width="90%" alignItems="Center" justifyContent="Center">
+									<items>
+										<Text textAlign="Center" width="100%" height="100%" text="Max: {Overview>/d/results/0/MAX_CELL_VOLT} V" wrapping="true" id="maxCellVolt"/>
+									</items>
+								</FlexBox>
+							<!--<FlexBox height="100%" width="100%" alignItems="Center" justifyContent="Center">-->
+							<!--	<items>-->
+							<!--		<ui.commons:ColumnMicroChart>-->
+							<!--			<ui.commons:columns>-->
+							<!--				<ui.commons:ColumnData color="{= ${Overview>/d/results/0/MIN_CELL_VOLT} &lt; 60 ? 'Good' : 'Critical' }" height="5px" value="{Overview>/d/results/0/MIN_CELL_VOLT}"/>-->
+							<!--				<ui.commons:ColumnData color="{= ${Overview>/d/results/0/MAX_CELL_VOLT} &lt; 60 ? 'Good' : 'Critical' }" height="5px" value="{Overview>/d/results/0/MAX_CELL_VOLT}"/>-->
+							<!--			</ui.commons:columns>-->
+							<!--		</ui.commons:ColumnMicroChart>-->
+							<!--	</items>-->
+							<!--</FlexBox>-->
 						</Panel>
 					</content>
 				</CustomTile>
@@ -91,41 +133,29 @@
 						<Panel height="100%" width="100%" backgroundDesign="Transparent">
 							<headerToolbar>
 								<Toolbar>
-									<sap.ui.core:Icon src="sap-icon://photo-voltaic" color="#007cc0" size="30pt"/>
-									<Text textAlign="Left" text="Minimale celvoltage" wrapping="true"/>
-								</Toolbar>
-							</headerToolbar>
-							<FlexBox height="100%" width="100%" alignItems="Center" justifyContent="Center">
-								<items>
-									<ui.commons:ColumnMicroChart>
-										<ui.commons:columns>
-											<ui.commons:ColumnData color="{= ${Overview>/d/results/0/MIN_CELL_VOLT} &lt; 60 ? 'Good' : 'Critical' }" height="5px" value="{Overview>/d/results/0/MIN_CELL_VOLT}"/>
-											<ui.commons:ColumnData color="{= ${Overview>/d/results/0/MAX_CELL_VOLT} &lt; 60 ? 'Good' : 'Critical' }" height="5px" value="{Overview>/d/results/0/MAX_CELL_VOLT}"/>
-										</ui.commons:columns>
-									</ui.commons:ColumnMicroChart>
-								</items>
-							</FlexBox>
-						</Panel>
-					</content>
-				</CustomTile>
-				<CustomTile xmlns="sap.m" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" height="100%" width="100%">
-					<content>
-						<Panel height="100%" width="100%" backgroundDesign="Transparent">
-							<headerToolbar>
-								<Toolbar>
-									<sap.ui.core:Icon src="sap-icon://sort" color="#007cc0" size="30pt"/>
+									<sap.ui.core:Icon src="sap-icon://sort" size="30pt"/>
 									<Text textAlign="Left" text="Stand van de pedalen" wrapping="true"/>
 								</Toolbar>
 							</headerToolbar>
-							<FlexBox height="100%" width="100%" alignItems="Center" justifyContent="Center">
-								<items>
-									<ui.commons:ColumnMicroChart>
-										<ui.commons:columns>
-											<ui.commons:ColumnData color="Good" height="5px" value="{Overview>/d/results/0/BRAKE}"/>
-											<ui.commons:ColumnData color="Good" height="5px" value="{Overview>/d/results/0/THROTTLE}"/>
-										</ui.commons:columns>
-									</ui.commons:ColumnMicroChart>
-								</items>
+							<!--<FlexBox height="90%" width="90%" alignItems="Center">-->
+							<!--	<items>-->
+							<FlexBox alignItems="Center">
+								<html:div style="float: left; width: 50%; height: 50%;" class="divLeft">
+									<microchart:RadialMicroChart percentage="{Overview>/d/results/0/BRAKE}" valueColor="Error"/>
+								</html:div>
+							</FlexBox>
+							<FlexBox alignItems="Center">
+								<html:div style="float: right; width: 50%; height: 50%;" class="divRight">
+									<microchart:RadialMicroChart percentage="{Overview>/d/results/0/THROTTLE}" valueColor="Good"/>
+								</html:div>
+								<!--<ui.commons:ColumnMicroChart>-->
+								<!--	<ui.commons:columns>-->
+								<!--		<ui.commons:ColumnData color="Good" height="5px" value="{Overview>/d/results/0/BRAKE}"/>-->
+								<!--		<ui.commons:ColumnData color="Good" height="5px" value="{Overview>/d/results/0/THROTTLE}"/>-->
+								<!--	</ui.commons:columns>-->
+								<!--</ui.commons:ColumnMicroChart>-->
+								<!--	</items>-->
+								<!--</FlexBox>-->
 							</FlexBox>
 						</Panel>
 					</content>
@@ -133,16 +163,16 @@
 				<CustomTile xmlns="sap.m" id="_stuuruitslagTile" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile">
 					<content>
 						<html:div xmlns:sap.ui.core="sap.ui.core" style="width: 100%; height: 100%;">
-							<sap.ui.core:Icon class="dashboardIcon" src="sap-icon://chart-axis" color="#007cc0" size="30pt"/>
+							<sap.ui.core:Icon class="dashboardIcon" src="sap-icon://sort" size="30pt"/>
 							<html:div style="float: right;" class="dashboardTitle">Stuuruitslag</html:div>
 							<html:div id="stuuruitslagDiv" style="width: 75%; margin-left: 12%; text-align: center; height: 75%;"></html:div>
 						</html:div>
 					</content>
 				</CustomTile>
 				<CustomTile xmlns="sap.m" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile">
-					<content> 
+					<content>
 						<html:div style="width: 100%; height: 100%;">
-								<sap.ui.core:Icon class="dashboardIcon" src="sap-icon://sort" color="#007cc0" size="30pt"/>
+							<sap.ui.core:Icon class="dashboardIcon" src="sap-icon://chart-axis" size="30pt"/>
 							<html:div style="float: right;" class="dashboardTitle">Acceleratie</html:div>
 							<html:div class="info_text_tile" id="AcceleratieDiv" style="width: 100%; text-align: center; height: 65%;">
 								<html:div id="eight_curve" style="margin-left: 5px; margin-right: 5px; height:100%; background-size: contain; background-image: url('/IMG/eight_curve.png'); background-repeat: no-repeat; background-position: center; "></html:div>

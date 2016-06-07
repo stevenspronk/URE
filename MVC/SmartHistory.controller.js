@@ -11,7 +11,7 @@ sap.ui.define(["JS/validator", "sap/ui/model/odata/v2/ODataModel",
 
 		onAfterRendering: function() {
 			var me = this;
-			me.sortHistory();
+			//me.sortHistory();
 		},
 
 		onExit: function() {
@@ -43,7 +43,6 @@ sap.ui.define(["JS/validator", "sap/ui/model/odata/v2/ODataModel",
 			}
 
 			if (oSelectedItem) {
-				debugger;
 				var oDetail = this.getView().getModel().getProperty(sPath);
 				
 				var oModel = new sap.ui.model.json.JSONModel({

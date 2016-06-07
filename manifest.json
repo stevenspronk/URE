@@ -76,6 +76,11 @@
 				"name": "SmartHistory",
 				"pattern": "SmartHistory",
 				"target": "SmartHistory"
+			}, {
+				"name": "LiveData",
+				"pattern": "LiveData",
+				"greedy": false,
+				"target": ["LiveData"]
 			}],
 			"targets": {
 				"Overview": {
@@ -96,6 +101,13 @@
 					"clearAggregation": "true",
 					"viewName": "SmartHistory",
 					"viewId": "smarthistory"
+				},
+				"LiveData": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "LiveData",
+					"viewId": "livedata"
 				}
 			}
 		},

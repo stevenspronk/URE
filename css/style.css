@@ -1,5 +1,5 @@
 .dashboardTitle {
-    color: #007cc0;
+    /*color: #007cc0;*/
     width: 115px;
     font-size: 14pt;
     overflow: hidden;
@@ -37,7 +37,7 @@
 }
 
 .sapMIBar.sapMTB .sapMBarChild {
-    color: #007cc0;
+    /*color: #007cc0;*/
     font-size: 14pt;
     margin-right: 6px;
 }

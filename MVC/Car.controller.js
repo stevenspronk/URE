@@ -204,8 +204,7 @@ sap.ui.define([
 		},
 		onAfterRendering: function() {
 			function refreshData() {
-				var curl = "/destinations/McCoy_URE/Overview.xsodata/OVERVIEW?$format=json&$filter=RACE_ID eq " + raceID + " and RUN_ID eq " +
-					runID;
+				var curl = "/destinations/McCoy_URE/Overview.xsodata/OVERVIEW?$format=json&$filter=RACE_ID eq " + raceID + " and RUN_ID eq " + runID;
 				var carModel = sap.ui.getCore().getModel("RaceData");
 				carModel.loadData(curl);
 			}
