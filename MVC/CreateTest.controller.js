@@ -129,7 +129,6 @@ sap.ui.define(["JS/validator", "sap/ui/model/odata/v2/ODataModel"], function(Val
 
 		saveTest: function() {
 			if (this.onValidate()) {
-
 				var me = this;
 				var oRaceMetaData = this.getView().getModel();
 				var oPath = this.getView().getBindingContext().getPath();

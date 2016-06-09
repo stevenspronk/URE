@@ -3,11 +3,11 @@ sap.ui.define([
 	"com/URE/Controls/smoothie"
 ], function (Control) {
 	"use strict";
-	var SmoothieControl = Control.extend("com.URE.Controls.SmoothieChart", {
+	var SmoothieControl = Control.extend("com.URE.Controls.SmoothieChartTile", {
 
 		metadata : {
 			properties : {
-				chart : { type : "SmoothieChart", defaultValue: new SmoothieChart({grid:{fillStyle:'#ffffff',strokeStyle:'transparent'},labels:{fillStyle:'#000000',fontFamily:"Arial",fontSize:14,precision:4},timestampFormatter:SmoothieChart.timeFormatter}) },
+				chart : { type : "SmoothieChart", defaultValue: new SmoothieChart({grid:{fillStyle:'#000000',strokeStyle:'transparent'} }) },
 				width : { type : "sap.ui.core.CSSSize", group : "Appearance", defaultValue : null },
 				height : { type : "sap.ui.core.CSSSize", group : "Appearance", defaultValue : null }
 			}

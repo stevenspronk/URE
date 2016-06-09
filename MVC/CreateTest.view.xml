@@ -85,8 +85,8 @@
 			<Toolbar width="100%">
 				<content>
 					<Button text="Analyse" width="100px" id="__button1" press="goToHistory" align="left"/>
-					<Button width="100px" id="__button2" press="clearEntries"/>
-					<Button width="100px" id="__button3" press="setDefaults"/>
+					<Button width="100px" id="__button2" press="clearEntries" visible="true"/>
+					<Button width="100px" id="__button3" press="setDefaults" visible="true"/>
 				</content>
 				<ToolbarSpacer/>
 				<Button activeIcon="sap-icon://accept" icon="sap-icon://accept" press="saveTest" text="Start test"/>

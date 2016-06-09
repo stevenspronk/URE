@@ -36,7 +36,11 @@
 			"tablet": true,
 			"phone": true
 		},
-		"supportedThemes": ["sap_bluecrystal"]
+		"supportedThemes": ["sap_bluecrystal"],
+		"icons": {
+			"tablet@2": "URE/IMG/apple-touch-icon-144x144.png",
+			"phone@2": "URE/IMG/apple-touch-icon-144x144.png"
+		}
 	},
 	"sap.ui5": {
 		"_version": "1.1.0",
@@ -125,6 +129,9 @@
 				"settings": {}
 			},
 			"chart": {
+				"type": "sap.ui.model.json.JSONModel"
+			},
+			"cellVoltage": {
 				"type": "sap.ui.model.json.JSONModel"
 			}
 		},

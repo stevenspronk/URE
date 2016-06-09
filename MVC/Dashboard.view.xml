@@ -1,6 +1,6 @@
 <mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="MVC.Dashboard" xmlns:sap.ui.core="sap.ui.core"
 	xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.layout="sap.ui.layout" xmlns:ui.commons="sap.suite.ui.commons" xmlns="sap.m"
-	xmlns:microchart="sap.suite.ui.microchart" controllerName="MVC.Dashboard" height="100%">
+	xmlns:smoothie="com.URE.Controls" xmlns:microchart="sap.suite.ui.microchart" controllerName="MVC.Dashboard" height="100%">
 	<Page showFooter="false" id="Dashboard" showHeader="false">
 		<TileContainer allowAdd="false" busy="false" editable="false" height="100%" id="__container0">
 			<tiles>
@@ -122,24 +122,19 @@
 										<Text textAlign="Left" text="Celvoltage" wrapping="true"/>
 								</Toolbar>
 							</headerToolbar>
-							<FlexBox height="40%" width="90%" alignItems="Center" justifyContent="Center">
-								<items>
-									<Text textAlign="Center" width="100%" height="100%" text="Min: {Overview>/d/results/0/MIN_CELL_VOLT} V" wrapping="true" id="minCellVolt"/>
-								</items>
-							</FlexBox>
-							<FlexBox height="40%" width="90%" alignItems="Center" justifyContent="Center">
-								<items>
-									<Text textAlign="Center" width="100%" height="100%" text="Max: {Overview>/d/results/0/MAX_CELL_VOLT} V" wrapping="true" id="maxCellVolt"/>
-								</items>
-							</FlexBox>
-							<!--<FlexBox height="100%" width="100%" alignItems="Center" justifyContent="Center">-->
+								<smoothie:SmoothieChartTile
+						id="cellVoltage" 
+						width="100px" 
+						height="100px"
+						strokeStyle="transparent"/>
+				<!--<FlexBox height="40%" width="90%" alignItems="Center" justifyContent="Center">-->
 							<!--	<items>-->
-							<!--		<ui.commons:ColumnMicroChart>-->
-							<!--			<ui.commons:columns>-->
-							<!--				<ui.commons:ColumnData color="{= ${Overview>/d/results/0/MIN_CELL_VOLT} &lt; 60 ? 'Good' : 'Critical' }" height="5px" value="{Overview>/d/results/0/MIN_CELL_VOLT}"/>-->
-							<!--				<ui.commons:ColumnData color="{= ${Overview>/d/results/0/MAX_CELL_VOLT} &lt; 60 ? 'Good' : 'Critical' }" height="5px" value="{Overview>/d/results/0/MAX_CELL_VOLT}"/>-->
-							<!--			</ui.commons:columns>-->
-							<!--		</ui.commons:ColumnMicroChart>-->
+							<!--		<Text textAlign="Center" width="100%" height="100%" text="Min: {Overview>/d/results/0/MIN_CELL_VOLT} V" wrapping="true" id="minCellVolt"/>-->
+							<!--	</items>-->
+							<!--</FlexBox>-->
+							<!--<FlexBox height="40%" width="90%" alignItems="Center" justifyContent="Center">-->
+							<!--	<items>-->
+							<!--		<Text textAlign="Center" width="100%" height="100%" text="Max: {Overview>/d/results/0/MAX_CELL_VOLT} V" wrapping="true" id="maxCellVolt"/>-->
 							<!--	</items>-->
 							<!--</FlexBox>-->
 						</Panel>
@@ -157,12 +152,12 @@
 							<content>
 								<FlexBox height="100%" width="48%" class="brake" alignItems="Center">
 									<items>
-										<microchart:RadialMicroChart  percentage="{Overview>/d/results/0/BRAKE}" valueColor="Error"/>
+										<microchart:RadialMicroChart id="radialBrake" percentage="{Overview>/d/results/0/BRAKE}" valueColor="Error"/>
 									</items>
 								</FlexBox>
 								<FlexBox height="100%" width="48%"  class="throttle" alignItems="Center">
 									<items>
-										<microchart:RadialMicroChart percentage="{Overview>/d/results/0/THROTTLE}" valueColor="Good"/>
+										<microchart:RadialMicroChart id="radialThrottle" percentage="{Overview>/d/results/0/THROTTLE}" valueColor="Good"/>
 									</items>
 								</FlexBox>
 							</content>

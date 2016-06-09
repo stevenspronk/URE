@@ -128,8 +128,8 @@ sap.ui.define([
 						me.refreshData(key);
 					}
 
-				}, 100);
-			}, 100);
+				}, 200);
+			}, 200);
 
 		},
 
@@ -146,11 +146,13 @@ sap.ui.define([
 					var dashboardModel = sap.ui.getCore().getModel("Overview");
 					dashboardModel.loadData(durl);
 					break;
-				case "Car":
-					
-					break;
-				case "Driver":
-
+				case "LiveData":
+					// debugger;
+					// var lurl = "/destinations/McCoy_URE/Overview.xsodata/OVERVIEW?$filter=RACE_ID%20eq%20" + raceID + "%20and%20RUN_ID%20eq%20" +
+					// 	runID +
+					// 	"&$orderby=SENSOR_TIMESTAMP%20desc&$top=1&$format=json";
+					// var liveChart = sap.ui.getCore().getModel("Overview");
+					// liveChart.loadData(lurl);
 					break;
 			}
 		},
@@ -220,7 +222,6 @@ sap.ui.define([
 		},
 
 		createNewRun: function(callBack) {
-debugger;
 			var oRaceMetaData = sap.ui.getCore().getModel("oRaceMetaData");
 
 			var oPath = "/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")";
