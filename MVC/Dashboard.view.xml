@@ -118,25 +118,23 @@
 						<Panel height="100%" width="100%" backgroundDesign="Transparent">
 							<headerToolbar>
 								<Toolbar>
-										<html:img src="/IMG/voltage.png" width="40px" />
-										<Text textAlign="Left" text="Celvoltage" wrapping="true"/>
+									<html:img src="/IMG/voltage.png" width="40px"/>
+									<Text textAlign="Left" text="Celvoltage" wrapping="true"/>
 								</Toolbar>
 							</headerToolbar>
-								<smoothie:SmoothieChartTile
-						id="cellVoltage" 
-						width="100px" 
-						height="100px"
-						strokeStyle="transparent"/>
-				<!--<FlexBox height="40%" width="90%" alignItems="Center" justifyContent="Center">-->
-							<!--	<items>-->
-							<!--		<Text textAlign="Center" width="100%" height="100%" text="Min: {Overview>/d/results/0/MIN_CELL_VOLT} V" wrapping="true" id="minCellVolt"/>-->
-							<!--	</items>-->
-							<!--</FlexBox>-->
-							<!--<FlexBox height="40%" width="90%" alignItems="Center" justifyContent="Center">-->
-							<!--	<items>-->
-							<!--		<Text textAlign="Center" width="100%" height="100%" text="Max: {Overview>/d/results/0/MAX_CELL_VOLT} V" wrapping="true" id="maxCellVolt"/>-->
-							<!--	</items>-->
-							<!--</FlexBox>-->
+							<!--<html:div align="center">-->
+							<!--	<smoothie:SmoothieChartTile id="cellVoltage" width="150px" height="120px" strokeStyle="transparent"/>-->
+							<!--</html:div>-->
+							<FlexBox height="40%" width="90%" alignItems="Center" justifyContent="Center">
+								<items>
+									<Text textAlign="Center" width="100%" height="100%" text="Min: {Overview>/d/results/0/MIN_CELL_VOLT} V" wrapping="true" id="minCellVolt" valueColor="Error"/>
+								</items>
+							</FlexBox>
+							<FlexBox height="40%" width="90%" alignItems="Center" justifyContent="Center">
+								<items>
+									<Text textAlign="Center" width="100%" height="100%" text="Max: {Overview>/d/results/0/MAX_CELL_VOLT} V" wrapping="true" id="maxCellVolt"/>
+								</items>
+							</FlexBox>
 						</Panel>
 					</content>
 				</CustomTile>
@@ -155,7 +153,7 @@
 										<microchart:RadialMicroChart id="radialBrake" percentage="{Overview>/d/results/0/BRAKE}" valueColor="Error"/>
 									</items>
 								</FlexBox>
-								<FlexBox height="100%" width="48%"  class="throttle" alignItems="Center">
+								<FlexBox height="100%" width="48%" class="throttle" alignItems="Center">
 									<items>
 										<microchart:RadialMicroChart id="radialThrottle" percentage="{Overview>/d/results/0/THROTTLE}" valueColor="Good"/>
 									</items>
@@ -167,7 +165,7 @@
 				<CustomTile xmlns="sap.m" id="_stuuruitslagTile" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile">
 					<content>
 						<html:div xmlns:sap.ui.core="sap.ui.core" style="width: 100%; height: 100%;">
-							<html:img src="/IMG/f1wheel.png" class="dashboardIcon" width="40px" />
+							<html:img src="/IMG/f1wheel.png" class="dashboardIcon" width="40px"/>
 							<html:div style="float: right; margin-right: 5px" class="dashboardTitle">Stuuruitslag</html:div>
 							<html:div id="stuuruitslagDiv" style="width: 75%; margin-left: 12%; text-align: center; height: 75%;"></html:div>
 						</html:div>

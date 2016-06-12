@@ -15,9 +15,9 @@ sap.ui.define([
 			var me = this;
 			
 			// Set variables for lines in JSON format
-			chartModel.setProperty("/line0", new TimeSeries());
-			chartModel.setProperty("/line100", new TimeSeries());
-			chartModel.setProperty("/linereference", new TimeSeries());
+			// chartModel.setProperty("/line0", new TimeSeries());
+			// chartModel.setProperty("/line100", new TimeSeries());
+			// chartModel.setProperty("/linereference", new TimeSeries());
 			chartModel.setProperty("/bucket1", new TimeSeries());
 			chartModel.setProperty("/bucket2", new TimeSeries());
 			chartModel.setProperty("/bucket3", new TimeSeries());
@@ -34,8 +34,8 @@ sap.ui.define([
 				var bucket4 = magicNumber[3];
 				var bucket5 = magicNumber[4];
 				var bucket6 = magicNumber[5];
-				chartModel.getProperty("/line0").append(new Date().getTime(), 0);
-				chartModel.getProperty("/line100").append(new Date().getTime(), 100);
+				// chartModel.getProperty("/line0").append(new Date().getTime(), 0);
+				// chartModel.getProperty("/line100").append(new Date().getTime(), 100);
 			//	chartModel.getProperty("/linereference").append(new Date().getTime(), 60);
 				chartModel.getProperty("/bucket1").append(new Date().getTime(), bucket1);
 				chartModel.getProperty("/bucket2").append(new Date().getTime(), bucket2);
@@ -49,73 +49,74 @@ sap.ui.define([
 		
 		onAfterRendering: function() {
 			// Get a reference to the smooty control of the view
-			var batteryTemperature = this.byId("batteryTemperature");
+			var batteryTemperatureLive = this.byId("batteryTemperature");
+			var pedalsLive = this.byId("pedalsLive")
 			
 			// Bind property TimeSeries to the chart
-		    batteryTemperature.addTimeSeries(
-		    	// Blank 0 line
-		    	this.component.getModel("chart").getProperty("/line0"),
-		    	{ 
-		    		strokeStyle: 'transparant', 
-		    		// fillStyle: 'rgba(0, 255, 0, 0.2)', 
-		    		lineWidth: 0 
-		    	});
+		    // batteryTemperature.addTimeSeries(
+		    // 	// Blank 0 line
+		    // 	this.component.getModel("chart").getProperty("/line0"),
+		    // 	{ 
+		    // 		strokeStyle: 'transparant', 
+		    // 		// fillStyle: 'rgba(0, 255, 0, 0.2)', 
+		    // 		lineWidth: 0 
+		    // 	});
 		    	
-		    batteryTemperature.addTimeSeries(
-		    	// Blank 100 line
-		    	this.component.getModel("chart").getProperty("/line100"),
-		    	{ 
-		    		strokeStyle: 'transparant', 
-		    		// fillStyle: 'rgba(0, 255, 0, 0.2)', 
-		    		lineWidth: 0 
-		    	});
+		    // batteryTemperature.addTimeSeries(
+		    // 	// Blank 100 line
+		    // 	this.component.getModel("chart").getProperty("/line100"),
+		    // 	{ 
+		    // 		strokeStyle: 'transparant', 
+		    // 		// fillStyle: 'rgba(0, 255, 0, 0.2)', 
+		    // 		lineWidth: 0 
+		    // 	});
 		    	
-		    batteryTemperature.addTimeSeries(
+		    batteryTemperatureLive.addTimeSeries(
 		    	this.component.getModel("chart").getProperty("/bucket1"),
 		    	{ 
 		    		strokeStyle: '#E67200', 
 		    		// fillStyle: 'rgba(0, 255, 0, 0.2)', 
-		    		lineWidth: 4 
+		    		lineWidth: 2 
 		    	});
 		    
-		    batteryTemperature.addTimeSeries(
+		    batteryTemperatureLive.addTimeSeries(
 		    	this.component.getModel("chart").getProperty("/bucket2"),
 		    	{ 
 		    		strokeStyle: '#9A4C00', 
 		    		// fillStyle: 'rgba(0, 255, 0, 0.2)', 
-		    		lineWidth: 4 
+		    		lineWidth: 2 
 		    	});
-		    batteryTemperature.addTimeSeries(
+		    batteryTemperatureLive.addTimeSeries(
 		    	this.component.getModel("chart").getProperty("/bucket3"),
 		    	{ 
 		    		strokeStyle: '#FFCD9D', 
 		    		// fillStyle: 'rgba(0, 255, 0, 0.2)', 
-		    		lineWidth: 4 
+		    		lineWidth: 2 
 		    	});
-		    batteryTemperature.addTimeSeries(
+		    batteryTemperatureLive.addTimeSeries(
 		    	this.component.getModel("chart").getProperty("/bucket4"),
 		    	{ 
 		    		strokeStyle: '#00769A', 
 		    		// fillStyle: 'rgba(0, 255, 0, 0.2)', 
-		    		lineWidth: 4 
+		    		lineWidth: 2 
 		    	});
-		    batteryTemperature.addTimeSeries(
+		    batteryTemperatureLive.addTimeSeries(
 		    	this.component.getModel("chart").getProperty("/bucket5"),
 		    	{ 
 		    		strokeStyle: '#00B2E6', 
 		    		// fillStyle: 'rgba(0, 255, 0, 0.2)', 
-		    		lineWidth: 4 
+		    		lineWidth: 2 
 		    	});
-		    batteryTemperature.addTimeSeries(
+		    batteryTemperatureLive.addTimeSeries(
 		    	this.component.getModel("chart").getProperty("/bucket6"),
 		    	{ 
 		    		strokeStyle: '#00699A', 
 		    		// fillStyle: 'rgba(0, 255, 0, 0.2)', 
-		    		lineWidth: 4 
+		    		lineWidth: 2 
 		    	});
 		    	
 		    // Start streaming
-		    batteryTemperature.startStreaming(500);
+		    batteryTemperatureLive.startStreaming(500);
 		},
 		
 		magic: function(){

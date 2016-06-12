@@ -5,7 +5,7 @@
 	<layout:FixFlex id="idFixFlex" class="fixFlexFixedSize" minFlexSize="250">
 		<!--Below is the chart area-->
 		<layout:fixContent>
-			<Panel id='settingsPanel' class="panelStyle" expandable="true" expanded="false" headerText="Settings" width="auto">
+			<Panel id='settingsPanel' class="panelStyle" expandable="true" expanded="false" headerText="Charts" width="auto">
 				<content>
 					<HBox class='settingsHBox'>
 						<VBox class='settingsBox'>

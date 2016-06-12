@@ -19,8 +19,8 @@ sap.ui.define([
 			this.getView().setModel(dashboardModel, "Overview");
 			//this.refreshSteer();
 			
-			var $radialBrake = $("#radialBrake.text.sapSuiteUiMicroChartRMCFont.sapSuiteUiMicroChartRMCErrorTextColor");
-			$radialBrake.text("Brake");
+			// var $radialBrake = $("#radialBrake.text.sapSuiteUiMicroChartRMCFont.sapSuiteUiMicroChartRMCErrorTextColor");
+			// $radialBrake.text("Brake");
 			// $("#radialBrake.text.sapSuiteUiMicroChartRMCFont.sapSuiteUiMicroChartRMCErrorTextColor").text("Brake");
 			
 			var me = this;
@@ -39,6 +39,20 @@ sap.ui.define([
 		calculatePower: function(var1, var2) {
 			var calc = var1 * var2;
 			return calc;
+		},
+		
+		refreshColor: function() {
+			var minCellVolt = this.getView().byId("minCellVolt");
+			minCellVolt.addStyleClass("redColor");
+			minCellVolt.setText("hoi");
+
+			// if (minVolt > 4.20 || minVolt < 2.90) {
+			// 		text.style.color = "#FF0000"; // red
+			// 	} else if (minVolt > 4.15){
+			// 		text.style.color = "#FDF22F"; // yellow
+			// 	} else if (minVolt >= 2.90) {
+			// 		text.style.color = "#65E624"; // green
+			// 	}
 		},
 		
 		cellVoltageChart: function() {
@@ -82,51 +96,104 @@ sap.ui.define([
 		onAfterRendering: function() {
 			iconTabBar = this.getView().byId("Dashboard").getParent().getParent().getParent();
 			loaded = true;
+			
+				var me = this;
+			
+			// me.cellVoltageChart();
+			// debugger;
+			// var radialBrake = this.getView().byId("radialBrake.text");
+			// radialBrake.setText("Brake");
+			
+			setTimeout(function() {
+				setInterval(function() {
+					if (loaded === true) {
+						me.refreshSteer();
+						me.refreshColor();
+					}
+				}, 200);
+			}, 200);
 			/* var dot = '<div style="text-align: left; width: 100%; height: 100%;  background-image: url(/IMG/dot.png); background-position: 50% 50%;  background-repeat: no-repeat;"></div>';   
 	    var dotComponent = new sap.ui.core.HTML();
         dotComponent.setContent(dot);
         dotComponent.placeAt("__xmlview2--eight_curve", "only");*/
         // Get a reference to the smooty control of the view
-			var cellVoltage = this.byId("cellVoltage");
-			
-			// Bind property TimeSeries to the chart
-		    // cellVoltage.addTimeSeries(
-		    // 	// Blank 0 line
-		    // 	this.component.getModel("cellVoltage").getProperty("/line0"),
-		    // 	{ 
-		    // 		strokeStyle: 'transparant', 
-		    // 		// fillStyle: 'rgba(0, 255, 0, 0.2)', 
-		    // 		lineWidth: 0 
-		    // 	});
+			// var cellVoltage = this.byId("cellVoltage");
+			// // Bind property TimeSeries to the chart
+		 //   // cellVoltage.addTimeSeries(
+		 //   // 	// Blank 0 line
+		 //   // 	this.component.getModel("cellVoltage").getProperty("/line0"),
+		 //   // 	{ 
+		 //   // 		strokeStyle: 'transparant', 
+		 //   // 		// fillStyle: 'rgba(0, 255, 0, 0.2)', 
+		 //   // 		lineWidth: 0 
+		 //   // 	});
 		    	
-		    // cellVoltage.addTimeSeries(
-		    // 	// Blank 100 line
-		    // 	this.component.getModel("cellVoltage").getProperty("/line100"),
-		    // 	{ 
-		    // 		strokeStyle: 'transparant', 
-		    // 		// fillStyle: 'rgba(0, 255, 0, 0.2)', 
-		    // 		lineWidth: 0 
-		    // 	});
+		 //   // cellVoltage.addTimeSeries(
+		 //   // 	// Blank 100 line
+		 //   // 	this.component.getModel("cellVoltage").getProperty("/line100"),
+		 //   // 	{ 
+		 //   // 		strokeStyle: 'transparant', 
+		 //   // 		// fillStyle: 'rgba(0, 255, 0, 0.2)', 
+		 //   // 		lineWidth: 0 
+		 //   // 	});
 		    	
-		    cellVoltage.addTimeSeries(
-		    	this.component.getModel("cellVoltage").getProperty("/cell1"),
-		    	{ 
-		    		strokeStyle: '#E67200', 
-		    		// fillStyle: 'rgba(0, 255, 0, 0.2)', 
-		    		lineWidth: 4 
-		    	});
+		 //   cellVoltage.addTimeSeries(
+		 //   	this.component.getModel("cellVoltage").getProperty("/cell1"),
+		 //   	{ 
+		 //   		strokeStyle: '#65E624', 
+		 //   		// fillStyle: 'rgba(0, 255, 0, 0.2)', 
+		 //   		lineWidth: 4 
+		 //   	});
 		    
-		    cellVoltage.addTimeSeries(
-		    	this.component.getModel("cellVoltage").getProperty("/cell2"),
-		    	{ 
-		    		strokeStyle: '#9A4C00', 
-		    		// fillStyle: 'rgba(0, 255, 0, 0.2)', 
-		    		lineWidth: 4 
-		    	});
+		 //   cellVoltage.addTimeSeries(
+		 //   	this.component.getModel("cellVoltage").getProperty("/cell2"),
+		 //   	{ 
+		 //   		strokeStyle: '#65E624', 
+		 //   		// fillStyle: 'rgba(0, 255, 0, 0.2)', 
+		 //   		lineWidth: 4 
+		 //   	});
 		    	
-		    // Start streaming
-		    cellVoltage.startStreaming(500);
+		 //   // Start streaming
+		 //   cellVoltage.startStreaming(500);
 		},
+		
+		// changeLineColor: function(cell1, cell2) {
+		// 	// Get a reference to the smooty control of the view
+		// 	var cellVoltage = this.byId("cellVoltage");
+		// 	var changeLine;
+		// 	if (cell1 > 4.20 || cell1 < 2.90) {
+		// 			changeLine = "#FF0000"; // red
+		// 		} else if (cell1 > 4.15){
+		// 			changeLine = "#FDF22F"; // yellow
+		// 		} else if (cell1 >= 2.90) {
+		// 			changeLine = "#65E624"; // green
+		// 		}
+				
+		// 	cellVoltage.addTimeSeries(
+		//     	this.component.getModel("cellVoltage").getProperty("/cell1"),
+		//     	{ 
+		//     		strokeStyle: changeLine, 
+		//     		// fillStyle: 'rgba(0, 255, 0, 0.2)', 
+		//     		lineWidth: 4 
+		//     	});
+		    
+		//     var changeLine2;
+		//     if (cell2 > 4.20 || cell2 < 2.90) {
+		// 			changeLine2 = "#FF0000"; // red
+		// 		} else if (cell2 > 4.15){
+		// 			changeLine2 = "#FDF22F"; // yellow
+		// 		} else if (cell2 >= 2.90) {
+		// 			changeLine2 = "#65E624"; // green
+		// 		}
+
+		// 	cellVoltage.addTimeSeries(
+		//     	this.component.getModel("cellVoltage").getProperty("/cell2"),
+		//     	{ 
+		//     		strokeStyle: changeLine2, 
+		//     		// fillStyle: 'rgba(0, 255, 0, 0.2)', 
+		//     		lineWidth: 4 
+		//     	});
+		// },
 		
 		magic: function(){
 			// Load JSON model

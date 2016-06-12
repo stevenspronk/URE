@@ -7,7 +7,7 @@ sap.ui.define([
 
 		metadata : {
 			properties : {
-				chart : { type : "SmoothieChart", defaultValue: new SmoothieChart({grid:{fillStyle:'#000000',strokeStyle:'transparent'} }) },
+				chart : { type : "SmoothieChart", defaultValue: new SmoothieChart({minValue:1,maxValue:8,millisPerPixel:67,grid:{fillStyle:'#000000',strokeStyle:'transparent'} }) },
 				width : { type : "sap.ui.core.CSSSize", group : "Appearance", defaultValue : null },
 				height : { type : "sap.ui.core.CSSSize", group : "Appearance", defaultValue : null }
 			}
