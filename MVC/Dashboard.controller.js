@@ -32,8 +32,8 @@ sap.ui.define([
 					if (loaded === true) {
 						me.refreshSteer();
 					}
-				}, 200);
-			}, 200);
+				}, 500);
+			}, 500);
 		},
 		
 		calculatePower: function(var1, var2) {
@@ -157,31 +157,62 @@ sap.ui.define([
 			htmlComponent.setContent(html);
 			htmlComponent.placeAt("__xmlview1--OverviewElement--stuuruitslagDiv", "only");
 			//var data = sap.ui.getCore().getModel("Overview");
+			//debugger;
+			var view = document.getElementById("__xmlview1--OverviewElement--eight_curve");
+			//alert(view.offsetHeight + " or " + view.clientHeight );
+
+			var middleHeight = view.offsetHeight / 2.
+			var middleWidth = view.offsetWidth / 2.
+			var percentagePixelHeight = ( view.offsetHeight * 0.65 ) / 100;
+			var percentagePixelWidth = ( view.offsetWidth * 0.96 ) / 100;
+			
 			//var value =	data.getProperty("/d/results/0/POWER");
-			var value_x = data.getProperty("/d/results/0/ACCELERATION_X");
-			var value_y = data.getProperty("/d/results/0/ACCELERATION_Y");
+			var x = data.getProperty("/d/results/0/ACCELERATION_X");
+			var y = data.getProperty("/d/results/0/ACCELERATION_Y");
 			/// DEMO 
-			var x = Math.floor(value_x);
-			var y = Math.floor(value_y);
-			x = 0;
-			y = 0;
+		//	var x = Math.floor(value_x);
+		//	var y = Math.floor(value_y);
+			//x = 3;
+			//y = -0.5;
 			
 			var percent_x = 0;
 			var percent_y = 0;
 			if (x !== 0) {
-				percent_x = (3 - Math.abs(x)) * (50 / 30);
+				percent_x = ( ( x / 3 ) * 100 ) / 2;
+				percent_x = Math.abs(percent_x);
 			}
 			if (y !== 0) {
-				percent_y = (2 - Math.abs(x)) * (50 / 20);
+				percent_y = ( ( y / 2 ) * 100 ) / 2;
+				percent_y = Math.abs(percent_y);
 			}
-			if (x >= 0) {
+			
+			
+			/*if (x >= 0) {
 				percent_x = 50 + percent_x;
 			}
 			if (y >= 0) {
 				percent_y = 50 + percent_y;
+			}*/
+			
+			if (x >= 0) {
+				percent_x = middleWidth -  ( percent_x  * percentagePixelWidth);
 			}
+			else {
+				percent_x = middleWidth + ( percent_x  * percentagePixelWidth);
+			}
+			
+			
+			if (y >= 0) {
+				percent_y = middleHeight -  ( percent_y  * percentagePixelHeight);
+			}
+			else {
+				percent_y = middleHeight + ( percent_y  * percentagePixelHeight);
+			}
+			
+			var pixel_y = percent_y;
+			
 			var dot = "<div style=\"text-align: left; width: 100%; height: 100%;  background-image: url(/IMG/dot.png); background-position: " +
-				percent_x + "% " + percent_y + "%;  background-repeat: no-repeat;\"></div>";
+				percent_x + "px " + pixel_y + "px;  background-repeat: no-repeat;\"></div>";
 			var dotComponent = new sap.ui.core.HTML();
 			dotComponent.setContent(dot);
 			dotComponent.placeAt("__xmlview1--OverviewElement--eight_curve", "only");
