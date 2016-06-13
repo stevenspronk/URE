@@ -17,6 +17,14 @@
 	color: red;
 }
 
+#__xmlview1--OverviewElement--minCellVolt {
+	font-size: 18pt;
+}
+
+#__xmlview1--OverviewElement--maxCellVolt {
+	font-size: 18pt;
+}
+
 .sapMTile
 {
 	

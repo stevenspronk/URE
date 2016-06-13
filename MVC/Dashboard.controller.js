@@ -46,7 +46,9 @@ sap.ui.define([
 			var magicNumber = me.magic();
 			var minCellVolt = this.getView().byId("minCellVolt");
 			minCellVolt.addStyleClass("redColor");
-			minCellVolt.setText(magicNumber[0]);
+			var min = magicNumber[0];
+			min = min.toFixed(2);
+			minCellVolt.setText(min + " V");
 
 			// if (minVolt > 4.20 || minVolt < 2.90) {
 			// 		text.style.color = "#FF0000"; // red
@@ -110,7 +112,7 @@ sap.ui.define([
 				setInterval(function() {
 					if (loaded === true) {
 						me.refreshSteer();
-						me.refreshColor();
+						//me.refreshColor();
 					}
 				}, 200);
 			}, 200);
