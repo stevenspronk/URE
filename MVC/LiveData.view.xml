@@ -1,49 +1,53 @@
-<mvc:View controllerName="MVC.LiveData" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
-	xmlns:smoothie="com.URE.Controls" xmlns="sap.m" xmlns:microchart="sap.suite.ui.microchart" xmlns:layout="sap.ui.layout"
-	xmlns:f="sap.ui.layout.form">
-	
-	<f:SimpleForm id="pedals" minWidth="1024" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout"
-		title="Stand van pedalen" labelSpanL="4" labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2">
-		<f:content>
-			<html:content>
-				<smoothie:pedalsLive id="pedalsChart" width="800px" height="230px" strokeStyle="transparent"/>
-			</html:content>
-		</f:content>
-		<f:layoutData>
-			<FlexItemData shrinkFactor="0"/>
-		</f:layoutData>
-	</f:SimpleForm>
-	<f:SimpleForm id="acceleration" minWidth="1024" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout"
-		title="Acceleratie X en Y" labelSpanL="4" labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2">
-		<f:content>
-			<html:content>
-				<smoothie:accelerationLive id="accelerationChart" width="800px" height="230px" strokeStyle="transparent"/>
-			</html:content>
-		</f:content>
-		<f:layoutData>
-			<FlexItemData shrinkFactor="0"/>
-		</f:layoutData>
-	</f:SimpleForm>
-	<f:SimpleForm id="battery" minWidth="1024" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout"
-		title="Temperatuur batterij-cellen 1-6" labelSpanL="4" labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2">
-		<f:content>
-			<html:content>
-				<smoothie:batteryTemperature id="batteryTemperature" width="800px" height="230px" strokeStyle="transparent"/>
-			</html:content>
-		</f:content>
-		<f:layoutData>
-			<FlexItemData shrinkFactor="0"/>
-		</f:layoutData>
-	</f:SimpleForm>
-	<f:SimpleForm id="water" minWidth="1024" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout"
-		title="Temperatuur waterkoeling 1-2" labelSpanL="4" labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2">
-		<f:content>
-			<html:content>
-				<smoothie:waterTemperature id="waterTemperature" width="800px" height="230px" strokeStyle="transparent"/>
-			</html:content>
-		</f:content>
-		<f:layoutData>
-			<FlexItemData shrinkFactor="0"/>
-		</f:layoutData>
-	</f:SimpleForm>
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns:smoothie="com.URE.Controls" xmlns="sap.m"
+	xmlns:microchart="sap.suite.ui.microchart" xmlns:layout="sap.ui.layout" xmlns:f="sap.ui.layout.form" controllerName="MVC.LiveData">
+	<!--<f:SimpleForm id="pedals" minWidth="1024" maxContainerCols="1" editable="false" layout="ResponsiveGridLayout" title="Stand van pedalen" labelSpanL="4" labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="1" columnsM="1">-->
+	<!--	<f:content>-->
+	<html:h1>Stand van pedalen</html:h1>
+	<html:content>
+		<html:div id="legendaPedals" style="float: right; margin-left: 0px; padding: 0; width: 150px">
+			<html:img src="IMG/throttle.png" width="10px" height="10px" border="1px"/>
+			<html:div id="text" style="display:inline;"><html:h4 style="display:inline" class="gold">Throttle</html:h4></html:div><html:br></html:br>
+			<html:img src="IMG/brake.png" width="10px" height="10px" border="1px"/>
+			<html:div id="text" style="display:inline;"><html:h4 style="display:inline" class="gold">Brake</html:h4></html:div>
+		</html:div>
+		<smoothie:pedalsLive id="pedalsChart" width="1000px" height="230px" strokeStyle="transparent"/>
+	</html:content>
+	<html:h1>Acceleratie X- en Y-as</html:h1>
+	<html:content>
+		<html:div id="legendaAcceleration" style="float: right; margin-left: 0px; padding: 0; width: 150px">
+			<html:img src="IMG/accelx.png" width="10px" height="10px" border="1px"/>
+			<html:div id="text" style="display:inline;"><html:h4 style="display:inline" class="gold">Acceleratie X-as</html:h4></html:div><html:br></html:br>
+			<html:img src="IMG/accely.png" width="10px" height="10px" border="1px"/>
+			<html:div id="text" style="display:inline;"><html:h4 style="display:inline" class="gold">Acceleratie Y-as</html:h4></html:div>
+		</html:div>
+		<smoothie:accelerationLive id="accelerationChart" width="1000px" height="230px" strokeStyle="transparent"/>
+	</html:content>
+	<html:h1>Temperatuur batterijcellen 1-6</html:h1>
+	<html:content>
+		<html:div id="legendaAcceleration" style="float: right; margin-left: 0px; padding: 0; width: 150px">
+			<html:img src="IMG/bucket1.png" width="10px" height="10px" border="1px"/>
+			<html:div id="text" style="display:inline;"><html:h4 style="display:inline" class="gold">Batterij Cel 1</html:h4></html:div><html:br></html:br>
+			<html:img src="IMG/bucket2.png" width="10px" height="10px" border="1px"/>
+			<html:div id="text" style="display:inline;"><html:h4 style="display:inline" class="gold">Batterij Cel 2</html:h4></html:div><html:br></html:br>
+			<html:img src="IMG/bucket3.png" width="10px" height="10px" border="1px"/>
+			<html:div id="text" style="display:inline;"><html:h4 style="display:inline" class="gold">Batterij Cel 3</html:h4></html:div><html:br></html:br>
+			<html:img src="IMG/bucket4.png" width="10px" height="10px" border="1px"/>
+			<html:div id="text" style="display:inline;"><html:h4 style="display:inline" class="gold">Batterij Cel 4</html:h4></html:div><html:br></html:br>
+			<html:img src="IMG/bucket5.png" width="10px" height="10px" border="1px"/>
+			<html:div id="text" style="display:inline;"><html:h4 style="display:inline" class="gold">Batterij Cel 5</html:h4></html:div><html:br></html:br>
+			<html:img src="IMG/bucket6.png" width="10px" height="10px" border="1px"/>
+			<html:div id="text" style="display:inline;"><html:h4 style="display:inline" class="gold">Batterij Cel 6</html:h4></html:div>
+		</html:div>
+		<smoothie:batteryTemperature id="batteryTemperature" width="1000px" height="230px" strokeStyle="transparent"/>
+	</html:content>
+	<html:h1>Temperatuur waterkoeling 1-2</html:h1>
+	<html:content>
+		<html:div id="legendaWater" style="float: right; margin-left: 0px; padding: 0; width: 150px">
+			<html:img src="IMG/water1.png" width="10px" height="10px" border="1px"/>
+			<html:div id="text" style="display:inline;"><html:h4 style="display:inline" class="gold">Water Cel 1</html:h4></html:div><html:br></html:br>
+			<html:img src="IMG/water2.png" width="10px" height="10px" border="1px"/>
+			<html:div id="text" style="display:inline;"><html:h4 style="display:inline" class="gold">Water Cel 2</html:h4></html:div>
+		</html:div>
+		<smoothie:waterTemperature id="waterTemperature" width="1000px" height="230px" strokeStyle="transparent"/>
+	</html:content>
 </mvc:View>

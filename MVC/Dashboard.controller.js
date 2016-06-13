@@ -32,8 +32,8 @@ sap.ui.define([
 					if (loaded === true) {
 						me.refreshSteer();
 					}
-				}, 500);
-			}, 500);
+				}, 200);
+			}, 200);
 		},
 		
 		calculatePower: function(var1, var2) {
