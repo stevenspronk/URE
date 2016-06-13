@@ -91,7 +91,7 @@ sap.ui.define([
 				this.oView.byId("CoureurTab").setVisible(false);
 				this.oView.byId("CarElement").setVisible(false);
 				this.oView.byId("CarTab").setVisible(false);
-			
+
 				wait = false;
 			}
 
@@ -187,7 +187,7 @@ sap.ui.define([
 		},
 		saveCurrentTest: function(exit, callBack) {
 			var oRaceMetaData = sap.ui.getCore().getModel("oRaceMetaData");
-
+debugger;
 			var oPath = "/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")";
 			oRaceMetaData.setProperty(oPath + "/END_TIME", new Date());
 
@@ -199,7 +199,7 @@ sap.ui.define([
 						callBack();
 					},
 					error: function(oError) {
-						sap.m.MessageToast.show("Error with update");
+						sap.m.MessageToast.show("Error with saving current test");
 					}
 				});
 
@@ -209,13 +209,13 @@ sap.ui.define([
 					}, 1000);
 				}
 			} else {
-				sap.m.MessageToast.show("No updates");
+				sap.m.MessageToast.show("No pending changes current test");
 			}
 		},
 
 		onExit: function() {
 			if (crudTest === "U") {
-				
+
 				var me = this;
 				me.saveCurrentTest();
 			}
@@ -245,7 +245,8 @@ sap.ui.define([
 						callBack();
 					},
 					error: function(oError) {
-						sap.m.MessageToast.show("Error with update");
+						sap.m.MessageToast.show("New run couldn't be started");
+						console.log("CREATENEWRUNERROR")
 					}
 				});
 			} else {
@@ -257,12 +258,13 @@ sap.ui.define([
 		newRun: function() {
 			if (crudTest === "U") {
 
-				var oId = sap.ui.getCore().getModel         ("ID"); //this.getView().getModel("ID");
-				var me = this;
-				wait = true;
-			    var exit = false;
+				var oId = this.getView().getModel("ID");
 
-				this.saveCurrentTest(exit,function() {
+				wait = true;
+				var me = this;
+				var exit = false;
+
+				me.saveCurrentTest(exit, function() {
 
 					me.createNewRun(function() {
 						oId.oData.runID = runID;

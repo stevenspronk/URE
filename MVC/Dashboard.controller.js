@@ -25,7 +25,7 @@ sap.ui.define([
 			
 			var me = this;
 			
-			me.cellVoltageChart();
+			// me.cellVoltageChart();
 			
 			setTimeout(function() {
 				setInterval(function() {
@@ -42,9 +42,11 @@ sap.ui.define([
 		},
 		
 		refreshColor: function() {
+			var me = this;
+			var magicNumber = me.magic();
 			var minCellVolt = this.getView().byId("minCellVolt");
 			minCellVolt.addStyleClass("redColor");
-			minCellVolt.setText("hoi");
+			minCellVolt.setText(magicNumber[0]);
 
 			// if (minVolt > 4.20 || minVolt < 2.90) {
 			// 		text.style.color = "#FF0000"; // red

@@ -128,10 +128,16 @@
 				"dataSource": "McCoy_URE",
 				"settings": {}
 			},
-			"chart": {
+			"batteryModel": {
 				"type": "sap.ui.model.json.JSONModel"
 			},
-			"cellVoltage": {
+			"waterModel": {
+				"type": "sap.ui.model.json.JSONModel"
+			},
+			"pedalsModel": {
+				"type": "sap.ui.model.json.JSONModel"
+			},
+			"accelerationModel": {
 				"type": "sap.ui.model.json.JSONModel"
 			}
 		},

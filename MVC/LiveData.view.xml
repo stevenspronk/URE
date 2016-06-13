@@ -1,14 +1,49 @@
 <mvc:View controllerName="MVC.LiveData" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
-	xmlns:smoothie="com.URE.Controls" xmlns="sap.m" xmlns:microchart="sap.suite.ui.microchart" xmlns:layout="sap.ui.layout">
-
+	xmlns:smoothie="com.URE.Controls" xmlns="sap.m" xmlns:microchart="sap.suite.ui.microchart" xmlns:layout="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form">
 	
-		<html:content>
-			<smoothie:SmoothieChart id="batteryTemperature" width="800px" height="230px" strokeStyle="transparent"/>
-		</html:content>
-	
+	<f:SimpleForm id="pedals" minWidth="1024" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout"
+		title="Stand van pedalen" labelSpanL="4" labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2">
+		<f:content>
+			<html:content>
+				<smoothie:pedalsLive id="pedalsChart" width="800px" height="230px" strokeStyle="transparent"/>
+			</html:content>
+		</f:content>
+		<f:layoutData>
+			<FlexItemData shrinkFactor="0"/>
+		</f:layoutData>
+	</f:SimpleForm>
+	<f:SimpleForm id="acceleration" minWidth="1024" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout"
+		title="Acceleratie X en Y" labelSpanL="4" labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2">
+		<f:content>
+			<html:content>
+				<smoothie:accelerationLive id="accelerationChart" width="800px" height="230px" strokeStyle="transparent"/>
+			</html:content>
+		</f:content>
+		<f:layoutData>
+			<FlexItemData shrinkFactor="0"/>
+		</f:layoutData>
+	</f:SimpleForm>
+	<f:SimpleForm id="battery" minWidth="1024" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout"
+		title="Temperatuur batterij-cellen 1-6" labelSpanL="4" labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2">
+		<f:content>
+			<html:content>
+				<smoothie:batteryTemperature id="batteryTemperature" width="800px" height="230px" strokeStyle="transparent"/>
+			</html:content>
+		</f:content>
+		<f:layoutData>
+			<FlexItemData shrinkFactor="0"/>
+		</f:layoutData>
+	</f:SimpleForm>
+	<f:SimpleForm id="water" minWidth="1024" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout"
+		title="Temperatuur waterkoeling 1-2" labelSpanL="4" labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2">
+		<f:content>
+			<html:content>
+				<smoothie:waterTemperature id="waterTemperature" width="800px" height="230px" strokeStyle="transparent"/>
+			</html:content>
+		</f:content>
+		<f:layoutData>
+			<FlexItemData shrinkFactor="0"/>
+		</f:layoutData>
+	</f:SimpleForm>
 </mvc:View>
-<!--<mvc:View height="100%" width="100%" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="MVC.LiveData" xmlns:layout="sap.ui.layout" xmlns:viz="sap.viz.ui5.controls"-->
-<!--	xmlns:mvc="sap.ui.core.mvc" xmlns:suite="sap.suite.ui.commons" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"-->
-<!--	xmlns:viz.data="sap.viz.ui5.data" xmlns="sap.m">-->
-<!--	<html:canvas id="mycanvas" width="400" height="100"></html:canvas>-->
-<!--</mvc:View>-->

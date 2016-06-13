@@ -3,11 +3,11 @@ sap.ui.define([
 	"com/URE/Controls/smoothie"
 ], function (Control) {
 	"use strict";
-	var SmoothieControl = Control.extend("com.URE.Controls.SmoothieChart", {
+	var SmoothieControl = Control.extend("com.URE.Controls.batteryTemperature", {
 
 		metadata : {
 			properties : {
-				chart : { type : "SmoothieChart", defaultValue: new SmoothieChart({millisPerPixel:100,grid:{fillStyle:'#ffffff',strokeStyle:'transparent'},labels:{fillStyle:'#000000',fontFamily:"Arial",fontSize:14,precision:4},timestampFormatter:SmoothieChart.timeFormatter}) },
+				chart : { type : "SmoothieChart", defaultValue: new SmoothieChart({millisPerPixel:100,grid:{fillStyle:'#ffffff', verticalSections: 5},labels:{fillStyle:'#000000',fontFamily:"Arial",fontSize:14,precision:4},timestampFormatter:SmoothieChart.timeFormatter}) },
 				width : { type : "sap.ui.core.CSSSize", group : "Appearance", defaultValue : null },
 				height : { type : "sap.ui.core.CSSSize", group : "Appearance", defaultValue : null }
 			}
@@ -49,7 +49,7 @@ sap.ui.define([
 		this.getChart().addTimeSeries(timeSeries, options);	
 	};
 	
-	SmoothieControl.prototype.startStreaming = function(delayMillis) {
+	SmoothieControl.prototype.startStreaming = function(canvas, delayMillis) {
 		this.getChart().streamTo(this.getDomRef().childNodes[0], delayMillis);
 	};
 	
