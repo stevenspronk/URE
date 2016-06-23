@@ -127,7 +127,9 @@
 							<!--</html:div>-->
 							<FlexBox height="40%" width="90%" alignItems="Center" justifyContent="Center">
 								<items>
-									<Text textAlign="Center" width="100%" height="100%" text="Min: {Overview>/d/results/0/MIN_CELL_VOLT} V" wrapping="true" id="minCellVolt" valueColor="Error"/>
+									<!--<html:p id="minCellVolt"></html:p>-->
+									<html:div id="content"></html:div>
+									<Text textAlign="Center" width="100%" height="100%" text="Min: {Overview>/d/results/0/MIN_CELL_VOLT} V" wrapping="true" id="minCellVolt"/>
 								</items>
 							</FlexBox>
 							<FlexBox height="40%" width="90%" alignItems="Center" justifyContent="Center">
