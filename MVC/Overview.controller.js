@@ -115,9 +115,9 @@ sap.ui.define([
 
 			setTimeout(function() {
 				setInterval(function() {
-					var oID = sap.ui.getCore().getModel("ID");
-					raceID = oID.getData().raceID;
-					runID = oID.getData().runID;
+					// var oID = sap.ui.getCore().getModel("ID");
+					// raceID = oID.getData().raceID;
+					// runID = oID.getData().runID;
 
 					var oSelection = sap.ui.getCore().getModel("Selection");
 					var key = oSelection.oData.selectedView;
@@ -187,7 +187,7 @@ sap.ui.define([
 		},
 		saveCurrentTest: function(exit, callBack) {
 			var oRaceMetaData = sap.ui.getCore().getModel("oRaceMetaData");
-debugger;
+			debugger;
 			var oPath = "/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")";
 			oRaceMetaData.setProperty(oPath + "/END_TIME", new Date());
 
@@ -258,8 +258,6 @@ debugger;
 		newRun: function() {
 			if (crudTest === "U") {
 
-				var oId = this.getView().getModel("ID");
-
 				wait = true;
 				var me = this;
 				var exit = false;
@@ -267,7 +265,11 @@ debugger;
 				me.saveCurrentTest(exit, function() {
 
 					me.createNewRun(function() {
+
+						var oId = sap.ui.getCore().getModel("ID");
+						oId.oData.raceID = raceID;
 						oId.oData.runID = runID;
+
 						oId.updateBindings();
 						wait = false;
 					});
