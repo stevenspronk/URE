@@ -13,15 +13,6 @@ sap.ui.controller("MVC.Powertrain", {
 		sap.ui.getCore().setModel(oMsg, "Msg");
 		this.getView().setModel(oMsg, "Msg");
 	},
-	// 
-	/**
-	 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
-	 * (NOT before the first rendering! onInit() is used for that one!).
-	 * @memberOf MVC.Powertrain
-	 */
-	//	onBeforeRendering: function() {
-	//
-	//	},
 
 	/**
 	 * Called when the View has been rendered (so its HTML is part of the document). Post-rendering manipulations of the HTML could be done here.

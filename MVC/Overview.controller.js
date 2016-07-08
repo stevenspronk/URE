@@ -106,7 +106,6 @@ sap.ui.define([
 			// });
 
 			// this.getView().setModel(oTimeOut, "TimeOut");
-
 		},
 
 		onAfterRendering: function() {
