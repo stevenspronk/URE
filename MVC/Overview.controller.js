@@ -137,7 +137,7 @@ sap.ui.define([
 			switch (key) {
 				case "Powertrain":
 					var oMsg = sap.ui.getCore().getModel("Msg");
-					oMsg.refresh();
+					oMsg.refresh(true);
 					break;
 				case "Dashboard":
 					var durl = "/destinations/McCoy_URE/Overview.xsodata/OVERVIEW?$filter=RACE_ID%20eq%20" + raceID + "%20and%20RUN_ID%20eq%20" +

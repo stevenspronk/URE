@@ -29,9 +29,6 @@ sap.ui.controller("MVC.Powertrain", {
 	 * @memberOf MVC.Powertrain
 	 */
 	onAfterRendering: function() {
-		var oId = sap.ui.getCore().getModel("ID");
-		var raceID = oId.oData.raceID;
-		var runID = oId.oData.runID;
 
 		var aFilter = [];
 		aFilter.push(new sap.ui.model.Filter("RACE_ID", sap.ui.model.FilterOperator.EQ, raceID));
