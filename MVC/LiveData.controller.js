@@ -37,6 +37,7 @@ sap.ui.define([
 			waterModel.setProperty("/water2", new TimeSeries());
 			
 			// Every 200ms a new magical number appears
+			if (crudTest !== "R") {
 			setInterval(function() {
 				var magicNumber = me.magic();
 				var bucket1 = magicNumber[0];
@@ -68,7 +69,7 @@ sap.ui.define([
 				waterModel.getProperty("/water1").append(new Date().getTime(), water1);
 				waterModel.getProperty("/water2").append(new Date().getTime(), water2);
 		    }, 200);
-		    
+			}
 		},
 		
 		onAfterRendering: function() {

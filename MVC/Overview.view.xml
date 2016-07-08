@@ -14,8 +14,8 @@
 				<IconTabFilter key="Powertrain" text="Powertrain">
 					<core.mvc:XMLView viewName="MVC.Powertrain"/>
 				</IconTabFilter>
-				<IconTabFilter key="Live" text="Live">
-					<core.mvc:XMLView viewName="MVC.LiveData"/>
+				<IconTabFilter key="Live" text="Live" id="LiveTab">
+					<core.mvc:XMLView viewName="MVC.LiveData" id="LiveElement"/>
 				</IconTabFilter>
 			</items>
 		</IconTabBar> 

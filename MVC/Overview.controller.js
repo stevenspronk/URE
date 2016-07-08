@@ -71,6 +71,9 @@ sap.ui.define([
 				this.oView.byId("CoureurTab").setVisible(true);
 				this.oView.byId("CarElement").setVisible(true);
 				this.oView.byId("CarTab").setVisible(true);
+				this.oView.byId("LiveElement").setVisible(false);
+				this.oView.byId("LiveTab").setVisible(false);
+				this.oView.byId("timer").setVisible(false);
 				//this.refreshData(key);
 				wait = true;
 			}
@@ -85,6 +88,9 @@ sap.ui.define([
 				this.oView.byId("CoureurTab").setVisible(false);
 				this.oView.byId("CarElement").setVisible(false);
 				this.oView.byId("CarTab").setVisible(false);
+				this.oView.byId("LiveElement").setVisible(true);
+				this.oView.byId("LiveTab").setVisible(true);
+				this.oView.byId("timer").setVisible(true);
 			}
 
 			if (crudTest === "U") {
@@ -97,7 +103,10 @@ sap.ui.define([
 				this.oView.byId("CoureurTab").setVisible(false);
 				this.oView.byId("CarElement").setVisible(false);
 				this.oView.byId("CarTab").setVisible(false);
-
+				this.oView.byId("LiveElement").setVisible(true);
+				this.oView.byId("LiveTab").setVisible(true);
+				this.oView.byId("timer").setVisible(true);
+			
 				wait = false;
 			}
 
@@ -120,26 +129,27 @@ sap.ui.define([
 
 			setTimeout(function() {
 				setInterval(function() {
+					if (crudTest !== "R") {
+						var oRaceMetaData = sap.ui.getCore().getModel("oRaceMetaData");
+						var oPath = "/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")";
+						var data = oRaceMetaData.getProperty(oPath);
 
-					var oRaceMetaData = sap.ui.getCore().getModel("oRaceMetaData");
-					var oPath = "/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")";
-					var data = oRaceMetaData.getProperty(oPath);
+						timer = Math.floor((new Date() - data.START_TIME) / 1000);
 
-					timer = Math.round((new Date() - data.START_TIME) / 1000);
+						var oTimer = me.getView().getModel("Timer");
+						oTimer.setProperty("/time", timer);
+						oTimer.updateBindings(true);
 
-					var oTimer = me.getView().getModel("Timer");
-					oTimer.setProperty("/time", timer);
-					oTimer.updateBindings(true);
-
+					}
 					var oSelection = sap.ui.getCore().getModel("Selection");
 					var key = oSelection.oData.selectedView;
 					me.getView().byId("_newTestBtn").setEnabled(!wait);
 					me.getView().byId("_newRunBtn").setEnabled(!wait);
 
 					if (!wait) {
-						me.refreshData(key);
-					}
-
+						debugger;
+							me.refreshData(key);
+						}
 				}, 200);
 			}, 200);
 
