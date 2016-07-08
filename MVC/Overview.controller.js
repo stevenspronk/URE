@@ -4,6 +4,7 @@ sap.ui.define([
 	"use strict";
 	var activeView;
 	var wait;
+	var timer;
 	var emptyMetaData = ({
 		"RACE_ID": null,
 		"RUN_ID": null,
@@ -36,6 +37,11 @@ sap.ui.define([
 				selectedView: "Dashboard"
 			});
 			sap.ui.getCore().setModel(oSelection, "Selection");
+
+			var oTimer = new sap.ui.model.json.JSONModel({
+				time: timer
+			});
+			this.getView().setModel(oTimer, "Timer");
 
 			$(window).bind('beforeunload', function(e) {
 				var exit = true;
@@ -114,9 +120,16 @@ sap.ui.define([
 
 			setTimeout(function() {
 				setInterval(function() {
-					// var oID = sap.ui.getCore().getModel("ID");
-					// raceID = oID.getData().raceID;
-					// runID = oID.getData().runID;
+
+					var oRaceMetaData = sap.ui.getCore().getModel("oRaceMetaData");
+					var oPath = "/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")";
+					var data = oRaceMetaData.getProperty(oPath);
+
+					timer = Math.round((new Date() - data.START_TIME) / 1000);
+
+					var oTimer = me.getView().getModel("Timer");
+					oTimer.setProperty("/time", timer);
+					oTimer.updateBindings(true);
 
 					var oSelection = sap.ui.getCore().getModel("Selection");
 					var key = oSelection.oData.selectedView;

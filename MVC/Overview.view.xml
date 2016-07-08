@@ -22,7 +22,7 @@
 		<footer>
 			<Toolbar>
 			<content>
-			    <Text text="{ID>/raceID} / {ID>/runID}" width="100%" id="raceIdentify" visible="true"/>
+			    <Text text="Laptime: {Timer>/time}" width="100%" id="timer" visible="true"/>
 			</content>
 			<ToolbarSpacer/>
 				<Button text="Run" width="100px" id="_newRunBtn" activeIcon="sap-icon://add" icon="sap-icon://add" press="newRun"/>

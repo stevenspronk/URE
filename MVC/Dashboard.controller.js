@@ -44,7 +44,7 @@ sap.ui.define([
 		},
 
 		refreshColor: function() {
-			debugger;
+	
 			var minCellVoltText =  this.byId("minCellVolt");
 			// var me = this;
 			// var magicNumber = me.magic();
