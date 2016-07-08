@@ -150,16 +150,26 @@
 								</Toolbar>
 							</headerToolbar>
 							<content>
-								<FlexBox height="100%" width="48%" class="brake" alignItems="Center">
+								<FlexBox height="60%" width="48%" class="brake" alignItems="Center">
 									<items>
 										<microchart:RadialMicroChart id="radialBrake" percentage="{Overview>/d/results/0/BRAKE}" valueColor="Error"/>
 									</items>
 								</FlexBox>
-								<FlexBox height="100%" width="48%" class="throttle" alignItems="Center">
+								<FlexBox height="60%" width="48%" class="throttle" alignItems="Center">
 									<items>
 										<microchart:RadialMicroChart id="radialThrottle" percentage="{Overview>/d/results/0/THROTTLE}" valueColor="Good"/>
 									</items>
 								</FlexBox>
+								<FlexBox height="40%" width="30%" class="brakeText" alignItems="Center">
+									<items>
+										<html:p>Brake</html:p>
+									</items>
+							</FlexBox>
+							<FlexBox height="40%" width="30%" class="throttleText" alignItems="Center">
+									<items align="center">
+										<html:p>Throttle</html:p>
+									</items>
+							</FlexBox>
 							</content>
 						</Panel>
 					</content>
