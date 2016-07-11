@@ -147,8 +147,7 @@ sap.ui.define([
 					me.getView().byId("_newRunBtn").setEnabled(!wait);
 
 					if (!wait) {
-						debugger;
-							me.refreshData(key);
+						me.refreshData(key);
 						}
 				}, 200);
 			}, 200);

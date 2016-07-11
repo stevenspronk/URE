@@ -32,7 +32,6 @@ sap.ui.define([
 				setInterval(function() {
 					if (loaded === true) {
 						me.refreshSteer();
-						// me.refreshColor();
 					}
 				}, 200);
 			}, 200);
@@ -44,25 +43,82 @@ sap.ui.define([
 		},
 
 		refreshColor: function() {
-	
-			var minCellVoltText =  this.byId("minCellVolt");
-			// var me = this;
-			// var magicNumber = me.magic();
-			// var minCellVolt = sap.ui.getCore().byId("minCellVolt");
-			minCellVoltText.addStyleClass("redColor");
-			minCellVoltText.placeAt("content");
-			
-			// minCellVolt.setText("Min " + magicNumber[0] + " V");
+			var minCellVoltText = this.byId("minCellVolt");
+			var maxCellVoltText = this.byId("maxCellVolt");
 
-		
-			
-			// if (minVolt > 4.20 || minVolt < 2.90) {
-			// 		text.style.color = "#FF0000"; // red
-			// 	} else if (minVolt > 4.15){
-			// 		text.style.color = "#FDF22F"; // yellow
-			// 	} else if (minVolt >= 2.90) {
-			// 		text.style.color = "#65E624"; // green
-			// 	}
+			var waterBucket1 = this.byId("waterTemp1");
+			var waterBucket2 = this.byId("waterTemp2");
+
+			var me = this;
+			var magicNumber = me.magic();
+			var minVolt = magicNumber[0];
+			var maxVolt = magicNumber[1];
+			var waterTemp1 = magicNumber[2];
+			var waterTemp2 = magicNumber[3];
+
+			// Minimal Voltage Determination for color
+			if (minVolt >= 0 && minVolt <= 2.90) {
+				minCellVoltText.removeStyleClass("greenColor");
+				minCellVoltText.removeStyleClass("yellowColor");
+				minCellVoltText.addStyleClass("redColor");
+			}
+			if (minVolt >= 2.91 && minVolt <= 4.15) {
+				minCellVoltText.removeStyleClass("redColor");
+				minCellVoltText.removeStyleClass("yellowColor");
+				minCellVoltText.addStyleClass("greenColor");
+			}
+			if (minVolt >= 4.16 && minVolt <= 4.20) {
+				minCellVoltText.removeStyleClass("greenColor");
+				minCellVoltText.removeStyleClass("redColor");
+				minCellVoltText.addStyleClass("yellowColor");
+			}
+			if (minVolt >= 4.21) {
+				minCellVoltText.removeStyleClass("greenColor");
+				minCellVoltText.removeStyleClass("yellowColor");
+				minCellVoltText.addStyleClass("redColor");
+			}
+
+			// Maximal Voltage Determination for color
+			if (maxVolt >= 0 && maxVolt <= 2.90) {
+				maxCellVoltText.removeStyleClass("greenColor");
+				maxCellVoltText.removeStyleClass("yellowColor");
+				maxCellVoltText.addStyleClass("redColor");
+			}
+			if (maxVolt >= 2.91 && maxVolt <= 4.15) {
+				maxCellVoltText.removeStyleClass("redColor");
+				maxCellVoltText.removeStyleClass("yellowColor");
+				maxCellVoltText.addStyleClass("greenColor");
+			}
+			if (maxVolt >= 4.16 && maxVolt <= 4.20) {
+				maxCellVoltText.removeStyleClass("greenColor");
+				maxCellVoltText.removeStyleClass("redColor");
+				maxCellVoltText.addStyleClass("yellowColor");
+			}
+			if (maxVolt >= 4.21) {
+				maxCellVoltText.removeStyleClass("greenColor");
+				maxCellVoltText.removeStyleClass("yellowColor");
+				maxCellVoltText.addStyleClass("redColor");
+			}
+
+			// Water Bucket 1 Determination for color
+			if (waterTemp1 >= 0 && minVolt <= 60) {
+				waterBucket1.removeStyleClass("redColor");
+				waterBucket1.addStyleClass("blueColor");
+			}
+			if (waterTemp1 >= 61) {
+				waterBucket1.removeStyleClass("blueColor");
+				waterBucket1.addStyleClass("redColor");
+			}
+
+			// Water Bucket 2 Determination for color
+			if (waterTemp2 >= 0 && minVolt <= 60) {
+				waterBucket2.removeStyleClass("redColor");
+				waterBucket2.addStyleClass("blueColor");
+			}
+			if (waterTemp2 >= 61) {
+				waterBucket2.removeStyleClass("blueColor");
+				waterBucket2.addStyleClass("redColor");
+			}
 		},
 
 		cellVoltageChart: function() {
@@ -111,15 +167,16 @@ sap.ui.define([
 			// debugger;
 			// var radialBrake = this.getView().byId("radialBrake.text");
 			// radialBrake.setText("Brake");
-
+		if (crudTest !== "R") {
 			setTimeout(function() {
 				setInterval(function() {
 					if (loaded === true) {
 						me.refreshSteer();
-						//me.refreshColor();
+						me.refreshColor();
 					}
 				}, 200);
 			}, 200);
+		}
 			/* var dot = '<div style="text-align: left; width: 100%; height: 100%;  background-image: url(/IMG/dot.png); background-position: 50% 50%;  background-repeat: no-repeat;"></div>';   
 	    var dotComponent = new sap.ui.core.HTML();
         dotComponent.setContent(dot);
@@ -217,8 +274,10 @@ sap.ui.define([
 			// Get property/column to fill line
 			var cell1 = liveChart.getProperty("/d/results/0/MIN_CELL_VOLT");
 			var cell2 = liveChart.getProperty("/d/results/0/MAX_CELL_VOLT");
+			var waterTemp1 = liveChart.getProperty("/d/results/0/WATER_TEMP1");
+			var waterTemp2 = liveChart.getProperty("/d/results/0/WATER_TEMP2");
 
-			return [cell1, cell2];
+			return [cell1, cell2, waterTemp1, waterTemp2];
 		},
 
 		refreshSteer: function() {

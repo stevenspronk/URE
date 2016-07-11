@@ -73,12 +73,12 @@
 							<content>
 								<FlexBox height="40%" width="90%" alignItems="Center" justifyContent="Center">
 									<items>
-										<Text text="{Overview>/d/results/0/WATER_TEMP1} ℃" valueColor="{= ${Overview>/d/results/0/WATER_TEMP1} &lt; 60 ? 'Good' : 'Critical' }"/>
+										<Text text="{Overview>/d/results/0/WATER_TEMP1} ℃" id="waterTemp1"/>
 									</items>
 								</FlexBox>
 								<FlexBox height="40%" width="90%" alignItems="Center" justifyContent="Center">
 									<items>
-										<Text text="{Overview>/d/results/0/WATER_TEMP2} ℃" valueColor="{= ${Overview>/d/results/0/WATER_TEMP2} &lt; 60 ? 'Good' : 'Critical' }"/>
+										<Text text="{Overview>/d/results/0/WATER_TEMP2} ℃" id="waterTemp2"/>
 									</items>
 									<!--<items>-->
 									<!--	<ui.commons:ColumnMicroChart>-->
@@ -128,7 +128,7 @@
 							<FlexBox height="40%" width="90%" alignItems="Center" justifyContent="Center">
 								<items>
 									<!--<html:p id="minCellVolt"></html:p>-->
-									<html:div id="content"></html:div>
+									<!--<html:div id="content"><html:p id="minCell"</html:div>-->
 									<Text textAlign="Center" width="100%" height="100%" text="Min: {Overview>/d/results/0/MIN_CELL_VOLT} V" wrapping="true" id="minCellVolt"/>
 								</items>
 							</FlexBox>

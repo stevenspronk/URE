@@ -14,7 +14,19 @@
 }
 
 .redColor {
-	color: red;
+	color: #FF0000 !important;
+}
+
+.yellowColor {
+	color: #FFD928 !important;
+}
+
+.greenColor {
+	color: green !important;
+}
+
+.blueColor {
+	color: #526AE6 !important;
 }
 
 #__xmlview1--OverviewElement--minCellVolt {
