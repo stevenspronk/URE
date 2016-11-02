@@ -3,27 +3,31 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
-		<script src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+		<script src="https://sapui5.hana.ondemand.com/1.38.5/resources/sap-ui-core.js"
 				id="sap-ui-bootstrap"
-				data-sap-ui-libs="sap.m, sap.suite.ui.commons"
+				data-sap-ui-libs="sap.m, sap.ui.table, sap.ui.commons, sap.ui.ux3"
 				data-sap-ui-theme="sap_bluecrystal"
-				data-sap-ui-bindingSyntax="complex"
 				data-sap-ui-compatVersion="edge"
 				data-sap-ui-resourceroots='{
 					"com.URE":"./",
 					"MVC":"./MVC",
 					"JS":"./JS"
-				}'>
+				}'
+				data-sap-ui-preload="async">
 		</script>
 		<!-- only load the mobile lib "sap.m" and the "sap_mvi" theme -->
 
 		<script>
+		sap.ui.getCore().attachInit(function(){
+			//jQuery.sap.require('com.URE.MVC.CreateTest');
+
 				new sap.m.Shell("Shell",{
 					title:"URE Dashboard",
 					app: new sap.ui.core.ComponentContainer({
 						name : 'com.URE'
 					})
 				}).placeAt("content").setBackgroundColor("orange");
+		});
 		</script>
 <link rel="apple-touch-icon" sizes="114x114" href="http://i.imgur.com/JI0SutS.png" />
 <link rel="apple-touch-icon" sizes="144x144" href="http://i.imgur.com/yVVcERB.png" />
