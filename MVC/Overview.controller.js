@@ -1,6 +1,8 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller"
-], function(Controller) {
+	"sap/ui/core/mvc/Controller",
+	'sap/m/MessagePopover',
+	'sap/m/MessagePopoverItem'
+], function(Controller, MessagePopover, MessagePopoverItem) {
 	"use strict";
 	var activeView;
 	var wait;
@@ -23,6 +25,23 @@ sap.ui.define([
 		"WEIGHT_DRIVER": null,
 		"DRIVER_NOTES": null
 	});
+
+	var oMessageTemplate = new MessagePopoverItem({
+		type: '{Msg>MSG_TYPE}',
+		title: '{Msg>MSG_TEXT}',
+		description: '{Msg>MSG_TEXT}'
+			//subtitle: '{subtitle}',
+			//counter: '{counter}'
+			//link: oLink
+	});
+
+	var oMessagePopover = new MessagePopover({
+		items: {
+			path: 'Msg>/POWERTRAIN',
+			template: oMessageTemplate
+		}
+	});
+
 	return Controller.extend("MVC.Overview", {
 
 		onInit: function() {
@@ -43,10 +62,19 @@ sap.ui.define([
 			});
 			this.getView().setModel(oTimer, "Timer");
 
+			var oMsg = new sap.ui.model.odata.ODataModel('/destinations/McCoy_URE/Powertrain.xsodata/');
+			oMsg.setSizeLimit(20);
+			sap.ui.getCore().setModel(oMsg, "Msg");
+			this.getView().setModel(oMsg, "Msg");
+
 			$(window).bind('beforeunload', function(e) {
 				var exit = true;
 				self.newTest(exit);
 			});
+		},
+
+		handleMessagePopoverPress: function(oEvent) {
+			oMessagePopover.openBy(oEvent.getSource());
 		},
 
 		onSelect: function(oEvent) {
@@ -106,7 +134,7 @@ sap.ui.define([
 				this.oView.byId("LiveElement").setVisible(true);
 				this.oView.byId("LiveTab").setVisible(true);
 				this.oView.byId("timer").setVisible(true);
-			
+
 				wait = false;
 			}
 
@@ -148,7 +176,7 @@ sap.ui.define([
 
 					if (!wait) {
 						me.refreshData(key);
-						}
+					}
 				}, 200);
 			}, 200);
 

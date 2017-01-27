@@ -8,9 +8,12 @@ sap.ui.controller("MVC.Powertrain", {
 	onInit: function() {
 
 		// Create an oData model for the messages from the powertrain
-		var oMsg = new sap.ui.model.odata.ODataModel('/destinations/McCoy_URE/Powertrain.xsodata/');
-		oMsg.setSizeLimit(20);
-		sap.ui.getCore().setModel(oMsg, "Msg");
+		// var oMsg = new sap.ui.model.odata.ODataModel('/destinations/McCoy_URE/Powertrain.xsodata/');
+		// oMsg.setSizeLimit(20);
+		// sap.ui.getCore().setModel(oMsg, "Msg");
+		// this.getView().setModel(oMsg, "Msg");
+
+		var oMsg = sap.ui.getCore().getModel("Msg");
 		this.getView().setModel(oMsg, "Msg");
 	},
 
