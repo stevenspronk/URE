@@ -1,7 +1,7 @@
 <mvc:View xmlns:mvc="MVC.Overview" xmlns="sap.m" xmlns:core.mvc="sap.ui.core.mvc" controllerName="MVC.Overview">
 	<Page title="URE Racing: Overview" class="sapUiContentPadding" id="_appView" navButtonPress="onNavBack" showNavButton="false">
 		<IconTabBar id="idIconTabBarNoIcons" stretchContentHeight="true" expanded="true" expandable="false" class="sapUiResponsiveContentPadding"
-			select="onSelect" backgroundDesign="Transparent">
+			select="onSelect" backgroundDesign="Transparent" headerMode="Inline">
 			<items>
 				<IconTabFilter key="Dashboard" text="Overview" id="OverviewTab">
 					<core.mvc:XMLView viewName="MVC.Dashboard" id="OverviewElement"/>
@@ -12,7 +12,7 @@
 				<IconTabFilter key="Driver" text="Coureur" id="CoureurTab">
 					<core.mvc:XMLView viewName="MVC.Driver" id="CoureurElement"/>
 				</IconTabFilter>
-				<IconTabFilter key="Powertrain" text="Powertrain">
+				<IconTabFilter key="Powertrain" text="Powertrain" count="{Message>/nrOfMessages}">
 					<core.mvc:XMLView viewName="MVC.Powertrain"/>
 				</IconTabFilter>
 				<IconTabFilter key="Live" text="Live" id="LiveTab">
@@ -26,7 +26,7 @@
 					<Text text="Laptime: {Timer>/time}" width="100%" id="timer" visible="true"/>
 				</content>
 				<ToolbarSpacer/>
-				<Button icon="sap-icon://message-popup" text="{Msg>POWERTRAIN/length} Messages" type="Emphasized" press="handleMessagePopoverPress"/>
+				<Button icon="{Message>/buttonIcon}" text="{Message>/buttonTxt}" type="Emphasized" press="handleMessagePowertrain"/>
 				<Button text="Run" width="100px" id="_newRunBtn" activeIcon="sap-icon://add" icon="sap-icon://add" press="newRun"/>
 				<Button text="Stop Test" activeIcon="sap-icon://stop" press="newTest" icon="sap-icon://stop" id="_newTestBtn"/>
 			</Toolbar>
