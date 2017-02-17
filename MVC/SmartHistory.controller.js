@@ -10,8 +10,8 @@ sap.ui.define(["JS/validator", "sap/ui/model/odata/v2/ODataModel",
 		},
 
 		onAfterRendering: function() {
-			var me = this;
-			me.sortHistory();
+			//var me = this;
+			//me.sortHistory();
 		},
 
 		onExit: function() {
@@ -19,15 +19,21 @@ sap.ui.define(["JS/validator", "sap/ui/model/odata/v2/ODataModel",
 			smartTable.exit();
 		},
 
-		sortHistory: function() {
+		/*sortHistory: function() {
 			var oTable = this.getView().byId("RaceTable");
 			var oBinding = oTable.getBinding("items");
 			var aSorter = new sap.ui.model.Sorter("START_TIME", true);
 			oBinding.sort(aSorter);
-		},
+		},*/
 
 		onBeforeRebindFunc: function(oEvent) {
+
 			var oBindingParams = oEvent.getParameter("bindingParams");
+
+			if (!oBindingParams.sorter.length) {
+				oBindingParams.sorter.push(new sap.ui.model.Sorter("START_TIME", true));
+			}
+
 			oBindingParams.parameters = oBindingParams.parameters || {};
 			oBindingParams.parameters.select = '*'; // for selecting all fields in query or add specific fields
 		},
@@ -44,7 +50,7 @@ sap.ui.define(["JS/validator", "sap/ui/model/odata/v2/ODataModel",
 
 			if (oSelectedItem) {
 				var oDetail = this.getView().getModel().getProperty(sPath);
-				
+
 				var oModel = new sap.ui.model.json.JSONModel({
 					raceID: oDetail.RACE_ID,
 					runID: oDetail.RUN_ID
@@ -85,7 +91,7 @@ sap.ui.define(["JS/validator", "sap/ui/model/odata/v2/ODataModel",
 			}
 
 		},
-		
+
 		selectChart: function() {
 			var oTable = this.byId("RaceTable");
 			var oSelectedItems = oTable.getSelectedItems();

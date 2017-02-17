@@ -4,12 +4,12 @@
 	<Panel>
 		<Label id="RaceIdLabel" text="{raceID}"/>
 		<List id="Msg"
-			items="{Msg>/POWERTRAIN}"
+			items="{ path: 'Msg>/d/results' }"
 			width="100%" updateFinished="onUpdateFinished">
 			<items>
-				<ObjectListItem icon="{= ${Msg>MSG_TYPE} === 'E' ? 'sap-icon://message-error' : 'sap-icon://message-warning' }" id="MsgIt"
-								number="{path: 'Msg>MSG_TIMESTAMP', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'HH:mm:ss' } }"
-								numberState="{= ${Msg>STATUS} === '1' ? 'Error' : 'Success' }" title="{Msg>MSG_TEXT}"></ObjectListItem>
+				<ObjectListItem title="{Msg>MSG_TEXT}" icon="{= ${Msg>MSG_TYPE} === 'E' ? 'sap-icon://message-error' : 'sap-icon://message-warning' }" id="MsgIt"
+								number="{path: 'Msg>MSG_TIMESTAMP', formatter:'.showTime' }"
+								numberState="{= ${Msg>STATUS} === '1' ? 'Error' : 'Success' }" ></ObjectListItem>
 			</items>
 		</List>
 	</Panel>

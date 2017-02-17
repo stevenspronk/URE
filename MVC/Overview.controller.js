@@ -26,21 +26,21 @@ sap.ui.define([
 		"DRIVER_NOTES": null
 	});
 
-/*	var oMessageTemplate = new MessagePopoverItem({
-		type: '{Msg>MSG_TYPE}',
-		title: '{Msg>MSG_TEXT}',
-		description: '{Msg>MSG_TEXT}'
-			//subtitle: '{subtitle}',
-			//counter: '{counter}'
-			//link: oLink
-	});
+	/*	var oMessageTemplate = new MessagePopoverItem({
+			type: '{Msg>MSG_TYPE}',
+			title: '{Msg>MSG_TEXT}',
+			description: '{Msg>MSG_TEXT}'
+				//subtitle: '{subtitle}',
+				//counter: '{counter}'
+				//link: oLink
+		});
 
-	var oMessagePopover = new MessagePopover({
-		items: {
-			path: '{Msg>/POWERTRAIN}',
-			template: oMessageTemplate
-		}
-	});*/
+		var oMessagePopover = new MessagePopover({
+			items: {
+				path: '{Msg>/POWERTRAIN}',
+				template: oMessageTemplate
+			}
+		});*/
 
 	return Controller.extend("MVC.Overview", {
 
@@ -56,7 +56,7 @@ sap.ui.define([
 				selectedView: "Dashboard"
 			});
 			sap.ui.getCore().setModel(oSelection, "Selection");
-			
+
 			//Model for messages (total).
 			var oMessage = new sap.ui.model.json.JSONModel({
 				buttonTxt: "No messages",
@@ -72,13 +72,19 @@ sap.ui.define([
 			});
 			this.getView().setModel(oTimer, "Timer");
 
-			//var oMsg = new sap.ui.model.odata.ODataModel('/destinations/McCoy_URE/Powertrain.xsodata/');
-			//var durl = "/destinations/McCoy_URE/Overview.xsodata/OVERVIEW?$filter=RACE_ID%20eq%20" + raceID + "%20and%20RUN_ID%20eq%20" +
-			//			runID +
-			//			"&$orderby=SENSOR_TIMESTAMP%20desc&$top=1&$format=json";
-			//var oMsg = new sap.ui.model.odata.ODataModel('/destinations/McCoy_URE/Powertrain.xsodata/?$filter=RACE_ID eq " + raceID + " and RUN_ID eq " + runID');
+			//var oMsg = new sap.ui.model.odata.v2.ODataModel("/destinations/McCoy_URE/Powertrain.xsodata/");
 
-			var oMsg = new sap.ui.model.odata.v2.ODataModel("/destinations/McCoy_URE/Powertrain.xsodata/");
+			/*var oMsg = new sap.ui.model.odata.v2.ODataModel({
+				serviceUrl: "/destinations/McCoy_URE/Powertrain.xsodata/POWERTRAIN",
+				serviceUrlParams: {
+					filter: "RACE_ID eq " + 88 + " and RUN_ID eq " + 1
+				}
+			});*/
+
+			var url = "/destinations/McCoy_URE/Powertrain.xsodata/POWERTRAIN?$filter=RACE_ID%20eq%20" + raceID + "%20and%20RUN_ID%20eq%20" +
+				runID +
+				"&$orderby=MSG_TIMESTAMP%20asc&$format=json";
+			var oMsg = new sap.ui.model.json.JSONModel(url);
 
 			sap.ui.getCore().setModel(oMsg, "Msg");
 			this.getView().setModel(oMsg, "Msg");
@@ -101,8 +107,8 @@ sap.ui.define([
 				self.newTest(exit);
 			});
 		},
-		
-		getNumberOfItems: function(Pt){
+
+		getNumberOfItems: function(Pt) {
 			//return this.getView().getModel("Msg").getProperty("/Orders("+sOrderID+")/Order_Details").length;
 			debugger;
 			return this.getView().getModel("Msg").getProperty("/POWERTRAIN").length;
@@ -111,7 +117,7 @@ sap.ui.define([
 		handleMessagePopoverPress: function(oEvent) {
 			oMessagePopover.openBy(oEvent.getSource());
 		},
-		
+
 		handleMessagePowertrain: function(oEvent) {
 			/*var oSelection = sap.ui.getCore().getModel("Selection");
 			oSelection.oData.selectedView = "Powertrain";*/
@@ -227,7 +233,7 @@ sap.ui.define([
 		refreshData: function(key) {
 			switch (key) {
 				case "Powertrain":
-					
+
 					break;
 				case "Dashboard":
 					var durl = "/destinations/McCoy_URE/Overview.xsodata/OVERVIEW?$filter=RACE_ID%20eq%20" + raceID + "%20and%20RUN_ID%20eq%20" +
@@ -245,10 +251,14 @@ sap.ui.define([
 					// liveChart.loadData(lurl);
 					break;
 			}
-			
+
+			var durl = "/destinations/McCoy_URE/Powertrain.xsodata/POWERTRAIN?$filter=RACE_ID%20eq%20" + raceID + "%20and%20RUN_ID%20eq%20" +
+				runID +
+				"&$orderby=MSG_TIMESTAMP%20asc&$format=json";
 			var oMsg = sap.ui.getCore().getModel("Msg");
-			oMsg.refresh(true);	
-			
+			//oMsg.refresh(true) -> oData;
+			oMsg.loadData(durl);
+
 		},
 
 		onNavBack: function() {

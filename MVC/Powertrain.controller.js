@@ -16,7 +16,7 @@ sap.ui.controller("MVC.Powertrain", {
 		var oMsg = sap.ui.getCore().getModel("Msg");
 		this.getView().setModel(oMsg, "Msg");
 
-		this._oView = this.getView();
+		/*this._oView = this.getView();
 
 		this._oView.attachAfterRendering(function() {
 			var aFilter = [];
@@ -25,7 +25,7 @@ sap.ui.controller("MVC.Powertrain", {
 			
 			var oBinding = this.byId("Msg").getBinding("items");
 			oBinding.filter(aFilter);
-		});
+		});*/
 	},
 
 	/**
@@ -65,6 +65,16 @@ sap.ui.controller("MVC.Powertrain", {
 			oMessage.setProperty("/buttonIcon", "sap-icon://message-popup");
 			oMessage.setProperty("/nrOfMessages", iTotalItems);
 		}
+	},
+
+	showTime: function(var1) {
+		//Date is received as /Date(1402166783294)/
+		var sNumber = var1.replace(/[^0-9]+/g, '');
+		var iNumber = sNumber * 1; //trick seventeen
+		var oDate = new Date(iNumber);
+		var dateFormat = sap.ui.core.format.DateFormat.getDateInstance({pattern : "HH:mm:ss" }); 
+		var time = dateFormat.format(oDate);
+		return time;
 	}
 
 	/**
