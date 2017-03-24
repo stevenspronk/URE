@@ -146,6 +146,8 @@ sap.ui.define([
 				this.oView.byId("OverviewTab").setVisible(false);
 				this.oView.byId("CoureurElement").setVisible(true);
 				this.oView.byId("CoureurTab").setVisible(true);
+				this.oView.byId("TempElement").setVisible(true);
+				this.oView.byId("TempTab").setVisible(true);
 				this.oView.byId("CarElement").setVisible(true);
 				this.oView.byId("CarTab").setVisible(true);
 				this.oView.byId("LiveElement").setVisible(false);
@@ -163,6 +165,8 @@ sap.ui.define([
 				this.oView.byId("OverviewTab").setVisible(true);
 				this.oView.byId("CoureurElement").setVisible(false);
 				this.oView.byId("CoureurTab").setVisible(false);
+				this.oView.byId("TempElement").setVisible(false);
+				this.oView.byId("TempTab").setVisible(false);
 				this.oView.byId("CarElement").setVisible(false);
 				this.oView.byId("CarTab").setVisible(false);
 				this.oView.byId("LiveElement").setVisible(true);
@@ -178,6 +182,8 @@ sap.ui.define([
 				this.oView.byId("OverviewTab").setVisible(true);
 				this.oView.byId("CoureurElement").setVisible(false);
 				this.oView.byId("CoureurTab").setVisible(false);
+				this.oView.byId("TempElement").setVisible(false);
+				this.oView.byId("TempTab").setVisible(false);
 				this.oView.byId("CarElement").setVisible(false);
 				this.oView.byId("CarTab").setVisible(false);
 				this.oView.byId("LiveElement").setVisible(true);
@@ -272,6 +278,7 @@ sap.ui.define([
 		},
 
 		newTest: function(exit) {
+			debugger;
 			if (crudTest === "U") {
 				var me = this;
 				wait = true;
@@ -293,6 +300,7 @@ sap.ui.define([
 			}
 		},
 		saveCurrentTest: function(exit, callBack) {
+			debugger;
 			var oRaceMetaData = sap.ui.getCore().getModel("oRaceMetaData");
 			var oPath = "/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")";
 			oRaceMetaData.setProperty(oPath + "/END_TIME", new Date());

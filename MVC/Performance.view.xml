@@ -1,11 +1,11 @@
-<mvc:View height="100%" width="100%" controllerName="MVC.Driver" xmlns:layout="sap.ui.layout" xmlns:viz="sap.viz.ui5.controls"
+<mvc:View height="100%" width="100%" controllerName="MVC.Performance" xmlns:layout="sap.ui.layout" xmlns:viz="sap.viz.ui5.controls"
 	xmlns:mvc="sap.ui.core.mvc" xmlns:suite="sap.suite.ui.commons" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
 	xmlns:viz.data="sap.viz.ui5.data" xmlns="sap.m">
 	
 	<layout:FixFlex id="idFixFlex" class="fixFlexFixedSize" minFlexSize="250">
 		<!--Below is the chart area-->
 		<layout:fixContent>
-			<Panel id='settingsPanel' class="panelStyle" expandable="true" expanded="false" headerText="Settings" width="auto">
+			<Panel id='settingsPanel' class="panelStyle" expandable="true" expanded="false" headerText="Analyse opties" width="auto">
 				<content>
 					<HBox class='settingsHBox'>
 						<VBox class='settingsBox'>
@@ -43,6 +43,9 @@
 							<viz.data:MeasureDefinition name="ACCELERATION_X" value="{ACCELERATION_X}"/>
 							<viz.data:MeasureDefinition name="ACCELERATION_Y" value="{ACCELERATION_Y}"/>
 							<viz.data:MeasureDefinition name="ACCELERATION_Z" value="{ACCELERATION_Z}"/>
+							<viz.data:MeasureDefinition name="STATE_OF_CHARGE" value="{STATE_OF_CHARGE}"/>
+							<viz.data:MeasureDefinition name="BATTERY_VOLTAGE" value="{BATTERY_VOLTAGE}"/>
+							<viz.data:MeasureDefinition name="BATTERY_CURRENT" value="{BATTERY_CURRENT}"/>
 							</viz.data:measures>
 					</viz.data:FlattenedDataset>
 				</viz:dataset>

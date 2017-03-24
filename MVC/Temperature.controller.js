@@ -9,19 +9,27 @@ sap.ui.define([
 ], function(Controller, JSONModel, FeedItem, FlattenedDataset, ChartFormatter, CustomerFormat, ControllerOverall) {
 	"use strict";
  
-	var LineController = Controller.extend("MVC.Driver", {
+	var LineController = Controller.extend("MVC.Temperature", {
 
 		settingsModel: {
 			series: {
 				name: "Analyse",
 				defaultSelected: 0,
 				values: [{
-					name: "Stand van de pedalen",
-					value: ["BRAKE", "TROTTLE"]
+					name: "Batterij Temperatuur",
+					value: ["BATTERY_TEMPERATURE"]
 				}, {
-					name: "Acceleratie",
-					value: ["ACCELERATION_X", "ACCELERATION_Y", "ACCELERATION_Z"]
-				}]
+					name: "Batterij-cellen Temperatuur",
+					value: ["MAX_TEMP_BUCKET1", "MAX_TEMP_BUCKET2", "MAX_TEMP_BUCKET3", "MAX_TEMP_BUCKET4", "MAX_TEMP_BUCKET5", "MAX_TEMP_BUCKET6"]
+				}, {
+					name: "Water Temperatuur",
+					value: ["WATER_TEMP1", "WATER_TEMP2"]
+				} 
+				// {
+				// 	name: "Motor Temperatuur",
+				// 	value: ["WATER_TEMP1", "WATER_TEMP2"]
+				// }
+				]
 			},
 			dataLabel: {
 				name: "Waarden tonen",

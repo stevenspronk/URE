@@ -1,0 +1,62 @@
+<mvc:View height="100%" width="100%" controllerName="MVC.Temperature" xmlns:layout="sap.ui.layout" xmlns:viz="sap.viz.ui5.controls"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:suite="sap.suite.ui.commons" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+	xmlns:viz.data="sap.viz.ui5.data" xmlns="sap.m">
+	
+	<layout:FixFlex id="idFixFlex" class="fixFlexFixedSize" minFlexSize="250">
+		<!--Below is the chart area-->
+		<layout:fixContent>
+			<Panel id='settingsPanel' class="panelStyle" expandable="true" expanded="false" headerText="Analyse opties" width="auto">
+				<content>
+					<HBox class='settingsHBox'>
+						<VBox class='settingsBox'>
+							<Label text='{/series/name}' design="Bold" class='settingsLabel'></Label>
+							<RadioButtonGroup id='seriesRadioGroup' buttons="{path :'/series/values'}">
+								<buttons>
+									<RadioButton class='settingsRadio' text="{name}" select='onSeriesSelected'/>
+								</buttons>
+							</RadioButtonGroup>
+						</VBox>
+						<VBox class='settingsBox'>
+                        <Label text = '{/dataLabel/name}' design="Bold" class='settingsLabel'></Label>
+                        <Switch class='settingsSwitch' state="{/dataLabel/defaultState}" change='onDataLabelChanged'>
+                            <layoutData>
+                                <FlexItemData growFactor="1" />
+                            </layoutData>
+                        </Switch>
+                    </VBox>
+					</HBox>
+				</content>
+			</Panel>
+		</layout:fixContent>
+		<layout:flexContent>
+			<!--<ScrollContainer height="100%" width="100%" horizontal="false" vertical="true" focusable="true">-->
+			<viz:Popover id="idPopOver"></viz:Popover>
+			<viz:VizFrame id="idVizFrame" uiConfig="{applicationSet:'fiori'}" height='100%' width="100%" vizType='line'>
+				<viz:dataset>
+					<viz.data:FlattenedDataset data="{/d/results}">
+						<viz.data:dimensions>
+							<viz.data:DimensionDefinition name="FORMATTED_TIME" value="{FORMATTED_TIME}"/>
+						</viz.data:dimensions>
+						<viz.data:measures>
+							<viz.data:MeasureDefinition name="BATTERY_TEMPERATURE" value="{BATTERY_TEMPERATURE}"/>
+							<viz.data:MeasureDefinition name="MAX_TEMP_BUCKET1" value="{MAX_TEMP_BUCKET1}"/>
+							<viz.data:MeasureDefinition name="MAX_TEMP_BUCKET2" value="{MAX_TEMP_BUCKET2}"/>
+							<viz.data:MeasureDefinition name="MAX_TEMP_BUCKET3" value="{MAX_TEMP_BUCKET3}"/>
+							<viz.data:MeasureDefinition name="MAX_TEMP_BUCKET4" value="{MAX_TEMP_BUCKET4}"/>
+							<viz.data:MeasureDefinition name="MAX_TEMP_BUCKET5" value="{MAX_TEMP_BUCKET5}"/>
+							<viz.data:MeasureDefinition name="MAX_TEMP_BUCKET6" value="{MAX_TEMP_BUCKET6}"/>
+							<viz.data:MeasureDefinition name="WATER_TEMP1" value="{WATER_TEMP1}"/>
+							<viz.data:MeasureDefinition name="WATER_TEMP2" value="{WATER_TEMP2}"/>
+							</viz.data:measures>
+					</viz.data:FlattenedDataset>
+				</viz:dataset>
+				<viz:feeds>
+					<viz.feeds:FeedItem id='valueAxisFeed' uid="valueAxis" type="Measure" values="BATTERY_TEMPERATURE"/>
+					<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="FORMATTED_TIME"/>
+				</viz:feeds>
+			</viz:VizFrame>
+			<!--</ScrollContainer>-->
+		</layout:flexContent>
+		<!--Above is the chart area-->
+	</layout:FixFlex>
+</mvc:View>

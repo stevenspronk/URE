@@ -9,8 +9,11 @@
 				<IconTabFilter key="Car" text="Auto" id="CarTab">
 					<core.mvc:XMLView viewName="MVC.Car" id="CarElement"/>
 				</IconTabFilter>
-				<IconTabFilter key="Driver" text="Coureur" id="CoureurTab">
-					<core.mvc:XMLView viewName="MVC.Driver" id="CoureurElement"/>
+				<IconTabFilter key="Performance" text="Performance" id="CoureurTab">
+					<core.mvc:XMLView viewName="MVC.Performance" id="CoureurElement"/>
+				</IconTabFilter>
+				<IconTabFilter key="Temperatue" text="Temperatuur" id="TempTab">
+					<core.mvc:XMLView viewName="MVC.Temperature" id="TempElement"/>
 				</IconTabFilter>
 				<IconTabFilter key="Powertrain" text="Powertrain" count="{Message>/nrOfMessages}">
 					<core.mvc:XMLView viewName="MVC.Powertrain"/>

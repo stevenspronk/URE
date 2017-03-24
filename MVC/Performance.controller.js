@@ -8,64 +8,34 @@ sap.ui.define([
 	'MVC/ControllerOverall'
 ], function(Controller, JSONModel, FeedItem, FlattenedDataset, ChartFormatter, CustomerFormat, ControllerOverall) {
 	"use strict";
-
-	var LineController = Controller.extend("MVC.Car", {
+ 
+	var LineController = Controller.extend("MVC.Performance", {
 
 		settingsModel: {
 			series: {
 				name: "Analyse",
 				defaultSelected: 0,
 				values: [{
-					name: "Yaw Rate",
-					value: ["YAW_RATE"]
+					name: "Stand van de pedalen",
+					value: ["BRAKE", "TROTTLE"]
 				}, {
-					name: "Steering Angle",
-					value: ["STEERING"]
+					name: "Acceleratie",
+					value: ["ACCELERATION_X", "ACCELERATION_Y", "ACCELERATION_Z"]
 				}, {
-					name: "Wheel Speed",
-					value: ["WHEEL_SLIP_FL", "WHEEL_SLIP_FR", "WHEEL_SLIP_RL", "WHEEL_SLIP_RR"]
-				}
-				// , {
-				// 	name: "True Speed",
-				// 	value: [ ]
-				// }
-				]
-		
+					name: "Accucapaciteit",
+					value: ["STATE_OF_CHARGE"]
+				}, {
+					name: "Accuvoltage",
+					value: ["BATTERY_VOLTAGE"]
+				}, {
+					name: "Accuvermogen",
+					value: ["BATTERY_CURRENT"]
+				}]
 			},
 			dataLabel: {
 				name: "Waarden tonen",
 				defaultState: false
-			},
-			dimensions: [{
-					name: 'FORMATTED_TIME',
-					value: "{FORMATTED_TIME}"
-					
-			// 		value : {  
-			// 	  parts : [ "{SENSOR_TIMESTAMP}" ],  
-			// 	  formatter : function(oCreatestamp) {
-			// 		if(oCreatestamp === null) {
-			// 			return oCreatestamp;
-			// 		}
-			// 		var oDateFormat = sap.ui.core.format.DateFormat.getDateTimeInstance({pattern: "dd.MM.yyyy HH:mm"});
-			// 		return oDateFormat.format(oCreatestamp);
-			// 	  }
-			// }
-				}]
-			// 	
-			// dimensions: {
-   //             Small: [{
-   //                 name: 'Seasons',
-   //                 value: "{Seasons}"
-   //             }],
-   //             Medium: [{
-   //                 name: 'Week',
-   //                 value: "{Week}"
-   //             }],
-   //             Large: [{
-   //                 name: 'Week',
-   //                 value: "{Week}"
-   //             }]
-   //         }
+			}
 		},
 
 		oVizFrame: null,
@@ -84,33 +54,33 @@ sap.ui.define([
 			// oVizFrame.setUiConfig({
 			// 	"applicationSet": "fiori"
 			// });
-			// Use UI5 formatter
-			var FIORI_LABEL_SHORTFORMAT_10 = "__UI5__ShortIntegerMaxFraction10";
-			var FIORI_LABEL_FORMAT_2 = "__UI5__FloatMaxFraction2";
-			var FIORI_LABEL_SHORTFORMAT_2 = "__UI5__ShortIntegerMaxFraction2";
-			var chartFormatter = ChartFormatter.getInstance();
-			chartFormatter.registerCustomFormatter(FIORI_LABEL_SHORTFORMAT_10, function(value) {
-				var fixedInteger = sap.ui.core.format.NumberFormat.getIntegerInstance({
-					style: "short",
-					maxFractionDigits: 10
-				});
-				return fixedInteger.format(value);
-			});
-			chartFormatter.registerCustomFormatter(FIORI_LABEL_FORMAT_2, function(value) {
-				var fixedFloat = sap.ui.core.format.NumberFormat.getFloatInstance({
-					style: 'Standard',
-					maxFractionDigits: 2
-				});
-				return fixedFloat.format(value);
-			});
-			chartFormatter.registerCustomFormatter(FIORI_LABEL_SHORTFORMAT_2, function(value) {
-				var fixedInteger = sap.ui.core.format.NumberFormat.getIntegerInstance({
-					style: "short",
-					maxFractionDigits: 2
-				});
-				return fixedInteger.format(value);
-			});
-			sap.viz.api.env.Format.numericFormatter(chartFormatter);
+			// // Use UI5 formatter
+			// var FIORI_LABEL_SHORTFORMAT_10 = "__UI5__ShortIntegerMaxFraction10";
+			// var FIORI_LABEL_FORMAT_2 = "__UI5__FloatMaxFraction2";
+			// var FIORI_LABEL_SHORTFORMAT_2 = "__UI5__ShortIntegerMaxFraction2";
+			// var chartFormatter = ChartFormatter.getInstance();
+			// chartFormatter.registerCustomFormatter(FIORI_LABEL_SHORTFORMAT_10, function(value) {
+			// 	var fixedInteger = sap.ui.core.format.NumberFormat.getIntegerInstance({
+			// 		style: "short",
+			// 		maxFractionDigits: 10
+			// 	});
+			// 	return fixedInteger.format(value);
+			// });
+			// chartFormatter.registerCustomFormatter(FIORI_LABEL_FORMAT_2, function(value) {
+			// 	var fixedFloat = sap.ui.core.format.NumberFormat.getFloatInstance({
+			// 		style: 'Standard',
+			// 		maxFractionDigits: 2
+			// 	});
+			// 	return fixedFloat.format(value);
+			// });
+			// chartFormatter.registerCustomFormatter(FIORI_LABEL_SHORTFORMAT_2, function(value) {
+			// 	var fixedInteger = sap.ui.core.format.NumberFormat.getIntegerInstance({
+			// 		style: "short",
+			// 		maxFractionDigits: 2
+			// 	});
+			// 	return fixedInteger.format(value);
+			// });
+			// sap.viz.api.env.Format.numericFormatter(chartFormatter);
 
 			var oModel = sap.ui.getCore().getModel("ID");
 			raceID = oModel.oData.raceID;
@@ -149,20 +119,6 @@ sap.ui.define([
 					dataLabel: {
 						formatString: CustomerFormat.FIORI_LABEL_SHORTFORMAT_2,
 						visible: false
-					}
-				},
-				referenceLine: {
-					line: {
-						valueAxis: [{
-							value: 61,
-							visible: true,
-							size: 1,
-							type: "dotted",
-							label: {
-								text: "Target",
-								visible: true
-							}
-						}]
 					}
 				},
 				valueAxis: {
@@ -238,8 +194,8 @@ sap.ui.define([
 		onAfterRendering: function() {
 			// function refreshData() {
 			// 	var curl = "/destinations/McCoy_URE/Overview.xsodata/OVERVIEW?$format=json&$filter=RACE_ID eq " + raceID + " and RUN_ID eq " + runID;
-			// 	var carModel = sap.ui.getCore().getModel("RaceData");
-			// 	carModel.loadData(curl);
+			// 		var carModel = sap.ui.getCore().getModel("RaceData");
+			// 		carModel.loadData(curl);
 			// }
 
 			// setTimeout(function() {
