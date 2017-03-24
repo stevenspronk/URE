@@ -25,6 +25,7 @@ sap.ui.define([
 		"WEIGHT_DRIVER": null,
 		"DRIVER_NOTES": null
 	});
+	var _interval;
 
 	/*	var oMessageTemplate = new MessagePopoverItem({
 			type: '{Msg>MSG_TYPE}',
@@ -204,7 +205,7 @@ sap.ui.define([
 			var me = this;
 
 			setTimeout(function() {
-				setInterval(function() {
+			_interval =	setInterval(function() {
 					if (crudTest !== "R") {
 						var oRaceMetaData = sap.ui.getCore().getModel("oRaceMetaData");
 						var oPath = "/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")";
@@ -282,6 +283,8 @@ sap.ui.define([
 					runID = 1;
 					// Set variable crudTest to C = Create		
 					crudTest = 'C';
+					
+					clearInterval(_interval);
 
 					var router = sap.ui.core.UIComponent.getRouterFor(me);
 					router.navTo("CreateTest");
