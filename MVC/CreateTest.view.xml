@@ -18,17 +18,17 @@
 							value="{ path : 'CIRCUIT', type : 'sap.ui.model.type.String', constraints : { minLength : 2, maxLength : 50 } }"/>
 						<Label id="__label2" text="Test type"/>
 						<!--<ComboBox id="Input_RaceType" selectedItem="Element sap.ui.core.ListItem#__item1" selectedItemId="test1" selectedKey="1" value="Endurance">-->
-						<ComboBox id="Input_RaceType" value="{ path : 'RACE_TYPE', type : 'sap.ui.model.type.String', constraints : { minLength : 1} }" width="50%"
-							change="onRaceSelected">
+						<Select id="Input_RaceType" width="50%" change="onRaceSelected" forceSelection="false">   <!--"{ path : 'RACE_TYPE', type : 'sap.ui.model.type.String', constraints : { minLength : 1} }" width="50%"-->
+		
 							<items>
-								<sap.ui.core:ListItem id="test1" key="1" text="Endurance"/>
-								<sap.ui.core:ListItem id="test2" key="2" text="Skidpad"/>
-								<sap.ui.core:ListItem id="test3" key="3" text="Acceleration"/>
-								<sap.ui.core:ListItem id="test4" key="4" text="Autocross"/>
-								<sap.ui.core:ListItem id="test5" key="5" text="Other"/>
+								<sap.ui.core:Item id="test1" key="1" text="Endurance"/>
+								<sap.ui.core:Item id="test2" key="2" text="Skidpad"/>
+								<sap.ui.core:Item id="test3" key="3" text="Acceleration"/>
+								<sap.ui.core:Item id="test4" key="4" text="Autocross"/>
+								<sap.ui.core:Item id="test5" key="5" text="Other"/>
 							</items>
-						</ComboBox>
-						<Label id="__labelDistance" text="Race distance in meters" visible="false"/>
+						</Select>
+						<Label id="__labelDistance" text="Race distance in meters" labelFor="Input_Distance" />
 						<Input id="Input_Distance"  value="{ path : 'DISTANCE', type : 'sap.ui.model.type.Integer' }" width="50%" visible="false"/>
 						<!-- <Label text="Datum" id="__label3"/>
 		        	

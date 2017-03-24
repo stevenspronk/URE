@@ -27,10 +27,10 @@ sap.ui.define(["JS/validator", "sap/ui/model/odata/v2/ODataModel"], function(Val
 
 			// Attaches validation handlers
 			sap.ui.getCore().attachValidationError(function(oEvent) {
-				oEvent.getParameter("element").setValueState(ValueState.Error);
+				oEvent.getParameter("element").setValueState(sap.ui.core.ValueState.Error);
 			});
 			sap.ui.getCore().attachValidationSuccess(function(oEvent) {
-				oEvent.getParameter("element").setValueState(ValueState.None);
+				oEvent.getParameter("element").setValueState(sap.ui.core.ValueState.None);
 			});
 
 			//First read the latest Race and Run ID from the backend.
@@ -185,17 +185,17 @@ sap.ui.define(["JS/validator", "sap/ui/model/odata/v2/ODataModel"], function(Val
 		 *@memberOf MVC.CreateTest
 		 */
 		 
-		 onRaceSelected: function(){
+		 onRaceSelected: function(oEvent){
 				var oRaceMetaData = this.getView().getModel();
 				var oPath = this.getView().getBindingContext().getPath();
-				var raceType = oRaceMetaData.getProperty(oPath + "/RACE_TYPE");
-				var label = this.getView().byId("__labelDistance");
+				var raceText = this.byId("Input_RaceType").getSelectedItem().getText();
 				var input = this.getView().byId("Input_Distance");
-				if (raceType === "Endurance"){
-		 		label.setVisible(true);
-		 		input.setVisible(true);
+				
+				oRaceMetaData.setProperty(oPath + "/RACE_TYPE", raceText);
+				
+				if (raceText === "Endurance"){
+		 			input.setVisible(true);
 				} else{
-					label.setVisible(false);
 					input.setVisible(false);
 				}
 		 },
