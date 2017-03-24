@@ -1,4 +1,5 @@
-<mvc:View xmlns:mvc="MVC.CreateTest" xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.layout="sap.ui.layout" xmlns="sap.m" controllerName="MVC.CreateTest" height="100%">
+<mvc:View xmlns:mvc="MVC.CreateTest" xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.layout.form="sap.ui.layout.form"
+	xmlns:sap.ui.layout="sap.ui.layout" xmlns="sap.m" controllerName="MVC.CreateTest" height="100%">
 	<Page class="sapUiContentPadding" id="createTestView" showNavButton="false" title="URE Racing: Nieuwe test">
 		<content>
 			<sap.ui.layout:VerticalLayout class="sapUiContentPadding" width="100%">
@@ -10,12 +11,15 @@
 						<Label id="label_run_id" text="Run ID"/>
 						<Input id="Run_Id" width="100%" editable="false" value="{RUN_ID}"/>
 						<Label id="__label13" text="Race omschrijving"/>
-						<Input id="Input_Race_Description" value="{ path : 'RACE_DESCRIPTION', type : 'sap.ui.model.type.String', constraints : { minLength : 3, maxLength : 10 } }" width="100%"/>
+						<Input id="Input_Race_Description"
+							value="{ path : 'RACE_DESCRIPTION', type : 'sap.ui.model.type.String', constraints : { minLength : 3, maxLength : 10 } }" width="100%"/>
 						<Label id="__label1" text="Circuit"/>
-						<Input id="Input_Circuit" width="100%" value="{ path : 'CIRCUIT', type : 'sap.ui.model.type.String', constraints : { minLength : 2, maxLength : 50 } }"/>
+						<Input id="Input_Circuit" width="100%"
+							value="{ path : 'CIRCUIT', type : 'sap.ui.model.type.String', constraints : { minLength : 2, maxLength : 50 } }"/>
 						<Label id="__label2" text="Test type"/>
 						<!--<ComboBox id="Input_RaceType" selectedItem="Element sap.ui.core.ListItem#__item1" selectedItemId="test1" selectedKey="1" value="Endurance">-->
-						<ComboBox id="Input_RaceType" value="{ path : 'RACE_TYPE', type : 'sap.ui.model.type.String', constraints : { minLength : 1} }" width="50%">
+						<ComboBox id="Input_RaceType" value="{ path : 'RACE_TYPE', type : 'sap.ui.model.type.String', constraints : { minLength : 1} }" width="50%"
+							change="onRaceSelected">
 							<items>
 								<sap.ui.core:ListItem id="test1" key="1" text="Endurance"/>
 								<sap.ui.core:ListItem id="test2" key="2" text="Skidpad"/>
@@ -24,6 +28,8 @@
 								<sap.ui.core:ListItem id="test5" key="5" text="Other"/>
 							</items>
 						</ComboBox>
+						<Label id="__labelDistance" text="Race distance in meters" visible="false"/>
+						<Input id="Input_Distance"  value="{ path : 'DISTANCE', type : 'sap.ui.model.type.Integer' }" width="50%" visible="false"/>
 						<!-- <Label text="Datum" id="__label3"/>
 		        	
 			    <DatePicker width="50%" id="__picker0"/>
@@ -36,7 +42,8 @@
 							</items>
 						</ComboBox>
 						<Label id="TempBox" text="Temperatuur"/>
-						<ComboBox id="Input_Temperature" value="{ path : 'TEMPERATURE', type : 'sap.ui.model.type.String', constraints : { minLength : 1} }" width="50%">
+						<ComboBox id="Input_Temperature" value="{ path : 'TEMPERATURE', type : 'sap.ui.model.type.String', constraints : { minLength : 1} }"
+							width="50%">
 							<items>
 								<sap.ui.core:ListItem id="temp1" key="1" text="-5"/>
 								<sap.ui.core:ListItem id="temp2" key="2" text="0"/>
@@ -58,7 +65,8 @@
 					<sap.ui.layout.form:content>
 						<sap.ui.core:Title id="__title1" text="Technische gegevens auto"/>
 						<Label id="__label5" text="Car ID"/>
-						<Input id="Input_CarID" width="100%" value="{ path : 'CAR_ID', type : 'sap.ui.model.type.String', constraints : { minLength : 1, maxLength : 20 } }"/>
+						<Input id="Input_CarID" width="100%"
+							value="{ path : 'CAR_ID', type : 'sap.ui.model.type.String', constraints : { minLength : 1, maxLength : 20 } }"/>
 						<Label id="auto_notities_label" text="Notities"/>
 						<TextArea id="Input_CarNotes" wrapping="None" value="{ path : 'CAR_NOTES', type : 'sap.ui.model.type.String' }"/>
 					</sap.ui.layout.form:content>
@@ -67,14 +75,17 @@
 					<sap.ui.layout.form:content>
 						<sap.ui.core:Title id="__title2" text="Gegevens coureur"/>
 						<Label id="__label9" text="Naam"/>
-						<Input id="Input_DriverName" width="100%" value="{ path : 'NAME_DRIVER', type : 'sap.ui.model.type.String', constraints : { minLength : 2, maxLength : 20 } }"/>
+						<Input id="Input_DriverName" width="100%"
+							value="{ path : 'NAME_DRIVER', type : 'sap.ui.model.type.String', constraints : { minLength : 2, maxLength : 20 } }"/>
 						<!--<Label id="__label10" text="Leeftijd"/>
 						<Input id="__input10" width="100%"/>
 						-->
 						<Label id="__label11" text="Lengte in CM" width="100%"/>
-						<Input id="Input_DriverLength" width="10%" value="{ path : 'LENGTH_DRIVER', type : 'sap.ui.model.type.Integer', constraints : { minLength : 3, maxLength : 3 } }"/>
+						<Input id="Input_DriverLength" width="10%"
+							value="{ path : 'LENGTH_DRIVER', type : 'sap.ui.model.type.Integer', constraints : { minLength : 3, maxLength : 3 } }"/>
 						<Label id="__label12" text="Gewicht in KG" width="100%"/>
-						<Input id="Input_DriverWeight" width="10%" value="{ path : 'WEIGHT_DRIVER', type : 'sap.ui.model.type.Integer', constraints : { minLength : 2, maxLength : 3 } }"/>
+						<Input id="Input_DriverWeight" width="10%"
+							value="{ path : 'WEIGHT_DRIVER', type : 'sap.ui.model.type.Integer', constraints : { minLength : 2, maxLength : 3 } }"/>
 						<Label id="coureur_notities_label" text="Notities"/>
 						<TextArea id="Input_DriverNotes" wrapping="None"/>
 					</sap.ui.layout.form:content>

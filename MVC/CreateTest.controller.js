@@ -16,6 +16,7 @@ sap.ui.define(["JS/validator", "sap/ui/model/odata/v2/ODataModel"], function(Val
 			oRaceMetaData.setProperty(oPath + "/NAME_DRIVER", 'The Stig');
 			oRaceMetaData.setProperty(oPath + "/LENGTH_DRIVER", 202);
 			oRaceMetaData.setProperty(oPath + "/WEIGHT_DRIVER", 78);
+			oRaceMetaData.setProperty(oPath + "/DISTANCE", 22000);
 
 		},
 
@@ -103,7 +104,8 @@ sap.ui.define(["JS/validator", "sap/ui/model/odata/v2/ODataModel"], function(Val
 				"NAME_DRIVER": null,
 				"LENGTH_DRIVER": null,
 				"WEIGHT_DRIVER": null,
-				"DRIVER_NOTES": null
+				"DRIVER_NOTES": null,
+				"DISTANCE": null
 			};
 			var oContext = oRaceMetaData.createEntry("/URE_METADATA", {
 				properties: data
@@ -182,6 +184,22 @@ sap.ui.define(["JS/validator", "sap/ui/model/odata/v2/ODataModel"], function(Val
 		/**
 		 *@memberOf MVC.CreateTest
 		 */
+		 
+		 onRaceSelected: function(){
+				var oRaceMetaData = this.getView().getModel();
+				var oPath = this.getView().getBindingContext().getPath();
+				var raceType = oRaceMetaData.getProperty(oPath + "/RACE_TYPE");
+				var label = this.getView().byId("__labelDistance");
+				var input = this.getView().byId("Input_Distance");
+				if (raceType === "Endurance"){
+		 		label.setVisible(true);
+		 		input.setVisible(true);
+				} else{
+					label.setVisible(false);
+					input.setVisible(false);
+				}
+		 },
+		 
 		goToHistory: function() {
 			crudTest = "R";
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
