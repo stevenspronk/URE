@@ -16,23 +16,68 @@ sap.ui.define([
 				name: "Analyse",
 				defaultSelected: 0,
 				values: [{
-					name: "Batterij Lading",
-					value: ["STATE_OF_CHARGE"]
+					name: "Yaw Rate",
+					value: ["YAW_RATE"]
 				}, {
-					name: "Batterij Temperatuur",
-					value: ["BATTERY_TEMPERATURE", "BATTERY_CURRENT", "BATTERY_VOLTAGE"]
+					name: "Steering Angle",
+					value: ["STEERING"]
 				}, {
-					name: "Batterij-cellen Temperatuur",
-					value: ["MAX_TEMP_BUCKET1", "MAX_TEMP_BUCKET2", "MAX_TEMP_BUCKET3", "MAX_TEMP_BUCKET4", "MAX_TEMP_BUCKET5", "MAX_TEMP_BUCKET6"]
-				}, {
-					name: "Water Temperatuur",
-					value: ["WATER_TEMP1", "WATER_TEMP2"]
-				}]
+					name: "Wheel Speed",
+					value: ["WHEEL_SLIP_FL", "WHEEL_SLIP_FR", "WHEEL_SLIP_RL", "WHEEL_SLIP_RR"]
+				}
+				// , {
+				// 	name: "True Speed",
+				// 	value: [ ]
+				// }
+				]
+				// values: [{
+				// 	name: "Batterijlading",
+				// 	value: ["STATE_OF_CHARGE"]
+				// }, {
+				// 	name: "Batterij Temperatuur",
+				// 	value: ["BATTERY_TEMPERATURE", "BATTERY_CURRENT", "BATTERY_VOLTAGE"]
+				// }, {
+				// 	name: "Batterij-cellen Temperatuur",
+				// 	value: ["MAX_TEMP_BUCKET1", "MAX_TEMP_BUCKET2", "MAX_TEMP_BUCKET3", "MAX_TEMP_BUCKET4", "MAX_TEMP_BUCKET5", "MAX_TEMP_BUCKET6"]
+				// }, {
+				// 	name: "Water Temperatuur",
+				// 	value: ["WATER_TEMP1", "WATER_TEMP2"]
+				// }]
 			},
 			dataLabel: {
 				name: "Waarden tonen",
 				defaultState: false
-			}
+			},
+			dimensions: [{
+					name: 'FORMATTED_TIME',
+					value: "{FORMATTED_TIME}"
+					
+			// 		value : {  
+			// 	  parts : [ "{SENSOR_TIMESTAMP}" ],  
+			// 	  formatter : function(oCreatestamp) {
+			// 		if(oCreatestamp === null) {
+			// 			return oCreatestamp;
+			// 		}
+			// 		var oDateFormat = sap.ui.core.format.DateFormat.getDateTimeInstance({pattern: "dd.MM.yyyy HH:mm"});
+			// 		return oDateFormat.format(oCreatestamp);
+			// 	  }
+			// }
+				}]
+			// 	
+			// dimensions: {
+   //             Small: [{
+   //                 name: 'Seasons',
+   //                 value: "{Seasons}"
+   //             }],
+   //             Medium: [{
+   //                 name: 'Week',
+   //                 value: "{Week}"
+   //             }],
+   //             Large: [{
+   //                 name: 'Week',
+   //                 value: "{Week}"
+   //             }]
+   //         }
 		},
 
 		oVizFrame: null,

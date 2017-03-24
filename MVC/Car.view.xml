@@ -1,7 +1,6 @@
 <mvc:View height="100%" width="100%" controllerName="MVC.Car" xmlns:layout="sap.ui.layout" xmlns:viz="sap.viz.ui5.controls"
 	xmlns:mvc="sap.ui.core.mvc" xmlns:suite="sap.suite.ui.commons" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
 	xmlns:viz.data="sap.viz.ui5.data" xmlns="sap.m">
-	
 	<layout:FixFlex id="idFixFlex" class="fixFlexFixedSize" minFlexSize="250">
 		<!--Below is the chart area-->
 		<layout:fixContent>
@@ -17,13 +16,13 @@
 							</RadioButtonGroup>
 						</VBox>
 						<VBox class='settingsBox'>
-                        <Label text = '{/dataLabel/name}' design="Bold" class='settingsLabel'></Label>
-                        <Switch class='settingsSwitch' state="{/dataLabel/defaultState}" change='onDataLabelChanged'>
-                            <layoutData>
-                                <FlexItemData growFactor="1" />
-                            </layoutData>
-                        </Switch>
-                    </VBox>
+							<Label text='{/dataLabel/name}' design="Bold" class='settingsLabel'></Label>
+							<Switch class='settingsSwitch' state="{/dataLabel/defaultState}" change='onDataLabelChanged'>
+								<layoutData>
+									<FlexItemData growFactor="1"/>
+								</layoutData>
+							</Switch>
+						</VBox>
 					</HBox>
 				</content>
 			</Panel>
@@ -35,29 +34,30 @@
 				<viz:dataset>
 					<viz.data:FlattenedDataset data="{/d/results/}">
 						<viz.data:dimensions>
-							<viz.data:DimensionDefinition name="FORMATTED_TIME" value="{FORMATTED_TIME}"/>
+							<viz.data:DimensionDefinition name="FORMATTED_TIME"
+								value="{FORMATTED_TIME}"/>
 						</viz.data:dimensions>
 						<viz.data:measures>
-							<viz.data:MeasureDefinition name="MAX_TEMP_BUCKET1" value="{MAX_TEMP_BUCKET1}"/>
-							<viz.data:MeasureDefinition name="MAX_TEMP_BUCKET2" value="{MAX_TEMP_BUCKET2}"/>
-							<viz.data:MeasureDefinition name="MAX_TEMP_BUCKET3" value="{MAX_TEMP_BUCKET3}"/>
-							<viz.data:MeasureDefinition name="MAX_TEMP_BUCKET4" value="{MAX_TEMP_BUCKET4}"/>
-							<viz.data:MeasureDefinition name="MAX_TEMP_BUCKET5" value="{MAX_TEMP_BUCKET5}"/>
-							<viz.data:MeasureDefinition name="MAX_TEMP_BUCKET6" value="{MAX_TEMP_BUCKET6}"/>
-							<viz.data:MeasureDefinition name="BATTERY_CURRENT" value="{BATTERY_CURRENT}"/>
-							<viz.data:MeasureDefinition name="WATER_TEMP1" value="{WATER_TEMP1}"/>
-							<viz.data:MeasureDefinition name="WATER_TEMP2" value="{WATER_TEMP2}"/>
-							<viz.data:MeasureDefinition name="BATTERY_VOLTAGE" value="{BATTERY_VOLTAGE}"/>
-							<viz.data:MeasureDefinition name="BATTERY_TEMPERATURE" value="{BATTERY_TEMPERATURE}"/>
-							<viz.data:MeasureDefinition name="POWER" value="{POWER}"/>
-							<viz.data:MeasureDefinition name="STATE_OF_CHARGE" value="{STATE_OR_CHARGE}"/>
-							<viz.data:MeasureDefinition name="MIN_CELL_VOLT" value="{MIN_CELL_VOLT}"/>
-							<viz.data:MeasureDefinition name="MAX_CELL_VOLT" value="{MAX_CELL_VOLT}"/>
+							<viz.data:MeasureDefinition name="YAW_RATE" value="{YAW_RATE}"/>
+							<viz.data:MeasureDefinition name="STEERING" value="{STEERING}"/>
+							<viz.data:MeasureDefinition name="WHEEL_SLIP_FL" value="{WHEEL_SLIP_FL}"/>
+							<viz.data:MeasureDefinition name="WHEEL_SLIP_FR" value="{WHEEL_SLIP_FR}"/>
+							<viz.data:MeasureDefinition name="WHEEL_SLIP_RL" value="{WHEEL_SLIP_RL}"/>
+							<viz.data:MeasureDefinition name="WHEEL_SLIP_RR" value="{WHEEL_SLIP_RR}"/>
+							<!--<viz.data:MeasureDefinition name="BATTERY_CURRENT" value="{BATTERY_CURRENT}"/>-->
+							<!--<viz.data:MeasureDefinition name="WATER_TEMP1" value="{WATER_TEMP1}"/>-->
+							<!--<viz.data:MeasureDefinition name="WATER_TEMP2" value="{WATER_TEMP2}"/>-->
+							<!--<viz.data:MeasureDefinition name="BATTERY_VOLTAGE" value="{BATTERY_VOLTAGE}"/>-->
+							<!--<viz.data:MeasureDefinition name="BATTERY_TEMPERATURE" value="{BATTERY_TEMPERATURE}"/>-->
+							<!--<viz.data:MeasureDefinition name="POWER" value="{POWER}"/>-->
+							<!--<viz.data:MeasureDefinition name="STATE_OF_CHARGE" value="{STATE_OR_CHARGE}"/>-->
+							<!--<viz.data:MeasureDefinition name="MIN_CELL_VOLT" value="{MIN_CELL_VOLT}"/>-->
+							<!--<viz.data:MeasureDefinition name="MAX_CELL_VOLT" value="{MAX_CELL_VOLT}"/>-->
 						</viz.data:measures>
 					</viz.data:FlattenedDataset>
 				</viz:dataset>
 				<viz:feeds>
-					<viz.feeds:FeedItem id='valueAxisFeed' uid="valueAxis" type="Measure" values="STATE_OF_CHARGE"/>
+					<viz.feeds:FeedItem id='valueAxisFeed' uid="valueAxis" type="Measure" values="YAW_RATE"/>
 					<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="FORMATTED_TIME"/>
 				</viz:feeds>
 			</viz:VizFrame>
