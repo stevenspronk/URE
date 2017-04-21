@@ -1,42 +1,29 @@
 {
+  "hybrid": {
+    "FacadeConfig": {
+      "cordova-plugin-device-orientation": false,
+      "accelerometer": {},
+      "compass": {},
+      "bMockLocation": false,
+      "position": {
+        "latitude": 1.2748848,
+        "longitude": 103.7973789
+      },
+      "locations": []
+    }
+  },
+  "mockpreview": {
+    "mockUri": "/destinations/McCoy_URE/UreMetadata.xsodata/",
+    "metadataFilePath": "MVC/SmartAnnotations.xml",
+    "mockRequestsFilePath": "",
+    "loadJSONFiles": false,
+    "loadCustomRequests": false
+  },
   "translation": {
     "translationDomain": "",
     "supportedLanguages": "",
     "defaultLanguage": "",
     "defaultI18NPropertyFile": "",
     "resourceModelName": ""
-  },
-  "generation": [
-    {
-      "templateId": "servicecatalog.connectivityComponent",
-      "templateVersion": "0.0.0",
-      "dateTimeStamp": "Tue, 02 Feb 2016 20:18:58 GMT"
-    },
-    {
-      "templateId": "ui5template.basicSAPUI5ApplicationComponent",
-      "templateVersion": "1.4.0",
-      "dateTimeStamp": "Fri, 08 Apr 2016 09:53:34 GMT"
-    },
-    {
-      "templateId": "com.sap.webide.annotationmodeller.CreateAnnotationTemplate",
-      "templateVersion": "1.0.0",
-      "dateTimeStamp": "Wed, 11 May 2016 13:14:36 GMT"
-    }
-  ],
-  "mockpreview": {
-    "mockUri": "/destinations/McCoy_URE/UreMetadata.xsodata/",
-    "metadataFilePath": "MVC/SmartAnnotations.xml",
-    "loadJSONFiles": false,
-    "loadCustomRequests": false,
-    "mockRequestsFilePath": ""
-  },
-  "projectType": [
-    "sap.watt.uitools.ide.fiori",
-    "sap.watt.uitools.ide.web",
-    "com.watt.common.builder.sapui5clientbuild"
-  ],
-  "build": {
-    "buildRequired": true
-  },
-  "dataBinding": {}
+  }
 }

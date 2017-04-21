@@ -10,7 +10,6 @@ sap.ui.define([
 			this.component = sap.ui.component(sap.ui.core.Component.getOwnerIdFor(this.getView()));
 			
 			// Get a reference to the model and add a TimeSeries property
-			debugger;
 			var test = new sap.ui.model.json.JSONModel();
 			var batteryModel =  this.component.getModel("batteryModel");
 			var pedalsModel = this.component.getModel("pedalsModel");
@@ -38,7 +37,10 @@ sap.ui.define([
 			
 			// Every 200ms a new magical number appears
 			if (crudTest !== "R") {
-			setInterval(function() {
+				
+				
+				
+			var refreshInterval = setInterval(function() {
 				var magicNumber = me.magic();
 				var bucket1 = magicNumber[0];
 				var bucket2 = magicNumber[1];
@@ -68,6 +70,11 @@ sap.ui.define([
 				accelerationModel.getProperty("/accely").append(new Date().getTime(), accely);
 				waterModel.getProperty("/water1").append(new Date().getTime(), water1);
 				waterModel.getProperty("/water2").append(new Date().getTime(), water2);
+				
+				if (crudTest !== "U"){
+						clearInterval(refreshInterval);
+					}
+					
 		    }, 200);
 			}
 		},

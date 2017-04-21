@@ -28,13 +28,13 @@ sap.ui.define([
 
 			// me.cellVoltageChart();
 
-			setTimeout(function() {
-				setInterval(function() {
+
+/*				setInterval(function() {
 					if (loaded === true) {
 						me.refreshSteer();
 					}
-				}, 200);
-			}, 200);
+				}, 200);*/
+
 		},
 
 		calculatePower: function(var1, var2) {
@@ -168,14 +168,16 @@ sap.ui.define([
 			// var radialBrake = this.getView().byId("radialBrake.text");
 			// radialBrake.setText("Brake");
 		if (crudTest !== "R") {
-			setTimeout(function() {
-				setInterval(function() {
+			var refreshInterval =	setInterval(function() {
 					if (loaded === true) {
 						me.refreshSteer();
 						me.refreshColor();
 					}
+					
+					if (crudTest !== "U"){
+						clearInterval(refreshInterval);
+					}
 				}, 200);
-			}, 200);
 		}
 			/* var dot = '<div style="text-align: left; width: 100%; height: 100%;  background-image: url(/IMG/dot.png); background-position: 50% 50%;  background-repeat: no-repeat;"></div>';   
 	    var dotComponent = new sap.ui.core.HTML();
