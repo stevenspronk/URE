@@ -174,13 +174,23 @@
 						</Panel>
 					</content>
 				</CustomTile>
-				<CustomTile xmlns="sap.m" id="_stuuruitslagTile" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile">
+				<CustomTile xmlns="sap.m" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile" height="100%">
 					<content>
-						<html:div xmlns:sap.ui.core="sap.ui.core" style="width: 100%; height: 100%;">
-							<html:img src="/IMG/f1wheel.png" class="dashboardIcon" width="40px"/>
-							<html:div style="float: right; margin-right: 5px" class="dashboardTitle">Stuuruitslag</html:div>
-							<html:div id="stuuruitslagDiv" style="width: 75%; margin-left: 12%; text-align: center; height: 75%;"></html:div>
-						</html:div>
+						<Panel class="dashboardTilePanel" height="100%" backgroundDesign="Transparent">
+							<headerToolbar>
+								<Toolbar>
+									<sap.ui.core:Icon src="sap-icon://unwired" size="30pt"/>
+									<Text textAlign="Left" text="Snelheid" wrapping="true"/>
+								</Toolbar>
+							</headerToolbar>
+							<FlexBox height="100%" alignItems="Center" justifyContent="Center">
+								<items>
+									<Text textAlign="Center" width="100%" height="100%"
+										text="{path:'Overview>/d/results/0/TRAVEL_TRUE'} km/u"
+										wrapping="true" id="dashboardTileSpeedText"/>
+								</items>
+							</FlexBox>
+						</Panel>
 					</content>
 				</CustomTile>
 				<CustomTile xmlns="sap.m" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile">
@@ -192,6 +202,15 @@
 								<html:div id="eight_curve"
 									style="margin-left: 5px; margin-right: 5px; height:100%; background-size: contain; background-image: url('/IMG/eight_curve.png'); background-repeat: no-repeat; background-position: center; "></html:div>
 							</html:div>
+						</html:div>
+					</content>
+				</CustomTile>
+				<CustomTile xmlns="sap.m" id="_stuuruitslagTile" class="sapUiMediumMarginBeginEnd sapUiTinyMarginBottom sapMTile">
+					<content>
+						<html:div xmlns:sap.ui.core="sap.ui.core" style="width: 100%; height: 100%;">
+							<html:img src="/IMG/f1wheel.png" class="dashboardIcon" width="40px"/>
+							<html:div style="float: right; margin-right: 5px" class="dashboardTitle">Stuuruitslag</html:div>
+							<html:div id="stuuruitslagDiv" style="width: 75%; margin-left: 12%; text-align: center; height: 75%;"></html:div>
 						</html:div>
 					</content>
 				</CustomTile>
