@@ -111,7 +111,6 @@ sap.ui.define([
 
 		getNumberOfItems: function(Pt) {
 			//return this.getView().getModel("Msg").getProperty("/Orders("+sOrderID+")/Order_Details").length;
-			debugger;
 			return this.getView().getModel("Msg").getProperty("/POWERTRAIN").length;
 		},
 
@@ -278,7 +277,6 @@ sap.ui.define([
 		},
 
 		newTest: function(exit) {
-			debugger;
 			if (crudTest === "U") {
 				var me = this;
 				wait = true;
@@ -300,7 +298,6 @@ sap.ui.define([
 			}
 		},
 		saveCurrentTest: function(exit, callBack) {
-			debugger;
 			var oRaceMetaData = sap.ui.getCore().getModel("oRaceMetaData");
 			var oPath = "/URE_METADATA(RACE_ID=" + raceID + ",RUN_ID=" + runID + ")";
 			oRaceMetaData.setProperty(oPath + "/END_TIME", new Date());
